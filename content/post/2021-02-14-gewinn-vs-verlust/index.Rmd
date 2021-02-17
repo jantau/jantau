@@ -1,0 +1,121 @@
+---
+title: '% Gewinn vs. % Verlust'
+author: Jan Tau
+date: '2021-02-14'
+slug: gewinn-vs-verlust
+categories: []
+tags: []
+subtitle: ''
+summary: 'Über den %-Gewinn der benötigt wird, um einen %-Verlust auszugleichen'
+authors: []
+lastmod: '2021-02-14T10:58:38+01:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = FALSE,
+	message = FALSE,
+	warning = FALSE,
+	collapse = TRUE,
+	options(scipen = 999)
+)
+
+cat("\014") # Clear your console
+rm(list = ls()) # Clear your environment
+
+# Load in header file
+setwd("/Users/jan/blog/jantau")
+source("./content/post/header.R")
+```
+
+**Über den %-Gewinn der benötigt wird, um einen %-Verlust auszugleichen**
+
+Idee von: https://ofdollarsanddata.com/10-investing-lessons-from-2020/
+
+Eine Aktie verliert an einem Tag 1 % an Wert. Wie viel muss sie am nächsten Tag steigen, um den ursprünglichen Wert zu erreichen? Die intuitive Antwort "Um 1 %!" ist falsch. Die Aktie muss nicht um 1 %, sondern um 1,010101 % steigen, um den ursprünglichen Wert zu erreichen. Intuitiv einfacher ist dieser mathematische Effekt zu begreifen, wenn sich der Wert der Aktie halbiert, also um 50 % fällt. In diesem Fall muss sich der Wert verdoppeln, also um 100 % steigen, um wieder zum Ausgangspunkt zu gelangen. Die exponentielle Entwicklung ist rasant. Verliert eine Aktie 80 % ihres Wertes, so muss sie um 400 % steigen, um den Verlust wieder wett zu machen. Verliert die gleiche Aktie 81 %, so muss sie bereits 426.315789 % zulegen, um zum Urspungswert zu gelangen. Eine Aktie, die 99 % verliert, muss 9900 % gewinnen. Und eine Aktie, die 100 % an Wert verloren hat? Ok, ich denke, ihr habt das Prinzip verstanden. 
+
+Für den Anleger bedeutet es, dass er eine Investition lange vorher abschreiben kann, bevor sie ein Totalverlust ist. Habe ich 80 % mit einer Aktie verloren, was schnell passieren kann, wie die Beispiele Deutsche Bank usw. zeigen, dann muss ein Wunder geschehen, für einen Turnaround, der ein positives Ergebnis erzielt.   
+
+
+```{r}
+dat <- data.frame(verlust=1:100)
+
+df <- dat %>%
+  mutate(c2 = 100-verlust) %>%
+  mutate(gewinn = ((100/c2)-1)*100)
+```
+
+
+```{r fig.height=7, fig.width=7}
+pal <- got(1, option = "Daenerys", direction = 1)
+
+df %>%
+  filter(gewinn <= 400) %>%
+  ggplot()+
+  geom_line(aes(verlust,gewinn), size = 1, color = pal) +
+  scale_x_continuous(limits = c(0, 80)) +
+  labs(title = "Welchen %-Gewinn muss ich erzielen, \num einen %-Verlust wieder auszugleichen?",
+       subtitle = "Datenanalyse: jantau",
+       x = "%-Verlust",
+       y = "%-Gewinn") +
+  theme_jantau +
+  geom_segment(aes(x = verlust, y = gewinn, yend=gewinn), xend=0, alpha = 0.5) +
+  geom_segment(aes(x = verlust, y = gewinn, xend=verlust), yend=0, alpha = 0.5) 
+
+```
+
+```{r}
+pal <- got(1, option = "Daenerys", direction = 1)
+
+df %>%
+  filter(gewinn <= 9900) %>%
+  ggplot()+
+  geom_line(aes(verlust,gewinn), size = 1, color = pal) +
+  scale_x_continuous(limits = c(0, 100)) +
+  labs(title = "Welchen %-Gewinn muss ich erzielen, \num einen %-Verlust wieder auszugleichen?",
+       subtitle = "Datenanalyse: jantau",
+       x = "%-Verlust",
+       y = "%-Gewinn") +
+  theme_jantau
+
+```
+
+
+```{r}
+dat <- data.frame(verlust= c(1, 10,20,30,40,50,60,70,80,90))
+
+df <- dat %>%
+  mutate(c2 = 100-verlust) %>%
+  mutate(gewinn = ((100/c2)-1)*100)
+```
+
+
+```{r}
+pal <- got(1, option = "Daenerys", direction = 1)
+
+df %>%
+  filter(gewinn <= 400) %>%
+  ggplot()+
+  geom_line(aes(verlust,gewinn), size = 1, color = pal) +
+  scale_x_continuous(limits = c(0, 80)) +
+  labs(title = "Welchen %-Gewinn muss ich erzielen, \num einen %-Verlust wieder auszugleichen?",
+       subtitle = "Datenanalyse: jantau",
+       x = "%-Verlust",
+       y = "%-Gewinn") +
+  theme_jantau +
+  geom_segment(aes(x = verlust, y = gewinn, yend=gewinn), xend=0, alpha = 0.5) +
+  geom_segment(aes(x = verlust, y = gewinn, xend=verlust), yend=0, alpha = 0.5) 
+
+```
+
+Idee von: https://ofdollarsanddata.com/10-investing-lessons-from-2020/
+
+Ein Effekt, der auch erklärt, warum gehedgte Fonds langfristig keine gute Anlagestrategie sind. (Siehe Blogbeitrag von ...)
+
+Den für diesen Beitrag erstellten Code findest du hier: https://github.com/jantau/jantau

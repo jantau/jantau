@@ -1,0 +1,412 @@
+---
+title: Der Investorenbrief
+author: 'Jan Tau'
+date: '2021-02-03'
+slug: der-investorenbrief
+categories: []
+tags: [NASDAQ 100, Sparplan]
+subtitle: ''
+summary: 'Dieser Plost ist eine Beschreibung und Evaluation der Anlagestrategie der Sparpläne von Emil und Alva.'
+authors: []
+lastmod: '2021-02-03T11:22:43+01:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+
+Dieser Post ist eine Beschreibung und Evaluation der Anlagestrategie der Sparpläne von Emil und Alva.
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = FALSE,
+	message = FALSE,
+	warning = FALSE
+)
+
+cat("\014") # Clear your console
+rm(list = ls()) # Clear your environment
+
+# Load in header file
+setwd("/Users/jan/blog/jantau")
+source("./content/post/header.R")
+```
+
+
+```{r}
+Sparplan_Doku_Emil <-
+  read_excel(
+    "~/Documents/Deutsche_Bank_u_VB/Sparplan_Doku.xlsx",
+    sheet = "Emil_R",
+    col_types = c("date",
+                  "numeric", "numeric", "numeric", "numeric", "numeric")
+  )
+
+
+Sparplan_Doku_Emil <- Sparplan_Doku_Emil %>%
+  mutate(Prozent = round((Gesamt / Ansparen - 1) * 100, 1))
+```
+
+
+## Emil
+
+Die Einzahlungen von Emils Opas auf das Depotkonto werden seit April 2020 jeweils zum 20. des Monats in einen ETF auf den Nasdaq-100 angelegt. Zurzeit wird der thesaurierende [Nasdaq-ETF von Amundi](https://www.amundietf.de/privatkunden/product/view/LU1681038243) bespart, da für diesen über den Broker [maxblue](https://www.maxblue.de) bis September 2021 kein Ausgabeaufschlag erhoben wird.
+
+Der Nasdaq 100 hat sich in der zweiten Hälfte 2020 besser als der Gesamtmarkt entwickelt (16,3% Amundi Nasdaq 100 zu 12,6% Amundi MSCI World), wobei ein starker Euro die Rendite der ETFs mit hohem USD-Anteil gedrückt hat.
+
+Die Gelder von den Sparbüchern der Sparkasse und der Volksbank wurden im August und September in Amazon- und Apple-Aktien angelegt. Diese Aktien verzeichnen seitdem eine volatile Seitwärtsbewegung, was sich negativ auf die Rendite ausgewirkt hat.
+
+<style>
+  .superbigimage{
+      overflow-x:scroll;
+      white-space: nowrap;
+  }
+
+  .superbigimage img{
+     max-width: none;
+  }
+
+
+</style>
+
+
+<div class="superbigimage">
+
+
+```{r}
+pal <- got(3, option = "Daenerys", direction = -1)
+
+ggplot(Sparplan_Doku_Emil, aes(x = Closing)) +
+  geom_ribbon(aes(ymin = Ansparen, ymax = Gesamt, fill = "Rendite"), alpha =
+                0.8) +
+  geom_point(aes(y = Gesamt), alpha = .8, shape = 4) +
+  
+  geom_area(aes(y = Ansparen, fill = "Ansparen"), alpha = .8) +
+  geom_point(aes(y = Ansparen), alpha = .8, shape = 4) +
+  
+  geom_text(
+    aes(y = Ansparen, label = Ansparen),
+    hjust = 0.5,
+    vjust = 2,
+    alpha = .8
+  ) +
+  
+  geom_text(
+    aes(y = Gesamt, label = paste0(Gesamt, "; ", Prozent, "%")),
+    hjust = 0.5,
+    vjust = -2,
+    alpha = .8
+  ) +
+  
+  labs(title = "Sparplan Emil",
+       subtitle = "Datenquelle u. Datenanalyse: jantau",
+       x = "",
+       y = "",
+       fill = "") +
+  scale_y_continuous(limits = c(0, max(Sparplan_Doku_Emil$Gesamt) + 500),
+                     labels = dollar_format(suffix = " €", prefix = "")) +
+  scale_x_datetime(
+    expand = c(0.15, 0),
+    labels = date_format("%b %Y"),
+    breaks = "1 month"
+  ) +
+  scale_fill_manual(values = pal) +
+  theme_jantau +
+  theme(legend.position = c(0.7, 0.2),
+        legend.direction = "horizontal") 
+```
+</div>
+
+```{r}
+Sparplan_Doku_Alva <- read_excel("~/Documents/Deutsche_Bank_u_VB/Sparplan_Doku.xlsx", 
+    sheet = "Alva_R", col_types = c("date", 
+        "numeric", "numeric", "numeric"))
+```
+
+```{r}
+# Daten anreichern
+Sparplan_Doku_Alva <- Sparplan_Doku_Alva %>%
+  mutate(Rendite = ETFs - Ansparen) %>%
+  mutate(Prozent = round(Rendite/Ansparen*100,1))
+```
+
+## Alva
+
+Die Einzahlungen von Alvas Opas auf das Depotkonto werden seit Juni 2020 jeweils zum 20. des Monats in einen ETF auf den Nasdaq-100 angelegt. Zurzeit wird der thesaurierende [Nasdaq-ETF von Amundi](https://www.amundietf.de/privatkunden/product/view/LU1681038243) bespart, da für diesen über den Broker [maxblue](https://www.maxblue.de) bis September 2021 kein Ausgabeaufschlag erhoben wird.
+
+Der Nasdaq 100 hat sich in der zweiten Hälfte 2020 besser als der Gesamtmarkt entwickelt (16,3% Amundi Nasdaq 100 zu 12,6% Amundi MSCI World), wobei ein starker Euro die Rendite der ETFs mit hohem USD-Anteil gedrückt hat.
+
+<div class="superbigimage">
+
+
+```{r}
+# Daten visualisieren
+ggplot(Sparplan_Doku_Alva, aes(x = Closing)) +
+  geom_ribbon(aes(ymin = Ansparen, ymax = ETFs, fill = "Rendite"), alpha =
+                0.8) +
+  geom_point(aes(y = ETFs), alpha = .8, shape = 4) +
+  geom_text(
+    aes(y = ETFs, label = paste0(ETFs, "; ", Prozent, "%")),
+    hjust = 0.5,
+    vjust = -2,
+    alpha = .8
+  ) +
+  geom_area(aes(y = Ansparen, fill = "Ansparen"), alpha = .8) +
+  geom_point(aes(y = Ansparen), alpha = .8, shape = 4) +
+  geom_text(
+    aes(y = Ansparen, label = Ansparen),
+    hjust = 0.5,
+    vjust = 2,
+    alpha = .8
+  ) +
+  labs(
+    title = "Sparplan Alva",
+    subtitle = "Datenquelle u. Datenanalyse: jantau",
+    x = "",
+    y = "",
+    fill = ""
+  ) +
+  scale_y_continuous(limits = c(0, 1700),
+                     labels = dollar_format(suffix = " €", prefix = "")) +
+  scale_x_datetime(
+    expand = c(0.15, 0),
+    labels = date_format("%b %Y"),
+    breaks = "1 month"
+  ) +
+    scale_fill_manual(values = pal) +
+  theme_jantau +
+  theme(legend.position = c(0.7, 0.2),
+        legend.direction = "horizontal")
+```
+</div>
+
+## Ausblick 2021
+
+### Sektorenwette USA und IT
+
+Die Investition in einen ETF auf den Nasdaq 100 ist eine Sektorenwette auf US-amerikanische Aktien mit hoher Markkapitalisierung. Dominiert wird der Nasdaq 100 von den Branchen IT und Kommunikationsdienste. Die Investition in den Nasdaq 100 folgt der Annahme, dass IT-Aktien mittel- und langfristig ein hohes Wachstum generieren werden. Dabei ist jedoch nicht auszuschließen, dass es nach den sehr guten Entwicklungen der Jahre 2019 und 2020 zu einer Konsolidierung und einem langsameren Wachstum im Jahr 2021 kommen kann. In der frühen Ansparphase ist ein langsameres Wachstum jedoch unproblematisch, da niedrigere Kurse den Erwerb von mehr ETF-Anteilen ermöglichen.
+
+Die nächste Abbildung zeigt die Performance der drei Indizes Nasdaq 100, Dax 30 und MSCI World (jeweils in Euro) der letzten fünf Jahre (1.1.2016 bis 31.12.2020). Die Darstellung zeigt, dass die drei Indizes von Anfang 2016 bis Ende 2017 eine parallele Entwicklung hatten. Seit Anfang 2018 hat sich der Nasdaq deutlich besser entwickelt als der Dax 30 und der MSCI World. Auch der MSCI World hat in diesem Zeitraum den Dax noch deutlich hinter sich gelassen. Aus der Unterschiedlichen Performance der drei Indizes lassen sich unterschiedliche Kaufsignale ableiten. Ein Argument ist, dass der Dax Nachholbedarf hat und sich deshalb in den kommenden Jahren stärker entwickeln wird. Ein anderes Argument lautet, dass der Trend des Nasdaq ungebrochen ist und sich dieser Index auch zukünftig stark entwickeln wird.
+
+```{r}
+# ticker symbols ishares NDX= (EXXT.DE, xtrackers Dax = DBXD.DE, XTRackers MSCI World = XDWD.DE
+# https://www.amundietf.de/privatkunden/product/view/LU1681043599
+
+indexvgl <- tq_get(c("EXXT.DE","DBXD.DE","XDWD.DE"),
+                      get  = "stock.prices",
+                      from = "2016-01-01",
+                      to = "2020-12-31")
+```
+
+```{r}
+indexvgl_monthly <- indexvgl %>% group_by(symbol) %>% 
+  tq_transmute(select     = adjusted, 
+               mutate_fun = periodReturn,
+               period     = "monthly")%>% 
+  ungroup()
+
+indexvgl_monthly <- indexvgl_monthly %>% group_by(symbol) %>%
+  mutate(cumsum = cumsum(monthly.returns)*100)
+```
+
+
+<div class="superbigimage">
+
+```{r}
+pal <- got(3, option = "Daenerys", direction = -1)
+
+indexvgl_monthly$symbol <-
+  factor(indexvgl_monthly$symbol,
+         levels = c("EXXT.DE", "XDWD.DE", "DBXD.DE"))
+
+  ggplot(data = indexvgl_monthly, aes(x = date, y = cumsum, color = symbol)) +
+  geom_line(size = 1) +
+
+  theme_jantau +
+  labs(
+    x = "",
+    y = "Performance",
+    color = "",
+    title = "Indizes im Vergleich der letzten 5 Jahre",
+    subtitle = "Datenquelle: finance.yahoo.com; Datenanalyse: jantau",
+    caption = "Anmerkung: Dax 30 = Performance-Index \nNASDAQ 100 und MSCI World = Kursindizes"
+  ) +
+  geom_label( 
+    data=indexvgl_monthly %>% group_by(symbol) %>% filter(cumsum == last(cumsum)), # Filter data first
+    aes(label = paste0(round(cumsum)," %")),
+    show.legend = FALSE
+    ) +
+    #  geom_dl(aes(label=cumsum, x=date, y=cumsum), method = list("last.qp"), color="red") +
+  theme(legend.position = c(0.5, 0.98), legend.direction="horizontal") +
+  #  scale_color_discrete(labels = c("DAX 30", "Nasdaq 100", "MSCI World"))+
+  scale_y_continuous(labels = dollar_format(suffix = " %", prefix = "")) +
+  scale_color_manual(values = pal,
+                     labels = c("Nasdaq 100", "MSCI World", "DAX 30"))
+
+```
+</div>
+
+### Schwacher Dollarkurs
+
+Ein starker Euro kann die Rendite reduzieren. Der Anstieg des Euros von 1,12 Dollar auf 1,22 Dollar hat bereits die Rendite auf das gesamte Jahr 2020 bezogen um 9 Prozent reduziert. In der frühen Ansparphase wird diese Entwicklung als nicht bedrohlich bewertet, da ein starker Euro die US-amerikanischen Aktien (und somit die ETFs) billiger macht. Die Annahme ist, dass langfristig der Dollar wieder stärker wird. Kurz- und mittelfristig könnte der Euro jedoch noch weiter zulegen.
+
+Die nächste Abbildung zeigt die Entwicklung des Euro/Dollar-Kurses im Jahr 2020.
+
+<div class="superbigimage">
+
+
+```{r}
+# ticker dollar euro EURUSD=X
+dollareuro <- tq_get("EURUSD=X",
+                     get  = "stock.prices",
+                     from = "2020-01-01",
+                     to = "2020-12-31")
+
+ggplot(data = dollareuro, aes(x = date, y = adjusted)) +
+  geom_line(size = 1) +
+  theme_jantau +
+  labs(
+    title = "Entwicklung Euro/Dollar über ein Jahr",
+    subtitle = "Datenquelle: finance.yahoo.com; Datenanalyse: jantau",
+    y = "Kurs",
+    x = ""
+  ) +
+  geom_dl(
+    aes(
+      label = paste0(" +", round((
+        1 - first(adjusted) / last(adjusted)
+      ) * 100, 0), "%"),
+      x = date,
+      y = adjusted
+    ),
+    method = list("last.qp"),
+    color = "red"
+  ) +
+  geom_smooth(method = "lm", se = FALSE, col = "red")
+
+```
+</div>
+
+Im Jahr 2020 hat der Dollar etwa 9 % gegenüber dem Euro eingebüßt. Wird ein längerer Zeitraum betrachtet, ergibt sich jedoch eine fallende Tendenz des Euros. Im Zeitraum 2011 bis 2020 hat der Euro 9 % an Wert zum Dollar eingebüßt. 
+
+```{r}
+## Create gifs http://www.nagraj.net/notes/gifs-in-r/
+## Create a directory to which the images will be written
+#dir_out <- file.path("~/...", "gif_dir")
+# for file in directory of Rmd oder Rmarkdown file
+dir_out <- file.path("gif_dir")
+dir.create(dir_out, recursive = TRUE)
+```
+
+
+```{r}
+# Ticker dollar euro EURUSD=X
+dollareuro <- tq_get("EURUSD=X",
+                      get  = "stock.prices",
+                      from = "2011-01-01",
+                      to = "2020-12-31")
+
+# Prepare data
+dollar_gif <- dollareuro %>%
+  select(c(1,2,8)) %>%
+  mutate(year = year(date))
+
+# Get a sorted list of unique years in the dollar dataset
+years_gif <- 
+  dollar_gif %>%
+  pull(year) %>%
+  unique(.) %>%
+  sort(., decreasing=T)
+
+
+## Find the month with the highest euro to set y axis limit
+high_euro <- max(dollar_gif$adjusted, na.rm = TRUE)
+low_euro <- min(dollar_gif$adjusted, na.rm = TRUE)
+
+```
+
+```{r}
+# Loop through years ...
+# Subset data ...
+# Create plot of sales ...
+# Write plot to file
+for (i in years_gif) {
+  p <-
+    dollar_gif %>%
+    filter(year >= i) %>%
+    
+    ggplot(aes(x = date, y = adjusted)) +
+    geom_line(size = 0.5) +
+    theme_jantau + 
+    labs(
+      title = paste0("Entwicklung Euro/Dollar ", i, " bis 2020"),
+      subtitle = "Datenquelle: finance.yahoo.com; Datenanalyse: jantau",
+      y = "Kurs",
+      x = ""
+    ) +
+    geom_dl(
+      aes(
+        label = paste0(" ", round((
+          1 - first(adjusted) / last(adjusted)
+        ) * 100, 0), "%"),
+        x = date,
+        y = adjusted
+      ),
+      method = list("last.qp"),
+      color = "red"
+    ) +
+    geom_smooth(method = "lm", se = FALSE, col = "red") +
+    scale_y_continuous(limits = c(low_euro, high_euro))
+  
+  fp <- file.path(dir_out, paste0(i, ".png"))
+  
+  ggsave(
+    plot = p,
+    filename = fp,
+    device = "png",
+    width = 17.78,
+    height = 12.7,
+    units = "cm"
+  )
+  # print(p)
+  
+}
+
+```
+
+
+
+
+```{r out.width = "100%"}
+library(magick)
+# List file names and read in
+imgs <- list.files(dir_out, full.names = TRUE)
+img_list <- lapply(sort(imgs, decreasing = T), image_read)
+
+# Join the images together
+img_joined <- image_join(img_list)
+
+# Animate at 2 frames per second
+img_animated <- image_animate(img_joined, fps = 0.5)
+
+# Save to disk
+image_write(image = img_animated,
+            path = "dollar.gif")
+
+img_animated
+```
+
+
+
+### Thesaurierend vs ausschüttend
+
+Der [Nasdaq-ETF von Amundi](https://www.amundietf.de/privatkunden/product/view/LU1681038243) ist thesaurierend. Nach Auslaufen der Ausgabeaufschlagreduzierung könnte in einen ausschüttenden ETF investiert werden, um den Steuerfreibetrag besser auszunutzen. Die ausgeschütteten Erträge würden beim nächsten Kaufturnus wieder angelegt werden. Durch die niedrige Dividende des wachstumsorientierten ETFs ist dieser Effekt jedoch gering und rechtfertigt als alleinstehender Grund keinen Wechsel des Anlageprodukts.
+
+Den für diesen Beitrag erstellten Code findest du hier: https://github.com/jantau/jantau

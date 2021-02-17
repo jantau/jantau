@@ -1,0 +1,49 @@
+---
+bio: Datenanalyse. Persönliche Finanzen. Storytelling.
+education:
+  courses:
+  - course: MA LIS Bibliotheks- und Informationswissenschaften
+    institution: Humboldt-Universität Berlin
+    year: 2017
+  - course: Dr. phil Geschichtswissenschaften
+    institution: Universität Erfurt
+    year: 2014
+email: ""
+highlight_name: false
+interests:
+- Datenanalyse mit R
+- Persönliche Finanzen
+- Storytelling
+# organizations:
+# - name: Stanford University
+#  url: https://www.stanford.edu/
+# role: Professor of Artificial Intelligence
+social:
+- icon: envelope
+  icon_pack: fas
+  link: /#contact
+- display:
+    header: true
+  icon: twitter
+  icon_pack: fab
+  label: Follow me on Twitter
+  link: https://twitter.com/jantaubitz
+#- icon: graduation-cap
+#  icon_pack: fas
+#  link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
+- icon: github
+  icon_pack: fab
+  link: https://github.com/jantau
+- icon: linkedin
+  icon_pack: fab
+  link: https://www.linkedin.com/in/jan-taubitz-5b305914a/
+superuser: true
+title: Jan Tau
+# {{< icon name="download" pack="fas" >}} Download my {{< staticref "media/demo_resume.pdf"   "newtab" >}}resumé{{< /staticref >}}.
+---
+
+Jan Tau ist Historiker und Bibliothekar/Informationswissenschaftler.
+
+Dieser Blog beinhaltet Datenanalysen zu persönlichen Finanzen. Die Datenanalysen werden mit der Programmiersprache `R` durchgeführt.
+
+Den erstellten Code findest du hier: https://github.com/jantau/jantau

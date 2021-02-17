@@ -1,0 +1,540 @@
+---
+title: 18 Jahre für das Kind sparen
+author: Jan Tau
+date: '2021-02-06'
+slug: 18-jahre-sparen
+categories: []
+tags: []
+subtitle: ''
+summary: 'Über den besten Index für eine langfristige Investition in die Zukunft der Kinder'
+authors: []
+lastmod: '2021-02-06T16:49:51+01:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = FALSE,
+	message = FALSE,
+	warning = FALSE,
+	collapse = TRUE,
+	options(scipen = 999)
+)
+
+cat("\014") # Clear your console
+rm(list = ls()) # Clear your environment
+
+# Load in header file
+setwd("/Users/jan/blog/jantau")
+source("./content/post/header.R")
+```
+
+```{r}
+# Variables
+
+indizes <- c("^GDAXI", "^NDX", "^SP500TR")  ## "^GDAXI", "^GSPC" "^NDX", "^FTSE" ## Ticker symbols from yahoo.finance.com 
+start_date <- "1990-01-01"
+end_date <- "2020-12-31"
+years_save <- 18
+monthly_rate <- 100 
+total_save <- 12*monthly_rate*years_save
+i_date <- as.numeric(str_sub(start_date,1,4))-1 ## Wert um Spalten mit loop zu füllen
+start_year <- as.numeric(str_sub(start_date,1,4))
+end_year <- as.numeric(str_sub(end_date,1,4))
+
+```
+
+
+```{r cache=TRUE}
+# Data import
+# Cache true um daten nicht jedes mal neu von yahoo.finance einlesen zu müssen
+# New
+dax <- tq_get(indizes,
+              get  = "stock.prices",
+              from = "1900-01-01",
+              to = end_date,
+              complete_cases=T)
+
+dax <- dax %>%
+  select(1,2,adjusted) %>%
+  drop_na()
+```
+
+```{r}
+dax_1 <- dax %>%
+  filter(date >= start_date  & date <= end_date)
+```
+
+```{r}
+dax_1 <- dax_1 %>% 
+    mutate(symbol = replace(symbol, symbol == "^GDAXI", "Dax")) %>%
+    mutate(symbol = replace(symbol, symbol == "^NDX", "NASDAQ 100")) %>%
+    mutate(symbol = replace(symbol, symbol == "^SP500TR", "S&P 500 TR"))
+```
+
+**Über den besten Index für eine langfristige Investition in die Zukunft der Kinder**
+
+## Was passiert aus `r monthly_rate` Euro monatlich?
+
+Ein Baby wird geboren und die Großeltern möchten in die Zukunft des Kindes investieren. Monatlich sollen `r monthly_rate` Euro über einen Sparplan angelegt werden. Der Anlagezeitraum beträgt `r years_save` Jahre, also bis das Kind die Volljährigkeit erreicht hat. Insgesamt wird über diesen Zeitraum die stolze Summe von `r total_save` Euro angelegt. 
+Das Geld soll jedoch nicht nur angespart werden, sondern es soll für das Kind arbeiten und eine Rendite erwirtschaften. Zu diesem Zweck wird das Geld über einen ETF in einen Aktienindex investiert.
+
+Um herauszufinden, welche Chancen und Risiken mit dieser Anlagestrategie verbunden sind, soll untersucht werden, wie sich in der Vergangenheit solche Sparpläne entwickelt haben. Dabei werden der NASDAQ 100, der Dax 30 und der S&P 500 Total Return (TR) miteinander verglichen.
+
+*Anmerkung:* Die Berechnungen berücksichtigen nicht Inflation, ETF-Kosten, Steuern und Währungsschwankungen. Alle diese Faktoren wirken sich auf die Rendite aus. (In einem weiteren Post werde ich diese Faktoren berücksichtigen.)
+
+## Vorgehen
+
+Es werden sämtliche 18-Jahres-Zeiträume zwischen 1990 und 2020 analysiert, um die historischen Schwankungen darzustellen. Beispielsweise wird der 18-Jahres-Zeitraum 1990 bis 2007 untersucht oder der Zeitraum 1999 bis 2016. Der letzte vollständig untersuchbare Zeitraum umfasst die Jahre 2003 bis 2020. Insgesamt werden 14 verschiedene 18-Jahres-Zeiträume untersucht. Mit diesem Vorgehen wird einerseits verglichen, wie sich die Anlagen zu verschiedenen Zeiten entwickelt haben und andererseits wird die Performance von drei verschiedenen Indizes untersucht. 
+
+Zur Vereinfachung beginnen die 18-Jahres-Zeiträume jeweils im Januar eines Jahres. In den Simulationen werden stets am letzten Handelstag jeden Monats 100 Euro investiert. Nach 18 Jahren oder nach 216 monatlichen Einlagen (18 Jahre * 12 Monate) wird die Endsumme ermittelt.
+
+Der erste Zeitraum beginnt im Jahr 1990, da ab diesem Zeitraum vollständige Daten über die Yahoo-Schnittstelle vorliegen. Die untersuchten Indizes sind der Dax 30, der als Performance-Index die Dividenden rechnerisch reinvestiert. Der S&P 500 Total Return (TR) enthält ebenfalls die reinvestierten Ausschüttungen. Er ist somit vergleichbar mit dem Dax 30 und wird anstelle des S&P 500 genommen, der als Kursindex die Dividenden nicht enthält. Für den NASDAQ 100 konnte ich keine Daten mit reinvestierten Dividenden finden In dieser Analyse wird somit der NASDAQ 100 als Kursindex analysiert. Diese Einschränkung ist jedoch zu verschmerzen, da der NASDAQ 100 mit vielen wachstumsorientierten Werten eine geringe Dividendenrendite aufweist. Gleichwohl muss bei der Analyse berücksichtigt werden, dass die Reinvestition der Ausschüttungen, die Performance des NASDAQ 100 positiv beeinflussen würde. 
+
+## Visualisierungen
+
+Die erste Visualisierung zeigt alle `r years_save` Jahres-Zeiträume von `r start_year` bis `r end_year` als animiertes GIF. In der zweiten Visualisierung werden sämtliche Jahres-Zeiträume noch einmal ohne Animation dargestellt.
+
+```{r}
+# Nur der erste Wert pro Monat
+# https://github.com/tidyverse/lubridate/issues/630
+dax_1 <- dax_1 %>%
+  mutate(year = year(date)) %>%
+  mutate(month = as.factor(month(date))) %>%
+  mutate(year_mon = floor_date(date, "month")) %>%
+  distinct(symbol, year_mon, .keep_all=T)
+
+```
+
+```{r}
+# Jahre für loop ermitteln
+
+years <-dax_1 %>%
+  pull(year) %>%
+  unique(.) %>%
+  sort(.)
+  
+```
+
+```{r}
+# Create gifs http://www.nagraj.net/notes/gifs-in-r/
+
+# Delete directory
+unlink("ansparen2_gif_dir", recursive = TRUE)
+
+# Create a directory to which the images will be written
+ansparen_dir_out <- file.path("ansparen2_gif_dir")
+dir.create(ansparen_dir_out, recursive = TRUE)
+```
+
+
+```{r}
+# Erstelle matrizen
+matrix <- data.frame(matrix(NA, nrow = years_save*12*3, ncol = length(years)-years_save+1))
+matrix_2 <- data.frame(matrix(NA, nrow = years_save*12*3, ncol = length(years)-years_save+1))
+matrix_3 <- data.frame(matrix(NA, nrow = years_save*12*3, ncol = 1))
+
+for (i in years) {
+  
+  p <- dax_1 %>%
+    group_by(symbol) %>%
+    filter(year >= i  & year <= i+years_save-1) %>%
+    mutate(anteil = monthly_rate/adjusted) %>%
+    mutate(anteil_cumsum = cumsum(anteil)) %>%
+    mutate(wert = anteil_cumsum*adjusted) %>%
+    mutate(ansparen = monthly_rate) %>%
+    mutate(ansparen_cumsum = cumsum(ansparen))
+  
+  if (nrow(p) < years_save*12*3) next
+  
+    matrix[,i-i_date] <- p[,9]
+    matrix_2[,i-i_date] <- p[,2]
+    matrix_3 <- p[,1]
+}
+
+pal <- got(3, option = "Daenerys", direction = -1)
+
+for (i in years) {
+  p <- dax_1 %>%
+    group_by(symbol) %>%
+    filter(year >= i  & year <= i + years_save - 1) %>%
+    mutate(anteil = monthly_rate / adjusted) %>%
+    mutate(anteil_cumsum = cumsum(anteil)) %>%
+    mutate(wert = anteil_cumsum * adjusted) %>%
+    mutate(ansparen = monthly_rate) %>%
+    mutate(ansparen_cumsum = cumsum(ansparen))
+  
+  if (nrow(p) < years_save * 12 * 3)
+    next
+  
+  y <- ggplot(p) +
+    
+    #   geom_line(aes(x = date, y = ansparen_cumsum), color = "black", alpha = 1)+
+    
+    #   geom_ribbon(aes(x = date, ymax = wert, ymin = 0, fill = symbol),  alpha = .5)+
+    
+    geom_line(aes(x = date, y = wert, color = symbol),
+              alpha = 1,
+              size = 1) +
+    #  scale_x_date(expand=c(0.1, 0)) +
+    
+    #  geom_dl(aes(label = last(wert),  x = date, y = wert, color = symbol), method = list(dl.trans(x = x + .2), "last.points")) +
+    
+    #    geom_vline(aes(xintercept = as.Date("2002-10-07")), size = 0.5)+
+    #    geom_text(aes(x = as.Date("2002-10-07")+400, y = max(matrix), label = "DotCom Low\n7. Okt. 2002"), size = 3)+
+    #    geom_vline(aes(xintercept=as.Date("2009-03-09")), size = 0.5)+
+    #    geom_text(aes(x = as.Date("2009-03-09")+400, y = max(matrix), label = "Finanzkrise\n9. Mrz. 2009"), size = 3)+
+    
+    #    geom_dl(aes(label = symbol, x = date, y=wert), method = list(dl.trans(x = x + 0.2), "last.points", cex = 0.8)) +
+    
+  #    geom_dl(aes(label = round(last(wert), 0), x = date, y = wert, color = symbol), method = list("last.qp"))+
+  
+  geom_ribbon(aes(
+    x = date,
+    ymin = 0,
+    ymax = ansparen_cumsum,
+    fill = "Ansparen"
+  ),
+  alpha = .5) +
+    
+    #    geom_dl(aes(label = round(last(ansparen_cumsum), 0), x = date, y = ansparen_cumsum), method = "last.qp", color = "black", alpha = .3)+
+    
+    theme_jantau +
+    labs(
+      title = paste0("Entwicklung von ", i, " bis ", i + years_save - 1),
+      x = "",
+      y = "",
+      color = "",
+      fill = "",
+      subtitle = "Datenquelle: finance.yahoo.com; Datenanalyse: jantau"
+    ) +
+    scale_y_continuous(limits = c(0, max(matrix)),
+                       labels = dollar_format(suffix = " €", prefix = "")) +
+    scale_color_manual(values = pal) +
+    scale_fill_manual(values = "grey") +
+    #  scale_color_manual(values=c(pal[1], pal[70], pal[128]))+
+    # scale_fill_manual(values=c(pal[1], pal[70], pal[128]))+
+    #  scale_fill_got(discrete = F, option = "Martell") +
+    # scale_color_got(discrete = F, option = "Martell") +
+    theme(
+      panel.grid.major.y = element_line(colour = "grey", linetype = "dashed"),
+      legend.position = "bottom",
+      # c(0.3, 0.7)
+      legend.direction = "horizontal"
+    )
+  
+  fp <- file.path(ansparen_dir_out, paste0(i, ".png"))
+  
+  ggsave(
+    plot = y,
+    filename = fp,
+    device = "png",
+    width = 20,
+    height = 16,
+    units = "cm"
+  )
+  
+  
+  #  print(y)
+}  
+```
+
+
+```{r}
+## gif erstellen
+library(magick)
+## list file names and read in
+ansparen_imgs <- list.files(ansparen_dir_out, full.names = TRUE)
+ansparen_img_list <- lapply(sort(ansparen_imgs, decreasing = F), image_read)
+
+## join the images together
+ansparen_img_joined <- image_join(ansparen_img_list)
+
+## animate at 2 frames per second
+ansparen_img_animated <- image_animate(ansparen_img_joined, fps = 1)
+
+## save to disk
+image_write(image = ansparen_img_animated,
+            path = "ansparen2.gif")
+
+ansparen_img_animated
+
+```
+
+
+
+
+
+```{r}
+## change column names to "1990-2007", "1991-2008" etc.
+
+## prepare vectors for loop
+new_names <- c()
+new_names2 <- c()
+
+## loop
+for (i in 1:ncol(matrix_2)) {
+  
+  ## select first and last value of each column
+  new_names[i] <- as.character(first(matrix_2[,i]))
+  new_names2[i] <- as.character(last(matrix_2[,i]))
+  ## select characters 1 to 4 of vector strings
+  new_names[i] <- str_sub(new_names[i],1,4)
+  new_names2[i] <- str_sub(new_names2[i],1,4)
+
+}
+
+## paste strings together
+new_names <- paste0(new_names, "-",new_names2)
+
+## get old colnames in vector
+old_names <- colnames(matrix_2)
+
+
+## change column names with vector
+matrix_2 <- matrix_2 %>% rename_at(all_of(old_names), ~ new_names)
+
+```
+
+
+```{r}
+matrix_cbind <- cbind(matrix_3, matrix)
+```
+
+```{r}
+# soll besser sein pivot_longer(matrix, )
+
+## make data long and select value column 
+matrix_cbind_long <- gather(matrix_cbind, key, wert, -symbol)
+matrix_cbind_long <- matrix_cbind_long %>%
+  select(1,3)
+
+## make data long and change colnames
+matrix_2_long <- gather(matrix_2, yrs, date)
+
+## combinde long dataframes
+t_4 <- cbind(matrix_2_long, matrix_cbind_long)
+```
+
+
+
+```{r fig.height = 16, fig.width = 7.9, out.width = "100%"}
+#pal <- got(5, option = "Jon_Snow")
+pal <- got(3, option = "Daenerys", direction = -1)
+
+t_4 <- t_4 %>%
+  group_by(yrs, symbol) %>%
+  mutate(ansparen = monthly_rate) %>%
+  mutate(ansparen_cumsum = cumsum(ansparen))
+
+ggplot(t_4, aes(x = date)) +
+  geom_line(aes(y = wert, color = symbol)) +
+  #   geom_ribbon(aes(ymax = value, ymin = ansparen_cumsum, fill = "Ertrag"), alpha = .8)+
+  geom_ribbon(aes(ymax = ansparen_cumsum, ymin = 0, fill = "Ansparen"), alpha = .5) +
+  facet_wrap( ~ yrs, ncol = 2, dir = "v") +
+  
+  theme_jantau +
+  
+  labs(
+    title = "Alle Plots",
+    x = "",
+    y = "",
+    fill = "",
+    color = "",
+    subtitle = "Datenquelle: finance.yahoo.com; Datenanalyse: jantau"
+  ) +
+  scale_y_continuous(limits = c(0, max(matrix)),
+                     labels = dollar_format(suffix = " €", prefix = "")) +
+  #  scale_fill_manual(values=c(pal[1], pal[5]))+
+  scale_color_manual(values = pal) +
+  scale_fill_manual(values = "grey") +
+  theme(legend.position = "bottom")
+```
+
+## Ergebnisse
+
+Erstens: Alle Sparpläne haben einen positiven Ertrag abgeworfen. Das bedeutet, zwischen 1990 und 2020 gab es keinen 18-Jahres-Zeitraum, in dem eines der Anlageprodukte einen Verlust eingebracht hat.
+
+Zweitens: Die Spannbreite der Erträge ist sehr groß. Der kleinste Ertrag hat der S&P 500 TR im Zeitraum 1991-2008 erbracht. In diesem Zeitraum gab es einen Ertrag von 30,7 %. Aus 21000 Euro wurden somit 28226 Euro. Den größten Ertrag konnte die Anlage in den NASDAQ 100 im Zeitraum 2003 bis 2020 erzielen. Aus 21000 Euro wurden 112529 Euro, was einem Ertrag von 421 % entspricht.
+
+Drittens: Der NASDAQ 100 hat in allen Zeiträumen die beste Rendite abgeworfen und dass, obwohl er von hoher Volatilität gekennzeichnet ist und hohe Verluste in der Dotcom-Blase (Tiefpunkt Oktober 2002) und der Finanzkrise (Tiefpunkt März 2009) hinnehmen musste. Hier zeigt sich eindrucksvoll die Macht des Durchschnittskosteneffekt oder Dollar Cost Averaging (DCA). Durch das regelmäßige Investieren über einen längeren Zeitraum ließen sich auch diese Krisen überwinden.
+
+Viertens: Krisen zu Beginn eines Investitionszeitraums spielen für den gesamten Zeitraum kaum eine Rolle. Durch die Kraft des Zinseszinses wirken sich die später im Verlauf des Sparplans auftretenden Krisen jedoch erheblich auf die Rendite aus. Das zeigt beispielsweise der schlechteste Sparplan in dieser Untersuchung. Der S&P 500 TR von 1991 bis 2008 hat eine schwache Rendite von 30 Prozent, da der Sparplan mitten in der Krise (etwa drei Monate vor dem Tiefpunkt der Finanzkrise) endet. Ein Großteil der Investition ist somit kurz vor Ende des Sparplans von einem starken Einbruch betroffen. Der Sparplan NASDAQ 100 von 1999 bis 2016 hingegen, der sowohl die Dotcom-Blase als auch die Finanzkrise  miterlebt hat, weist eine Rendite von 141,2 Prozent auf, da er nach der letzten großen Krise (Finanzkrise Tiefpunkt März 2009) fast sieben Jahre Zeit hatte, die Verluste wieder wett zu machen. 
+
+
+
+```{r}
+tab_1 <- gather(last(matrix))
+tab_1 <- tab_1 %>%
+  select(2)
+
+
+tab_1 <- matrix_cbind %>%
+  group_by(symbol) %>%
+  filter(X1 == last(X1))
+
+tab_1 <- gather(tab_1, key, wert, -symbol)
+
+
+tab_2 <- matrix_2_long %>%
+  group_by(yrs) %>%
+  filter(date == last(date))
+
+## combinde long dataframes
+tab_3 <- cbind(tab_2, tab_1)
+
+tab_sum <- tab_3 %>%
+  group_by(symbol) %>%
+  summarise(Durchschn.EUR = round(mean(wert),0),
+            Max.EUR = round(max(wert),0), 
+            Min.EUR = round(min(wert),0), 
+            Durchschn.Proz. = mean(wert)/total_save-1, 
+            Max.Proz. = max(wert)/total_save-1, 
+            Min.Proz. = min(wert)/total_save-1) 
+
+
+
+#%>%
+ #   mutate(Index = index_name) 
+
+
+#%>%
+ # select(7,1:6)
+
+## für alle auswertungen in einer tabelle
+#assign(  paste0("tab_sum_", index_name), tab_sum )
+
+#tab_list <- mget(ls(pattern = "^tab_sum_.*"))
+
+tab_all <- tab_3 %>%
+  select(-2) %>%
+#  mutate(Index = index_name) %>%
+  mutate(End_Wert = round(wert,0)) %>%
+  mutate(Jahre = yrs) %>%
+  mutate(Ansparen = total_save) %>%
+  mutate(Ertrag_Proz. = wert/total_save-1) %>%
+  select(-3,-4,-6) %>%
+  select(1, 2, 4, 3, 5)
+
+#assign(  paste0("tab_all_", index_name), tab_all )
+```
+
+
+
+
+
+
+```{r eval = FALSE}
+
+### Tabellarische Zusammenfassungen
+
+#Die tabellarische Zusammenfassung zeigt den durchschnittlichen Ertrag in Euro wie auch in Prozent sowie die Rendite des besten Jahreszeitraum und die Rendite des schlechtesten Jahreszeitraum. 
+
+#<br/><br/>
+
+# https://gt.rstudio.com/articles/intro-creating-gt-tables.html
+
+gt(tab_sum,
+  rowname_col = "symbol") %>%
+  cols_align(align = "center", columns = TRUE) %>%
+  tab_header(
+    title = md("Zusammenfassung alle Indizes"),
+    subtitle = md("Durchschn., Max und Min")
+  ) %>%
+  fmt_currency(
+    columns = vars(Durchschn.EUR, Max.EUR, Min.EUR),
+    currency = "EUR",
+    placement = "right",
+    decimals = 0,
+    sep_mark = ".",
+    dec_mark = ","
+  ) %>%
+  fmt_percent(
+    columns = vars(Durchschn.Proz., Max.Proz., Min.Proz.),
+    decimals = 1,
+    sep_mark = ".",
+    dec_mark = ",",
+  )
+
+```
+
+
+```{r eval = FALSE}
+
+#<br/><br/>
+
+#Die zweite Tabelle zeigt sämtliche `r years_save`-Zeiträume.
+
+#<br/><br/>
+
+gt(tab_all,
+  rowname_col = "symbol") %>%
+  cols_align(align = "center", columns = TRUE) %>%
+  tab_header(
+    title = "Zusammenfassung alle Indizes",
+    subtitle = md("Alle Jahreszeiträume")
+  ) %>%
+  fmt_currency(
+    columns = vars(End_Wert, Ansparen),
+    currency = "EUR",
+    placement = "right",
+    decimals = 0,
+    sep_mark = ".",
+    dec_mark = ","
+  ) %>%
+  fmt_percent(
+    columns = vars(Ertrag_Proz.),
+    decimals = 1,
+    sep_mark = ".",
+    dec_mark = ",",
+  )
+```
+
+
+
+```{r}
+options(OutDec = ",")
+
+ggplot(tab_all, aes(
+  x = yrs,
+  y = End_Wert,
+  color = symbol,
+  group = symbol
+)) +
+  geom_point() + geom_line() +
+  geom_ribbon(
+    aes(ymin = 0, ymax = total_save, fill = "Ansparen"),
+    alpha = .5,
+    color = NA,
+    show.legend = F
+  ) +
+  theme_jantau +
+  labs(
+    title = "Endsumme aller Zeiträume",
+    subtitle = "Datenquelle: finance.yahoo.com; Datenanalyse: jantau",
+    x = "Zeitraum",
+    y = "Endsumme",
+    color = "",
+    fill = ""
+  ) +
+  theme(
+    axis.text.x = element_text(angle = 90),
+    panel.grid.major.y = element_line(colour = "grey", linetype = "dashed"),
+    legend.position = c(0.5, 0.98), legend.direction="horizontal"
+  ) +
+  scale_y_continuous(labels = dollar_format(
+    big.mark = " ",
+    decimal.mark = ",",
+    suffix = " €",
+    prefix = ""
+  )) +
+  scale_color_manual(values = pal) +
+  scale_fill_manual(values = "grey")
+```
+
+Den für diesen Beitrag erstellten Code findest du hier: https://github.com/jantau/jantau
