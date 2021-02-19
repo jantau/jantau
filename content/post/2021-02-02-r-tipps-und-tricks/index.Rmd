@@ -21,8 +21,22 @@ output:
 ---
 
 ```{r include=FALSE}
+knitr::opts_chunk$set(
+	message = FALSE,
+	warning = FALSE
+)
+
+library(readxl)
 library(tidyverse)
 library(scales)
+library(xts)
+library(lubridate)
+library(stringr)
+library(gameofthrones) # farbpaletten
+library(DT)
+library(gt)
+library(tidyquant)
+library(directlabels)
 ```
 
 **In diesem Post werden Tipps und Tricks gesammelt, die mir das Arbeiten mit R erleichtern und es mir erlauben, Datentransformationen, Analysen und Visualisierungen nach meinen Vorstellungen durchzuführen.**
@@ -96,5 +110,71 @@ plot1
 ```
 
 Ich bin mir jedoch nicht sicher, ob es wirklich nutzerfreundlicher ist, die Plots in voller Größe zu zeigen. 
+
+## Plots speichern, Pixel-Dimension festlegen, Hintergrund transparent gestalten, Favicon ändern
+
+Ich wollte das Favicon (das kleine von Webbrowsern verwendet Symbol oder Logo) ändern. Da ich für den Blog noch kein Logo hatte, wollte ich einen charakteristischen Plot aus einem meiner Blog-Posts anpassen, in den richtigen Dimensionen speichern, mit einem transparenten Hintergrund versehen und als Favicon hochladen. Hier ist mein Vorgehen:
+
+### Plot anpassen und speichern
+
+Zunächst habe ich einen bereits verwendeten Plot reproduziert. In diesem Fall einen Plot, der die Performance in Prozent der Indizes Dax, MSCI World und NASDAQ 100 von 2016 bis 2020 abbildet. Um den Plot jedoch als kleines Icon speichern zu können, habe ich die Plot-Titel, Plot-Achsen, Plot-Legenden usw mit `theme_void()` und mit `theme(legend.position="none")` entfernt.
+```{r}
+# Daten von yahoo.finance.com einlesen
+indexvgl <- tq_get(c("EXXT.DE","DBXD.DE","XDWD.DE"),
+                      get  = "stock.prices",
+                      from = "2016-01-01",
+                      to = "2020-12-31")
+
+# Monatliche Performance in Prozent berechnen
+indexvgl_monthly <- indexvgl %>% group_by(symbol) %>% 
+  tq_transmute(select     = adjusted, 
+               mutate_fun = periodReturn,
+               period     = "monthly")%>% 
+  ungroup()
+
+# Kummulierte Performance berechnen
+indexvgl_monthly <- indexvgl_monthly %>% group_by(symbol) %>%
+  mutate(cumsum = cumsum(monthly.returns)*100)
+
+# Farbpalette festlegen
+pal <- got(3, option = "Daenerys", direction = -1)
+
+# Level der Indizes festlegen
+indexvgl_monthly$symbol <-
+  factor(indexvgl_monthly$symbol,
+         levels = c("EXXT.DE", "XDWD.DE", "DBXD.DE"))
+
+# Plot erstellen
+  ggplot(data = indexvgl_monthly, aes(x = date, y = cumsum, color = symbol)) +
+  geom_line(size = 4) +
+    theme_void() +
+    theme(legend.position="none") +
+    scale_color_manual(values = pal,
+                     labels = c("Nasdaq 100", "MSCI World", "DAX 30"))
+```
+
+Anschließend habe ich den Plot mit der Funktion `ggsave()` gespeichert.
+
+```{r}
+  ggsave(
+  "icon.png",
+  plot = last_plot(),
+  device = "png",
+  path = NULL,
+  scale = 1,
+  width = 135.46666667,
+  height = 135.46666667,
+  units = "mm",
+  dpi = 72,
+  limitsize = TRUE)
+```
+
+### Pixel-Dimension festlegen, Hintergrund transparent gestalten
+
+Es war jedoch nicht möglich, die Pixel-Dimension von 512*512, [die von Wowchemy vorgegeben wird](https://wowchemy.com/docs/getting-started/customization/) direkt mit `ggsave()` zu speichern. Aus diesem Grund habe ich ImageMagick über Brew heruntergeladen. Über die Kommandozeile konnte ich so mit den Befehlen `convert icon.png -resize 512x512 thumbnail.png` und `magick convert thumbnail.png -transparent "#ffffff" transparent.png` die Pixel-Dimension anpassen und den Hintergrund transparent machen.
+
+### Favicon ändern
+
+Das Icon musste im letzten Schritt als `icon.png` gespeichert werden und in den Ordner `jantau/assets/images` abgelegt werden.
 
 Den für diesen Beitrag erstellten Code findest du hier: https://github.com/jantau/jantau

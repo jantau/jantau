@@ -28,6 +28,12 @@ output:
 <li><a href="#reproduzierbaren-code-erstellen">Reproduzierbaren Code erstellen</a></li>
 <li><a href="#pretty-code">Pretty Code</a></li>
 <li><a href="#plots-auf-mobilgeräten-in-voller-größe-anzeigen">Plots auf Mobilgeräten in voller Größe anzeigen</a></li>
+<li><a href="#plots-speichern-pixel-dimension-festlegen-hintergrund-transparent-gestalten-favicon-ändern">Plots speichern, Pixel-Dimension festlegen, Hintergrund transparent gestalten, Favicon ändern</a>
+<ul>
+<li><a href="#plot-anpassen-und-speichern">Plot anpassen und speichern</a></li>
+<li><a href="#pixel-dimension-festlegen-hintergrund-transparent-gestalten">Pixel-Dimension festlegen, Hintergrund transparent gestalten</a></li>
+<li><a href="#favicon-ändern">Favicon ändern</a></li>
+</ul></li>
 </ul>
 </div>
 
@@ -92,5 +98,66 @@ plot1
 / ```
 &lt;/div&gt; </code></pre>
 <p>Ich bin mir jedoch nicht sicher, ob es wirklich nutzerfreundlicher ist, die Plots in voller Größe zu zeigen.</p>
+</div>
+<div id="plots-speichern-pixel-dimension-festlegen-hintergrund-transparent-gestalten-favicon-ändern" class="section level2">
+<h2>Plots speichern, Pixel-Dimension festlegen, Hintergrund transparent gestalten, Favicon ändern</h2>
+<p>Ich wollte das Favicon (das kleine von Webbrowsern verwendet Symbol oder Logo) ändern. Da ich für den Blog noch kein Logo hatte, wollte ich einen charakteristischen Plot aus einem meiner Blog-Posts anpassen, in den richtigen Dimensionen speichern, mit einem transparenten Hintergrund versehen und als Favicon hochladen. Hier ist mein Vorgehen:</p>
+<div id="plot-anpassen-und-speichern" class="section level3">
+<h3>Plot anpassen und speichern</h3>
+<p>Zunächst habe ich einen bereits verwendeten Plot reproduziert. In diesem Fall einen Plot, der die Performance in Prozent der Indizes Dax, MSCI World und NASDAQ 100 von 2016 bis 2020 abbildet. Um den Plot jedoch als kleines Icon speichern zu können, habe ich die Plot-Titel, Plot-Achsen, Plot-Legenden usw mit <code>theme_void()</code> und mit <code>theme(legend.position="none")</code> entfernt.</p>
+<pre class="r"><code># Daten von yahoo.finance.com einlesen
+indexvgl &lt;- tq_get(c(&quot;EXXT.DE&quot;,&quot;DBXD.DE&quot;,&quot;XDWD.DE&quot;),
+                      get  = &quot;stock.prices&quot;,
+                      from = &quot;2016-01-01&quot;,
+                      to = &quot;2020-12-31&quot;)
+
+# Monatliche Performance in Prozent berechnen
+indexvgl_monthly &lt;- indexvgl %&gt;% group_by(symbol) %&gt;% 
+  tq_transmute(select     = adjusted, 
+               mutate_fun = periodReturn,
+               period     = &quot;monthly&quot;)%&gt;% 
+  ungroup()
+
+# Kummulierte Performance berechnen
+indexvgl_monthly &lt;- indexvgl_monthly %&gt;% group_by(symbol) %&gt;%
+  mutate(cumsum = cumsum(monthly.returns)*100)
+
+# Farbpalette festlegen
+pal &lt;- got(3, option = &quot;Daenerys&quot;, direction = -1)
+
+# Level der Indizes festlegen
+indexvgl_monthly$symbol &lt;-
+  factor(indexvgl_monthly$symbol,
+         levels = c(&quot;EXXT.DE&quot;, &quot;XDWD.DE&quot;, &quot;DBXD.DE&quot;))
+
+# Plot erstellen
+  ggplot(data = indexvgl_monthly, aes(x = date, y = cumsum, color = symbol)) +
+  geom_line(size = 4) +
+    theme_void() +
+    theme(legend.position=&quot;none&quot;) +
+    scale_color_manual(values = pal,
+                     labels = c(&quot;Nasdaq 100&quot;, &quot;MSCI World&quot;, &quot;DAX 30&quot;))</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Anschließend habe ich den Plot mit der Funktion <code>ggsave()</code> speichern.</p>
+<pre class="r"><code>  ggsave(
+  &quot;icon.png&quot;,
+  plot = last_plot(),
+  device = &quot;png&quot;,
+  path = NULL,
+  scale = 1,
+  width = 135.46666667,
+  height = 135.46666667,
+  units = &quot;mm&quot;,
+  dpi = 72,
+  limitsize = TRUE)</code></pre>
+</div>
+<div id="pixel-dimension-festlegen-hintergrund-transparent-gestalten" class="section level3">
+<h3>Pixel-Dimension festlegen, Hintergrund transparent gestalten</h3>
+<p>Es war jedoch nicht möglich, die Pixel-Dimension von 512*512, <a href="https://wowchemy.com/docs/getting-started/customization/">die von Wowchemy vorgegeben wird</a> direkt mit <code>ggsave()</code> zu speichern. Aus diesem Grund habe ich ImageMagick über Brew heruntergeladen. Über die Kommandozeile konnte ich so mit den Befehlen <code>convert icon.png -resize 512x512 thumbnail.png</code> und <code>magick convert thumbnail.png -transparent "#ffffff" transparent.png</code> die Pixel-Dimension anpassen und den Hintergrund transparent machen.</p>
+</div>
+<div id="favicon-ändern" class="section level3">
+<h3>Favicon ändern</h3>
+<p>Das Icon musste im letzten Schritt als <code>icon.png</code> gespeichert werden und in den Ordner <code>jantau/assets/images</code> abgelegt werden.</p>
 <p>Den für diesen Beitrag erstellten Code findest du hier: <a href="https://github.com/jantau/jantau" class="uri">https://github.com/jantau/jantau</a></p>
+</div>
 </div>
