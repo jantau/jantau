@@ -18,8 +18,7 @@ cat("\014") # Clear your console
 rm(list = ls()) # Clear your environment
 
 # Load in header file
-setwd("/Users/jan/blog/jantau")
-source("./content/post/header.R")
+source("/Users/jan/blog/jantau/content/post/header.R")
 ```
 
 

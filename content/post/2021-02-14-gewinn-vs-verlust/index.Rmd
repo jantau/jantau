@@ -15,6 +15,8 @@ image:
   focal_point: ''
   preview_only: no
 projects: []
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
@@ -30,17 +32,16 @@ cat("\014") # Clear your console
 rm(list = ls()) # Clear your environment
 
 # Load in header file
-setwd("/Users/jan/blog/jantau")
-source("./content/post/header.R")
+source("/Users/jan/blog/jantau/content/post/header.R")
 ```
 
 **Über den %-Gewinn der benötigt wird, um einen %-Verlust auszugleichen**
 
-Idee von: https://ofdollarsanddata.com/10-investing-lessons-from-2020/
+Eine Aktie verliert an einem Tag 1 % an Wert. Wie viel muss sie am nächsten Tag steigen, um den ursprünglichen Wert zu erreichen? Die intuitive Antwort "Um 1 %!" ist falsch. Die Aktie muss nicht um 1 %, sondern um 1,010101 % steigen, um den ursprünglichen Wert zu erreichen. Einfacher ist dieser mathematische Effekt zu begreifen, wenn sich der Wert der Aktie halbiert, also um 50 % fällt. Der Wert einer Aktie beträgt 100 Euro. Sie verliert 50 % ihres Werts, ist nunmehr nur noch 50 Euro wert. Sie muss 50 Euro zulegen, ihr Wert muss sich verdoppeln, also um 100 % steigen, um wieder zum Ausgangspunkt zu gelangen. 
 
-Eine Aktie verliert an einem Tag 1 % an Wert. Wie viel muss sie am nächsten Tag steigen, um den ursprünglichen Wert zu erreichen? Die intuitive Antwort "Um 1 %!" ist falsch. Die Aktie muss nicht um 1 %, sondern um 1,010101 % steigen, um den ursprünglichen Wert zu erreichen. Intuitiv einfacher ist dieser mathematische Effekt zu begreifen, wenn sich der Wert der Aktie halbiert, also um 50 % fällt. In diesem Fall muss sich der Wert verdoppeln, also um 100 % steigen, um wieder zum Ausgangspunkt zu gelangen. Die exponentielle Entwicklung ist rasant. Verliert eine Aktie 80 % ihres Wertes, so muss sie um 400 % steigen, um den Verlust wieder wett zu machen. Verliert die gleiche Aktie 81 %, so muss sie bereits 426.315789 % zulegen, um zum Urspungswert zu gelangen. Eine Aktie, die 99 % verliert, muss 9900 % gewinnen. Und eine Aktie, die 100 % an Wert verloren hat? Ok, ich denke, ihr habt das Prinzip verstanden. 
+Die exponentielle Entwicklung ist rasant. Verliert eine Aktie 80 % ihres Wertes, so muss sie um 400 % steigen, um den Verlust wieder wett zu machen. Verliert die gleiche Aktie 81 %, so muss sie bereits 426.315789 % zulegen, um zum Urspungswert zu gelangen. Eine Aktie, die 99 % verliert, muss 9900 % gewinnen. Und eine Aktie, die 100 % an Wert verloren hat? Ok, ich denke, ihr habt das Prinzip verstanden. 
 
-Für den Anleger bedeutet es, dass er eine Investition lange vorher abschreiben kann, bevor sie ein Totalverlust ist. Habe ich 80 % mit einer Aktie verloren, was schnell passieren kann, wie die Beispiele Deutsche Bank usw. zeigen, dann muss ein Wunder geschehen, für einen Turnaround, der ein positives Ergebnis erzielt.   
+Die folgende Grafik zeigt die exponentielle Entwicklung. Auf der X-Achse ist der Verlust in Prozent angezeigt. Die Y-Achse zeigt, wie hoch der Gewinn sein muss, um den auf der X-Achse aufgetragenen Verlust wieder auszugleichen. Der zunehmende Abstand der horizontalen Linien verdeutlicht, in welchem Ausmaß sich die notwendigen Prozenzgewinne erhöhen müssen, um zunehmende Verluste auszugleichen. 
 
 
 ```{r}
@@ -58,36 +59,118 @@ pal <- got(1, option = "Daenerys", direction = 1)
 df %>%
   filter(gewinn <= 400) %>%
   ggplot()+
-  geom_line(aes(verlust,gewinn), size = 1, color = pal) +
+  geom_line(aes(verlust,gewinn), size = 2, color = pal) +
   scale_x_continuous(limits = c(0, 80)) +
   labs(title = "Welchen %-Gewinn muss ich erzielen, \num einen %-Verlust wieder auszugleichen?",
        subtitle = "Datenanalyse: jantau",
        x = "%-Verlust",
        y = "%-Gewinn") +
   theme_jantau +
-  geom_segment(aes(x = verlust, y = gewinn, yend=gewinn), xend=0, alpha = 0.5) +
-  geom_segment(aes(x = verlust, y = gewinn, xend=verlust), yend=0, alpha = 0.5) 
+  geom_segment(aes(x = verlust, y = gewinn, yend=gewinn), xend=0, alpha = 0.5) 
+#+
+ # geom_segment(aes(x = verlust, y = gewinn, xend=verlust), yend=0, alpha = 0.5) 
 
 ```
 
-```{r}
+## Was bedeutet diese Effekt für den Anleger?
+
+Für den Anleger bedeutet es, dass er eine Investition lange vorher abschreiben sollte, bevor sie einen 100-prozentigen Totalverlust erleidet. Habe ich 80 % mit einer Aktie verloren – was mit Einzelaktien durchaus passieren kann – dann muss ein erheblicher Turnaround von 400 % erfolgen, um letztendlich einen positiven Ertrag zu erzielen. Sind 400 % auf dem Aktienmarkt möglich, so setzt ein 95 % Verlust einen anschließenden Gewinn von 1900 % voraus, um auf den Ausgangswert zurück zu kommen, was bei einem Titel, der zuvor so extrem eingebrochen ist, ein äußerst unwahrscheinliches Szenario darstellt
+
+Die nächste Grafik begrenzt die X-Achse nicht bei 80 %, sondern erst bei 99 %, was die extreme Entwicklung verdeutlicht. Wiederum illustrieren die horizontalen Linien den nötigen Gewinn in Prozent, um jeweils 1 % Verlust auszugleichen.
+
+```{r fig.height=7, fig.width=7}
 pal <- got(1, option = "Daenerys", direction = 1)
 
 df %>%
   filter(gewinn <= 9900) %>%
   ggplot()+
-  geom_line(aes(verlust,gewinn), size = 1, color = pal) +
+  geom_line(aes(verlust,gewinn), size = 2, color = pal) +
   scale_x_continuous(limits = c(0, 100)) +
   labs(title = "Welchen %-Gewinn muss ich erzielen, \num einen %-Verlust wieder auszugleichen?",
        subtitle = "Datenanalyse: jantau",
        x = "%-Verlust",
        y = "%-Gewinn") +
-  theme_jantau
+  theme_jantau +
+  geom_segment(aes(x = verlust, y = gewinn, yend=gewinn), xend=0, alpha = 0.5) 
 
 ```
 
 
+## Wirecard als plakatives Beispiel
+
+Der Kursverlauf der Wirecard-Aktie zeigt plakativ den Effekt. Die Aktie hat zum Ende des Jahres 2020 einen Verlust von 99,8 % zum Jahreshöchstwert (143,8 € am 12.2.2020) verzeichnet. Diese extreme Entwicklung kann eine Darstellung des Kursverlaufs nicht mehr abbilden. Nach dem Absturz im Juni 2020 scheint nicht mehr viel zu passieren, da eine  Veränderung von beispielsweie 0,2 % bei dem extremen Kursverlauf nicht mehr groß ins Gewicht fällt.
+
 ```{r}
+wirecard <- tq_get(c("WDI.F"),
+                   get  = "stock.prices",
+                   from = "2020-01-01",
+                   to = "2020-12-31")
+
+wirecard_daily <- wirecard %>%
+  group_by(symbol) %>%
+  tq_transmute(select     = adjusted,
+               mutate_fun = periodReturn,
+               period     = "daily") %>%
+  ungroup()
+
+wirecard_daily <- wirecard_daily %>% 
+  group_by(symbol) %>%
+  mutate(cumsum = cumsum(daily.returns))
+
+
+wirecard_verlust <- wirecard %>%
+  select(1,2,8) %>%
+  mutate(verlust = (adjusted/max(adjusted))*100) %>%
+  mutate(verlust2 = 100-verlust) %>%
+  mutate(gewinn = ((100/verlust)-1)*100)
+```
+
+```{r}
+ggplot(wirecard_verlust, aes(date, adjusted)) +
+  geom_line(color = pal[1], size = 1) +
+  theme_jantau +
+  labs(title = "Wirecard \nKursverlauf im Jahr 2020",
+       x = "",
+       y = "Kurs in Euro") +
+  scale_x_date(expand = c(0, 30)) +
+  geom_label(
+    data = wirecard_verlust %>% filter(verlust2 == last(verlust2)),
+    aes(label = paste0("-", round(verlust2, 1), " %")),
+    show.legend = FALSE,
+    color = pal[1]
+  ) 
+```
+
+Wird die Darstellung jedoch umgedreht und nicht der Kursverlauf angezeigt, sondern die erforderlicher Entwicklung in Prozent, um zum Jahreshöchstwert zu gelangen, so wird die im Plot zuvor nicht ablesbare Entwicklung ab Juni 2020 betont. Die veränderte Darstellung verdeutlicht, welche positive Entwicklung notwendig ist, um zum Jahreshöchstwert 2020 zu gelangen, der mit 143,8 € noch weit vom Allzeithoch entfernt war. 
+
+```{r}
+pal <- got(1, option = "Daenerys", direction = 1)
+
+ggplot(wirecard_verlust, aes(date, gewinn)) +
+  geom_line(color = pal[1], size = 1) +
+  theme_jantau +
+  labs(title = "Wirecard im Jahr 2020: \nNotwendiger Kursgewinn in % zum Jahreshöchstwert",
+       x = "",
+       y = "%-Gewinn nötig für Jahreshöchstwert") +
+  scale_x_date(expand = c(0, 30)) +
+  geom_label(
+    data = wirecard_verlust %>% filter(gewinn == last(gewinn)),
+    aes(label = paste0(round(gewinn), " %")),
+    show.legend = FALSE,
+    color = pal[1]
+  ) 
+```
+
+
+## Ein Argument gegen Hebelprodukte
+
+Justin Czyszczewski argumentiert in dem Post [Why You Shouldn’t Buy Leveraged ETFs](https://justinczyszczewski.com/why-you-shouldnt-buy-leveraged-etfs/), das die Rendite durch gehebelte ETFs durch den oben beschriebenen Effekt negativ beeinflusst wird. Gehebelte oder leveraged ETFs bilden den Kursverlauf einen Indizes nicht eins zu eins nach, sondern hebeln ihn. Ein dreifach gehebelter ETF auf den Dax 30 erzielt die dreifache Kursentwicklung. Steigt der Dax um 1 %, so steigt der gehebelte ETf um 3 %. Fällt der Dax um 2 %, so fällt der ETF um 6 %. Neben höheren Gebühren, ist es die hohe Volatilität, die die Rendite schmälert. Fällt der Dax um 1 %, so muss er um 1,010101 % steigen, um zum Ausgangswert zu gelangen. Damit das geheblte Produkt wieder zum Ausgangwert gelangt, muss der Dax jedoch um 1,030928 % steigen. Ein kleiner Unterschied, der sich jedoch durch die tägliche Berechnung der gehebelten ETFs aufsummiert und mit zunehmender Volatilität weiter steigt.
+
+Den für diesen Beitrag erstellten Code findest du hier: https://github.com/jantau/jantau
+
+
+
+```{r eval=FALSE}
 dat <- data.frame(verlust= c(1, 10,20,30,40,50,60,70,80,90))
 
 df <- dat %>%
@@ -96,7 +179,7 @@ df <- dat %>%
 ```
 
 
-```{r}
+```{r eval=FALSE}
 pal <- got(1, option = "Daenerys", direction = 1)
 
 df %>%
@@ -113,9 +196,3 @@ df %>%
   geom_segment(aes(x = verlust, y = gewinn, xend=verlust), yend=0, alpha = 0.5) 
 
 ```
-
-Idee von: https://ofdollarsanddata.com/10-investing-lessons-from-2020/
-
-Ein Effekt, der auch erklärt, warum gehedgte Fonds langfristig keine gute Anlagestrategie sind. (Siehe Blogbeitrag von ...)
-
-Den für diesen Beitrag erstellten Code findest du hier: https://github.com/jantau/jantau
