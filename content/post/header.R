@@ -15,6 +15,8 @@ library(DT)
 library(gt)
 library(tidyquant)
 library(directlabels)
+library(ggrepel) # avoid overlapping labels 
+# https://blog.revolutionanalytics.com/2016/01/avoid-overlapping-labels-in-ggplot2-charts.html
 #library(plotly)
 #library(highcharter)
 #library(data.table)
