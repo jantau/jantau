@@ -1,0 +1,193 @@
+---
+title: Aktien-Gewichtung in meinem Portfolio
+author: Jan Tau
+date: '2021-02-27'
+slug: portfolio-und-aktien
+categories: []
+tags: []
+subtitle: 'Über die Aktiengewichtung in einem Portfolio aus ETFs und Einzelaktien'
+summary: 'Über die Aktiengewichtung in einem Portfolio aus ETFs und Einzelaktien'
+authors: []
+lastmod: '2021-02-27T16:52:47+01:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+
+
+<p>Klassische ETF-Anlage-Strategien legen Wert auf die Diversifizierung der Investionen und auf die Vermeidung von Überschneidungen, was bedeutet, dass eine einzelne Aktie idealerweise nur in einem der investierten ETFs indexiert ist.</p>
+<p>Benchmarks wie ein S&amp;P 500_Portfolio, das 60/40-Portfolio (60 % Aktien, 40 % Staatsanleihen) oder das 70/30-Portfolio (70 % MSCI World, 30 % MSCI EM) haben keine Überschneidungen und sind über Sektoren (S&amp;P 500, 60/40, 70/30), Regionen (70/30) oder Anlageklassen (60/40) diversifiziert.</p>
+<p>Portfolios mit verschiedenen ETFs, die eine bestimmte Schnittmenge bilden, sollen - diesen Strategien folgend - vermieden werden. So ist es nicht sinnvoll, sowohl einen S&amp;P 500 als auch einen MSCI World zu besparen, da durch den hohen USA-Anteil im MSCI-World (über 60 %) die Schnittmenge zu groß ist.</p>
+<p>Die Realität sieht jedoch oftmals anders aus. In vielen Fällen folgen Anleger nicht der reinen Lehre, sondern haben abgewandelte Portfolios. Die Portfolios enthalten beispielsweise Einzelaktien, die auch in ETFs enthalten sind oder im Laufe der Jahre wurde die Anlagestrategie angepasst, so dass ETFs ausgewechselt wurden, ohne die zuvor besparten ETFs zu verkaufen.</p>
+<p>So ist auch die Situation in meinem Portfolio. Meinem Alter und meiner Risikobereitschaft entsprechend ist es ein reines Aktienportfolio mit einem Schwerpunkt auf wachstumsorientierten Werten aus dem US-amerikanischen Technologiesektor. Die Einzelwerte sind teilweise sehr kleine Positionen, die zum Teil aus einer Laune heraus gekauft wurden. Bei den ETFs hat sich meine Strategie eher evolutionär weiterentwickelt.</p>
+<p>Dass es größere Überschneidungen geben muss, war mir bewusst. Ich konnte jedoch nicht konkret beziffern, wie groß diese sind und ich konnte auch nicht präzise quantifizieren, in welchem Ausmaß, einzelne Werte mein Portfolio dominieren.</p>
+<p>Ich wollte jedoch gerne wissen, wie groß beispielsweise der Anteil an Apple-Aktien in meinem Gesamtportfolio ist Ich habe zunächst nach einem Online-Tool gesucht, dass mir erlaubt, meine einzelnen Investitionen einzugeben, um anschließend die Gewichtung angezeigt zu bekommen. So ein Tool habe ich jedoch noch nicht gefunden. Dabei ist sicherlich für viele Anleger interessant, diese Informationen zu bekommen.</p>
+<p>Mathematisch ist diese Aufgabe einfach zu lösen. Die einzelnen Aktien eines ETFs müssen ihrer Gewichtung im ETF entsprechend mit dem Anteil, den der ETFs am Gesamtportfolio ausmacht, multipliziert werden. Dies muss für alle ETFs im Portfolio wiederholt werden.</p>
+<p>Anschließend müssen die Ergebnisse der einzelnen Werte summiert werden. So kann ermittelt werden, welchen Anteil eine einzelne Aktie über alle Investitionen hinweg (ETFs und Einzelaktien) am Gesamtportfolio hat.</p>
+<p>Im Folgenden werde ich durch die einzelnen Schritte führen und damit auch die einzelnen Schritte der Datenextraktion, -transformation und -analyse transparent machen.</p>
+<div id="gewichtung-des-portfolios" class="section level3">
+<h3>Gewichtung des Portfolios</h3>
+<p>Der erste Schritt war eine Aufstellung meines Portfolios, das eine Gewichtung der einzelnen Positionen beinhaltete. Mein Depot (Stand 28.2.2021) sieht folgendermaßen aus:</p>
+<pre><code>## # A tibble: 11 x 3
+##    Name             Kategorie   Anteil_Proz
+##    &lt;chr&gt;            &lt;chr&gt;             &lt;dbl&gt;
+##  1 NASDAQ 100       ETF              0.22  
+##  2 MSCI World       ETF              0.165 
+##  3 MSCI Inf. Tech.  ETF              0.035 
+##  4 Deutsche Telekom Einzelaktie      0.137 
+##  5 Apple            Einzelaktie      0.112 
+##  6 Amazon           Einzelaktie      0.094 
+##  7 Nvidia           Einzelaktie      0.084 
+##  8 Square           Einzelaktie      0.069 
+##  9 Deutsche Bank    Einzelaktie      0.047 
+## 10 Twitter          Einzelaktie      0.0259
+## 11 Activision       Einzelaktie      0.015</code></pre>
+</div>
+<div id="die-daten-der-etfs" class="section level3">
+<h3>Die Daten der ETFs</h3>
+<p>Für den zweiten zweiten Schritt habe ich die Daten der ETFs benötigt. Eine brauchbare Liste mit den gewichteten Bestandteilen der ETFs zu bekommen, hat sich als nicht ganz einfach herausgestellt. Es gibt zunächst keine Schnittstelle, über die die Bestandteile eines ETFs und seine Gewichtung abgefragt werden können. Auf den Webseiten der ETF-Anbieter sind jedoch teilweise HTML-Tabellen hinterlegt, die die nötigen Informationen enthalten. Viele dieser Daten haben sich jedoch als unbrauchbar herausgestellt, da sie nicht die International Securities Identification Number (ISIN) enthalten haben. Ohne diese Nummer lassen sich große ETFs mit hunderten Einzeltiteln nicht analysieren. Die Namen der Aktienunternehmen konnten nicht verwendet werden, da es zu viele verschiedene Schreibweisen gab und selbst das Ticker-Symbol (AAPL oder AMZN) ist nicht eindeutig, da es sich doppeln kann wie das Beispiel DTE zeigt, dass sowohl für Deutsche Telekom als auch für DTE Energy verwendet wird.</p>
+<p>Bruachbare Daten mit ISIN habe ich auf den Seiten von ISHARES gefunden.</p>
+</div>
+<div id="laden-der-daten" class="section level3">
+<h3>Laden der Daten</h3>
+<p>Die Daten wurden mit Copy-und-Paste von der Website in eine Excel-Tabelle übertragen und anschließend mit der Funktion <code>read_excel</code> in <code>R</code> eingelesen.</p>
+<pre class="r"><code>NASDAQ_100 &lt;- read_excel(&quot;~/blog/Constituents_Weights_Indices.xlsx&quot;, 
+    sheet = &quot;NASDAQ 2&quot;, col_names = FALSE)
+
+MSCI_World &lt;- read_excel(&quot;~/blog/Constituents_Weights_Indices.xlsx&quot;, 
+    sheet = &quot;MSCI World 2&quot;, col_names = FALSE)
+
+MSCI_Info &lt;- read_excel(&quot;~/blog/Constituents_Weights_Indices.xlsx&quot;, 
+    sheet = &quot;MSCI Info 2&quot;, col_names = FALSE)</code></pre>
+</div>
+<div id="aufbereiten-der-daten" class="section level3">
+<h3>Aufbereiten der Daten</h3>
+<p>Die Daten wurden mit Spaltennamen versehen und es wurde eine zusätzliche Spalte mit der Gewichtung im Gesamtportfolio (Gewichtung Einzelwert im ETF * Gewichtung ETF im Portfolio) hinzugefügt. Anschließend wurden nur die notwendigen Spalten mit dem Ticker-Symbol, der ISIN und der Portfolio-Gewichtung ausgewählt.</p>
+<pre class="r"><code>colnames(NASDAQ_100) &lt;- c(&quot;Symbol&quot;, &quot;Company&quot;, &quot;Weight&quot;, &quot;ISIN&quot;)
+
+NASDAQ_100 &lt;- NASDAQ_100 %&gt;%
+  mutate(Weight = Weight / 100) %&gt;%
+  mutate(Weight_Perc_Nasdaq_100 = Weight * 0.2195) %&gt;%
+  select(1, 4, 5)</code></pre>
+<p>Das Ergebnis war folgende Tabelle (als <code>tibble</code>):</p>
+<pre class="r"><code>print(NASDAQ_100)
+## # A tibble: 102 x 3
+##    Symbol ISIN         Weight_Perc_Nasdaq_100
+##    &lt;chr&gt;  &lt;chr&gt;                         &lt;dbl&gt;
+##  1 AAPL   US0378331005                0.0246 
+##  2 MSFT   US5949181045                0.0207 
+##  3 AMZN   US0231351067                0.0184 
+##  4 TSLA   US88160R1014                0.00957
+##  5 GOOG   US02079K1079                0.00801
+##  6 FB     US30303M1027                0.00733
+##  7 GOOGL  US02079K3059                0.00727
+##  8 NVDA   US67066G1040                0.00601
+##  9 PYPL   US70450Y1038                0.00542
+## 10 INTC   US4581401001                0.00450
+## # … with 92 more rows</code></pre>
+<p>Diese Schritte habe ich für die zwei anderen ETFs in meinem Portfolio, den MSCI World und den MSCI Information Technology wiederholt.</p>
+<p>Hier der MSCI World:</p>
+<pre class="r"><code>colnames(MSCI_World) &lt;- c(&quot;Symbol&quot;, &quot;Company&quot;, &quot;Weight&quot;, &quot;ISIN&quot;)
+
+MSCI_World &lt;- MSCI_World %&gt;%
+  mutate(Weight = Weight / 100) %&gt;%
+  mutate(Weight_Perc_MSCI_World = Weight * 0.1654) %&gt;%
+  select(1, 4, 5)
+
+head(MSCI_World)
+## # A tibble: 6 x 3
+##   Symbol ISIN         Weight_Perc_MSCI_World
+##   &lt;chr&gt;  &lt;chr&gt;                         &lt;dbl&gt;
+## 1 AAPL   US0378331005                0.00647
+## 2 MSFT   US5949181045                0.00514
+## 3 AMZN   US0231351067                0.00407
+## 4 FB     US30303M1027                0.00192
+## 5 GOOG   US02079K1079                0.00190
+## 6 GOOGL  US02079K3059                0.00190</code></pre>
+<p>Und hier der MSCI Information Technology:</p>
+<pre class="r"><code>colnames(MSCI_Info) &lt;- c(&quot;Symbol&quot;, &quot;Company&quot;, &quot;Weight&quot;, &quot;ISIN&quot;)
+
+MSCI_Info &lt;- MSCI_Info %&gt;%
+  mutate(Weight = Weight / 100) %&gt;%
+  mutate(Weight_Perc_MSCI_Info = Weight * 0.0352) %&gt;%
+  select(1, 4, 5)
+
+head(MSCI_Info)
+## # A tibble: 6 x 3
+##   Symbol ISIN         Weight_Perc_MSCI_Info
+##   &lt;chr&gt;  &lt;chr&gt;                        &lt;dbl&gt;
+## 1 AAPL   US0378331005              0.00639 
+## 2 MSFT   US5949181045              0.00508 
+## 3 V      US92826C8394              0.00111 
+## 4 NVDA   US67066G1040              0.00101 
+## 5 MA     US57636Q1040              0.000979
+## 6 PYPL   US70450Y1038              0.000876</code></pre>
+<p>Anschließend wurde die Tabelle mit den Einzelaktien erstellt.</p>
+<pre class="r"><code>ISIN &lt;- c(&quot;DE0005557508&quot;, &quot;US0378331005&quot;, &quot;US0231351067&quot;, &quot;US67066G1040&quot;, &quot;US8522341036&quot;, &quot;DE0005140008&quot;, &quot;US90184L1026&quot;, &quot;US00507V1098&quot;)
+Symbol &lt;- c(&quot;DTE&quot;, &quot;AAPL&quot;, &quot;AMZN&quot;, &quot;NVDA&quot;, &quot;SQ&quot;, &quot;DBK&quot;, &quot;TWTR&quot;, &quot;ATVI&quot;)
+Weight_Perc_Single_Stocks &lt;- c(0.137, 0.112, 0.094, 0.084, 0.069, 0.047, 0.0259, 0.015)
+
+Single_Stocks &lt;- data.frame(Symbol, ISIN, Weight_Perc_Single_Stocks)</code></pre>
+<p>Die verschiedenen Tabellen wurden mit der Funktion <code>join_all</code> zusammengefügt.</p>
+<pre class="r"><code>weight_all &lt;- plyr::join_all(list(NASDAQ_100, MSCI_World, MSCI_Info, Single_Stocks), by = &quot;ISIN&quot;, type = &quot;full&quot;)</code></pre>
+<p>Danach wurde die Summe der Werte aus Zahlenreichen der verschiedenen Tabellen gebildet und die Werte in absteigender Reihenfolge sortiert.</p>
+<pre class="r"><code>weight_all &lt;- weight_all %&gt;%
+  replace(is.na(.), 0) %&gt;%
+  mutate(sum = rowSums(.[3:6])) %&gt;%
+  arrange(desc(sum)) %&gt;%
+  mutate(sum = sum * 100)
+
+as_tibble(weight_all)
+## # A tibble: 1,562 x 7
+##    Symbol ISIN  Weight_Perc_Nas… Weight_Perc_MSC… Weight_Perc_MSC…
+##    &lt;chr&gt;  &lt;chr&gt;            &lt;dbl&gt;            &lt;dbl&gt;            &lt;dbl&gt;
+##  1 AAPL   US03…          0.0246         0.00647           0.00639 
+##  2 DTE    DE00…          0              0.000198          0       
+##  3 AMZN   US02…          0.0184         0.00407           0       
+##  4 NVDA   US67…          0.00601        0.00103           0.00101 
+##  5 SQ     US85…          0              0.000265          0.000260
+##  6 DBK    DE00…          0              0.0000827         0       
+##  7 MSFT   US59…          0.0207         0.00514           0.00508 
+##  8 TWTR   US90…          0              0.000165          0       
+##  9 ATVI   US00…          0.00134        0.000232          0       
+## 10 TSLA   US88…          0.00957        0.00159           0       
+## # … with 1,552 more rows, and 2 more variables:
+## #   Weight_Perc_Single_Stocks &lt;dbl&gt;, sum &lt;dbl&gt;</code></pre>
+<p>Zuletzt wurden die Ergebnisse mit einem <code>ggplot</code>-Barplot visualisiert. Hier habe ich mich auf die Wert konzentriert, die einen Anteil von 0,5 % oder mehr vom Gesamtportfolio ausmachen. Es handelt sich um 18 Werte.</p>
+<pre class="r"><code>pal &lt;- got(1, option = &quot;Daenerys&quot;, direction = 1)
+
+weight_all %&gt;%
+  filter(sum &gt;= 0.5) %&gt;%
+  ggplot(aes(x = reorder(Symbol, sum), y = sum)) +
+  geom_col(fill = pal) +
+  geom_label(
+    aes(label = paste0(round(sum, 1), &quot; %&quot;)),
+    show.legend = FALSE,
+    size = 3,
+    alpha = 0.9
+  ) +
+  coord_flip() +
+  theme_jantau +
+  labs(title = &quot;Gewichtung einzelner Aktien im Gesamtportfolio&quot;,
+       subtitle = &quot;Datenanalyse: jantau&quot;) +
+  theme(
+    axis.line.x = element_blank(),
+    axis.text.x = element_blank(),
+    axis.ticks.x = element_blank(),
+    axis.title.x = element_blank(),
+    axis.title.y = element_blank()
+  )</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+</div>
+<div id="ergebnis" class="section level2">
+<h2>Ergebnis</h2>
+<p>Nicht so große Überschneidungen wie befürchtet.</p>
+<p>Einzelwerte haben einen erheblichen Einfluss auf die Zusammensetzung des Portfolios.</p>
+<p>Todo: Sektoren hinzuziehen</p>
+<p>Den für diesen Beitrag erstellten Code findest du hier: <a href="https://github.com/jantau/jantau" class="uri">https://github.com/jantau/jantau</a></p>
+</div>

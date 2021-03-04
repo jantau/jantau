@@ -45,7 +45,7 @@ Die folgende Grafik zeigt die exponentielle Entwicklung. Auf der X-Achse ist der
 
 
 ```{r}
-dat <- data.frame(verlust=1:100)
+dat <- data.frame(verlust=0:100)
 
 df <- dat %>%
   mutate(c2 = 100-verlust) %>%

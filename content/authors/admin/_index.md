@@ -38,11 +38,11 @@ social:
   icon_pack: fab
   link: https://www.linkedin.com/in/jan-taubitz-5b305914a/
 superuser: true
-title: Jan Tau
+title: Jan Taubitz
 # {{< icon name="download" pack="fas" >}} Download my {{< staticref "media/demo_resume.pdf"   "newtab" >}}resumé{{< /staticref >}}.
 ---
 
-Jan Tau ist Historiker und Bibliothekar/Informationswissenschaftler.
+Jan Taubitz ist Informationswissenschaftler und Historiker.
 
 Dieser Blog beinhaltet Datenanalysen zu persönlichen Finanzen. Die Datenanalysen werden mit der Programmiersprache `R` durchgeführt.
 
