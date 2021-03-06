@@ -4,7 +4,7 @@ author: Jan Tau
 date: '2021-02-27'
 slug: portfolio-und-aktien
 categories: []
-tags: []
+tags: [ETF, R]
 subtitle: 'Über die Aktiengewichtung in einem Portfolio aus ETFs und Einzelaktien'
 summary: 'Über die Aktiengewichtung in einem Portfolio aus ETFs und Einzelaktien'
 authors: []
