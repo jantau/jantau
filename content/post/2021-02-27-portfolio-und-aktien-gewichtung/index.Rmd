@@ -39,23 +39,23 @@ Benchmarks wie ein S&P 500_Portfolio, das 60/40-Portfolio (60 % Aktien, 40 % Sta
 
 Portfolios mit verschiedenen ETFs, die eine bestimmte Schnittmenge bilden, sollen - diesen Strategien folgend - vermieden werden. So ist es nicht sinnvoll, sowohl einen S&P 500 als auch einen MSCI World zu besparen, da durch den hohen USA-Anteil im MSCI-World (über 60 %) die Schnittmenge zu groß ist.
 
-Die Realität sieht jedoch oftmals anders aus. In vielen Fällen folgen Anleger nicht der reinen Lehre, sondern haben abgewandelte Portfolios. Die Portfolios enthalten beispielsweise Einzelaktien, die auch in ETFs enthalten sind oder  im Laufe der Jahre wurde die Anlagestrategie angepasst, so dass ETFs ausgewechselt wurden, ohne die zuvor besparten ETFs zu verkaufen.
+Die Realität sieht jedoch oftmals anders aus. In vielen Fällen folgen Anleger nicht der reinen Lehre, sondern haben abgewandelte Portfolios. Die Portfolios enthalten beispielsweise Einzelaktien, die auch in ETFs enthalten sind, oder  im Laufe der Jahre wurde die Anlagestrategie angepasst, so dass ETFs ausgewechselt wurden, ohne die zuvor besparten ETFs zu verkaufen.
 
-So ist auch die Situation in meinem Portfolio. Meinem Alter und meiner Risikobereitschaft entsprechend ist es ein reines Aktienportfolio mit einem Schwerpunkt auf wachstumsorientierten Werten aus dem US-amerikanischen Technologiesektor. Die Einzelwerte sind teilweise sehr kleine Positionen, die zum Teil aus einer Laune heraus gekauft wurden. Bei den ETFs hat sich meine Strategie eher evolutionär weiterentwickelt. 
+So ist auch die Situation in meinem Portfolio. Meinem Alter und meiner Risikobereitschaft entsprechend ist es ein reines Aktienportfolio mit einem Schwerpunkt auf wachstumsorientierte Werte aus dem US-amerikanischen Technologiesektor. Die Einzelwerte sind teilweise sehr kleine Positionen, die zum Teil aus einer Laune heraus gekauft wurden. Bei den ETFs hat sich meine Strategie eher evolutionär weiterentwickelt. 
 
-Dass es größere Überschneidungen geben muss, war mir bewusst. Ich konnte jedoch nicht konkret beziffern, wie groß diese sind und ich konnte auch nicht präzise quantifizieren, in welchem Ausmaß, einzelne Werte mein Portfolio dominieren.
+Dass es größere Überschneidungen geben muss, war mir bewusst. Ich konnte jedoch nicht konkret beziffern, wie groß diese sind und auch nicht präzise quantifizieren, in welchem Ausmaß, einzelne Werte mein Portfolio dominieren.
 
-Ich wollte jedoch gerne wissen, wie groß beispielsweise der Anteil an Apple-Aktien in meinem Gesamtportfolio ist Ich habe zunächst nach einem Online-Tool gesucht, dass mir erlaubt, meine einzelnen Investitionen einzugeben, um anschließend die Gewichtung angezeigt zu bekommen. So ein Tool habe ich jedoch noch nicht gefunden. Dabei ist sicherlich für viele Anleger interessant, diese Informationen zu bekommen. 
+Ich wollte jedoch gerne wissen, wie groß beispielsweise der Anteil an Apple-Aktien in meinem Gesamtportfolio ist. Ich habe zunächst nach einem Online-Tool gesucht, das mir erlaubt, meine einzelnen Investitionen einzugeben, um anschließend die Gewichtung angezeigt zu bekommen. Ein solches Tool habe ich jedoch noch nicht gefunden. Dabei ist es sicherlich für viele Anleger interessant, diese Informationen zu bekommen. 
 
-Mathematisch ist diese Aufgabe einfach zu lösen. Die einzelnen Aktien eines ETFs müssen ihrer Gewichtung im ETF entsprechend mit dem Anteil, den der ETFs am Gesamtportfolio ausmacht, multipliziert werden. Dies muss für alle ETFs im Portfolio wiederholt werden.
+Mathematisch ist diese Aufgabe einfach zu lösen. Die einzelnen Aktien eines ETFs müssen entsprechend ihrer Gewichtung im ETF mit dem Anteil, den der ETF am Gesamtportfolio ausmacht, multipliziert werden. Dies muss für alle ETFs im Portfolio wiederholt werden.
 
 Anschließend müssen die Ergebnisse der einzelnen Werte summiert werden. So kann ermittelt werden, welchen Anteil eine einzelne Aktie über alle Investitionen hinweg (ETFs und Einzelaktien) am Gesamtportfolio hat.
 
-Im Folgenden werde ich durch die einzelnen Schritte führen und damit auch die einzelnen Schritte der Datenextraktion, -transformation und -analyse transparent machen.
+Im Folgenden werde ich die einzelnen Schritte der Datenextraktion, -transformation und -analyse transparent machen.
 
 ### Gewichtung des Portfolios
 
-Der erste Schritt war eine Aufstellung meines Portfolios, das eine Gewichtung der einzelnen Positionen beinhaltete. Mein Depot (Stand 28.2.2021) sieht folgendermaßen aus:
+Der erste Schritt ist eine Aufstellung meines Portfolios, das eine Gewichtung der einzelnen Positionen beinhaltet. Mein Depot (Stand 28.2.2021) sieht folgendermaßen aus:
 
 ```{r}
 
@@ -83,9 +83,9 @@ as_tibble(rbind(Index, Einzelaktien))
 
 ### Die Daten der ETFs
 
-Für den zweiten zweiten Schritt habe ich die Daten der ETFs benötigt. Eine brauchbare Liste mit den gewichteten Bestandteilen der ETFs zu bekommen, hat sich als nicht ganz einfach herausgestellt. Es gibt zunächst keine  Schnittstelle, über die die Bestandteile eines ETFs und seine Gewichtung abgefragt werden können. Auf den Webseiten der ETF-Anbieter sind jedoch teilweise HTML-Tabellen hinterlegt, die die nötigen Informationen enthalten. Viele dieser Daten  haben sich jedoch als unbrauchbar herausgestellt, da sie nicht die International Securities Identification Number (ISIN) enthalten haben. Ohne diese Nummer lassen sich große ETFs mit hunderten Einzeltiteln nicht analysieren. Die Namen der Aktienunternehmen konnten nicht verwendet werden, da es zu viele verschiedene Schreibweisen gab und selbst das Ticker-Symbol (AAPL oder AMZN) ist nicht eindeutig, da es sich doppeln kann wie das Beispiel DTE zeigt, dass sowohl für Deutsche Telekom als auch für DTE Energy verwendet wird.
+Für den zweiten Schritt habe ich die Daten der ETFs benötigt. Eine brauchbare Liste mit den gewichteten Bestandteilen der ETFs zu bekommen, hat sich als nicht ganz einfach herausgestellt. Es gibt zunächst keine  Schnittstelle, über die die Bestandteile eines ETFs und seine Gewichtung abgefragt werden können. Auf den Webseiten der ETF-Anbieter sind jedoch teilweise HTML-Tabellen hinterlegt, die die nötigen Informationen enthalten. Viele dieser Daten  haben sich jedoch als unbrauchbar herausgestellt, da sie nicht die International Securities Identification Number (ISIN) enthalten. Ohne diese Nummer lassen sich große ETFs mit hunderten Einzeltiteln nicht analysieren. Die Namen der Aktienunternehmen konnten nicht verwendet werden, da es zu viele verschiedene Schreibweisen gibt und selbst das Ticker-Symbol (AAPL oder AMZN) nicht eindeutig ist, da es sich doppeln kann wie das Beispiel DTE zeigt, das sowohl für Deutsche Telekom als auch für DTE Energy verwendet wird.
 
-Bruachbare Daten mit ISIN habe ich auf den Seiten von ISHARES gefunden.
+Brauchbare Daten mit ISIN habe ich auf den Seiten von ISHARES gefunden.
 
 ### Laden der Daten
 
@@ -104,7 +104,7 @@ MSCI_Info <- read_excel("~/blog/Constituents_Weights_Indices.xlsx",
 
 ### Aufbereiten der Daten
 
-Die Daten wurden mit Spaltennamen versehen und es wurde eine zusätzliche Spalte mit der Gewichtung im Gesamtportfolio (Gewichtung Einzelwert im ETF * Gewichtung ETF im Portfolio) hinzugefügt. Anschließend wurden nur die notwendigen Spalten mit dem Ticker-Symbol, der ISIN und der Portfolio-Gewichtung ausgewählt.
+Die Daten wurden mit Spaltennamen versehen und eine zusätzliche Spalte mit der Gewichtung im Gesamtportfolio (Gewichtung Einzelwert im ETF * Gewichtung ETF im Portfolio) hinzugefügt. Anschließend wurden nur die notwendigen Spalten mit dem Ticker-Symbol, der ISIN und der Portfolio-Gewichtung ausgewählt.
 
 ```{r echo = TRUE}
 colnames(NASDAQ_100) <- c("Symbol", "Company", "Weight", "ISIN")
@@ -165,7 +165,7 @@ Die verschiedenen Tabellen wurden mit der Funktion `join_all` zusammengefügt.
 weight_all <- plyr::join_all(list(NASDAQ_100, MSCI_World, MSCI_Info, Single_Stocks), by = "ISIN", type = "full")
 ```
 
-Danach wurde die Summe der Werte aus Zahlenreichen der verschiedenen Tabellen gebildet und die Werte in absteigender Reihenfolge sortiert.
+Danach wurde die Summe der Werte aus Zahlenreihen der verschiedenen Tabellen gebildet und die Werte in absteigender Reihenfolge sortiert.
 
 ```{r echo = TRUE}
 weight_all <- weight_all %>%
@@ -207,14 +207,235 @@ weight_all %>%
 
 ## Ergebnis
 
-Was sind die Ergebnisse dieser Analyse? Intuitiv hatte ich einen noch größeren Anteil der Schwergewichte erwartet. So hatte ich erwartet, dass die Apple-Aktien einen großen Anteil am Portfolio ausmachen. Intuitiv bin ich sogar von einem größeren Anteil als 14,9 % ausgegangen. 
+Was sind die Ergebnisse dieser Analyse? Intuitiv hatte ich einen noch größeren Anteil der Schwergewichte erwartet, und zwar, dass die Apple-Aktien einen großen Anteil am Portfolio ausmachen. Intuitiv bin ich sogar von einem größeren Anteil als 14,9 % ausgegangen. 
 
-Einzelwerte haben einen erheblichen Einfluss auf die Zusammensetzung des Portfolios. Was daran liegt, dass Einzelwerte zusammengenommen einen größeren Anteil am Portfolio haben, als die drei ETFs zusammengenommen.
+Einzelwerte haben einen erheblichen Einfluss auf die Zusammensetzung des Portfolios, was daran liegt, dass Einzelwerte zusammengenommen einen größeren Anteil am Portfolio haben, als die drei ETFs zusammen.
 
 Die 18 größten Werte machen einen Anteil von 75 % im Portfolio aus. Die übrigen 1544 Werte machen zusammengenommmen die restlichen 25 % aus.
 
 Zwei Aktien, die ich als Einzelaktien besitze, sind in allen drei von mir gehaltenen ETFs enthalten. Es handelt sich um Apple und um Nvidia.
 
-Ich finde es durchaus aufschlussreich, eine Gewichtung des gesamten Portfolios nach Einzelwerten zu betrachten. Es ermöglicht mir, dass Risiko des Portfolios besser beurteilen zu können und gegebenenfalls die Gewichtung nachzujustieren. Es wäre schön, wenn es ein Online-Toll gäbe, mit der diese Untersuchtung einfach reproduziert werden könnte.
+Ich finde es durchaus aufschlussreich, eine Gewichtung des gesamten Portfolios nach Einzelwerten zu betrachten. Es ermöglicht mir, das Risiko des Portfolios besser beurteilen zu können und gegebenenfalls die Gewichtung nachzujustieren. Es wäre schön, wenn es ein Online-Tool gäbe, mit dem diese Untersuchtung einfach reproduziert werden könnte.
 
 Den für diesen Beitrag erstellten Code findest du hier: <https://github.com/jantau/jantau>
+
+
+
+
+
+
+
+TEST
+
+
+
+```{r}
+LWW_2019_20 <- read.csv("~/blog/LWW_2019_2020_TR_J1.csv", header = T, skip = 13, sep = ",")
+```
+
+```{r}
+LWW <- LWW_2019_20 %>%
+  filter(Metric_Type == "Unique_Item_Requests" & Publisher == "Lippincott Williams & Wilkins (LWW)") %>%
+  group_by(Title, Print_ISSN) %>%
+  summarise_at(vars(Reporting_Period_Total:Dec.2020), sum) %>%
+  mutate(Reporting_Period_2020 = Jan.2020 + Feb.2020 + Mar.2020 + Apr.2020 + May.2020 + Jun.2020 + Jul.2020 + Aug.2020 + Sep.2020 + Oct.2020 + Nov.2020 + Dec.2020) %>%
+  select(1, 28) %>%
+  arrange(desc(Title)) %>%
+  filter(Reporting_Period_2020 > 0)
+```
+
+
+```{r}
+LWW$y2[LWW$Reporting_Period_2020 == 1] <- "1"
+LWW$y2[LWW$Reporting_Period_2020 >= 2 & LWW$Reporting_Period_2020 <= 10] <- "2 bis 10"
+LWW$y2[LWW$Reporting_Period_2020 >= 11 & LWW$Reporting_Period_2020 <= 100] <- "11 bis 100"
+LWW$y2[LWW$Reporting_Period_2020 >= 101 & LWW$Reporting_Period_2020 <= 1000] <- "101 bis 1000"
+LWW$y2[LWW$Reporting_Period_2020 >= 1001 & LWW$Reporting_Period_2020 < 10000] <- "1001 bis 10000"
+LWW$y2[LWW$Reporting_Period_2020 >= 10000] <- "über 10000"
+
+LWW$y2 <- factor(LWW$y2, levels = c("1", "2 bis 10", "11 bis 100", "101 bis 1000", "1001 bis 10000", "über 10000"))
+
+```
+
+
+```{r}
+LWW <- LWW %>%
+  mutate(count = 1) %>%
+  group_by(y2) %>%
+  mutate(cumsum = cumsum(count))
+
+
+p <- ggplot(LWW, aes(x = y2, y = cumsum, text = Reporting_Period_2020)) +
+  geom_text(aes(label = Title), size = 2, color = pal) +
+  theme_jantau +
+    labs(title = "Downloads aus LWW-Journals 2020 \n(logarithmische Darstellung)") +
+  theme(
+    axis.line.y = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    axis.title.y = element_blank(),
+    axis.title.x = element_blank()
+  )
+
+plotly::ggplotly(p, tooltip = c("Reporting_Period_2020"))
+```
+
+
+```{r}
+
+LWW_2019_20_J3 <- read.csv("~/blog/LWW_2019_2020_TR_J3.csv", header = T, skip = 13, sep = ",")
+
+```
+
+```{r}
+LWW <- LWW_2019_20_J3 %>%
+  filter(Publisher == "Lippincott Williams & Wilkins (LWW)") %>%
+  group_by(Title, Print_ISSN) %>%
+  summarise_at(vars(Reporting_Period_Total:Dec.2020), sum) %>%
+  mutate(Reporting_Period_2020 = Jan.2020 + Feb.2020 + Mar.2020 + Apr.2020 + May.2020 + Jun.2020 + Jul.2020 + Aug.2020 + Sep.2020 + Oct.2020 + Nov.2020 + Dec.2020) %>%
+  select(1, 28) %>%
+  arrange(desc(Title)) %>%
+  filter(Reporting_Period_2020 > 0)
+```
+
+```{r}
+LWW$y2[LWW$Reporting_Period_2020 == 1] <- "1"
+LWW$y2[LWW$Reporting_Period_2020 >= 2 & LWW$Reporting_Period_2020 <= 10] <- "2 bis 10"
+LWW$y2[LWW$Reporting_Period_2020 >= 11 & LWW$Reporting_Period_2020 <= 100] <- "11 bis 100"
+LWW$y2[LWW$Reporting_Period_2020 >= 101 & LWW$Reporting_Period_2020 <= 1000] <- "101 bis 1000"
+LWW$y2[LWW$Reporting_Period_2020 >= 1001 & LWW$Reporting_Period_2020 < 10000] <- "1001 bis 10000"
+LWW$y2[LWW$Reporting_Period_2020 >= 10000] <- "über 10000"
+
+LWW$y2 <- factor(LWW$y2, levels = c("1", "2 bis 10", "11 bis 100", "101 bis 1000", "1001 bis 10000", "über 10000"))
+
+```
+
+```{r}
+LWW <- LWW %>%
+  mutate(count = 1) %>%
+  group_by(y2) %>%
+  mutate(cumsum = cumsum(count))
+
+
+p <- ggplot(LWW, aes(x = y2, y = cumsum, text = Reporting_Period_2020)) +
+  geom_text(aes(label = Title), size = 2, color = pal) +
+  theme_jantau +
+    labs(title = "No License LWW-Journals 2020 \n(logarithmische Darstellung)") +
+  theme(
+    axis.line.y = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    axis.title.y = element_blank(),
+    axis.title.x = element_blank()
+  )
+
+plotly::ggplotly(p, tooltip = c("Reporting_Period_2020"))
+```
+```{r}
+
+LWW_2019_20_TMR <- read.csv("~/blog/Ovid_Title_Master_Report.csv", header = T, skip = 12, sep = ",")
+```
+
+
+```{r}
+LWW <- LWW_2019_20_TMR %>%
+  filter(Publisher == "Lippincott Williams & Wilkins (LWW)" & YOP >= 2018 & Metric_Type == "Unique_Item_Requests" & Access_Type == "Controlled") %>%
+  group_by(Title, Print_ISSN) %>%
+  summarise_at(vars(Reporting_Period_Total:Dec.2020), sum) %>%
+  mutate(Reporting_Period_2020 = Jan.2020 + Feb.2020 + Mar.2020 + Apr.2020 + May.2020 + Jun.2020 + Jul.2020 + Aug.2020 + Sep.2020 + Oct.2020 + Nov.2020 + Dec.2020) %>%
+  select(1, 28) %>%
+  arrange(desc(Title)) %>%
+  filter(Reporting_Period_2020 > 0)
+
+```
+
+
+```{r}
+LWW$y2[LWW$Reporting_Period_2020 == 1] <- "1"
+LWW$y2[LWW$Reporting_Period_2020 >= 2 & LWW$Reporting_Period_2020 <= 10] <- "2 bis 10"
+LWW$y2[LWW$Reporting_Period_2020 >= 11 & LWW$Reporting_Period_2020 <= 100] <- "11 bis 100"
+LWW$y2[LWW$Reporting_Period_2020 >= 101 & LWW$Reporting_Period_2020 <= 1000] <- "101 bis 1000"
+LWW$y2[LWW$Reporting_Period_2020 >= 1001 & LWW$Reporting_Period_2020 < 10000] <- "1001 bis 10000"
+LWW$y2[LWW$Reporting_Period_2020 >= 10000] <- "über 10000"
+
+LWW$y2 <- factor(LWW$y2, levels = c("1", "2 bis 10", "11 bis 100", "101 bis 1000", "1001 bis 10000", "über 10000"))
+
+```
+
+```{r}
+pal <- got(1, option = "Daenerys", direction = 1)
+
+LWW <- LWW %>%
+  mutate(count = 1) %>%
+  group_by(y2) %>%
+  mutate(cumsum = cumsum(count))
+
+
+p <- ggplot(LWW, aes(x = y2, y = cumsum, text = Reporting_Period_2020)) +
+  geom_text(aes(label = Title), size = 2, color = pal) +
+  theme_jantau +
+    labs(title = "Download aus LWW-Journals 2020 YOP 2019 and 2020 \n(logarithmische Darstellung)") +
+  theme(
+    axis.line.y = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    axis.title.y = element_blank(),
+    axis.title.x = element_blank()
+  )
+
+plotly::ggplotly(p, tooltip = c("Reporting_Period_2020"))
+```
+
+
+
+
+
+```{r}
+LWW <- LWW_2019_20_TMR %>%
+  filter(Publisher == "Lippincott Williams & Wilkins (LWW)" & YOP >= 2018 & Metric_Type == "Unique_Item_Requests") %>%
+  group_by(Title, Print_ISSN, Access_Type) %>%
+  summarise_at(vars(Reporting_Period_Total:Dec.2020), sum) %>%
+  mutate(Reporting_Period_2020 = Jan.2020 + Feb.2020 + Mar.2020 + Apr.2020 + May.2020 + Jun.2020 + Jul.2020 + Aug.2020 + Sep.2020 + Oct.2020 + Nov.2020 + Dec.2020) %>%
+  select(1, 3, 29) %>%
+  arrange(desc(Title)) %>%
+  filter(Reporting_Period_2020 > 0)
+
+```
+
+
+```{r}
+LWW$y2[LWW$Reporting_Period_2020 == 1] <- "1"
+LWW$y2[LWW$Reporting_Period_2020 >= 2 & LWW$Reporting_Period_2020 <= 10] <- "2 bis 10"
+LWW$y2[LWW$Reporting_Period_2020 >= 11 & LWW$Reporting_Period_2020 <= 100] <- "11 bis 100"
+LWW$y2[LWW$Reporting_Period_2020 >= 101 & LWW$Reporting_Period_2020 <= 1000] <- "101 bis 1000"
+LWW$y2[LWW$Reporting_Period_2020 >= 1001 & LWW$Reporting_Period_2020 < 10000] <- "1001 bis 10000"
+LWW$y2[LWW$Reporting_Period_2020 >= 10000] <- "über 10000"
+
+LWW$y2 <- factor(LWW$y2, levels = c("1", "2 bis 10", "11 bis 100", "101 bis 1000", "1001 bis 10000", "über 10000"))
+
+```
+
+```{r}
+pal <- got(2, option = "Daenerys", direction = 1)
+
+LWW <- LWW %>%
+  mutate(count = 1) %>%
+  group_by(y2) %>%
+  mutate(cumsum = cumsum(count))
+
+
+p <- ggplot(LWW, aes(x = y2, y = cumsum, text = Reporting_Period_2020)) +
+  geom_text(aes(label = Title, color = Access_Type), size = 2) +
+  theme_jantau +
+    labs(title = "Downloads aus LWW-Journals 2020 YOP 2019 and 2020 inkl. OA-Journals \n(logarithmische Darstellung)") +
+  scale_color_manual(values = pal) +
+  theme(
+    axis.line.y = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    axis.title.y = element_blank(),
+    axis.title.x = element_blank()
+  )
+
+plotly::ggplotly(p, tooltip = c("Reporting_Period_2020"))
+```
