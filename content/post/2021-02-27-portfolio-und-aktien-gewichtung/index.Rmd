@@ -33,19 +33,19 @@ rm(list = ls()) # Clear your environment
 source("/Users/jan/blog/jantau/content/post/header.R")
 ```
 
-Klassische ETF-Anlage-Strategien legen Wert auf die Diversifizierung der Investionen und auf die Vermeidung von Überschneidungen, was bedeutet, dass eine einzelne Aktie idealerweise nur in einem der investierten ETFs indexiert ist. 
+Klassische ETF-Anlage-Strategien legen Wert auf die Diversifizierung der Investionen und auf die Vermeidung von Überschneidungen, was bedeutet, dass eine einzelne Aktie idealerweise nur in einem der investierten ETFs indexiert ist.
 
-Benchmarks wie ein S&P 500_Portfolio, das 60/40-Portfolio (60 % Aktien, 40 % Staatsanleihen) oder das 70/30-Portfolio (70 % MSCI World, 30 % MSCI EM) haben keine Überschneidungen und sind über Sektoren (S&P 500, 60/40, 70/30), Regionen (70/30) oder Anlageklassen (60/40) diversifiziert.
+Benchmarks wie ein S&P 500-Portfolio, [das 60/40-Portfolio](https://www.ft.com/content/d19cadbb-5c4f-4310-8152-13fa01191595 "FT über das 60/40-Portfolio") (60 % Aktien, 40 % Staatsanleihen) oder [das 70/30-Portfolio](https://www.finanzfluss.de/etf-handbuch/8-index-portfolios/#1) (70 % MSCI World, 30 % MSCI EM) haben keine Überschneidungen und sind über Sektoren (S&P 500, 60/40, 70/30), Regionen (70/30) oder Anlageklassen (60/40) diversifiziert.
 
 Portfolios mit verschiedenen ETFs, die eine bestimmte Schnittmenge bilden, sollen - diesen Strategien folgend - vermieden werden. So ist es nicht sinnvoll, sowohl einen S&P 500 als auch einen MSCI World zu besparen, da durch den hohen USA-Anteil im MSCI-World (über 60 %) die Schnittmenge zu groß ist.
 
-Die Realität sieht jedoch oftmals anders aus. In vielen Fällen folgen Anleger nicht der reinen Lehre, sondern haben abgewandelte Portfolios. Die Portfolios enthalten beispielsweise Einzelaktien, die auch in ETFs enthalten sind, oder  im Laufe der Jahre wurde die Anlagestrategie angepasst, so dass ETFs ausgewechselt wurden, ohne die zuvor besparten ETFs zu verkaufen.
+Die Realität sieht jedoch oftmals anders aus. In vielen Fällen folgen Anleger nicht der reinen Lehre, sondern haben abgewandelte Portfolios. Die Portfolios enthalten beispielsweise Einzelaktien, die auch in ETFs enthalten sind, oder im Laufe der Jahre wurde die Anlagestrategie angepasst, so dass ETFs ausgewechselt wurden, ohne die zuvor besparten ETFs zu verkaufen.
 
-So ist auch die Situation in meinem Portfolio. Meinem Alter und meiner Risikobereitschaft entsprechend ist es ein reines Aktienportfolio mit einem Schwerpunkt auf wachstumsorientierte Werte aus dem US-amerikanischen Technologiesektor. Die Einzelwerte sind teilweise sehr kleine Positionen, die zum Teil aus einer Laune heraus gekauft wurden. Bei den ETFs hat sich meine Strategie eher evolutionär weiterentwickelt. 
+So ist auch die Situation in meinem Portfolio. Meinem Alter und meiner Risikobereitschaft entsprechend ist es ein reines Aktienportfolio mit einem Schwerpunkt auf wachstumsorientierte Werte aus dem US-amerikanischen Technologiesektor. Die Einzelwerte sind teilweise sehr kleine Positionen, die zum Teil aus einer Laune heraus gekauft wurden. Bei den ETFs hat sich meine Strategie eher evolutionär weiterentwickelt.
 
 Dass es größere Überschneidungen geben muss, war mir bewusst. Ich konnte jedoch nicht konkret beziffern, wie groß diese sind und auch nicht präzise quantifizieren, in welchem Ausmaß, einzelne Werte mein Portfolio dominieren.
 
-Ich wollte jedoch gerne wissen, wie groß beispielsweise der Anteil an Apple-Aktien in meinem Gesamtportfolio ist. Ich habe zunächst nach einem Online-Tool gesucht, das mir erlaubt, meine einzelnen Investitionen einzugeben, um anschließend die Gewichtung angezeigt zu bekommen. Ein solches Tool habe ich jedoch noch nicht gefunden. Dabei ist es sicherlich für viele Anleger interessant, diese Informationen zu bekommen. 
+Ich wollte jedoch gerne wissen, wie groß beispielsweise der Anteil an Apple-Aktien in meinem Gesamtportfolio ist. Ich habe zunächst nach einem Online-Tool gesucht, das mir erlaubt, meine einzelnen Investitionen einzugeben, um anschließend die Gewichtung angezeigt zu bekommen. Ein solches Tool habe ich jedoch noch nicht gefunden. Dabei ist es sicherlich für viele Anleger interessant, diese Informationen zu bekommen.
 
 Mathematisch ist diese Aufgabe einfach zu lösen. Die einzelnen Aktien eines ETFs müssen entsprechend ihrer Gewichtung im ETF mit dem Anteil, den der ETF am Gesamtportfolio ausmacht, multipliziert werden. Dies muss für alle ETFs im Portfolio wiederholt werden.
 
@@ -80,16 +80,15 @@ as_tibble(rbind(Index, Einzelaktien))
 
 ```
 
-
 ### Die Daten der ETFs
 
-Für den zweiten Schritt habe ich die Daten der ETFs benötigt. Eine brauchbare Liste mit den gewichteten Bestandteilen der ETFs zu bekommen, hat sich als nicht ganz einfach herausgestellt. Es gibt zunächst keine  Schnittstelle, über die die Bestandteile eines ETFs und seine Gewichtung abgefragt werden können. Auf den Webseiten der ETF-Anbieter sind jedoch teilweise HTML-Tabellen hinterlegt, die die nötigen Informationen enthalten. Viele dieser Daten  haben sich jedoch als unbrauchbar herausgestellt, da sie nicht die International Securities Identification Number (ISIN) enthalten. Ohne diese Nummer lassen sich große ETFs mit hunderten Einzeltiteln nicht analysieren. Die Namen der Aktienunternehmen konnten nicht verwendet werden, da es zu viele verschiedene Schreibweisen gibt und selbst das Ticker-Symbol (AAPL oder AMZN) nicht eindeutig ist, da es sich doppeln kann wie das Beispiel DTE zeigt, das sowohl für Deutsche Telekom als auch für DTE Energy verwendet wird.
+Für den zweiten Schritt habe ich die Daten der ETFs benötigt. Eine brauchbare Liste mit den gewichteten Bestandteilen der ETFs zu bekommen, hat sich als nicht ganz einfach herausgestellt. Es gibt zunächst keine Schnittstelle, über die die Bestandteile eines ETFs und seine Gewichtung abgefragt werden können. Auf den Webseiten der ETF-Anbieter sind jedoch teilweise HTML-Tabellen hinterlegt, die die nötigen Informationen enthalten. Viele dieser Daten haben sich jedoch als unbrauchbar herausgestellt, da sie nicht die International Securities Identification Number (ISIN) enthalten. Ohne diese Nummer lassen sich große ETFs mit hunderten Einzeltiteln nicht analysieren. Die Namen der Aktienunternehmen konnten nicht verwendet werden, da es zu viele verschiedene Schreibweisen gibt und selbst das Ticker-Symbol (AAPL oder AMZN) nicht eindeutig ist, da es sich doppeln kann wie das Beispiel DTE zeigt, das sowohl für Deutsche Telekom als auch für DTE Energy verwendet wird.
 
-Brauchbare Daten mit ISIN habe ich auf den Seiten von ISHARES gefunden.
+Brauchbare Daten mit ISIN habe ich [auf den Seiten von iShares](https://www.ishares.com/de/privatanleger/de/produkte/253741/ishares-nasdaq-100-ucits-etf "Daten vom Nasdaq 100 mit Gewichtung") gefunden.
 
 ### Laden der Daten
 
-Die Daten wurden mit Copy-und-Paste von der Website in eine Excel-Tabelle übertragen und anschließend mit der Funktion `read_excel` in `R` eingelesen. 
+Die Daten wurden mit Copy-und-Paste von der Website in eine Excel-Tabelle übertragen und anschließend mit der Funktion `read_excel` in `R` eingelesen.
 
 ```{r echo = TRUE}
 NASDAQ_100 <- read_excel("~/blog/Constituents_Weights_Indices.xlsx", 
@@ -104,7 +103,7 @@ MSCI_Info <- read_excel("~/blog/Constituents_Weights_Indices.xlsx",
 
 ### Aufbereiten der Daten
 
-Die Daten wurden mit Spaltennamen versehen und eine zusätzliche Spalte mit der Gewichtung im Gesamtportfolio (Gewichtung Einzelwert im ETF * Gewichtung ETF im Portfolio) hinzugefügt. Anschließend wurden nur die notwendigen Spalten mit dem Ticker-Symbol, der ISIN und der Portfolio-Gewichtung ausgewählt.
+Die Daten wurden mit Spaltennamen versehen und eine zusätzliche Spalte mit der Gewichtung im Gesamtportfolio (Gewichtung Einzelwert im ETF \* Gewichtung ETF im Portfolio) hinzugefügt. Anschließend wurden nur die notwendigen Spalten mit dem Ticker-Symbol, der ISIN und der Portfolio-Gewichtung ausgewählt.
 
 ```{r echo = TRUE}
 colnames(NASDAQ_100) <- c("Symbol", "Company", "Weight", "ISIN")
@@ -121,7 +120,7 @@ Das Ergebnis war folgende Tabelle (als `tibble`):
 print(NASDAQ_100)
 ```
 
-Diese Schritte habe ich für die zwei anderen ETFs in meinem Portfolio, den MSCI World und den MSCI Information Technology wiederholt. 
+Diese Schritte habe ich für die zwei anderen ETFs in meinem Portfolio, den MSCI World und den MSCI Information Technology wiederholt.
 
 Hier der MSCI World:
 
@@ -207,7 +206,7 @@ weight_all %>%
 
 ## Ergebnis
 
-Was sind die Ergebnisse dieser Analyse? Intuitiv hatte ich einen noch größeren Anteil der Schwergewichte erwartet, und zwar, dass die Apple-Aktien einen großen Anteil am Portfolio ausmachen. Intuitiv bin ich sogar von einem größeren Anteil als 14,9 % ausgegangen. 
+Was sind die Ergebnisse dieser Analyse? Intuitiv hatte ich einen noch größeren Anteil der Schwergewichte erwartet, und zwar, dass die Apple-Aktien einen großen Anteil am Portfolio ausmachen. Intuitiv bin ich sogar von einem größeren Anteil als 14,9 % ausgegangen.
 
 Einzelwerte haben einen erheblichen Einfluss auf die Zusammensetzung des Portfolios, was daran liegt, dass Einzelwerte zusammengenommen einen größeren Anteil am Portfolio haben, als die drei ETFs zusammen.
 
