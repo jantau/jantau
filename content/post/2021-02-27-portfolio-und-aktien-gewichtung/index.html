@@ -23,16 +23,16 @@ projects: []
 <p>Klassische ETF-Anlage-Strategien legen Wert auf die Diversifizierung der Investionen und auf die Vermeidung von Überschneidungen, was bedeutet, dass eine einzelne Aktie idealerweise nur in einem der investierten ETFs indexiert ist.</p>
 <p>Benchmarks wie ein S&amp;P 500_Portfolio, das 60/40-Portfolio (60 % Aktien, 40 % Staatsanleihen) oder das 70/30-Portfolio (70 % MSCI World, 30 % MSCI EM) haben keine Überschneidungen und sind über Sektoren (S&amp;P 500, 60/40, 70/30), Regionen (70/30) oder Anlageklassen (60/40) diversifiziert.</p>
 <p>Portfolios mit verschiedenen ETFs, die eine bestimmte Schnittmenge bilden, sollen - diesen Strategien folgend - vermieden werden. So ist es nicht sinnvoll, sowohl einen S&amp;P 500 als auch einen MSCI World zu besparen, da durch den hohen USA-Anteil im MSCI-World (über 60 %) die Schnittmenge zu groß ist.</p>
-<p>Die Realität sieht jedoch oftmals anders aus. In vielen Fällen folgen Anleger nicht der reinen Lehre, sondern haben abgewandelte Portfolios. Die Portfolios enthalten beispielsweise Einzelaktien, die auch in ETFs enthalten sind oder im Laufe der Jahre wurde die Anlagestrategie angepasst, so dass ETFs ausgewechselt wurden, ohne die zuvor besparten ETFs zu verkaufen.</p>
-<p>So ist auch die Situation in meinem Portfolio. Meinem Alter und meiner Risikobereitschaft entsprechend ist es ein reines Aktienportfolio mit einem Schwerpunkt auf wachstumsorientierten Werten aus dem US-amerikanischen Technologiesektor. Die Einzelwerte sind teilweise sehr kleine Positionen, die zum Teil aus einer Laune heraus gekauft wurden. Bei den ETFs hat sich meine Strategie eher evolutionär weiterentwickelt.</p>
-<p>Dass es größere Überschneidungen geben muss, war mir bewusst. Ich konnte jedoch nicht konkret beziffern, wie groß diese sind und ich konnte auch nicht präzise quantifizieren, in welchem Ausmaß, einzelne Werte mein Portfolio dominieren.</p>
-<p>Ich wollte jedoch gerne wissen, wie groß beispielsweise der Anteil an Apple-Aktien in meinem Gesamtportfolio ist Ich habe zunächst nach einem Online-Tool gesucht, dass mir erlaubt, meine einzelnen Investitionen einzugeben, um anschließend die Gewichtung angezeigt zu bekommen. So ein Tool habe ich jedoch noch nicht gefunden. Dabei ist sicherlich für viele Anleger interessant, diese Informationen zu bekommen.</p>
-<p>Mathematisch ist diese Aufgabe einfach zu lösen. Die einzelnen Aktien eines ETFs müssen ihrer Gewichtung im ETF entsprechend mit dem Anteil, den der ETFs am Gesamtportfolio ausmacht, multipliziert werden. Dies muss für alle ETFs im Portfolio wiederholt werden.</p>
+<p>Die Realität sieht jedoch oftmals anders aus. In vielen Fällen folgen Anleger nicht der reinen Lehre, sondern haben abgewandelte Portfolios. Die Portfolios enthalten beispielsweise Einzelaktien, die auch in ETFs enthalten sind, oder im Laufe der Jahre wurde die Anlagestrategie angepasst, so dass ETFs ausgewechselt wurden, ohne die zuvor besparten ETFs zu verkaufen.</p>
+<p>So ist auch die Situation in meinem Portfolio. Meinem Alter und meiner Risikobereitschaft entsprechend ist es ein reines Aktienportfolio mit einem Schwerpunkt auf wachstumsorientierte Werte aus dem US-amerikanischen Technologiesektor. Die Einzelwerte sind teilweise sehr kleine Positionen, die zum Teil aus einer Laune heraus gekauft wurden. Bei den ETFs hat sich meine Strategie eher evolutionär weiterentwickelt.</p>
+<p>Dass es größere Überschneidungen geben muss, war mir bewusst. Ich konnte jedoch nicht konkret beziffern, wie groß diese sind und auch nicht präzise quantifizieren, in welchem Ausmaß, einzelne Werte mein Portfolio dominieren.</p>
+<p>Ich wollte jedoch gerne wissen, wie groß beispielsweise der Anteil an Apple-Aktien in meinem Gesamtportfolio ist. Ich habe zunächst nach einem Online-Tool gesucht, das mir erlaubt, meine einzelnen Investitionen einzugeben, um anschließend die Gewichtung angezeigt zu bekommen. Ein solches Tool habe ich jedoch noch nicht gefunden. Dabei ist es sicherlich für viele Anleger interessant, diese Informationen zu bekommen.</p>
+<p>Mathematisch ist diese Aufgabe einfach zu lösen. Die einzelnen Aktien eines ETFs müssen entsprechend ihrer Gewichtung im ETF mit dem Anteil, den der ETF am Gesamtportfolio ausmacht, multipliziert werden. Dies muss für alle ETFs im Portfolio wiederholt werden.</p>
 <p>Anschließend müssen die Ergebnisse der einzelnen Werte summiert werden. So kann ermittelt werden, welchen Anteil eine einzelne Aktie über alle Investitionen hinweg (ETFs und Einzelaktien) am Gesamtportfolio hat.</p>
-<p>Im Folgenden werde ich durch die einzelnen Schritte führen und damit auch die einzelnen Schritte der Datenextraktion, -transformation und -analyse transparent machen.</p>
+<p>Im Folgenden werde ich die einzelnen Schritte der Datenextraktion, -transformation und -analyse transparent machen.</p>
 <div id="gewichtung-des-portfolios" class="section level3">
 <h3>Gewichtung des Portfolios</h3>
-<p>Der erste Schritt war eine Aufstellung meines Portfolios, das eine Gewichtung der einzelnen Positionen beinhaltete. Mein Depot (Stand 28.2.2021) sieht folgendermaßen aus:</p>
+<p>Der erste Schritt ist eine Aufstellung meines Portfolios, das eine Gewichtung der einzelnen Positionen beinhaltet. Mein Depot (Stand 28.2.2021) sieht folgendermaßen aus:</p>
 <pre><code>## # A tibble: 11 x 3
 ##    Name             Kategorie   Anteil_Proz
 ##    &lt;chr&gt;            &lt;chr&gt;             &lt;dbl&gt;
@@ -50,8 +50,8 @@ projects: []
 </div>
 <div id="die-daten-der-etfs" class="section level3">
 <h3>Die Daten der ETFs</h3>
-<p>Für den zweiten zweiten Schritt habe ich die Daten der ETFs benötigt. Eine brauchbare Liste mit den gewichteten Bestandteilen der ETFs zu bekommen, hat sich als nicht ganz einfach herausgestellt. Es gibt zunächst keine Schnittstelle, über die die Bestandteile eines ETFs und seine Gewichtung abgefragt werden können. Auf den Webseiten der ETF-Anbieter sind jedoch teilweise HTML-Tabellen hinterlegt, die die nötigen Informationen enthalten. Viele dieser Daten haben sich jedoch als unbrauchbar herausgestellt, da sie nicht die International Securities Identification Number (ISIN) enthalten haben. Ohne diese Nummer lassen sich große ETFs mit hunderten Einzeltiteln nicht analysieren. Die Namen der Aktienunternehmen konnten nicht verwendet werden, da es zu viele verschiedene Schreibweisen gab und selbst das Ticker-Symbol (AAPL oder AMZN) ist nicht eindeutig, da es sich doppeln kann wie das Beispiel DTE zeigt, dass sowohl für Deutsche Telekom als auch für DTE Energy verwendet wird.</p>
-<p>Bruachbare Daten mit ISIN habe ich auf den Seiten von ISHARES gefunden.</p>
+<p>Für den zweiten Schritt habe ich die Daten der ETFs benötigt. Eine brauchbare Liste mit den gewichteten Bestandteilen der ETFs zu bekommen, hat sich als nicht ganz einfach herausgestellt. Es gibt zunächst keine Schnittstelle, über die die Bestandteile eines ETFs und seine Gewichtung abgefragt werden können. Auf den Webseiten der ETF-Anbieter sind jedoch teilweise HTML-Tabellen hinterlegt, die die nötigen Informationen enthalten. Viele dieser Daten haben sich jedoch als unbrauchbar herausgestellt, da sie nicht die International Securities Identification Number (ISIN) enthalten. Ohne diese Nummer lassen sich große ETFs mit hunderten Einzeltiteln nicht analysieren. Die Namen der Aktienunternehmen konnten nicht verwendet werden, da es zu viele verschiedene Schreibweisen gibt und selbst das Ticker-Symbol (AAPL oder AMZN) nicht eindeutig ist, da es sich doppeln kann wie das Beispiel DTE zeigt, das sowohl für Deutsche Telekom als auch für DTE Energy verwendet wird.</p>
+<p>Brauchbare Daten mit ISIN habe ich auf den Seiten von ISHARES gefunden.</p>
 </div>
 <div id="laden-der-daten" class="section level3">
 <h3>Laden der Daten</h3>
@@ -67,7 +67,7 @@ MSCI_Info &lt;- read_excel(&quot;~/blog/Constituents_Weights_Indices.xlsx&quot;,
 </div>
 <div id="aufbereiten-der-daten" class="section level3">
 <h3>Aufbereiten der Daten</h3>
-<p>Die Daten wurden mit Spaltennamen versehen und es wurde eine zusätzliche Spalte mit der Gewichtung im Gesamtportfolio (Gewichtung Einzelwert im ETF * Gewichtung ETF im Portfolio) hinzugefügt. Anschließend wurden nur die notwendigen Spalten mit dem Ticker-Symbol, der ISIN und der Portfolio-Gewichtung ausgewählt.</p>
+<p>Die Daten wurden mit Spaltennamen versehen und eine zusätzliche Spalte mit der Gewichtung im Gesamtportfolio (Gewichtung Einzelwert im ETF * Gewichtung ETF im Portfolio) hinzugefügt. Anschließend wurden nur die notwendigen Spalten mit dem Ticker-Symbol, der ISIN und der Portfolio-Gewichtung ausgewählt.</p>
 <pre class="r"><code>colnames(NASDAQ_100) &lt;- c(&quot;Symbol&quot;, &quot;Company&quot;, &quot;Weight&quot;, &quot;ISIN&quot;)
 
 NASDAQ_100 &lt;- NASDAQ_100 %&gt;%
@@ -135,7 +135,7 @@ Weight_Perc_Single_Stocks &lt;- c(0.137, 0.112, 0.094, 0.084, 0.069, 0.047, 0.02
 Single_Stocks &lt;- data.frame(Symbol, ISIN, Weight_Perc_Single_Stocks)</code></pre>
 <p>Die verschiedenen Tabellen wurden mit der Funktion <code>join_all</code> zusammengefügt.</p>
 <pre class="r"><code>weight_all &lt;- plyr::join_all(list(NASDAQ_100, MSCI_World, MSCI_Info, Single_Stocks), by = &quot;ISIN&quot;, type = &quot;full&quot;)</code></pre>
-<p>Danach wurde die Summe der Werte aus Zahlenreichen der verschiedenen Tabellen gebildet und die Werte in absteigender Reihenfolge sortiert.</p>
+<p>Danach wurde die Summe der Werte aus Zahlenreihen der verschiedenen Tabellen gebildet und die Werte in absteigender Reihenfolge sortiert.</p>
 <pre class="r"><code>weight_all &lt;- weight_all %&gt;%
   replace(is.na(.), 0) %&gt;%
   mutate(sum = rowSums(.[3:6])) %&gt;%
@@ -186,10 +186,10 @@ weight_all %&gt;%
 </div>
 <div id="ergebnis" class="section level2">
 <h2>Ergebnis</h2>
-<p>Was sind die Ergebnisse dieser Analyse? Intuitiv hatte ich einen noch größeren Anteil der Schwergewichte erwartet. So hatte ich erwartet, dass die Apple-Aktien einen großen Anteil am Portfolio ausmachen. Intuitiv bin ich sogar von einem größeren Anteil als 14,9 % ausgegangen.</p>
-<p>Einzelwerte haben einen erheblichen Einfluss auf die Zusammensetzung des Portfolios. Was daran liegt, dass Einzelwerte zusammengenommen einen größeren Anteil am Portfolio haben, als die drei ETFs zusammengenommen.</p>
+<p>Was sind die Ergebnisse dieser Analyse? Intuitiv hatte ich einen noch größeren Anteil der Schwergewichte erwartet, und zwar, dass die Apple-Aktien einen großen Anteil am Portfolio ausmachen. Intuitiv bin ich sogar von einem größeren Anteil als 14,9 % ausgegangen.</p>
+<p>Einzelwerte haben einen erheblichen Einfluss auf die Zusammensetzung des Portfolios, was daran liegt, dass Einzelwerte zusammengenommen einen größeren Anteil am Portfolio haben, als die drei ETFs zusammen.</p>
 <p>Die 18 größten Werte machen einen Anteil von 75 % im Portfolio aus. Die übrigen 1544 Werte machen zusammengenommmen die restlichen 25 % aus.</p>
 <p>Zwei Aktien, die ich als Einzelaktien besitze, sind in allen drei von mir gehaltenen ETFs enthalten. Es handelt sich um Apple und um Nvidia.</p>
-<p>Ich finde es durchaus aufschlussreich, eine Gewichtung des gesamten Portfolios nach Einzelwerten zu betrachten. Es ermöglicht mir, dass Risiko des Portfolios besser beurteilen zu können und gegebenenfalls die Gewichtung nachzujustieren. Es wäre schön, wenn es ein Online-Toll gäbe, mit der diese Untersuchtung einfach reproduziert werden könnte.</p>
+<p>Ich finde es durchaus aufschlussreich, eine Gewichtung des gesamten Portfolios nach Einzelwerten zu betrachten. Es ermöglicht mir, das Risiko des Portfolios besser beurteilen zu können und gegebenenfalls die Gewichtung nachzujustieren. Es wäre schön, wenn es ein Online-Tool gäbe, mit dem diese Untersuchtung einfach reproduziert werden könnte.</p>
 <p>Den für diesen Beitrag erstellten Code findest du hier: <a href="https://github.com/jantau/jantau" class="uri">https://github.com/jantau/jantau</a></p>
 </div>

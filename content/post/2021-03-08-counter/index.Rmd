@@ -1,0 +1,244 @@
+---
+draft: true
+title: Counter
+author: Jan Tau
+date: '2021-03-08'
+slug: counter
+categories: []
+tags: []
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2021-03-08T08:44:51+01:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+
+
+
+
+TEST
+
+
+
+```{r}
+LWW_2019_20_J1 <- read.csv("~/blog/LWW_2019_2020_TR_J1.csv", header = T, skip = 13, sep = ",")
+```
+
+```{r}
+LWW <- LWW_2019_20_J1 %>%
+  filter(Metric_Type == "Unique_Item_Requests" & Publisher == "Lippincott Williams & Wilkins (LWW)") %>%
+  group_by(Title, Print_ISSN) %>%
+  summarise_at(vars(Reporting_Period_Total:Dec.2020), sum) %>%
+  mutate(Reporting_Period_2020 = Jan.2020 + Feb.2020 + Mar.2020 + Apr.2020 + May.2020 + Jun.2020 + Jul.2020 + Aug.2020 + Sep.2020 + Oct.2020 + Nov.2020 + Dec.2020) %>%
+  select(1, 28) %>%
+  arrange(desc(Title)) %>%
+  filter(Reporting_Period_2020 > 0)
+```
+
+
+```{r}
+LWW$y2[LWW$Reporting_Period_2020 == 1] <- "1"
+LWW$y2[LWW$Reporting_Period_2020 >= 2 & LWW$Reporting_Period_2020 <= 10] <- "2 bis 10"
+LWW$y2[LWW$Reporting_Period_2020 >= 11 & LWW$Reporting_Period_2020 <= 100] <- "11 bis 100"
+LWW$y2[LWW$Reporting_Period_2020 >= 101 & LWW$Reporting_Period_2020 <= 1000] <- "101 bis 1000"
+LWW$y2[LWW$Reporting_Period_2020 >= 1001 & LWW$Reporting_Period_2020 < 10000] <- "1001 bis 10000"
+LWW$y2[LWW$Reporting_Period_2020 >= 10000] <- "über 10000"
+
+LWW$y2 <- factor(LWW$y2, levels = c("1", "2 bis 10", "11 bis 100", "101 bis 1000", "1001 bis 10000", "über 10000"))
+
+```
+
+
+```{r}
+pal <- got(1, option = "Daenerys", direction = 1)
+
+LWW <- LWW %>%
+  mutate(count = 1) %>%
+  group_by(y2) %>%
+  mutate(cumsum = cumsum(count))
+
+
+p <- ggplot(LWW, aes(x = y2, y = cumsum, text = Reporting_Period_2020)) +
+  geom_text(aes(label = Title), size = 2, color = pal) +
+  theme_jantau +
+    labs(title = "Downloads aus LWW-Journals 2020 \n(logarithmische Darstellung)") +
+  theme(
+    axis.line.y = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    axis.title.y = element_blank(),
+    axis.title.x = element_blank()
+  )
+
+plotly::ggplotly(p, tooltip = c("Reporting_Period_2020"))
+```
+
+
+```{r}
+
+LWW_2019_20_J3 <- read.csv("~/blog/LWW_2019_2020_TR_J3.csv", header = T, skip = 13, sep = ",")
+
+```
+
+```{r}
+LWW <- LWW_2019_20_J3 %>%
+  filter(Publisher == "Lippincott Williams & Wilkins (LWW)") %>%
+  group_by(Title, Print_ISSN) %>%
+  summarise_at(vars(Reporting_Period_Total:Dec.2020), sum) %>%
+  mutate(Reporting_Period_2020 = Jan.2020 + Feb.2020 + Mar.2020 + Apr.2020 + May.2020 + Jun.2020 + Jul.2020 + Aug.2020 + Sep.2020 + Oct.2020 + Nov.2020 + Dec.2020) %>%
+  select(1, 28) %>%
+  arrange(desc(Title)) %>%
+  filter(Reporting_Period_2020 > 0)
+```
+
+```{r}
+LWW$y2[LWW$Reporting_Period_2020 == 1] <- "1"
+LWW$y2[LWW$Reporting_Period_2020 >= 2 & LWW$Reporting_Period_2020 <= 10] <- "2 bis 10"
+LWW$y2[LWW$Reporting_Period_2020 >= 11 & LWW$Reporting_Period_2020 <= 100] <- "11 bis 100"
+LWW$y2[LWW$Reporting_Period_2020 >= 101 & LWW$Reporting_Period_2020 <= 1000] <- "101 bis 1000"
+LWW$y2[LWW$Reporting_Period_2020 >= 1001 & LWW$Reporting_Period_2020 < 10000] <- "1001 bis 10000"
+LWW$y2[LWW$Reporting_Period_2020 >= 10000] <- "über 10000"
+
+LWW$y2 <- factor(LWW$y2, levels = c("1", "2 bis 10", "11 bis 100", "101 bis 1000", "1001 bis 10000", "über 10000"))
+
+```
+
+```{r}
+pal <- got(1, option = "Daenerys", direction = 1)
+
+LWW <- LWW %>%
+  mutate(count = 1) %>%
+  group_by(y2) %>%
+  mutate(cumsum = cumsum(count))
+
+
+p <- ggplot(LWW, aes(x = y2, y = cumsum, text = Reporting_Period_2020)) +
+  geom_text(aes(label = Title), size = 2, color = pal) +
+  theme_jantau +
+    labs(title = "No License LWW-Journals 2020 \n(logarithmische Darstellung)") +
+  theme(
+    axis.line.y = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    axis.title.y = element_blank(),
+    axis.title.x = element_blank()
+  )
+
+plotly::ggplotly(p, tooltip = c("Reporting_Period_2020"))
+```
+```{r}
+
+LWW_2019_20_TMR <- read.csv("~/blog/Ovid_Title_Master_Report.csv", header = T, skip = 12, sep = ",")
+```
+
+
+```{r}
+LWW <- LWW_2019_20_TMR %>%
+  filter(Publisher == "Lippincott Williams & Wilkins (LWW)" & YOP >= 2018 & Metric_Type == "Unique_Item_Requests" & Access_Type == "Controlled") %>%
+  group_by(Title, Print_ISSN) %>%
+  summarise_at(vars(Reporting_Period_Total:Dec.2020), sum) %>%
+  mutate(Reporting_Period_2020 = Jan.2020 + Feb.2020 + Mar.2020 + Apr.2020 + May.2020 + Jun.2020 + Jul.2020 + Aug.2020 + Sep.2020 + Oct.2020 + Nov.2020 + Dec.2020) %>%
+  select(1, 28) %>%
+  arrange(desc(Title)) %>%
+  filter(Reporting_Period_2020 > 0)
+
+```
+
+
+```{r}
+LWW$y2[LWW$Reporting_Period_2020 == 1] <- "1"
+LWW$y2[LWW$Reporting_Period_2020 >= 2 & LWW$Reporting_Period_2020 <= 10] <- "2 bis 10"
+LWW$y2[LWW$Reporting_Period_2020 >= 11 & LWW$Reporting_Period_2020 <= 100] <- "11 bis 100"
+LWW$y2[LWW$Reporting_Period_2020 >= 101 & LWW$Reporting_Period_2020 <= 1000] <- "101 bis 1000"
+LWW$y2[LWW$Reporting_Period_2020 >= 1001 & LWW$Reporting_Period_2020 < 10000] <- "1001 bis 10000"
+LWW$y2[LWW$Reporting_Period_2020 >= 10000] <- "über 10000"
+
+LWW$y2 <- factor(LWW$y2, levels = c("1", "2 bis 10", "11 bis 100", "101 bis 1000", "1001 bis 10000", "über 10000"))
+
+```
+
+```{r}
+pal <- got(1, option = "Daenerys", direction = 1)
+
+LWW <- LWW %>%
+  mutate(count = 1) %>%
+  group_by(y2) %>%
+  mutate(cumsum = cumsum(count))
+
+
+p <- ggplot(LWW, aes(x = y2, y = cumsum, text = Reporting_Period_2020)) +
+  geom_text(aes(label = Title), size = 2, color = pal) +
+  theme_jantau +
+    labs(title = "Download aus LWW-Journals 2020 YOP 2019 and 2020 \n(logarithmische Darstellung)") +
+  theme(
+    axis.line.y = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    axis.title.y = element_blank(),
+    axis.title.x = element_blank()
+  )
+
+plotly::ggplotly(p, tooltip = c("Reporting_Period_2020"))
+```
+
+
+
+
+
+```{r}
+LWW <- LWW_2019_20_TMR %>%
+  filter(Publisher == "Lippincott Williams & Wilkins (LWW)" & YOP >= 2018 & Metric_Type == "Unique_Item_Requests") %>%
+  group_by(Title, Print_ISSN, Access_Type) %>%
+  summarise_at(vars(Reporting_Period_Total:Dec.2020), sum) %>%
+  mutate(Reporting_Period_2020 = Jan.2020 + Feb.2020 + Mar.2020 + Apr.2020 + May.2020 + Jun.2020 + Jul.2020 + Aug.2020 + Sep.2020 + Oct.2020 + Nov.2020 + Dec.2020) %>%
+  select(1, 3, 29) %>%
+  arrange(desc(Title)) %>%
+  filter(Reporting_Period_2020 > 0)
+
+```
+
+
+```{r}
+LWW$y2[LWW$Reporting_Period_2020 == 1] <- "1"
+LWW$y2[LWW$Reporting_Period_2020 >= 2 & LWW$Reporting_Period_2020 <= 10] <- "2 bis 10"
+LWW$y2[LWW$Reporting_Period_2020 >= 11 & LWW$Reporting_Period_2020 <= 100] <- "11 bis 100"
+LWW$y2[LWW$Reporting_Period_2020 >= 101 & LWW$Reporting_Period_2020 <= 1000] <- "101 bis 1000"
+LWW$y2[LWW$Reporting_Period_2020 >= 1001 & LWW$Reporting_Period_2020 < 10000] <- "1001 bis 10000"
+LWW$y2[LWW$Reporting_Period_2020 >= 10000] <- "über 10000"
+
+LWW$y2 <- factor(LWW$y2, levels = c("1", "2 bis 10", "11 bis 100", "101 bis 1000", "1001 bis 10000", "über 10000"))
+
+```
+
+```{r}
+pal <- got(2, option = "Daenerys", direction = 1)
+
+LWW <- LWW %>%
+  mutate(count = 1) %>%
+  group_by(y2) %>%
+  mutate(cumsum = cumsum(count))
+
+
+p <- ggplot(LWW, aes(x = y2, y = cumsum, text = Reporting_Period_2020)) +
+  geom_text(aes(label = Title, color = Access_Type), size = 2) +
+  theme_jantau +
+    labs(title = "Downloads aus LWW-Journals 2020 YOP 2019 and 2020 inkl. OA-Journals \n(logarithmische Darstellung)") +
+  scale_color_manual(values = pal) +
+  theme(
+    legend.title = element_blank(),
+    axis.line.y = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    axis.title.y = element_blank(),
+    axis.title.x = element_blank()
+  )
+
+plotly::ggplotly(p, tooltip = c("Title", "Reporting_Period_2020"))
+```
