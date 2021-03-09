@@ -5,7 +5,7 @@ education:
   - course: MA LIS Bibliotheks- und Informationswissenschaften
     institution: Humboldt-Universität Berlin
     year: 2017
-  - course: Dr. phil Geschichtswissenschaften
+  - course: Dr. phil. Geschichtswissenschaften
     institution: Universität Erfurt
     year: 2014
 email: ""
