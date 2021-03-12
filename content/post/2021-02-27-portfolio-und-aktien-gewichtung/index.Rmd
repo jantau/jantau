@@ -156,6 +156,8 @@ Symbol <- c("DTE", "AAPL", "AMZN", "NVDA", "SQ", "DBK", "TWTR", "ATVI")
 Weight_Perc_Single_Stocks <- c(0.137, 0.112, 0.094, 0.084, 0.069, 0.047, 0.0259, 0.015)
 
 Single_Stocks <- data.frame(Symbol, ISIN, Weight_Perc_Single_Stocks)
+
+as_tibble(Single_Stocks)
 ```
 
 Die verschiedenen Tabellen wurden mit der Funktion `join_all` zusammengefügt.
@@ -176,7 +178,7 @@ weight_all <- weight_all %>%
 as_tibble(weight_all)
 ```
 
-Zuletzt wurden die Ergebnisse mit einem `ggplot`-Barplot visualisiert. Hier habe ich mich auf die Wert konzentriert, die einen Anteil von 0,5 % oder mehr vom Gesamtportfolio ausmachen. Es handelt sich um 18 Werte.
+Zuletzt wurden die Ergebnisse mit einem `ggplot`-Barplot visualisiert. Hier habe ich mich auf die Werte konzentriert, die einen Anteil von 0,5 % oder mehr vom Gesamtportfolio ausmachen. Es handelt sich um 18 Werte.
 
 ```{r echo = TRUE}
 pal <- got(1, option = "Daenerys", direction = 1)

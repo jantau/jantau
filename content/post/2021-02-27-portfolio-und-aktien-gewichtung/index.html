@@ -132,7 +132,20 @@ head(MSCI_Info)
 Symbol &lt;- c(&quot;DTE&quot;, &quot;AAPL&quot;, &quot;AMZN&quot;, &quot;NVDA&quot;, &quot;SQ&quot;, &quot;DBK&quot;, &quot;TWTR&quot;, &quot;ATVI&quot;)
 Weight_Perc_Single_Stocks &lt;- c(0.137, 0.112, 0.094, 0.084, 0.069, 0.047, 0.0259, 0.015)
 
-Single_Stocks &lt;- data.frame(Symbol, ISIN, Weight_Perc_Single_Stocks)</code></pre>
+Single_Stocks &lt;- data.frame(Symbol, ISIN, Weight_Perc_Single_Stocks)
+
+as_tibble(Single_Stocks)
+## # A tibble: 8 x 3
+##   Symbol ISIN         Weight_Perc_Single_Stocks
+##   &lt;chr&gt;  &lt;chr&gt;                            &lt;dbl&gt;
+## 1 DTE    DE0005557508                    0.137 
+## 2 AAPL   US0378331005                    0.112 
+## 3 AMZN   US0231351067                    0.094 
+## 4 NVDA   US67066G1040                    0.084 
+## 5 SQ     US8522341036                    0.069 
+## 6 DBK    DE0005140008                    0.047 
+## 7 TWTR   US90184L1026                    0.0259
+## 8 ATVI   US00507V1098                    0.015</code></pre>
 <p>Die verschiedenen Tabellen wurden mit der Funktion <code>join_all</code> zusammengefügt.</p>
 <pre class="r"><code>weight_all &lt;- plyr::join_all(list(NASDAQ_100, MSCI_World, MSCI_Info, Single_Stocks), by = &quot;ISIN&quot;, type = &quot;full&quot;)</code></pre>
 <p>Danach wurde die Summe der Werte aus Zahlenreihen der verschiedenen Tabellen gebildet und die Werte in absteigender Reihenfolge sortiert.</p>
@@ -158,7 +171,7 @@ as_tibble(weight_all)
 ## 10 TSLA   US88…          0.00957        0.00159           0       
 ## # … with 1,552 more rows, and 2 more variables:
 ## #   Weight_Perc_Single_Stocks &lt;dbl&gt;, sum &lt;dbl&gt;</code></pre>
-<p>Zuletzt wurden die Ergebnisse mit einem <code>ggplot</code>-Barplot visualisiert. Hier habe ich mich auf die Wert konzentriert, die einen Anteil von 0,5 % oder mehr vom Gesamtportfolio ausmachen. Es handelt sich um 18 Werte.</p>
+<p>Zuletzt wurden die Ergebnisse mit einem <code>ggplot</code>-Barplot visualisiert. Hier habe ich mich auf die Werte konzentriert, die einen Anteil von 0,5 % oder mehr vom Gesamtportfolio ausmachen. Es handelt sich um 18 Werte.</p>
 <pre class="r"><code>pal &lt;- got(1, option = &quot;Daenerys&quot;, direction = 1)
 
 weight_all %&gt;%

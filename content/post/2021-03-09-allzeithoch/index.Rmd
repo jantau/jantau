@@ -1,4 +1,5 @@
 ---
+draft: true
 title: Allzeithoch
 author: Jan Tau
 date: '2021-03-09'
@@ -6,7 +7,7 @@ slug: allzeithoch
 categories: []
 tags: []
 subtitle: 'Über das Kaufen zum Allzeithoch-Kurs'
-summary: ''
+summary: 'Über das Kaufen zum Allzeithoch-Kurs'
 authors: []
 lastmod: '2021-03-09T20:17:38+01:00'
 featured: no
@@ -34,7 +35,21 @@ source("/Users/jan/blog/jantau/content/post/header.R")
 ```
 
 
-Der Dax 30 hat ein Allzeithoch erreicht. Wie oft erreicht ein Aktienindex ein Allzeithoch?
+Der Dax 30 hat ein Allzeithoch erreicht. Und die Frage kommt auf: Ist das gut oder schlecht? Soll ich jetzt noch kaufen oder ist es jetzt zu teuer. Diese Frage wurde schon oft gestellt und die grundsätzliche Antwort lautet ja. Das Timing des Markets ist nicht möglich und das Warten auf niedrigere Kurse ist mit Oportunitätskosten verbunden, die statistisch betrachtet  höher sind als ein direkter Einstieg. 
+
+Aber wie oft erreicht ein Aktienindex ein Allzeithoch?
+
+Ich habe mir die drei Indizes aus dem Post [18 Jahre für das Kind sparen]() geschnappt und sie verglichen. Mit schon etwas unterschiedlichen Ergebnissen.
+
+Im Zeitraum 1.1.1990 bis 9.3.2021 hat der Dax 30 ... ein Allzeithoch erreicht. Der S&P 500 TR ... mal und der Nasdaq 100 ... mal.
+
+In Prozent gesprochen ist das ...
+
+
+Es ist demnach nicht wahnsinnig selten, dass ein Index ein Allzeithoch erreicht. 
+
+Ein Blick auf die Grafiken zeigt, dass Phasen in denen ein Allzeithoch dem anderen folgt abgelöst werden, von Phasen, in denen über einen längeren Zeitraum das zuvor erreichte Allzeithoch nicht übertroffen wird.
+
 
 
 ```{r}
@@ -71,61 +86,30 @@ dax_ath <- dax %>% filter(ath == 1)
 
 
 ```{r}
+pal <- got(3, option = "Daenerys", direction = -1)
+
 ggplot(dax, aes(x = date, y = adjusted)) +
-  geom_line() +
-  geom_point(data = dax %>% filter(ath == 1), aes (x = date, y = adjusted), color = "green", size = 1, alpha = .5) +
+  geom_line(color = pal[1]) +
+  geom_point(
+    data = dax %>% filter(ath == 1),
+    aes (x = date, y = adjusted),
+    color = pal[2],
+    size = 1,
+    alpha = .5
+  ) +
   scale_y_log10() +
-  theme_jantau
+  theme_jantau +
+  theme(panel.grid.major.y = element_line(colour = "grey", linetype = "dashed")) +
+  labs(
+    title = "Allzeithochs Dax 30",
+    x = "",
+    y = "Kurs (in logarithmischer Darstellung)",
+    color = "",
+    fill = "",
+    subtitle = "Datenquelle: finance.yahoo.com; Datenanalyse: jantau.com"
+  )
 ```
 
-
-
-```{r}
-# Nur der erste Wert pro Monat
-# https://github.com/tidyverse/lubridate/issues/630
-dax_1 <- dax %>%
-  mutate(year = year(date)) %>%
-  mutate(month = as.factor(month(date))) %>%
-  mutate(year_mon = floor_date(date, "month"))
-
-
-monthly_rate <- 1
-
-dax_2 <- dax_1 %>%
-    mutate(anteil = monthly_rate/adjusted) %>%
-    mutate(anteil_cumsum = cumsum(anteil)) %>%
-    mutate(wert = anteil_cumsum*adjusted) %>%
-    mutate(ansparen = monthly_rate) %>%
-    mutate(ansparen_cumsum = cumsum(ansparen))
-
-```
-
-```{r}
-
-
-  # Find all-time highs
-  for (i in 1:nrow(dax_2)){
-    if(dax_2[i, "wert"] < max(dax_2[1:i, "wert"])){
-      dax_2[i, "ath"] <- 0
-    } else{
-      dax_2[i, "ath"] <- 1
-    }
-  }
-
-
-dax_2_ath <- dax_2 %>% filter(ath == 1)
-```
-
-
-
-
-```{r}
-ggplot(dax_2, aes(x = date, y = wert)) +
-  geom_line() +
-  geom_point(data = dax_2 %>% filter(ath == 1), aes (x = date, y = wert), color = "green", size = 1, alpha = .5) +
-  scale_y_log10() +
-  theme_jantau
-```
 
 
 
@@ -165,15 +149,95 @@ dax_ath <- dax %>% filter(ath == 1)
 
 
 ```{r}
+pal <- got(3, option = "Daenerys", direction = -1)
+
 ggplot(dax, aes(x = date, y = adjusted)) +
-  geom_line() +
-  geom_point(data = dax %>% filter(ath == 1), aes (x = date, y = adjusted), color = "green", size = 1, alpha = .5) +
+  geom_line(color = pal[1]) +
+  geom_point(
+    data = dax %>% filter(ath == 1),
+    aes (x = date, y = adjusted),
+    color = pal[2],
+    size = 1,
+    alpha = .5
+  ) +
   scale_y_log10() +
-  theme_jantau
+  theme_jantau +
+  theme(panel.grid.major.y = element_line(colour = "grey", linetype = "dashed")) +
+  labs(
+    title = "Allzeithochs Nasdaq 100",
+    x = "",
+    y = "Kurs (in logarithmischer Darstellung)",
+    color = "",
+    fill = "",
+    subtitle = "Datenquelle: finance.yahoo.com; Datenanalyse: jantau.com"
+  )
 ```
 
 
-ATH mit DCA?
+
+
+```{r}
+dax <- tq_get("^SP500TR",
+              get  = "stock.prices",
+              from = "1900-01-01",
+              to = "2021-03-09")
+```
+
+```{r}
+dax <- dax %>% 
+  select(symbol, date, adjusted) %>%
+  filter(!is.na(adjusted))
+```
+
+
+```{r}
+
+
+  # Find all-time highs
+  for (i in 1:nrow(dax)){
+    if(dax[i, "adjusted"] < max(dax[1:i, "adjusted"])){
+      dax[i, "ath"] <- 0
+    } else{
+      dax[i, "ath"] <- 1
+    }
+  }
+
+
+dax_ath <- dax %>% filter(ath == 1)
+```
+
+
+
+
+```{r}
+pal <- got(3, option = "Daenerys", direction = -1)
+
+ggplot(dax, aes(x = date, y = adjusted)) +
+  geom_line(color = pal[1]) +
+  geom_point(
+    data = dax %>% filter(ath == 1),
+    aes (x = date, y = adjusted),
+    color = pal[2],
+    size = 1,
+    alpha = .5
+  ) +
+  scale_y_log10() +
+  theme_jantau +
+  theme(panel.grid.major.y = element_line(colour = "grey", linetype = "dashed")) +
+  labs(
+    title = "Allzeithochs S&P 500 Total Return",
+    x = "",
+    y = "Kurs (in logarithmischer Darstellung)",
+    color = "",
+    fill = "",
+    subtitle = "Datenquelle: finance.yahoo.com; Datenanalyse: jantau.com"
+  )
+```
+
+
+
+
+
 
 
 Den für diesen Beitrag erstellten Code findest du hier: https://github.com/jantau/jantau
