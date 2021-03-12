@@ -24,7 +24,7 @@ output:
 
 <div id="TOC">
 <ul>
-<li><a href="#dezimalseperatoren-und-tausendertrennzeichen-ändern">Dezimalseperatoren und Tausendertrennzeichen ändern</a></li>
+<li><a href="#dezimalseparatoren-und-tausendertrennzeichen-ändern">Dezimalseparatoren und Tausendertrennzeichen ändern</a></li>
 <li><a href="#reproduzierbaren-code-erstellen">Reproduzierbaren Code erstellen</a></li>
 <li><a href="#pretty-code">Pretty Code</a></li>
 <li><a href="#plots-auf-mobilgeräten-in-voller-größe-anzeigen">Plots auf Mobilgeräten in voller Größe anzeigen</a></li>
@@ -38,10 +38,10 @@ output:
 </div>
 
 <p><strong>In diesem Post werden Tipps und Tricks gesammelt, die mir das Arbeiten mit R erleichtern und es mir erlauben, Datentransformationen, Analysen und Visualisierungen nach meinen Vorstellungen durchzuführen.</strong></p>
-<div id="dezimalseperatoren-und-tausendertrennzeichen-ändern" class="section level2">
-<h2>Dezimalseperatoren und Tausendertrennzeichen ändern</h2>
-<p>Im Deutschen wird ein Komma als Dezimalseperator (z.B. 3,4 %) und ein Punkt als Tausendertrennzeichen (z.B. 10.000 €) oder ein schmales Leerzeichen (z.B. 10 000) verwendet. Im Englischen sind die Seperatoren vertauscht. Ein Komma wird als Tausendertrennzeichen verwendet und ein Punkt als Dezimalseperator.</p>
-<p>Um den <a href="https://www.tutorialspoint.com/how-to-set-comma-as-decimal-separator-in-r">Dezimalseperator zu ändern</a>, kann die Code Option <code>options(OutDec=",")</code> verwendet werden.</p>
+<div id="dezimalseparatoren-und-tausendertrennzeichen-ändern" class="section level2">
+<h2>Dezimalseparatoren und Tausendertrennzeichen ändern</h2>
+<p>Im Deutschen wird ein Komma als Dezimalseparator (z.B. 3,4 %) und ein Punkt als Tausendertrennzeichen (z.B. 10.000 €) oder ein schmales Leerzeichen (z.B. 10 000) verwendet. Im Englischen sind die Separatoren vertauscht. Ein Komma wird als Tausendertrennzeichen verwendet und ein Punkt als Dezimalseparator.</p>
+<p>Um den <a href="https://www.tutorialspoint.com/how-to-set-comma-as-decimal-separator-in-r">Dezimalseparator zu ändern</a>, kann die Code Option <code>options(OutDec=",")</code> verwendet werden.</p>
 <p>Eine wirklich einfache und globale Lösung für das Ändern der <a href="https://de.wikipedia.org/wiki/Zifferngruppierung">Tausendertrennzeichen</a> habe ich nicht gefunden. Ich bin mir auch nicht sicher, ob es wirklich sinnvoll ist, da es den Datenaustausch erschwert.</p>
 <p>Für einzelne Plots oder Tabelle kann es jedoch sinnvoll sein, ein Tausendertrennzeichen zu nutzen, da es die Lesbarkeit erhöht. Auf Stackoverflow habe ich einen Post gefunden, der beschreibt, wie die <a href="https://stackoverflow.com/questions/48880982/r-set-dot-as-thousands-separator-and-comma-as-decimal-separator">Tausendertrennzeichen verändert</a> werden können. Zusätzlich zeigt das Beispiel auch noch, wie Euro- oder Prozentzeichen angezeigt werden können.</p>
 <pre class="r"><code>set.seed(42)  ## for sake of reproducibility
@@ -138,7 +138,7 @@ indexvgl_monthly$symbol &lt;-
     scale_color_manual(values = pal,
                      labels = c(&quot;Nasdaq 100&quot;, &quot;MSCI World&quot;, &quot;DAX 30&quot;))</code></pre>
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-<p>Anschließend habe ich den Plot mit der Funktion <code>ggsave()</code> speichern.</p>
+<p>Anschließend habe ich den Plot mit der Funktion <code>ggsave()</code> gespeichert.</p>
 <pre class="r"><code>  ggsave(
   &quot;icon.png&quot;,
   plot = last_plot(),

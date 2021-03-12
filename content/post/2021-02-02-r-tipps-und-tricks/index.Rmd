@@ -41,11 +41,11 @@ library(directlabels)
 
 **In diesem Post werden Tipps und Tricks gesammelt, die mir das Arbeiten mit R erleichtern und es mir erlauben, Datentransformationen, Analysen und Visualisierungen nach meinen Vorstellungen durchzuführen.**
 
-## Dezimalseperatoren und Tausendertrennzeichen ändern
+## Dezimalseparatoren und Tausendertrennzeichen ändern
 
-Im Deutschen wird ein Komma als Dezimalseperator (z.B. 3,4 %) und ein Punkt als Tausendertrennzeichen (z.B. 10.000 €) oder ein schmales Leerzeichen (z.B. 10 000) verwendet. Im Englischen sind die Seperatoren vertauscht. Ein Komma wird als Tausendertrennzeichen verwendet und ein Punkt als Dezimalseperator.
+Im Deutschen wird ein Komma als Dezimalseparator (z.B. 3,4 %) und ein Punkt als Tausendertrennzeichen (z.B. 10.000 €) oder ein schmales Leerzeichen (z.B. 10 000) verwendet. Im Englischen sind die Separatoren vertauscht. Ein Komma wird als Tausendertrennzeichen verwendet und ein Punkt als Dezimalseparator.
 
-Um den [Dezimalseperator zu ändern](https://www.tutorialspoint.com/how-to-set-comma-as-decimal-separator-in-r), kann die Code Option `options(OutDec=",")` verwendet werden.
+Um den [Dezimalseparator zu ändern](https://www.tutorialspoint.com/how-to-set-comma-as-decimal-separator-in-r), kann die Code Option `options(OutDec=",")` verwendet werden.
 
 Eine wirklich einfache und globale Lösung für das Ändern der [Tausendertrennzeichen](https://de.wikipedia.org/wiki/Zifferngruppierung) habe ich nicht gefunden. Ich bin mir auch nicht sicher, ob es wirklich sinnvoll ist, da es den Datenaustausch erschwert.
 
