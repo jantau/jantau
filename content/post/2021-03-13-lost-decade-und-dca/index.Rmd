@@ -1,0 +1,29 @@
+---
+title: Lost Decade und DCA
+author: Jan Tau
+date: '2021-03-13'
+slug: lost-decade-und-dca
+categories: []
+tags: []
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2021-03-13T15:21:24+01:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+Story:
+Angst vor der nächsten Last Decade geht um. Quellen aus Video von Graham Stephen
+
+Was ist eine Lost Decade. Blick auf S&P 500 zwischen 2000 und 2010.
+
+Relativierung dieser Perspektive durch S&P 500 Total Retunr
+
+Rendite berrechnen, die durch Durchschnittskosteneffekt erzielt worden wäre.
+
+
