@@ -1,13 +1,12 @@
 ---
-draft: true
 title: Wie häufig sind Allzeithochs?
 author: Jan Tau
-date: '2021-03-09'
+date: '2021-03-13'
 slug: allzeithoch
 categories: []
-tags: []
-subtitle: 'Über das Kaufen zum Allzeithoch-Kurs'
-summary: 'Über das Kaufen zum Allzeithoch-Kurs'
+tags: [NASDAQ 100, Dax 30, S&P 500]
+subtitle: 'Der Dax 30 hat ein neues Allzeithoch erreicht. Soll ich nun einsteigen oder auf einen günstigeren Kurs warten?'
+summary: 'Der Dax 30 hat ein neues Allzeithoch erreicht. Soll ich nun einsteigen oder auf einen günstigeren Kurs warten?'
 authors: []
 lastmod: '2021-03-09T20:17:38+01:00'
 featured: no
@@ -21,14 +20,43 @@ projects: []
 <script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
 
 
-<p>Der Dax 30 hat ein Allzeithoch erreicht. Und die Frage kommt auf: Ist das gut oder schlecht? Soll ich jetzt noch kaufen oder ist es jetzt zu teuer. Diese Frage wurde schon oft gestellt und die grundsätzliche Antwort lautet ja. Das Timing des Markets ist nicht möglich und das Warten auf niedrigere Kurse ist mit Oportunitätskosten verbunden, die statistisch betrachtet höher sind als ein direkter Einstieg.</p>
+<p>Der <a href="https://www.faz.net/aktuell/finanzen/dax-mit-naechstem-rekord-17233800.html">Dax 30 hat ein Allzeithoch</a> erreicht. Und die Frage kommt auf: Ist das gut oder schlecht? Soll ich jetzt noch kaufen oder ist der Kurs zu hoch? Diese Frage wurde schon oft gestellt und <a href="https://www.youtube.com/watch?v=y728UY7kwqk">die</a> grundsätzliche <a href="https://ofdollarsanddata.com/should-you-buy-an-all-time-high/">Antwort</a> lautet <a href="https://fourpillarfreedom.com/should-you-invest-when-the-stock-market-is-at-an-all-time-high/">ja</a>. Das Timing des Marktes ist nicht möglich und das Warten auf niedrigere Kurse ist mit Opportunitätskosten verbunden, die bei einem weitem Anlagehorizont statistisch betrachtet höher sind als ein direkter Einstieg.</p>
 <p>Aber wie oft erreicht ein Aktienindex ein Allzeithoch?</p>
-<p>Ich habe mir die drei Indizes aus dem Post <a href="">18 Jahre für das Kind sparen</a> geschnappt und sie verglichen. Mit schon etwas unterschiedlichen Ergebnissen.</p>
-<p>Im Zeitraum 1.1.1990 bis 9.3.2021 hat der Dax 30 … ein Allzeithoch erreicht. Der S&amp;P 500 TR … mal und der Nasdaq 100 … mal.</p>
-<p>In Prozent gesprochen ist das …</p>
-<p>Es ist demnach nicht wahnsinnig selten, dass ein Index ein Allzeithoch erreicht.</p>
-<p>Ein Blick auf die Grafiken zeigt, dass Phasen in denen ein Allzeithoch dem anderen folgt abgelöst werden, von Phasen, in denen über einen längeren Zeitraum das zuvor erreichte Allzeithoch nicht übertroffen wird.</p>
+<p>Ich habe die drei Indizes Dax 30, NASDAQ 100 und S&amp;P 500 Total Return untersucht, die ich schon im Post <a href="https://www.jantau.com/post/18-jahre-sparen/">18 Jahre für das Kind sparen</a> miteinander verglichen hatte. Die Ergebnisse unterscheiden sich durchaus voneinander und sind es Wert, genauer analysiert zu werden.</p>
+<p>Als Untersuchungszeitraum habe ich den 1.1.1990 bis zum 10.3.2021 gewählt. Mit dem R-Paket <a href="https://cran.r-project.org/web/packages/tidyquant/index.html"><code>tidyquant</code></a> können für diesen Zeitraum die Daten von <a href="https://finance.yahoo.com">Yahoo Finance</a> eingelesen und ausgewertet werden.</p>
+<div id="dax-30" class="section level2">
+<h2>Dax 30</h2>
+<p>Der Dax 30 hat vom 1.1.1990 bis zum 8.3.2021 insgesamt an <strong>325</strong> Handelstagen mit einem Allzeithoch geschlossen. Anders ausgedrückt: An jedem 24. Handelstag (4,12 % der Handelstage oder 325 von 7881) schließt der Dax mit einem neuen Allzeithoch.</p>
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+<div id="nasdaq-100" class="section level2">
+<h2>NASDAQ 100</h2>
+<p>Der NASDAQ 100 hat vom 1.1.1990 bis zum 10.3.2021 insgesamt an <strong>553</strong> Handelstagen mit einem Allzeithoch geschlossen. An jedem 14. Handelstag (7,04 % der Handelstage oder 553 von 7856) schließt der NASDAQ 100 mit einem neuen Allzeithoch.</p>
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+</div>
+<div id="sp-500-tr" class="section level2">
+<h2>S&amp;P 500 TR</h2>
+<p>Der S&amp;P 500 TR hat vom 1.1.1990 bis zum 8.3.2021 insgesamt an <strong>770</strong> Handelstagen mit einem Allzeithoch geschlossen. Anders ausgedrückt: An jedem 10. Handelstag (9,8 % der Handelstage oder 770 von 7856) schließt der S&amp;P 500 TR mit einem neuen Allzeithoch.</p>
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+</div>
+<div id="unter-dem-strich" class="section level2">
+<h2>Unter dem Strich</h2>
+<p>Die Analyse zeigt: Es ist nicht wahnsinnig selten, dass ein Allzeithoch erreicht wird.</p>
+<p>Insbesondere beim S&amp;P 500 scheint ein Allzeithoch dem nächsten zu folgen, da in den letzten 30 Jahren 10 % der Handelstage mit einem Allzeithoch beendet wurden.</p>
+<p>Allerdings zeigen die Grafiken auch, dass die Allzeithochs ziemlich unregelmäßig verteilt sind. Es gibt Phasen, in denen ein Allzeithoch dem nächsten folgt und dann gibt es lange Durststrecken in denen jahrelang das zuletzt erreichte Allzeithoch nicht übertroffen werden kann. Eine extreme Phase hat beispielsweise der NASDAQ 100 vorzuweisen. Das Allzeithoch am 27.3.2000 wurde erst über 15 Jahre (oder 5699 Tage) später am 3.11.2015 übertroffen.</p>
+<p>Dax 30 und S&amp;P 500 TR waren weniger stark von der DotCom-Blase betroffen und schafften es vor der Finanzkrise für einen kurzen Zeitraum wieder eine Reihe von Allzeithochs zu erreichen.</p>
+<p>Seit dem Jahr 2016 befinden sich nun sowohl der NASDAQ 100 als auch der S&amp;P 500 TR in einer Phase, die relativ kontinuierlich mit nur kürzeren Unterbrechungen Allzeithochs aufweist.</p>
+<p>Der Dax 30 hat in den letzten Jahren weniger Freude gemacht. Während der NASDAQ 100 seit 2016 an 227 Handelstagen mit einem Allzeithoch schloss und der S&amp;P 500 TR dieses an 211 Handelstagen erreichte, konnte der Dax 30 lediglich an 41 Handelstagen mit einem neuen Höchststand schließen.</p>
+<p>Aber was bedeutet diese Analyse für den Investor. Lohnt es sich zum Allzeithoch zu investieren oder kann man getrost auf den nächsten Crash warten, um dann einzusteigen/nachzulegen.</p>
+<p>Ich kann in den Allzeithochs kein Muster erkennen. Es kann lange Phasen geben von über 10 Jahren geben, in denen kontinuierliche neue Allzeithochs erreicht werden. Diese können von Phasen abgelöst werden, in denen 15 Jahre lang nicht an die vergangenen Höchststände angeschlossen werden kann. Für Investoren mit schwachen Nerven ist sicherlich der S&amp;P 500 TR eine gute Wahl, dieser Index hat im Untersuchungszeitraum 1990 bis heute ziemlich kontinuierlich neue Höchstwerte erzielt und weist mit sechs Jahren (genau 2243 Tage vom 1.9.2000 bis 23.10.2006) die kürzeste Durststrecke auf.</p>
+<p>Es ist somit kein gravierender Fehler, bei einem Allzeithoch einzusteigen. Früher oder später wird ein neues Allzeithoch erreicht (so war es zumindest in der Vergangenheit).</p>
+<p>Ob es jedoch besonders klug ist, bei einem Allzeithoch einzusteigen, ist eine andere Frage. Um mich dieser anzunähern, habe ich berechnet, wie häufig ein Allzeithoch nie wieder unterboten wird. Die Antwort hierauf: <strong>In der Regel wird ein Allzeithoch durch zukünftige Schlusskurse wieder unterboten.</strong> Es bietet sich demnach häufig nach einem Allzeithoch die Gelegenheit, zu einem günstigeren Kurs einzusteigen.</p>
+<p>Für den Dax hat diese Aussage in den letzten 30 Jahren immer zugetroffen. Lediglich vier Allzeithochs (die roten Punkte in der Grafik), wurden nicht wieder unterboten und das sind die Höchststände der vergangenen Tage, die mit hoher Wahrscheinlichkeit noch einmal unterboten werden. In Prozent wurde somit lediglich in 1,2 % (4 von 326) der Fälle ein Allzeithoch nicht wieder unterboten.</p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p>Der NASDAQ 100 weist 28 Handelstage mit einem Allzeithoch auf, das in den folgenden Monaten und Jahren nicht wieder unterboten wurde (die roten Punkte in der Grafik). In Prozent wurde lediglich in 5 % (28 von 553) der Fälle ein Allzeithoch nicht wieder unterboten.</p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p>Der S&amp;P 500 TR hat in den letzten 30 Jahren an 48 Handelstagen mit einem Allzeithoch geschlossen, das nicht wieder unterboten wurde (die roten Punkte in der Grafik). In Prozent wurde lediglich in 6,2 % (48 von 770) der Fälle ein Allzeithoch nicht wieder unterboten.</p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p>Die letzten Grafiken zeigen: In aller Regel bietet sich nach einem Allzeithoch schon die Gelegenheit, zu einem günstigeren Kurs in den Index einzusteigen. Ob sich das Abwarten auf günstigere Kurse bei einem langfristigen Anlagehorizont tatsächlich lohnt oder ob ein geringfügig niedrigerer Kurs langfristig nicht ins Gewicht fällt, ist sicherlich eine andere Frage.</p>
 <p>Den für diesen Beitrag erstellten Code findest du hier: <a href="https://github.com/jantau/jantau" class="uri">https://github.com/jantau/jantau</a></p>
+</div>
