@@ -177,4 +177,15 @@ Es war jedoch nicht möglich, die Pixel-Dimension von 512*512, [die von Wowchemy
 
 Das Icon musste im letzten Schritt als `icon.png` gespeichert werden und in den Ordner `jantau/assets/images` abgelegt werden.
 
+## Shiny App Test
+
+```{r}
+knitr::include_app("https://jantau.shinyapps.io/ter_surcharge/", 
+  height = "600px")
+```
+
+
+
+
+
 Den für diesen Beitrag erstellten Code findest du hier: https://github.com/jantau/jantau
