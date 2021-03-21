@@ -23,5 +23,5 @@ source("/Users/jan/blog/jantau/content/post/header.R")
 
 
 
-Den für diesen Beitrag erstellten Code findest du hier: https://github.com/jantau/jantau
+Den für diesen Beitrag erstellten Code findest du hier: [https://github.com/jantau/jantau](https://github.com/jantau/jantau/tree/main/content/post){target="_blank"}
 

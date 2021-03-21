@@ -62,33 +62,29 @@ dax <- dax %>%
 
 
 ```{r}
-
-
-  # Find all-time highs
-  for (i in 1:nrow(dax)){
-    if(dax[i, "adjusted"] < max(dax[1:i, "adjusted"])){
-      dax[i, "ath"] <- 0
-    } else{
-      dax[i, "ath"] <- 1
-    }
+# Find all-time highs
+for (i in 1:nrow(dax)) {
+  if (dax[i, "adjusted"] < max(dax[1:i, "adjusted"])) {
+    dax[i, "ath"] <- 0
+  } else {
+    dax[i, "ath"] <- 1
   }
-
+}
 
 dax_ath <- dax %>% filter(ath == 1) %>%
   mutate(days = date - lag(date))
 
-  # Find last lows
-  for (i in 1:nrow(dax)){
-    if(dax[i, "adjusted"] > min(dax[i:last(nrow(dax)), "adjusted"])){
-      dax[i, "last_low"] <- 0
-    } else{
-      dax[i, "last_low"] <- 1
-    }
+# Find last lows
+for (i in 1:nrow(dax)) {
+  if (dax[i, "adjusted"] > min(dax[i:last(nrow(dax)), "adjusted"])) {
+    dax[i, "last_low"] <- 0
+  } else {
+    dax[i, "last_low"] <- 1
   }
+}
 
 dax_lastlow <- dax %>% filter(last_low == 1 & ath == 1) %>%
   mutate(days = date - lag(date))
-  
 ```
 
 ```{r}
@@ -98,7 +94,7 @@ ggplot(dax, aes(x = date, y = adjusted)) +
   geom_line(color = pal[1]) +
   geom_point(
     data = dax %>% filter(ath == 1),
-    aes (x = date, y = adjusted),
+    aes(x = date, y = adjusted),
     color = pal[2],
     size = 1,
     alpha = .5
@@ -126,9 +122,10 @@ Der NASDAQ 100 hat vom 1.1.1990 bis zum 10.3.2021 insgesamt an **553** Handelsta
 
 ```{r}
 nasdaq <- tq_get("^NDX",
-              get  = "stock.prices",
-              from = "1990-01-01",
-              to = "2021-03-09")
+  get = "stock.prices",
+  from = "1990-01-01",
+  to = "2021-03-09"
+)
 ```
 
 ```{r}
@@ -139,26 +136,26 @@ nasdaq <- nasdaq %>%
 
 
 ```{r}
-  # Find all-time highs
-  for (i in 1:nrow(nasdaq)){
-    if(nasdaq[i, "adjusted"] < max(nasdaq[1:i, "adjusted"])){
-      nasdaq[i, "ath"] <- 0
-    } else{
-      nasdaq[i, "ath"] <- 1
-    }
+# Find all-time highs
+for (i in 1:nrow(nasdaq)) {
+  if (nasdaq[i, "adjusted"] < max(nasdaq[1:i, "adjusted"])) {
+    nasdaq[i, "ath"] <- 0
+  } else {
+    nasdaq[i, "ath"] <- 1
   }
+}
 
 nasdaq_ath <- nasdaq %>% filter(ath == 1) %>%
   mutate(days = date - lag(date))
 
-  # Find last lows
-  for (i in 1:nrow(nasdaq)){
-    if(nasdaq[i, "adjusted"] > min(nasdaq[i:last(nrow(nasdaq)), "adjusted"])){
-      nasdaq[i, "last_low"] <- 0
-    } else{
-      nasdaq[i, "last_low"] <- 1
-    }
+# Find last lows
+for (i in 1:nrow(nasdaq)) {
+  if (nasdaq[i, "adjusted"] > min(nasdaq[i:last(nrow(nasdaq)), "adjusted"])) {
+    nasdaq[i, "last_low"] <- 0
+  } else {
+    nasdaq[i, "last_low"] <- 1
   }
+}
 
 nasdaq_lastlow <- nasdaq %>% filter(last_low == 1 & ath == 1) %>%
   mutate(days = date - lag(date))

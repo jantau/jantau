@@ -1,12 +1,12 @@
 ---
-title: Lost Decade und DCA
+title: Wer hat Angst vor der nächsten "Lost Decade"?
 author: Jan Tau
-date: '2021-03-13'
+date: '2021-03-21'
 slug: lost-decade-und-dca
 categories: []
-tags: []
-subtitle: ''
-summary: ''
+tags: ["S&P 500", "Durchschnittskosteneffekt"]
+subtitle: 'Über die Bedeutung des Durchschnittskosteneffekts (Dollar cost averaging) in fallenden Märkten.'
+summary: 'Über die Bedeutung des Durchschnittskosteneffekts (Dollar cost averaging) in fallenden Märkten.'
 authors: []
 lastmod: '2021-03-13T15:21:24+01:00'
 featured: no
@@ -17,13 +17,309 @@ image:
 projects: []
 ---
 
-Story:
-Angst vor der nächsten Last Decade geht um. Quellen aus Video von Graham Stephen
 
-Was ist eine Lost Decade. Blick auf S&P 500 zwischen 2000 und 2010.
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = FALSE,
+	message = FALSE,
+	warning = FALSE,
+	collapse = TRUE,
+	options(scipen = 999)
+)
 
-Relativierung dieser Perspektive durch S&P 500 Total Retunr
+cat("\014") # Clear your console
+rm(list = ls()) # Clear your environment
 
-Rendite berrechnen, die durch Durchschnittskosteneffekt erzielt worden wäre.
+# Load in header file
+source("/Users/jan/blog/jantau/content/post/header.R")
+```
 
+## Angst vor einer Lost Decade
+
+In den letzten Monaten häufen sich die Stimmen, die vor einer Lost Decade der Aktienmärkte warnen. Steigende Zinsen, sinkendes Wachstum, nicht erfüllbare Gewinnerwartungen und die Auswirkungen der Covid-19-Pandemie lassen eine niedrigere oder negative Rendite im nächsten Jahrzehnt befürchten. Bridgewater-Analysten sehen vor allem einen [Rückgang der Unternehmensgewinne](https://www.bloomberg.com/news/articles/2020-06-18/dalio-s-bridgewater-warns-of-possible-lost-decade-for-stocks){target="_blank"} und Tony James von Blackstone argumentiert: ["I think this could be a lost decade in terms of equity appreciation."](https://www.cnbc.com/2020/09/16/blackstone-warns-of-lost-decade-with-anemic-stock-market-returns.html){target="_blank"} Auch Charlie Munger von Berkshire Hathaway erwartet, dass die [Renditen in den nächsten 10 Jahren niedriger](https://finance.yahoo.com/news/berkshires-charlie-munger-warns-against-124149768.html){target="_blank"} sein werden, als sie es in den letzten 10 Jahren waren. 
+
+Die Bezugnahme auf einen Zehnjahreszeitraum weckt Assoziationen an die letzte Verlorene Dekade, die 2000er Jahre, als die US-Aktienkurse - von Dot-Com-Blase und Finanzkrise gebeutelt - Anfang der 2010er Jahre niedriger standen als ein Jahrzehnt zuvor.
+
+## Steigende Kurse und Phasen der Stagnation
+
+Dabei sind Aktien über einen langen Zeitraum betrachtet in der Vergangenheit kontinuierlich gestiegen, wie der Kursverlauf des S&P 500 von 1928 bis 2021 zeigt, der in diesem Zeitraum von 18 auf 3919 Punkte gestiegen ist und eine annualisierte Rendite oder Annualized Return von 6 % aufweist (ohne die Reinvestition der Dividenden und nicht inflationsbereinigt).
+
+
+```{r}
+sp_500_total <- tq_get(c("^GSPC"),
+                       get  = "stock.prices",
+                       from = "1900-01-01",
+                       to = "2021-03-20")
+
+pal <- got(1, option = "Daenerys", direction = 1)
+
+ggplot(sp_500_total, aes(date, adjusted)) +
+  geom_line(color = pal) +
+  scale_y_log10(breaks = c(10, 100, 1000, round(max(
+    sp_500_total$adjusted
+  ), 0))) +
+  scale_x_date(
+    date_breaks = "10 years",
+    date_labels = "%Y",
+    limits = c(as.Date("1925-01-01"), as.Date("2022-01-01"))
+  ) +
+  theme_jantau +
+  theme(axis.title.x = element_blank()) +
+  labs(
+    title = "S&P 500 von 1928 bis 2021",
+    subtitle = "(ohne Reinvestition von Dividenden und nicht inflationsbereinigt)",
+    caption = "Datenanalyse u. Visualisierung: jantau.com | Daten: finance.yahoo.com",
+    y = "Kurs (in logarithmischer Darstellung)"
+  ) +
+  geom_label(
+    data = sp_500_total %>% mutate(perc = last(adjusted) / first(adjusted) -
+                                     1) %>% filter(date == last(date)),
+    aes(
+      x = date,
+      y = adjusted,
+      label = paste0("Annualized Return 1928 bis 2021 = ", round(((1 + perc) ^
+                                                                    (1 / 93.28) - 1
+      ) * 100), " %")
+    ),
+    show.legend = FALSE,
+    color = pal[1],
+    alpha = 0.7,
+    hjust = "right",
+    size = 3.5,
+    label.size = 0.15,
+    label.padding = unit(0.2, "lines")
+  )
+
+# Annualized Return: https://www.investopedia.com/terms/a/annualized-total-return.asp
+```
+
+
+```{r}
+# Load data
+sp_500 <- tq_get(c("^GSPC", "^SP500TR"),
+              get  = "stock.prices",
+              from = "2000-03-24",
+              to = "2013-02-19")
+```
+
+
+```{r}
+# Transform data
+sp_500_perc <- sp_500 %>%
+  group_by(symbol) %>%
+  mutate(perc = (adjusted/first(adjusted)-1)*100) %>%
+  select(symbol, date, perc) %>%
+  mutate(symbol = replace(symbol, symbol == "^GSPC", "S&P 500")) %>%
+  mutate(symbol = replace(symbol, symbol == "^SP500TR", "S&P 500 TR"))
+```
+
+```{r}
+# Create DCA data
+sp_500_dca <- sp_500 %>%
+  filter(symbol == "^SP500TR") %>%
+  mutate(year = year(date)) %>%
+  mutate(month = as.factor(month(date))) %>%
+  mutate(year_mon = floor_date(date, "month")) %>%
+  distinct(symbol, year_mon, .keep_all=T)
+  
+sp_500_dca <- sp_500_dca  %>%
+  mutate(anteil = 100/adjusted) %>%
+  mutate(anteil_cumsum = cumsum(anteil)) %>%
+  mutate(wert = anteil_cumsum*adjusted) %>%
+  mutate(ansparen = 100) %>%
+  mutate(ansparen_cumsum = cumsum(ansparen))
+
+sp_500_dca_perc <- sp_500_dca %>%
+  mutate(perc = (wert/ansparen_cumsum-1) * 100) %>%
+  mutate(symbol = "S&P 500 TR DCA") %>%
+  select(symbol, date, perc)
+```
+
+```{r}
+# Combine data
+sp_500_perc_total <- rbind(sp_500_perc, sp_500_dca_perc)
+```
+
+```{r}
+# Count plus and minus days
+sp_500_perc_total <- sp_500_perc_total %>%
+  mutate(pos_neg = ifelse(perc < 0, 0, 1))
+```
+
+
+Der kontinuierliche Anstieg der Kurse kann jedoch von längeren Phasen sinkender oder stagnierender Kurse unterbrochen werden. 
+
+## Die Lost Decade der 2000er Jahre
+
+Die 2000er Jahre sind eine Lost Decade, in der beispielsweise der S&P 500 erst im Februar 2013 dauerhaft die 13 Jahre zuvor im März 2000 erreichten Höchststände hinter sich ließ (siehe nächste Grafik).
+
+Diese längeren Phasen sinkender oder stagnierender Kurse werden als gewichtiges Argument [für die Diversifikation durch nicht korrelierende Anlageklassen wie Anleihen](https://www.pattonfunds.com/remembering-a-lost-decade.html){target="_blank"} herangezogen.
+
+Etwas weniger dramatisch stellt sich eine solche Phase jedoch dar, wenn der S&P 500 nicht als Kursindex, sondern als Performance-Index, also unter Berücksichtigung der reinvestierten Dividenden, untersucht wird. Der S&P 500 Total Return schwenkte beispielsweise bereits Ende 2011 dauerhaft in den grünen Bereich und hatte zuvor schon kürzere Zeiten im Plus vorzuweisen.
+
+## Der Durchschnittskosteneffekt als zeitliche Diversifikation
+
+Eine Form der Diversifikation kann die zeitliche Diversifikation sein. Es wird nicht über Anlageklassen und Regionen diversifiziert, sondern kontinuierlich über einen längeren Zeitraum. Hierbei kommt der Durchschnittskosteneffekt (Dollar Cost Averaging) zum Tragen. Wurde in dem Zeitraum 2000 bis 2013 kontinuierlich Monat für Monat ein Betrag X investiert, so ist der Zeitraum nicht mehr verloren, sondern erbringt für den insgesamt eingesetzten Betrag eine Gesamtrendite von 47,5 %.
+
+
+```{r}
+# Plot data
+pal <- got(5, option = "Daenerys", direction = 1)
+
+ggplot(sp_500_perc_total,
+       aes(x = date, y = perc),
+       color = ifelse(perc < 0, pal[1], pal[3])) +
+  geom_line() +
+  geom_hline(yintercept = 0,
+             linetype = "dotted",
+             color = "grey") +
+  geom_area(mapping = aes(y = ifelse(perc < 0, perc, 0)),
+            fill = pal[1],
+            alpha = 0.5) +
+  geom_area(mapping = aes(y = ifelse(perc > 0, perc, 0)),
+            fill = pal[3],
+            alpha = 0.5) +
+  # Annotation
+  geom_label(
+    data = sp_500_perc_total %>% group_by(symbol) %>% slice_tail(),
+    aes(
+      x = date,
+      y = perc,
+      label = paste0(round(perc, 1), " %")
+    ),
+    show.legend = FALSE,
+    color = pal[2],
+    alpha = 0.7,
+    nudge_y = 3,
+    size = 2.5,
+    label.size = 0.1,
+    label.padding = unit(0.1, "lines"),
+  ) +
+  geom_label(
+    data = sp_500_perc_total %>% group_by(symbol) %>% filter(date == "2007-10-01"),
+    aes(
+      x = date,
+      y = perc,
+      label = paste0(round(perc, 1), " %")
+    ),
+    show.legend = FALSE,
+    color = pal[2],
+    alpha = 0.7,
+    nudge_y = 3,
+    size = 2.5,
+    label.size = 0.1,
+    label.padding = unit(0.1, "lines")
+  ) +
+  geom_text(
+    data = sp_500_perc_total %>% filter(symbol == "S&P 500" &
+                                          date == "2002-10-09"),
+    label = "Dot-Com-Blase",
+    hjust = "left",
+    alpha = .7,
+    size = 3
+  ) +
+  geom_text(
+    data = sp_500_perc_total %>% filter(symbol == "S&P 500" &
+                                          date == "2009-03-09"),
+    label = "Finanzkrise",
+    hjust = "left",
+    alpha = .7,
+    size = 3
+  ) +
+  # Theme
+  theme_jantau +
+  theme(panel.background = element_rect(fill = NA, color = "grey"),
+        axis.title.y = element_blank(),
+        axis.title.x = element_blank()) +
+  labs(
+    title = "The Lost Decade 2000-2013",
+    subtitle = "Bedeutung von Dollar Cost Averaging (DCA) des S&P 500 in fallenden Märkten",
+    caption = "Datenanalyse u. Visualisierung: jantau.com | Daten: finance.yahoo.com",
+    x = "",
+    y = ""
+  ) +
+  # Scales
+  scale_x_date(
+    date_breaks = "3 years",
+    date_labels = "%Y",
+    expand = c(0.1, 0)
+  ) +
+  scale_y_continuous(labels = dollar_format(suffix = " %",
+                                            prefix = "")) +
+  facet_wrap(~ symbol)
+```
+
+Die Gesamtrendite von 47,5 % über 13 Jahre ist nicht umwerfend, vor allem da Inflation und Produktkosten nicht berücksichtigt sind. Zudem erfordert es einiges an Disziplin und ein großes Vertrauen in die Anlagestrategie kontinuierlich, auch bei fallenden Kursen zu investieren. Eine große psychologische Bedeutung würde ich den längeren Abschnitten im Plus zuschreiben, die das Investieren in den Zeiten zwischen Dot-Com-Blase und Finanzkrise erträglicher gemacht haben.
+
+Die historische Untersuchung zeigt, dass das kontinuierliche Investieren als zeitliche Diversifikation betrachtet werden und einer Lost Decade einiges an Schrecken nehmen kann.
+
+
+```{r, eval = FALSE}
+# Alternative
+pal <- got(3, option = "Daenerys", direction = -1)
+
+ggplot(sp_500_perc_total) +
+  geom_rect(
+    aes(
+      xmin = as.Date("2001-03-01"),
+      xmax = as.Date("2002-10-30"),
+      ymin = -Inf,
+      ymax = Inf
+    ),
+    fill = "grey",
+    alpha = 0.3
+  ) +
+  geom_rect(
+    aes(
+      xmin = as.Date("2007-12-01"),
+      xmax = as.Date("2009-06-30"),
+      ymin = -Inf,
+      ymax = Inf
+    ),
+    fill = "grey",
+    alpha = 0.3
+  ) +
+  geom_line(aes(x = date, y = perc, color = symbol),
+            size = 0.5,
+            show.legend = FALSE) +
+  geom_hline(yintercept = 0) +
+  scale_color_manual(values = pal) +
+  scale_x_date(
+    date_breaks = "2 years",
+    date_labels = "%Y",
+    expand = c(0.1, 0)
+  ) +
+  scale_y_continuous(labels = dollar_format(suffix = " %",
+                                            prefix = "")) +
+  theme_jantau +
+  labs(title = "The Lost Decade", x = "", y = "") +
+  geom_label(
+    data = sp_500_perc_total %>% group_by(symbol) %>% slice_tail(),
+    aes(
+      x = date,
+      y = perc,
+      label = paste0(symbol, ",\n", round(perc, 1), " %")
+    ),
+    show.legend = FALSE,
+    color = pal,
+    alpha = 0.8
+  ) +
+  geom_label(
+    data = sp_500_perc_total %>% group_by(symbol) %>% filter(date == "2007-10-01"),
+    aes(
+      x = date,
+      y = perc,
+      label = paste0(round(perc, 1), " %")
+    ),
+    show.legend = FALSE,
+    color = pal,
+    alpha = 0.8
+  )
+
+
+```
+
+
+
+Den für diesen Beitrag erstellten Code findest du hier: [https://github.com/jantau/jantau](https://github.com/jantau/jantau/tree/main/content/post){target="_blank"}
 
