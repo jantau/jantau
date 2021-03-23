@@ -179,13 +179,12 @@ Das Icon musste im letzten Schritt als `icon.png` gespeichert werden und in den 
 
 ## Shiny App Test
 
-```{r}
-knitr::include_app("https://jantau.shinyapps.io/ter_surcharge/", 
-  height = "600px")
+<iframe height="1000" width="100%" frameborder="no" src="https://jantau.shinyapps.io/ter_surcharge/"> </iframe>
+
+
+```{r eval=FALSE, include=FALSE}
+knitr::include_app("https://jantau.shinyapps.io/ter_surcharge/", height = "700px")
 ```
 
 
-
-
-
-Den für diesen Beitrag erstellten Code findest du hier: https://github.com/jantau/jantau
+Den für diesen Beitrag erstellten Code findest du hier: [https://github.com/jantau/jantau](https://github.com/jantau/jantau/tree/main/content/post){target="_blank"}
