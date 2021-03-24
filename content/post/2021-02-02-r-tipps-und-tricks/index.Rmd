@@ -179,12 +179,20 @@ Das Icon musste im letzten Schritt als `icon.png` gespeichert werden und in den 
 
 ## Shiny App Test
 
-<iframe height="1000" width="100%" frameborder="no" src="https://jantau.shinyapps.io/ter_surcharge/"> </iframe>
+Ich habe zwei Möglichkeiten gefunden, mit Shiny erstellte Apps in Blog-Posts zu integrieren.
 
+Der erste ist in Yihui Xies [bookdown: Authoring Books and Technical Documents with R Markdown](https://bookdown.org/yihui/bookdown/web-pages-and-shiny-apps.html){target="_blank"} beschrieben. Hier wird die `knitr`-Funktion `ìnclude_app` empfohlen. Die Intergration meiner ersten Shiny-App erfolgt dann so:
 
-```{r eval=FALSE, include=FALSE}
+```{r eval=FALSE, include=TRUE}
 knitr::include_app("https://jantau.shinyapps.io/ter_surcharge/", height = "700px")
 ```
 
+Antoine Soetewey von Stats und R [empfiehlt ein `iframe`-Element zu nutzen](https://statsandr.com/blog/how-to-embed-a-shiny-app-in-blogdown/){target="_blank"}:
+
+```{r eval=FALSE, include=TRUE}
+<iframe height="1000" width="100%" frameborder="no" src="https://jantau.shinyapps.io/ter_surcharge/"> </iframe>
+```
+
+Nach einigen Versuchen hat sich die Integration der Shiny-URL in ein `iframe`-Element als überlegen erwiesen. Es wird erstens kein störender Rand um die Shiny-App gebildet und zweitens ist die Darstellung auf Mobilgeräten wesentlich besser, da die App an die Breite des Bildschirms angepasst wird und ein seitliches Scrollen bei dem Plot und dem Sidebar-Panel nicht nötig ist.
 
 Den für diesen Beitrag erstellten Code findest du hier: [https://github.com/jantau/jantau](https://github.com/jantau/jantau/tree/main/content/post){target="_blank"}
