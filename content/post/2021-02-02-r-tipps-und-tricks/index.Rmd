@@ -195,4 +195,6 @@ Antoine Soetewey von Stats und R [empfiehlt ein `iframe`-Element zu nutzen](http
 
 Nach einigen Versuchen hat sich die Integration der Shiny-URL in ein `iframe`-Element als überlegen erwiesen. Es wird erstens kein störender Rand um die Shiny-App gebildet und zweitens ist die Darstellung auf Mobilgeräten wesentlich besser, da die App an die Breite des Bildschirms angepasst wird und ein seitliches Scrollen bei dem Plot und dem Sidebar-Panel nicht nötig ist.
 
+<iframe height="1200" width="100%" frameborder="no" src="https://jantau.shinyapps.io/ter_surcharge/"> </iframe>
+
 Den für diesen Beitrag erstellten Code findest du hier: [https://github.com/jantau/jantau](https://github.com/jantau/jantau/tree/main/content/post){target="_blank"}

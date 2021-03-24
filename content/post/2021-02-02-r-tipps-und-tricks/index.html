@@ -164,10 +164,12 @@ indexvgl_monthly$symbol &lt;-
 <div id="shiny-app-test" class="section level2">
 <h2>Shiny App Test</h2>
 <p>Ich habe zwei Möglichkeiten gefunden, mit Shiny erstellte Apps in Blog-Posts zu integrieren.</p>
-<p>Der erste ist in Yihui Xies <a href="https://bookdown.org/yihui/bookdown/web-pages-and-shiny-apps.html" target="_blank">bookdown: Authoring Books and Technical Documents with R Markdown</a> beschrieben. Hier wird die <code>knitr</code>-Funktion <code>ìnclude_app</code> empfohlen. Die Intergration meiner ersten Shiny-App sieht dann so aus.</p>
+<p>Der erste ist in Yihui Xies <a href="https://bookdown.org/yihui/bookdown/web-pages-and-shiny-apps.html" target="_blank">bookdown: Authoring Books and Technical Documents with R Markdown</a> beschrieben. Hier wird die <code>knitr</code>-Funktion <code>ìnclude_app</code> empfohlen. Die Intergration meiner ersten Shiny-App erfolgt dann so:</p>
 <pre class="r"><code>knitr::include_app(&quot;https://jantau.shinyapps.io/ter_surcharge/&quot;, height = &quot;700px&quot;)</code></pre>
-<p>Antoine Soetewey von Stats und R <a href="https://statsandr.com/blog/how-to-embed-a-shiny-app-in-blogdown/" target="_blank">empfiehlt ein <code>iframe</code>-Element zu nutzen</a>.</p>
+<p>Antoine Soetewey von Stats und R <a href="https://statsandr.com/blog/how-to-embed-a-shiny-app-in-blogdown/" target="_blank">empfiehlt ein <code>iframe</code>-Element zu nutzen</a>:</p>
 <pre class="r"><code>&lt;iframe height=&quot;1000&quot; width=&quot;100%&quot; frameborder=&quot;no&quot; src=&quot;https://jantau.shinyapps.io/ter_surcharge/&quot;&gt; &lt;/iframe&gt;</code></pre>
-<p>Nach einigen Versuchen hat sich die Integration der Shiny-URL in ein <code>iframe</code>-Element als überlegen erwiesen. Es wird erstens kein störender Rand um die Shiny-App gebildet und zweitens ist die Darstellung auf Mobilgeräten wesentlich besser, da die App an die breite des Bildschirms angepasst wird und ein seitliches Scrollen bei dem Plot und dem Sidebar-Panel nicht nötig ist.</p>
+<p>Nach einigen Versuchen hat sich die Integration der Shiny-URL in ein <code>iframe</code>-Element als überlegen erwiesen. Es wird erstens kein störender Rand um die Shiny-App gebildet und zweitens ist die Darstellung auf Mobilgeräten wesentlich besser, da die App an die Breite des Bildschirms angepasst wird und ein seitliches Scrollen bei dem Plot und dem Sidebar-Panel nicht nötig ist.</p>
+<iframe height="1200" width="100%" frameborder="no" src="https://jantau.shinyapps.io/ter_surcharge/">
+</iframe>
 <p>Den für diesen Beitrag erstellten Code findest du hier: <a href="https://github.com/jantau/jantau/tree/main/content/post" target="_blank">https://github.com/jantau/jantau</a></p>
 </div>
