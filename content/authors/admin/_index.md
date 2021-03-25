@@ -50,7 +50,7 @@ Als Historiker bin ich darin trainiert, Fragestellungen (zu vergangenen Ereignis
 
 Die Arbeit in der Bibliothek und das Studium der Informationswissenschaften hat meine Kenntnisse und Interessen ergänzt um die (skriptbasierte) Strukturierung von Informationen, die Verwaltung, Analyse und Visualisierung von Daten sowie den benutzerorientierten Einsatz von IT-Anwendungen. 
 
-Auf dem Blog jantau.com verbinde ich diese beiden Rollen. Fragestellungen zu persönlichen Finanzen werden mit Werkzeugen der Datenanalyse bearbeitet und durch Visualisierung unterstützt in Blog-Posts beantwortet.
+Auf dem Blog jantau.com verbinde ich diese beiden Rollen. Fragestellungen zu persönlichen Finanzen werden mit Werkzeugen der Datenanalyse bearbeitet und durch Visualisierungen und Verbalisierungen in Blog-Posts beantwortet.
 
 
 Den erstellten Code findest du hier: https://github.com/jantau/jantau
