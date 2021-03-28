@@ -4,19 +4,21 @@ options(stringsAsFactors = FALSE)
 
 
 # Load libraries
-library(readxl)
-library(tidyverse)
-library(scales)
-library(xts)
-library(lubridate)
-library(stringr)
-library(gameofthrones) # farbpaletten
-library(DT)
-library(gt)
-library(tidyquant)
+
 library(directlabels)
+library(DT)
+library(gameofthrones) # farbpaletten
 library(ggrepel) # avoid overlapping labels 
 # https://blog.revolutionanalytics.com/2016/01/avoid-overlapping-labels-in-ggplot2-charts.html
+library(gt)
+library(lubridate)
+library(readxl)
+library(scales)
+library(stringr)
+library(tidyquant)
+library(tidyverse)
+library(xts)
+
 #library(plotly)
 #library(highcharter)
 #library(data.table)

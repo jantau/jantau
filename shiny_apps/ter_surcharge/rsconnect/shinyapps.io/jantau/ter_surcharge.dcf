@@ -5,6 +5,8 @@ account: jantau
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 3828659
-bundleId: 4377039
+bundleId: 4405029
 url: https://jantau.shinyapps.io/ter_surcharge/
-when: 1616356307.40932
+when: 1616961155.24051
+asMultiple: FALSE
+asStatic: FALSE

@@ -1,0 +1,53 @@
+---
+title: Renditeverlust durch Gebühren
+author: Jan Tau
+date: '2021-03-28'
+slug: renditeverlust
+categories: []
+tags: [ETF, "S&P 500", "NASDAQ 100", "Dax 30", Shiny]
+subtitle: 'Über die Bedeutung von Verwaltungs- und Ordergebühren für die Performance von ETF-Sparplänen'
+summary: 'Über die Bedeutung von Verwaltungs- und Ordergebühren für die Performance von ETF-Sparplänen'
+authors: []
+lastmod: '2021-03-23T22:04:26+01:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+math: true
+---
+
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="verwaltungs--und-ordergebühren" class="section level2">
+<h2>Verwaltungs- und Ordergebühren</h2>
+<p>Ich habe mich gefragt, welche Auswirkungen Gebühren auf die Performance von ETF-Sparplänen haben.</p>
+<p>Die Gebühren für ETFs bestehen in der Regel aus einer jährlichen Verwaltungsgebühr (Total Expense Ratio) und aus Transaktionskosten oder Ordergebühren, die beim Kauf und Verkauf anfallen. Die jährliche Verwaltungsgebühr wird vom ETF-Anbieter erhoben und beträgt bei <a href="https://www.justetf.com/de-en/find-etf.html?assetClass=class-equity&amp;sortField=ter&amp;sortOrder=asc&amp;groupField=none&amp;tab=overview" target="_blank">sehr günstigen ETFs 0,04 %</a> und bei <a href="https://www.justetf.com/de-en/find-etf.html?assetClass=class-equity&amp;sortField=ter&amp;sortOrder=desc&amp;groupField=none&amp;tab=overview" target="_blank">teuren ETFs bis zu 0,95 %</a>. Die Transaktionskosten fließen an die depotführende Bank und betragen <a href="https://www.finanzfluss.de/vergleich/etf-sparplan/" target="_blank">zwischen 0 % und 2,5 %</a>.</p>
+<p>Auch aktiv gemanagte Investmentfonds erheben eine jährliche Verwaltungsgebühr (oft Managementgebühr genannt) und eine Transaktionsgebühr (Ausgabeaufschlag). Diese sind jedoch wesentlich höher als bei passiven Anlageprodukten. So kann von einer jährlichen Managementgebühr von 1,5 % ausgegangen werden und von einem Ausgabeaufschlag von 4 % (<a href="https://www.deka.de/privatkunden/fondssuche" target="_blank">siehe beispielsweise Deka-Fonds</a>).</p>
+<p>Klar, diese Gebühren wirken sich negativ auf die Performance der Index- oder Investmentfonds im Vergleich zu ihren Benchmarks aus. Indexfonds oder ETFs verlieren jährlich die Verwaltungsgebühr auf den replizierten Index (es sei denn, der Tracking Error ist negativ) und Investmentfonds müssten ihren Bench jährlich um die Managementgebühr von beispielsweise 1,5 % schlagen, um eine identische Performance zu erzielen. Hinzu kommen die Transaktionsgebühren, die nicht monatlich oder jährlich zu Buche schlagen, sondern beim Einstieg (und ggf. beim Ausstieg).</p>
+<p>Die Gebühren werden von den Depotbanken und den ETF- beziehungsweise Fondsanbietern offengelegt und sind somit transparent. Nicht transparent ist jedoch, wie sich diese Gebühren tatsächlich auf die Rendite auswirken. Das liegt am Zinseszinseffekt, dessen negatives exponentielles Wachstum erst nach einiger Zeit deutlich wird und dessen Auswirkungen intuitiv schwer abzuschätzen sind.</p>
+<p>Was bedeutet es also für die langjährige Rendite, wenn ein passiver Indexfonds eine Verwaltungsgebühr von 0,2 % und eine Ordergebühr von 1 % hat oder ein aktiver Investmentfond eine Managementgebühr von 1,5 % und einen Ausgabeaufschlag von 4 %?</p>
+</div>
+<div id="kostenrechner-für-renditeverlust" class="section level2">
+<h2>Kostenrechner für Renditeverlust</h2>
+<p>Ich habe einen Kostenrechner programmiert, der den Renditeverlust durch diese Gebühren berechnet.</p>
+<p>Die Datengrundlage sind nicht eine angenommene feste Verzinsung (wie in existierenden Rechnern), sondern die historischen Kursverläufe von S&amp;P 500, NASDAQ 100 und Dax 30.</p>
+<p>Im Rechner können monatliche Einzahlungen und/oder eine einmalige Zahlung zu Beginn des Anlagezeitraums definiert werden. Zusätzlich können Gebühren festgelegt werden. Bei der jährlichen Verwaltungsgebühr (TER) oder dem Tracking Error in % wird ein Zwölftel der Gebühr monatlich vom Investitionsvolumen abgezogen. Die Ordergebühr in % wird einmalig von den Einlagen (monatlich oder einmalig) abgezogen.</p>
+<p>Der Kostenrechner visualisiert die Entwicklung der Anlage vor und nach Gebühren. Zusätzlich werden die gesamten Gebühren aufgelistet und ins Verhältnis zum Endbetrag des gesamten Investitionsvolumen gesetzt.</p>
+<p>Zuletzt wird der Renditeverlust berechnet. Er ist definiert als:</p>
+<p><span class="math display">\[
+1-\frac{Endbetrag\_nach\_Kosten-Ansparsumme}{Endbetrag\_vor\_Kosten-Ansparsumme}
+\]</span></p>
+<p>Für mich ist der Renditeverlust die entscheidende Größe. Um den Erfolg eines Investments zu bestimmen, muss ich wissen, um wie viel Prozent oder um welchen Wert der investierte Betrag gewachsen (oder gesunken) ist. Analog hierzu möchte ich wissen, um wie viel Prozent die Rendite insgesamt über den gesamten Investitionszeitraum durch die Gebühren reduziert wurde.</p>
+<p>Über den Kostenrechner können die historischen Kursverläufe von 1990 bis heute genutzt werden, um die Auswirkungen von Gebühren auf die Rendite bei monatlichen Einzahlungen oder bei einer einmaligen Einzahlung zu überprüfen.</p>
+<iframe height="1200" width="100%" frameborder="no" src="https://jantau.shinyapps.io/ter_surcharge/">
+</iframe>
+<p>Ein paar Beispiele aus dem Rechner:</p>
+<p>Bei einem thesaurierenden ETF auf den S&amp;P 500 mit einer jährlichen Gebühr von 0,1 % und einer Ordergebühr von 1 % hätte ich bei einem monatlichen Sparplan von 2010 bis 2021 einen Renditeverlust von 2,9 % zu verzeichnen.</p>
+<p>Bei einem fiktiven Investmentfonds-Sparplan, der dem Kursverlauf des S&amp;P 500 TR, mit einer jährlichen Gebühr von 1,5 % und einer Ordergebühr von 4 % gefolgt wäre, hätte ich bei einem monatlichen Sparplan von 2010 bis 2021 einen Renditeverlust von 23 % zu verzeichnen.</p>
+<p>Der gleiche Sparplan - nicht für 11 Jahre bespart, sondern für 31 Jahre (Anfang 1990 bis Anfang 2021) - verzeichnet bei derselben Kostenstruktur einen Renditeverlust von 36 %.</p>
+<p>Das Beispiel mit dem Investmentfonds zeigt eindrucksvoll, warum das Investieren mit einer solchen Kostenstruktur keinen Sinn ergibt. Ein solcher Fonds müsste seine Benchmark deutlich übertreffen, um den durch Gebühren verursachten Renditeverlust auszugleichen.</p>
+<p>Den für diesen Beitrag erstellten Code findest du hier: <a href="https://github.com/jantau/jantau/tree/main/content/post" target="_blank">https://github.com/jantau/jantau</a></p>
+</div>

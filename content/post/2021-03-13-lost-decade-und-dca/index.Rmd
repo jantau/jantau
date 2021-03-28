@@ -319,7 +319,95 @@ ggplot(sp_500_perc_total) +
 
 ```
 
-
-
 Den für diesen Beitrag erstellten Code findest du hier: [https://github.com/jantau/jantau](https://github.com/jantau/jantau/tree/main/content/post){target="_blank"}
+
+```{r}
+ind <- tq_get(c("^SP500TR"),
+              get  = "stock.prices",
+              from = "2010-01-01",
+              to = "2021-03-20")
+```
+
+```{r}
+index <- ind %>%
+    group_by(symbol) %>%
+    arrange(date, .by_group = TRUE)
+
+index <- index %>%
+    select(1, 2, 8) %>%
+    mutate(year = year(date)) %>%
+    mutate(month = as.factor(month(date))) %>%
+    mutate(year_mon = floor_date(date, "month")) %>%
+    distinct(symbol, year_mon, .keep_all=T) %>%
+    select(1, 2, 3)
+
+
+ter <- 0.5
+surcharge <- 4
+savings_rate <- 100
+one_time <- 1000
+
+ter_month <- ter/100/12
+net_savings_rate <- savings_rate * ((100-surcharge)/100)
+net_savings_rate <- 100
+```
+
+```{r}
+index_2 <- index %>%
+            mutate(anteil_one_time = one_time/adjusted) %>%
+            mutate(wert_one_time = first(anteil_one_time)*adjusted) %>%
+  
+            mutate(anteil = net_savings_rate/adjusted) %>%
+            mutate(anteil_cumsum = cumsum(anteil)) %>%
+            mutate(wert = anteil_cumsum*adjusted) %>%
+            
+            mutate(ter = wert * ter_month) %>%
+            mutate(ter_cumsum = cumsum(ter)) %>%
+            mutate(wert_ter = wert - ter_cumsum) %>%
+            
+            mutate(anteil_pure = savings_rate/adjusted) %>%
+            mutate(anteil_cumsum_pure = cumsum(anteil_pure)) %>%
+            mutate(wert_pure = anteil_cumsum_pure*adjusted) %>%
+            
+            mutate(ansparen = savings_rate) %>%
+            mutate(ansparen_cumsum = cumsum(ansparen)) %>%
+  
+            mutate(X = lag(ansparen) + 100 * 0.99)
+```
+
+```{r}
+index_2[1, "wert_ter2"] <- net_savings_rate * (1 - ter_month)
+
+for (i in 2:nrow(index_2)) {
+  index_2[i, "wert_ter2"] <-
+    (((index_2[i - 1, "wert_ter2"] / index_2[i - 1, "adjusted"]) + (net_savings_rate /
+                                                                 index_2[i, "adjusted"])) * index_2[i, "adjusted"]) * (1 - ter_month)
+}
+
+
+index_2 <- index_2 %>%
+  mutate(test_pure_ter2 = wert_pure - wert_ter2) %>%
+  mutate(test_pure_ter = wert_pure - wert_ter)
+```
+
+
+```{r}
+    index_2[1, "test"] <- net_savings_rate * (1 - ter_month)
+#    index_2[1, "test"] <- 100 * 0.99
+
+  for (i in 2:nrow(index_2)){
+    index_2[i, "test"] <- (index_2[i-1, "test"] + net_savings_rate) * (1 - ter_month)
+#    index_2[i, "test"] <- (index_2[i-1, "test"] + 100) * 0.99
+  }
+
+
+index_2[1, "wert_ter"] <- net_savings_rate * (1 - ter_month)
+        
+        for (i in 2:nrow(index_2)){
+            index_2[i, "wert_ter"] <- (index_2[i-1, "wert_ter"] + net_savings_rate) * (1 - ter_month)
+        }
+        
+```
+
+
 
