@@ -35,6 +35,7 @@ output:
 <li><a href="#favicon-ändern">Favicon ändern</a></li>
 </ul></li>
 <li><a href="#shiny-app-test">Shiny App Test</a></li>
+<li><a href="#legende-in-plot-titel-integrieren">Legende in Plot-Titel integrieren</a></li>
 </ul>
 </div>
 
@@ -171,5 +172,51 @@ indexvgl_monthly$symbol &lt;-
 <p>Nach einigen Versuchen hat sich die Integration der Shiny-URL in ein <code>iframe</code>-Element als überlegen erwiesen. Es wird erstens kein störender Rand um die Shiny-App gebildet und zweitens ist die Darstellung auf Mobilgeräten wesentlich besser, da die App an die Breite des Bildschirms angepasst wird und ein seitliches Scrollen bei dem Plot und dem Sidebar-Panel nicht nötig ist.</p>
 <iframe height="1200" width="100%" frameborder="no" src="https://jantau.shinyapps.io/ter_surcharge/">
 </iframe>
+</div>
+<div id="legende-in-plot-titel-integrieren" class="section level2">
+<h2>Legende in Plot-Titel integrieren</h2>
+<p>Die Beschriftung von Grafiken ist nicht die Stärke von ggplot. Es ist umständlich, Erläuterungen in der richtigen Formatierung an die richtige Stelle zu setzen. Es kann leicht geschehen, dass die Beschriftung überdeckt oder abgeschnitten wird. Dabei wird meines Erachtens eine effektive und grafisch anspruchsvolle Beschriftung von Plots immer wichtiger. In einem <a href="https://www.nytimes.com/interactive/2021/03/29/us/hispanic-vaccine-gap.html?action=click&amp;module=Top%20Stories&amp;pgtype=Homepage">Chart aus der New York Times</a> wurde beispielsweise die Legende in den Titel integriert.</p>
+<p><img src="nyt_chart.png" /></p>
+<p>Für Legenden mit wenigen Leveln halte ich das für einen eleganten Weg, um wichtige Informationen übersichtlich und ohne unnötige Redundanzen in der Grafik unterzubringen.</p>
+<p>Nach einigem Suchen habe ich auch einen Weg gefunden, der dies ziemlich gut ermöglicht. Mit dem <a href="https://wilkelab.org/ggtext/articles/introduction.html"><code>ggtext</code>-Package</a> können die Beschriftungen von Plots mit Markdown- und HTML-Auszeichnungen versehen werden.</p>
+<p>Über das Element <code>theme(plot.title = element_markdown())</code>wird definiert, dass der Plot-Titel mit <code>ggtext</code> erstellt wird. Im Plot-Titel kann dann mit HTML <code>&lt;span style='color:#2B818EFF;'&gt;Allzeithochs&lt;/span&gt;</code> die Farbe einzelner Wörter gezielt geändert werden. Leider muss ein Hex-Farbcode angegeben werden, da sich nicht eine zuvor definierte Variable einsetzen lässt.</p>
+<pre class="r"><code>library(ggtext)
+
+pal &lt;- got(3, option = &quot;Daenerys&quot;, direction = -1)
+
+ggplot(dax, aes(x = date, y = adjusted)) +
+  geom_line(color = pal[1]) +
+  geom_point(
+    data = dax %&gt;% filter(ath == 1),
+    aes (x = date, y = adjusted),
+    color = pal[2],
+    size = 1,
+    alpha = .2
+  ) +
+  geom_point(
+    data = dax %&gt;% filter(last_low == 1 &amp; ath == 1),
+    aes (x = date, y = adjusted),
+    color = pal[3],
+    size = 1,
+    alpha = 1
+  ) +
+  scale_y_log10() +
+  theme_jantau +
+  theme(
+    panel.grid.major.y = element_line(colour = &quot;grey&quot;, linetype = &quot;dashed&quot;),
+    plot.title = element_markdown()
+  ) +
+  labs(
+    title = &quot;&lt;span style=&#39;color:#2B818EFF;&#39;&gt;Allzeithochs&lt;/span&gt; Dax 30, die &lt;span style=&#39;color:#792427FF;&#39;&gt;nicht wieder unterboten&lt;/span&gt; werden&quot;,
+    x = &quot;&quot;,
+    y = &quot;Kurs (in logarithmischer Darstellung)&quot;,
+    color = &quot;&quot;,
+    fill = &quot;&quot;,
+    subtitle = &quot;Datenquelle: finance.yahoo.com; Datenanalyse: jantau.com&quot;
+  )</code></pre>
+<p><img src="dax_ath_title.png" /></p>
+<p>Die Alternative hierzu ist, eine herkömmliche Legende zu erstellen.</p>
+<p><img src="ndx_ath_legend.png" /></p>
+<p>Mir gefällt die erste Variante besser, da die Begriffe “Allzeithoch” und “nicht wieder unterboten” aus dem Titel nicht noch einmal in der Legende wiederholt werden müssen.</p>
 <p>Den für diesen Beitrag erstellten Code findest du hier: <a href="https://github.com/jantau/jantau/tree/main/content/post" target="_blank">https://github.com/jantau/jantau</a></p>
 </div>

@@ -197,4 +197,61 @@ Nach einigen Versuchen hat sich die Integration der Shiny-URL in ein `iframe`-El
 
 <iframe height="1200" width="100%" frameborder="no" src="https://jantau.shinyapps.io/ter_surcharge/"> </iframe>
 
+## Legende in Plot-Titel integrieren
+
+Die Beschriftung von Grafiken ist nicht die Stärke von ggplot. Es ist umständlich, Erläuterungen in der richtigen Formatierung an die richtige Stelle zu setzen. Es kann leicht geschehen, dass die Beschriftung überdeckt oder abgeschnitten wird. Dabei wird meines Erachtens eine effektive und grafisch anspruchsvolle Beschriftung von Plots immer wichtiger. In einem [Chart aus der New York Times](https://www.nytimes.com/interactive/2021/03/29/us/hispanic-vaccine-gap.html?action=click&module=Top%20Stories&pgtype=Homepage) wurde beispielsweise die Legende in den Titel integriert. 
+
+![](nyt_chart.png)
+
+Für Legenden mit wenigen Leveln halte ich das für einen eleganten Weg, um wichtige Informationen übersichtlich und ohne unnötige Redundanzen in der Grafik unterzubringen. 
+
+Nach einigem Suchen habe ich auch einen Weg gefunden, der dies ziemlich gut ermöglicht. Mit dem [`ggtext`-Package](https://wilkelab.org/ggtext/articles/introduction.html) können die Beschriftungen von Plots mit Markdown- und HTML-Auszeichnungen versehen werden.
+
+Über das Element `theme(plot.title = element_markdown())`wird definiert, dass der Plot-Titel mit `ggtext` erstellt wird. Im Plot-Titel kann dann mit HTML `<span style='color:#2B818EFF;'>Allzeithochs</span>` die Farbe einzelner Wörter gezielt geändert werden. Leider muss ein Hex-Farbcode angegeben werden, da sich nicht eine zuvor definierte Variable einsetzen lässt. 
+
+```{r eval=FALSE, include=TRUE}
+library(ggtext)
+
+pal <- got(3, option = "Daenerys", direction = -1)
+
+ggplot(dax, aes(x = date, y = adjusted)) +
+  geom_line(color = pal[1]) +
+  geom_point(
+    data = dax %>% filter(ath == 1),
+    aes (x = date, y = adjusted),
+    color = pal[2],
+    size = 1,
+    alpha = .2
+  ) +
+  geom_point(
+    data = dax %>% filter(last_low == 1 & ath == 1),
+    aes (x = date, y = adjusted),
+    color = pal[3],
+    size = 1,
+    alpha = 1
+  ) +
+  scale_y_log10() +
+  theme_jantau +
+  theme(
+    panel.grid.major.y = element_line(colour = "grey", linetype = "dashed"),
+    plot.title = element_markdown()
+  ) +
+  labs(
+    title = "<span style='color:#2B818EFF;'>Allzeithochs</span> Dax 30, die <span style='color:#792427FF;'>nicht wieder unterboten</span> werden",
+    x = "",
+    y = "Kurs (in logarithmischer Darstellung)",
+    color = "",
+    fill = "",
+    subtitle = "Datenquelle: finance.yahoo.com; Datenanalyse: jantau.com"
+  )
+```
+
+![](dax_ath_title.png)
+
+Die Alternative hierzu ist, eine herkömmliche Legende zu erstellen.
+
+![](ndx_ath_legend.png)
+
+Mir gefällt die erste Variante besser, da die Begriffe "Allzeithoch" und "nicht wieder unterboten" aus dem Titel nicht noch einmal in der Legende wiederholt werden müssen.
+
 Den für diesen Beitrag erstellten Code findest du hier: [https://github.com/jantau/jantau](https://github.com/jantau/jantau/tree/main/content/post){target="_blank"}

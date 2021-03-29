@@ -6,7 +6,7 @@ slug: gewinn-vs-verlust
 categories: []
 tags: []
 subtitle: ''
-summary: 'Über den %-Gewinn, der benötigt wird, um einen %-Verlust auszugleichen'
+summary: 'Über den %-Gewinn, der benötigt wird, um einen %-Verlust auszugleichen.'
 authors: []
 lastmod: '2021-02-14T10:58:38+01:00'
 featured: no
@@ -55,21 +55,24 @@ df <- dat %>%
 
 ```{r fig.height=7, fig.width=7}
 pal <- got(1, option = "Daenerys", direction = 1)
+library(ggtext)
 
 df %>%
   filter(gewinn <= 400) %>%
   ggplot()+
   geom_line(aes(verlust,gewinn), size = 2, color = pal) +
   scale_x_continuous(limits = c(0, 80)) +
-  labs(title = "Welchen %-Gewinn muss ich erzielen, \num einen %-Verlust wieder auszugleichen?",
-       subtitle = "Datenanalyse: jantau",
+  labs(title = "Welchen <span style='color:#792427;'>%-Gewinn</span> muss ich erzielen,<br> \num einen <span style='color:#792427;'>%-Verlust</span> wieder auszugleichen?",
+       subtitle = "Datenanalyse: jantau.com",
        x = "%-Verlust",
        y = "%-Gewinn") +
+  
   theme_jantau +
+  
+  theme(plot.title = element_markdown()) +
   geom_segment(aes(x = verlust, y = gewinn, yend=gewinn), xend=0, alpha = 0.5) 
 #+
  # geom_segment(aes(x = verlust, y = gewinn, xend=verlust), yend=0, alpha = 0.5) 
-
 ```
 
 ## Was bedeutet dieser Effekt für den Anleger?

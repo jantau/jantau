@@ -289,30 +289,36 @@ Ob es jedoch besonders klug ist, bei einem Allzeithoch einzusteigen, ist eine an
 Für den Dax hat diese Aussage in den letzten 30 Jahren immer zugetroffen. Lediglich vier Allzeithochs (die roten Punkte in der Grafik), wurden nicht wieder unterboten und das sind die Höchststände der vergangenen Tage, die mit hoher Wahrscheinlichkeit noch einmal unterboten werden. In Prozent wurde somit lediglich in 1,2 % (4 von 326) der Fälle ein Allzeithoch nicht wieder unterboten.
 
 ```{r}
+library(ggtext)
+
 pal <- got(3, option = "Daenerys", direction = -1)
 
 ggplot(dax, aes(x = date, y = adjusted)) +
   geom_line(color = pal[1]) +
   geom_point(
     data = dax %>% filter(ath == 1),
-    aes (x = date, y = adjusted, color = "Allzeithoch"),
+    aes (x = date, y = adjusted),
+    color = pal[2],
     size = 1,
-    alpha = .1
+    alpha = .2
   ) +
   geom_point(
     data = dax %>% filter(last_low == 1 & ath == 1),
-    aes (x = date, y = adjusted, color = "Nicht wieder unterbotenes Allzeithoch"),
+    aes (x = date, y = adjusted),
+    color = pal[3],
     size = 1,
     alpha = 1
   ) +
   scale_y_log10() +
   theme_jantau +
-  theme(panel.grid.major.y = element_line(colour = "grey", linetype = "dashed"),
-        legend.position = c(0.5, 0.98), legend.direction="horizontal") +
+  theme(
+    panel.grid.major.y = element_line(colour = "grey", linetype = "dashed"),
+    axis.title.x = element_blank(),
+    plot.title = element_markdown()
+  ) +
   scale_color_manual(values = c(pal[2], pal[3])) +
   labs(
-    title = "Allzeithochs Dax 30, die nicht wieder unterboten werden",
-    x = "",
+    title = "<span style='color:#2B818EFF;'>Allzeithochs</span> Dax 30, die <span style='color:#792427FF;'>nicht wieder unterboten</span> werden",
     y = "Kurs (in logarithmischer Darstellung)",
     color = "",
     fill = "",
