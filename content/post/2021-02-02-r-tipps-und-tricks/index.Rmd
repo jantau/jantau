@@ -207,7 +207,7 @@ Für Legenden mit wenigen Leveln halte ich das für einen eleganten Weg, um wich
 
 Nach einigem Suchen habe ich auch einen Weg gefunden, der dies ziemlich gut ermöglicht. Mit dem [`ggtext`-Package](https://wilkelab.org/ggtext/articles/introduction.html) können die Beschriftungen von Plots mit Markdown- und HTML-Auszeichnungen versehen werden.
 
-Über das Element `theme(plot.title = element_markdown())`wird definiert, dass der Plot-Titel mit `ggtext` erstellt wird. Im Plot-Titel kann dann mit HTML `<span style='color:#2B818EFF;'>Allzeithochs</span>` die Farbe einzelner Wörter gezielt geändert werden. Leider muss ein Hex-Farbcode angegeben werden, da sich nicht eine zuvor definierte Variable einsetzen lässt. 
+Über das Element `theme(plot.title = element_markdown())`wird definiert, dass der Plot-Titel mit `ggtext` erstellt wird. Im Plot-Titel kann dann mit HTML `<span style='color:#2B818EFF;'>Allzeithochs</span>` die Farbe einzelner Wörter gezielt geändert werden. (Leider muss ein Hex-Farbcode angegeben werden, da sich nicht wie im Plot eine zuvor definierte Variable einsetzen lässt.) 
 
 ```{r eval=FALSE, include=TRUE}
 library(ggtext)

@@ -1,0 +1,12 @@
+name: cappuccino
+title: cappuccino
+username:
+account: jantau
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3899022
+bundleId: 4421881
+url: https://jantau.shinyapps.io/cappuccino/
+when: 1617306944.19211
+asMultiple: FALSE
+asStatic: FALSE

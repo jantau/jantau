@@ -1,0 +1,42 @@
+---
+title: Cappuccino mit Anna
+author: Jan Tau
+date: '2021-04-04'
+slug: konsumrechner
+categories: []
+tags: [ETF, Shiny, Zinseszinseffekt]
+subtitle: 'Über Konsumgüter und Assets.'
+summary: 'Über Konsumgüter und Assets.'
+authors: []
+lastmod: '2021-04-04T10:11:37+02:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+Neulich war ich mit Anna auf dem Tempelhofer Feld. Es fuhr ein Coffee-Bike vorbei und Anna überlegte laut, sich einen Cappuccino zu kaufen. Ich konnte mir nicht verkneifen zu sagen: "Entweder du kaufst dir jetzt einem Cappuccino oder du legst das Geld in einen günstigen Indexfonds an und bist in 150 Jahren Millionär." (Ich habe  gut reden, denn ich trinke gerade keinen Kaffee.) Diese Aussage provozierte Anna und es folgte ein Gespräch über Konsum, Geiz und Assets.
+
+Meine etwas verkürzte Argumentation: Du kannst dein Geld für Konsumgüter oder für Assets ausgeben. Konsumgüter verlieren an Wert, Assets sind Anlageprodukte, die im Idealfall im Wert steigen und/oder eine regelmäßige Rendite erwirtschaften. Die Kosten von Konsumgütern sind in der Regel klar, es ist der Anschaffungspreis, der unmittelbar anfällt (solange man nicht auf Kredit kauft, was für Konsumgüter nun wirklich keine gute Idee ist) und gegebenenfalls die laufenden Betriebskosten. 
+
+Der Wert von Assets ist in der Regel nicht so einfach zu bestimmen. Zunächst steht die zukünftige Rendite aufgrund unsicherer Variablen wie Kurs- bzw. Preisentwicklung, Inflation, Gebühren, Steuern nicht fest. Des Weiteren lässt sich die Macht des Zinseszinseffekts nicht einfach und intuitiv überschlagen.
+
+Zu Hause angekommen habe ich daher einen Konsum-Asset-Rechner programmiert, der darstellt, wie aus unterschiedlichen Konsumgütern (ein Cappuccino, ein neues iPhone, ein gebrauchtes Auto) durch die alternative Investition des Kaufpreises in einen Indexfonds ein Asset werden kann. Als Assets habe ich den S&P 500 Total Return und den Dax 30 genommen und als realistische Rendite den [Annualized Total Return](https://www.investopedia.com/terms/a/annualized-total-return.asp) der letzten 31 Jahre (1990 bis 2020) berechnet, der beim S&P 500 TR 10,1 % und beim Dax 30 6,8 % betrug. Zusätzlich besteht die Möglichkeit, die jährliche Inflation und eine jährliche Verwaltungsgebühr zu definieren, die die Rendite des Assets reduzieren. Die voreingestellte Inflationsrate beträgt 1,8 %, was der [durchschnittlichen Inflation in Deutschland](https://www.laenderdaten.info/Europa/Deutschland/inflationsraten.php) der letzten 31 Jahre (1990 bis 2020) entspricht. Die voreingestellte jährliche Verwaltungsgebühr ist 0,2 %.
+
+<iframe height="1000" width="100%" frameborder="no" src="https://jantau.shinyapps.io/cappuccino/"> </iframe>
+
+Der Rechner zeigt die exponentielle Entwicklung die der Zinseszinseffekt bewirkt. Der Preis des Cappuccinos (3 €), den man in einen akkumulierenden, den S&P 500 abbildenden ETF steckte, könnte bei gleichbleibender Performance, einer Inflationsrate von 1,8 % und 0,2 % Gebühren nach 10 Jahren einen Assetwert von 7 € ergeben Nach 20 Jahren ist das Asset 14 € wert, nach 30  Jahren 31 € und nach 40 Jahren 68 €. Und das nach Gebühren und kaufkraftbereinigt!
+
+Ist mir ein Cappuccino heute also auch 68 € wert? Dieses Potential haben zumindest die drei Euro, wenn ich das lange Spiel spiele und für 40 Jahre investiere. Das ist eine Frage, die man sich bei "gedankenlosen" Konsumausgaben hin und wieder stellen sollte. 
+
+Bislang habe ich nur von den Kosten der Konsumgüter gesprochen. Konsumgüter haben jedoch auch einen Wert, der - je nach Auslegung - den Charakter einer Investition annehmen kann. Ein Cappuccino kann eine Investition in mein emotionales Wohlbefinden sein, das die Grundlage für ein langes, zufriedenes und produktives Leben ist und auch mein Umfeld positiv beeinflusst. Ein iPhone kann mir helfen, neue Skills zu entwickeln und mein soziales Netzwerk zu stärken. 
+
+Darüber hinaus ist es natürlich albern, bei jeder Ausgabe den Zinseszinsrechner herauszuholen.
+
+Unabhängig von der Umdefinierung des Begriffs Konsum gibt es Vorschläge, Konsum und Investieren miteinander zu verbinden. So gibt es den Ratschlag, ein Konsumgut erst dann zu kaufen, wenn die gleiche Summe investiert werden kann. Es gibt aber auch Apps wie [grifin](https://www.grifin.com){target="_blank"}, die ein entsprechendes Verhalten automatisieren. Unter dem Motto "stock where you shop" wird beispielsweise bei bestimmten Konsumausgaben jedes Mal 1 \$ in Aktien des entsprechenden Unternehmens investiert. Ich trinke also einen Cappuccino bei Starbucks und investiere anschließend 1 \$ in das Unternehmen. So werde ich als Kunde gleichzeitig Shareholder und profitiere (sehr) mittelbar von meinem eigenen Konsum.
+
+Letztendlich muss jeder für sich den richtigen Umgang mit Geld definieren. Doch wie wäre es, sein Konsum- und Anlage-Verhalten von Zeit zu Zeit zu reflektieren und einen realistischen Preis von Konsumgütern und einen realistischen Wert von Assets zu ermitteln? Hierbei soll der Rechner durch eine plakative Illustration des Zinseszinseffekts helfen. (Übrigens, man ist mit 3 € nicht nach 150 Jahren Millionär – sondern "erst" nach 163 Jahren und 100 Tagen.)
+
+Den für diesen Beitrag erstellten Code findest du hier: [https://github.com/jantau/jantau](https://github.com/jantau/jantau/tree/main/content/post){target="_blank"}
