@@ -52,8 +52,8 @@ theme_jantau <- theme(
 ui <- fluidPage(
 
     # Application title
-    titlePanel(h2("Konsum-Asset-Rechner")),
-    h5(tags$a(href = "https://www.jantau.com/", "jantau.com")),
+    titlePanel("Konsum-Asset-Rechner"),
+    h5(tags$a(href = "https://www.jantau.com/", target="_blank", "jantau.com")),
 
     # Sidebar
     sidebarLayout(
@@ -93,7 +93,7 @@ ui <- fluidPage(
                         post = " %"
             ),
             
-            HTML('<p>Den für diese Web App erstellten Code findest du hier: <a href="https://github.com/jantau/jantau/tree/main/shiny_apps">https://github.com/jantau/jantau</a></p>'),
+            HTML('<p>Den für diese Web App erstellten Code findest du hier: <a href="https://github.com/jantau/jantau/tree/main/shiny_apps" target="_blank">https://github.com/jantau/jantau</a></p>'),
         ),
         
         # Show plot and text
