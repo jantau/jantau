@@ -5,8 +5,8 @@ account: jantau
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 3899022
-bundleId: 4421881
+bundleId: 4430035
 url: https://jantau.shinyapps.io/cappuccino/
-when: 1617306944.19211
+when: 1617544290.76147
 asMultiple: FALSE
 asStatic: FALSE

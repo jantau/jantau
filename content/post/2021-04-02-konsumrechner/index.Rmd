@@ -27,7 +27,7 @@ Zu Hause angekommen habe ich daher einen Konsum-Asset-Rechner programmiert, der 
 
 <iframe height="1000" width="100%" frameborder="no" src="https://jantau.shinyapps.io/cappuccino/"> </iframe>
 
-Der Rechner zeigt die exponentielle Entwicklung die der Zinseszinseffekt bewirkt. Der Preis des Cappuccinos (3 €), den man in einen akkumulierenden, den S&P 500 abbildenden ETF steckte, könnte bei gleichbleibender Performance, einer Inflationsrate von 1,8 % und 0,2 % Gebühren nach 10 Jahren einen Assetwert von 7 € ergeben Nach 20 Jahren ist das Asset 14 € wert, nach 30  Jahren 31 € und nach 40 Jahren 68 €. Und das nach Gebühren und kaufkraftbereinigt!
+Der Rechner zeigt die exponentielle Entwicklung die der Zinseszinseffekt bewirkt. Der Preis des Cappuccinos (3 €), den man in einen akkumulierenden, den S&P 500 abbildenden ETF steckte, könnte bei gleichbleibender Performance, einer Inflationsrate von 1,8 % und 0,2 % Gebühren nach 10 Jahren einen Assetwert von 7 € ergeben. Nach 20 Jahren ist das Asset 14 € wert, nach 30  Jahren 31 € und nach 40 Jahren 68 €. Und das nach Gebühren und kaufkraftbereinigt!
 
 Ist mir ein Cappuccino heute also auch 68 € wert? Dieses Potential haben zumindest die drei Euro, wenn ich das lange Spiel spiele und für 40 Jahre investiere. Das ist eine Frage, die man sich bei "gedankenlosen" Konsumausgaben hin und wieder stellen sollte. 
 

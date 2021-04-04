@@ -52,7 +52,7 @@ theme_jantau <- theme(
 ui <- fluidPage(
 
     # Application title
-    titlePanel("Konsum-Asset-Rechner"),
+    titlePanel(h2("Konsum-Asset-Rechner")),
     h5(tags$a(href = "https://www.jantau.com/", "jantau.com")),
 
     # Sidebar
@@ -149,7 +149,7 @@ server <- function(input, output) {
           theme_jantau +
           theme(
             axis.title.x = element_blank(),
-            axis.text.x = element_text(size = 20,),
+            axis.text.x = element_text(size = 15,),
             axis.title.y = element_blank(),
             axis.ticks.y = element_blank(),
             axis.line.y = element_blank(),
@@ -187,5 +187,3 @@ server <- function(input, output) {
 
 # Run the application
 shinyApp(ui = ui, server = server)
-
-
