@@ -219,3 +219,60 @@ Zwei Aktien, die ich als Einzelaktien besitze, sind in allen drei von mir gehalt
 Ich finde es durchaus aufschlussreich, eine Gewichtung des gesamten Portfolios nach Einzelwerten zu betrachten. Es ermöglicht mir, das Risiko des Portfolios besser beurteilen zu können und gegebenenfalls die Gewichtung nachzujustieren. Es wäre schön, wenn es ein Online-Tool gäbe, mit dem diese Untersuchtung einfach reproduziert werden könnte.
 
 Den für diesen Beitrag erstellten Code findest du hier: <https://github.com/jantau/jantau>
+
+
+## Test mit ggplotly und highchart
+
+```{r}
+weight_all_long <- pivot_longer(weight_all, cols = starts_with("Weight_Perc"))
+```
+
+```{r}
+library(plotly)
+
+pal <- got(4, option = "Daenerys", direction = 1)
+
+p <- weight_all_long %>%
+  filter(sum >= 0.5) %>%
+  ggplot(aes(x = reorder(Symbol, sum), y = value, fill = name)) +
+  geom_col() +
+  scale_fill_manual(values = pal) +
+#  geom_label(
+#    aes(label = paste0(round(sum, 1), " %")),
+#    show.legend = FALSE,
+#    size = 3,
+##    alpha = 0.9
+#  ) +
+  coord_flip() +
+  theme_jantau +
+  labs(title = "Gewichtung einzelner Aktien im Gesamtportfolio",
+       subtitle = "Datenanalyse: jantau.com") +
+  theme(
+    axis.line.x = element_blank(),
+    axis.text.x = element_blank(),
+    axis.ticks.x = element_blank(),
+    axis.title.x = element_blank(),
+    axis.title.y = element_blank(),
+    legend.title = element_blank()
+  )
+
+ggplotly(p) %>%
+  layout(legend = list(x = 0.6, y = 0.1))
+
+```
+
+```{r}
+library(highcharter)
+library(widgetframe)
+
+frameWidget(weight_all_long %>% 
+  filter(sum >= 0.5) %>%
+  mutate(value = value * 100) %>%
+  hchart(
+    'bar', hcaes(x = 'Symbol', y = 'value', group = 'name'),
+    stacking = "normal"
+    ) %>%
+  hc_title(text = "Gewichtung einzelner Aktien im Gesamtportfolio")
+)
+```
+
