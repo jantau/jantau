@@ -266,7 +266,7 @@ ggplotly(p) %>%
 library(highcharter)
 library(widgetframe)
 
-weight_all_long %>% 
+hc <- weight_all_long %>% 
   filter(sum >= 0.5) %>%
   mutate(value = value * 100) %>%
   hchart(
@@ -274,7 +274,12 @@ weight_all_long %>%
     stacking = "normal"
     ) %>%
   hc_title(text = "Gewichtung einzelner Aktien im Gesamtportfolio") %>%
-  hc_colors(pal) %>%
-  frameWidget()
+  hc_colors(pal) 
+#%>%
+#  frameWidget()
+
+
+htmlwidgets::saveWidget(hc, file = "hc.html", selfcontained = TRUE)
 ```
 
+<iframe height="500px" width="100%" frameborder="no" src="hc.html"> </iframe>
