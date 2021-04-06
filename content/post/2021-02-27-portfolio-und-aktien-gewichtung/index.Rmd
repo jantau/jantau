@@ -272,7 +272,8 @@ frameWidget(weight_all_long %>%
     'bar', hcaes(x = 'Symbol', y = 'value', group = 'name'),
     stacking = "normal"
     ) %>%
-  hc_title(text = "Gewichtung einzelner Aktien im Gesamtportfolio")
+  hc_title(text = "Gewichtung einzelner Aktien im Gesamtportfolio") %>%
+  hc_colors(pal)
 )
 ```
 
