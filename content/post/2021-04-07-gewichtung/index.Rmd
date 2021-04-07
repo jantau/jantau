@@ -56,7 +56,7 @@ hc <- archive_weight_all_long %>%
 ```
 
 ```{r}
- htmlwidgets::saveWidget(widget = hc, file = "hc.html", selfcontained = TRUE)
+ htmlwidgets::saveWidget(frameableWidget(hc), file = "hc.html", selfcontained = TRUE)
 ```
 
 <!--html_preserve-->
