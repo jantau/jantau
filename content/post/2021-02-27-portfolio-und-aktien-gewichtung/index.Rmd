@@ -285,12 +285,13 @@ hc <- weight_all_long %>%
 #  frameWidget()
 
 # 1
-frameWidget(hc)
+#frameWidget(hc)
 
 #2
-# htmlwidgets::saveWidget(hc, file = "hc.html", selfcontained = TRUE)
+ htmlwidgets::saveWidget(widget = hc, file = "hc.html", selfcontained = TRUE)
 # <iframe height="500" width="100%" frameborder="no" src="hc.html"> </iframe>
 ```
 
-
-
+<!--html_preserve-->
+<iframe height="500" width="100%" frameborder="no" src="hc.html"> </iframe>
+<!--/html_preserve-->
