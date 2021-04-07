@@ -56,11 +56,23 @@ hc <- archive_weight_all_long %>%
 ```
 
 ```{r}
- htmlwidgets::saveWidget(frameableWidget(hc), file = "hc.html", selfcontained = TRUE)
+highcharter::export_hc(hc, "filename.js")
 ```
 
+
+
 <!--html_preserve-->
-<iframe height="500" width="100%" frameborder="no" src="hc.html"> </iframe>
+<iframe height="500" width="100%" frameborder="no" src="filename.js"> </iframe>
 <!--/html_preserve-->
+
+```{r}
+# htmlwidgets::saveWidget(frameableWidget(hc), file = "hc.html", selfcontained = TRUE)
+
+#<!--html_preserve-->
+#<iframe height="500" width="100%" frameborder="no" src="hc.html"> </iframe>
+#<!--/html_preserve-->
+```
+
+
 
 Den für diesen Beitrag erstellten Code findest du hier: [https://github.com/jantau/jantau](https://github.com/jantau/jantau/tree/main/content/post){target="_blank"}
