@@ -56,9 +56,11 @@ hc <- archive_weight_all_long %>%
 ```
 
 ```{r}
-frameWidget(hc)
+htmlwidgets::saveWidget(widget = hc, file = "hc.html", selfcontained = TRUE)
 ```
 
-
+<!--html_preserve-->
+<iframe height="500" width="100%" frameborder="no" src="hc.html"> </iframe>
+<!--/html_preserve-->
 
 Den für diesen Beitrag erstellten Code findest du hier: [https://github.com/jantau/jantau](https://github.com/jantau/jantau/tree/main/content/post){target="_blank"}
