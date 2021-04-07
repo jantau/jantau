@@ -75,7 +75,9 @@ frameWidget(hc)
 #<iframe height="500" width="100%" frameborder="no" #src="https://www.highcharts.com/demo/line-basic"> </iframe>
 ```
 
-
+<!--html_preserve-->
+<iframe height="500" width="100%" frameborder="no" src="index_files/figure-html/widgets/widget_unnamed-chunk-2.html"> </iframe>
+<!--/html_preserve-->
 
 
 Den für diesen Beitrag erstellten Code findest du hier: [https://github.com/jantau/jantau](https://github.com/jantau/jantau/tree/main/content/post){target="_blank"}
