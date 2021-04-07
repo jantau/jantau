@@ -288,3 +288,11 @@ htmlwidgets::saveWidget(hc, file = "hc.html", selfcontained = TRUE)
 ```
 
 <iframe height="500px" width="100%" frameborder="no" src="hc.html"> </iframe>
+
+```{r}
+unframed_widget <- hc
+save(unframed_widget, file = "unframed_widget.rdata")
+load("unframed_widget.rdata")
+widgetframe::frameWidget(unframed_widget)
+```
+
