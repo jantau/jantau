@@ -15,7 +15,8 @@ image:
   focal_point: ''
   preview_only: no
 projects: []
-self_contained: false
+output:
+    self_contained: false
 #description: "Your description"
 #exclude_jquery: true
 ---
