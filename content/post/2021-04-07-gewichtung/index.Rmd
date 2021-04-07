@@ -41,6 +41,7 @@ archive_weight_all_long <- read_csv(file = "/Users/jan/blog/jantau/content/post/
 ```{r}
 library(highcharter)
 library(widgetframe)
+#library(htmlwidgets)
 
 pal <- got(4, option = "Daenerys", direction = 1)
 
@@ -55,7 +56,9 @@ hc <- hchart(archive_weight_all_long,
   hc_title(text = "Gewichtung einzelner Aktien im Gesamtportfolio") %>%
   hc_colors(pal) 
 
-frameWidget(hc)
+#frameWidget(hc)
+
+#frameWidget(hc)
 ```
 
 ```{r}
@@ -71,6 +74,7 @@ frameWidget(hc)
 #<!--/html_preserve-->
 ```
 
+<iframe height="500" width="100%" frameborder="no" src="index_files/figure-html/widgets/widget_unnamed-chunk-2.html"> </iframe>
 
 
 Den für diesen Beitrag erstellten Code findest du hier: [https://github.com/jantau/jantau](https://github.com/jantau/jantau/tree/main/content/post){target="_blank"}
