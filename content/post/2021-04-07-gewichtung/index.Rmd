@@ -44,10 +44,11 @@ library(widgetframe)
 
 pal <- got(4, option = "Daenerys", direction = 1)
 
-hc <- archive_weight_all_long %>% 
+archive_weight_all_long <- archive_weight_all_long %>% 
   filter(sum >= 0.5) %>%
-  mutate(value = value * 100) %>%
-  hchart(
+  mutate(value = value * 100)
+
+hc <- hchart(archive_weight_all_long,
     'bar', hcaes(x = 'Symbol', y = 'value', group = 'name'),
     stacking = "normal"
     ) %>%
