@@ -281,6 +281,10 @@ hc <- weight_all_long %>%
     ) %>%
   hc_title(text = "Gewichtung einzelner Aktien im Gesamtportfolio") %>%
   hc_colors(pal) 
+
+write.csv(weight_all_long,"weight_all_long.csv", row.names = FALSE)
+
+
 #%>%
 #  frameWidget()
 
