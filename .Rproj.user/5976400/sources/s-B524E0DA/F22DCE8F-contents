@@ -1,8 +1,8 @@
 # IDEs
-#.idea/
+.idea/
 
 # Hugo
-#/resources/
-#public/
-#jsconfig.json
-#node_modules/
+/resources/
+public/
+jsconfig.json
+node_modules/

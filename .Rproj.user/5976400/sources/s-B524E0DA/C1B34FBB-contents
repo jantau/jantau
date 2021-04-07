@@ -61,7 +61,7 @@ frameWidget(hc)
 ```
 
 ```{r}
-# htmlwidgets::saveWidget(frameableWidget(hc), file = "hc.html", selfcontained = TRUE)
+htmlwidgets::saveWidget(frameableWidget(hc), file = "hc.html", selfcontained = TRUE)
 ```
 
 
