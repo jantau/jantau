@@ -1,0 +1,8 @@
+"0","colnames(MSCI_Info) <- c(""Symbol"", ""Company"", ""Weight"", ""ISIN"")"
+"0",""
+"0","MSCI_Info <- MSCI_Info %>%"
+"0","  mutate(Weight = Weight / 100) %>%"
+"0","  mutate(Weight_Perc_MSCI_Info = Weight * 0.0352) %>%"
+"0","  select(1, 4, 5)"
+"0",""
+"0","head(MSCI_Info)"

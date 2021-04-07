@@ -1,0 +1,7 @@
+"0","ISIN <- c(""DE0005557508"", ""US0378331005"", ""US0231351067"", ""US67066G1040"", ""US8522341036"", ""DE0005140008"", ""US90184L1026"", ""US00507V1098"")"
+"0","Symbol <- c(""DTE"", ""AAPL"", ""AMZN"", ""NVDA"", ""SQ"", ""DBK"", ""TWTR"", ""ATVI"")"
+"0","Weight_Perc_Single_Stocks <- c(0.137, 0.112, 0.094, 0.084, 0.069, 0.047, 0.0259, 0.015)"
+"0",""
+"0","Single_Stocks <- data.frame(Symbol, ISIN, Weight_Perc_Single_Stocks)"
+"0",""
+"0","as_tibble(Single_Stocks)"

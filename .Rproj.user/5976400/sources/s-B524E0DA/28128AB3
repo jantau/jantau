@@ -1,0 +1,26 @@
+{
+    "id": "28128AB3",
+    "path": "~/blog/jantau/shiny_apps/cappuccino/app.R",
+    "project_path": "shiny_apps/cappuccino/app.R",
+    "type": "r_source",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1617124691836.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "11,2",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1617548665,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1617548665827,
+    "read_only": false,
+    "read_only_alternatives": []
+}

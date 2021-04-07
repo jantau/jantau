@@ -1,0 +1,7 @@
+"0","# Jahre für loop ermitteln"
+"0",""
+"0","years <-dax_1 %>%"
+"0","  pull(year) %>%"
+"0","  unique(.) %>%"
+"0","  sort(.)"
+"0","  "

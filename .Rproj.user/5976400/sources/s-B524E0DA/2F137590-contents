@@ -1,0 +1,314 @@
+# Define UI for application that draws a histogram
+ui <- fluidPage(
+  
+  # Application title
+  titlePanel("TER und Ausgabeaufschlag"),
+  
+  # Sidebar with a slider input for number of bins 
+  sidebarLayout(
+    sidebarPanel(
+      numericInput("bins",
+                   "Ausgabeaufschlaf:",
+                   min = 0,
+                   max = 50,
+                   step = 0.01,
+                   value = 1.25)
+    ),
+    
+    # Show a plot of the generated distribution
+    mainPanel(
+      plotOutput("distPlot")
+    )
+  )
+)
+
+# Define server logic required to draw a histogram
+server <- function(input, output) {
+  
+  output$distPlot <- renderPlot({
+    # generate bins based on input$bins from ui.R
+    x    <- faithful[, 2]
+    bins <- seq(min(x), max(x), length.out = input$bins + 1)
+    
+    # draw the histogram with the specified number of bins
+    hist(x, breaks = bins, col = 'darkgray', border = 'white')
+  })
+}
+
+# Run the application 
+shinyApp(ui = ui, server = server)
+
+
+
+
+verbatimTextOutput("dateRange2"),
+
+dateRangeInput('dateRange',
+               label = 'Date range input: yyyy-mm-dd',
+               start = "1999-01-01", end = "2020-03-19"
+)
+
+
+output$dateRange2 <- renderText({
+  paste("input$dateRange is", as.character(input$dateRange))
+})
+
+dateInput('dateRangeStart',
+          label = 'Startdatum',
+          value = "1999-01-01"),
+
+dateInput('dateRange',
+          label = 'Enddatum',
+          value = "2020-03-19")
+
+
+<iframe height="1000" width="100%" frameborder="no" src="https://jantau.shinyapps.io/ter_surcharge/"> </iframe>  
+  
+  ```{r}
+knitr::include_app("https://jantau.shinyapps.io/ter_surcharge/", height = "950px")
+```
+geom_label(
+  data = index_2 %>% mutate(total_cost = round(last(wert_pure) - last(wert_ter), 0)) %>% filter(date == last(date)),
+  aes(
+    x = date,
+    y = wert_ter,
+    label = paste0("Wert: ", round(wert_ter, 0) ,"\nGesamtkosten: ", total_cost)),
+  show.legend = FALSE,
+  color = pal[1],
+  alpha = 0.9,
+  hjust = "right",
+  size = 5,
+  label.size = 0.15,
+  label.padding = unit(0.2, "lines")) +
+
+Weitere Posts:
+
+1. Shiny App für Gewichtung und Sektoren
+
+
+2. App mit historischer Sparplananalyse für alle Ticker-Aktien
+
+> require(TTR)
+> tickersList <- stockSymbols()
+
+https://stackoverflow.com/questions/30636492/how-do-i-use-quantmod-to-query-yahoo-for-the-existence-of-a-stock-symbol
+
+
+
+3. Tipps und Tricks erweitern um guide_legend()
+#https://groups.google.com/g/ggplot2/c/H7edhaTLGHs?pli=1
+
+
+4. Tipps u Tricks eweitern um math
+
+YAML: math: true
+$$
+  $
+  align
+
+# https://rpruim.github.io/s341/S19/from-class/MathinRmd.html
+
+\begin{align*}
+1-
+  (Endbetrag\_nach\_Kosten-Ansparsumme/ \\
+   Endbetrag\_vor\_Kosten-Ansparsumme)
+\end{align*}
+
+
+
+$$
+  1-\frac{Endbetrag\_nach\_Kosten-Ansparsumme}{Endbetrag\_vor\_Kosten-Ansparsumme}
+$$
+
+  
+5. Kaffeerechner. Wieviel ist ein gesparter Kaffee Wert als Assett? Ich spare 2,5 EURO für einen  Kaffee und lege das Geld anchored(
+  Wie viel ist der Kaffee 10 Jahre später Wert (nach Inflation und Gebühren und Steuern?)
+  Frugalismus als Eltern, nicht zu viel sparen, um niemals umschalten zu können.
+  
+  6. markdown und color in title
+  <br> für linebreak
+  https://wilkelab.org/ggtext/articles/introduction.html
+)
+
+
+
+
+
+indexvgl <- tq_get(c("^SP500TR"),
+                   get  = "stock.prices",
+                   from = "1990-01-01",
+                   to = "2020-12-31")
+
+indexvgl_monthly <- indexvgl %>% group_by(symbol) %>% 
+  tq_transmute(select     = adjusted, 
+               mutate_fun = periodReturn,
+               period     = "yearly")%>% 
+  ungroup()
+
+mean(indexvgl_monthly$yearly.returns)
+
+363.44
+479.63
+
+386.16
+367.63
+
+479.63/367.63-1
+
+7709.10/386.16-1
+
+((1 + 18.96349)^1/31) - 1
+
+indexvgl <- tq_get(c("^GDAXI"),
+                   get  = "stock.prices",
+                   from = "1990-01-01",
+                   to = "2020-12-31")
+
+indexvgl <- indexvgl %>%
+  drop_na()
+
+indexvgl_monthly <- indexvgl %>% group_by(symbol) %>% 
+  tq_transmute(select     = adjusted, 
+               mutate_fun = periodReturn,
+               period     = "yearly")%>% 
+  ungroup()
+
+mean(indexvgl_monthly$yearly.returns)
+sum(indexvgl_monthly$yearly.returns)
+
+Return.annualized(indexvgl_monthly$yearly.returns, scale = 1, geometric = T)
+
+indexvgl <- tq_get(c("URTH"),
+                   get  = "stock.prices",
+                   from = "1990-01-01",
+                   to = "2020-12-31")
+
+indexvgl <- indexvgl %>%
+  drop_na()
+
+indexvgl_monthly <- indexvgl %>% group_by(symbol) %>% 
+  tq_transmute(select     = adjusted, 
+               mutate_fun = periodReturn,
+               period     = "yearly")%>% 
+  ungroup()
+
+mean(indexvgl_monthly$yearly.returns)
+sum(indexvgl_monthly$yearly.returns)
+
+indexvgl <- tq_get(c("^GSPC"),
+                   get  = "stock.prices",
+                   from = "1900-01-01",
+                   to = "2020-12-31")
+
+indexvgl <- indexvgl %>%
+  drop_na()
+
+indexvgl_monthly <- indexvgl %>% group_by(symbol) %>% 
+  tq_transmute(select     = adjusted, 
+               mutate_fun = periodReturn,
+               period     = "yearly")%>% 
+  ungroup()
+
+mean(indexvgl_monthly$yearly.returns)
+sum(indexvgl_monthly$yearly.returns)
+
+Return.annualized(indexvgl_monthly$yearly.returns, scale = 1, geometric = T)
+
+indexvgl <- tq_get(c("^SP500TR"),
+                   get  = "stock.prices",
+                   from = "1990-01-01",
+                   to = "2020-12-31")
+
+indexvgl <- indexvgl %>%
+  drop_na()
+
+indexvgl_monthly <- indexvgl %>% group_by(symbol) %>% 
+  tq_transmute(select     = adjusted, 
+               mutate_fun = periodReturn,
+               period     = "yearly")%>% 
+  ungroup()
+
+mean(indexvgl_monthly$yearly.returns)
+sum(indexvgl_monthly$yearly.returns)
+
+Return.annualized(indexvgl_monthly$yearly.returns, scale = 1, geometric = T)
+
+Return.annualized(c(.2,.1,.3), scale = 1, geometric = T)
+
+Return.annualized(c(.02,.00,.02,.0,.02,.0,.02,.0,.02,.0), scale = 1, geometric = T)
+
+
+((1+0.05175896)*(1+0.31486362)*(1+0.17632074))^(1/3)-1
+
+227.725
+12845.36
+
+Annualized Return
+(1 + 55.4057526)^1/31 - 1
+
+indexvgl <- tq_get(c("^NDX"),
+                   get  = "stock.prices",
+                   from = "1990-01-01",
+                   to = "2020-12-31")
+
+indexvgl <- indexvgl %>%
+  drop_na()
+
+indexvgl_monthly <- indexvgl %>% group_by(symbol) %>% 
+  tq_transmute(select     = adjusted, 
+               mutate_fun = periodReturn,
+               period     = "yearly")%>% 
+  ungroup()
+
+mean(indexvgl_monthly$yearly.returns)
+sum(indexvgl_monthly$yearly.returns)
+
+Return.annualized(indexvgl_monthly$yearly.returns, scale = 1, geometric = T)
+
+
+Millionär-Rechner
+> 3 * (1 + 8.1 / 100) ^ 164
+[1] 1058120
+> 3 * (1 + 8.1 / 100) ^ x = 1000000
+Error in 3 * (1 + 8.1/100)^x = 1e+06 : 
+  target of assignment expands to non-language object
+> 3 * (1 + 8.1 / 100) ^ 164
+[1] 1058120
+> (1 + 8.1 / 100)
+[1] 1.081
+> 3*1.081
+[1] 3.243
+> blogdown:::preview_site()
+> lg(333333)
+Error in lg(333333) : could not find function "lg"
+> log(333333)
+[1] 12.7169
+> log(333333)/log(1,081)
+[1] Inf
+> log(333333)/log(1.081)
+[1] 163.2746
+> 365*0.2746
+[1] 100.229
+
+
+
+Pace-Calculator
+
+Vorgabe: 
+  HalbM = 21
+  Zeit = 2
+> (2/21)*60*60
+[1] 342.8571
+> seconds_to_period(342.8571)
+[1] "5M 42.8571S"
+> round(seconds_to_period(342.8571))
+[1] "5M 43S"
+  
+  
+  ```{r eval=False}
+  #3
+  #unframed_widget <- hc
+  #save(unframed_widget, file = "unframed_widget.rdata")
+  #load("unframed_widget.rdata")
+  # widgetframe::frameWidget(unframed_widget)
+  ```

@@ -1,0 +1,7 @@
+"0","# ticker symbols ishares NDX= (EXXT.DE, xtrackers Dax = DBXD.DE, XTRackers MSCI World = XDWD.DE"
+"0","# https://www.amundietf.de/privatkunden/product/view/LU1681043599"
+"0",""
+"0","indexvgl <- tq_get(c(""EXXT.DE"",""DBXD.DE"",""XDWD.DE""),"
+"0","                      get  = ""stock.prices"","
+"0","                      from = ""2016-01-01"","
+"0","                      to = ""2020-12-31"")"

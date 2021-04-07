@@ -1,0 +1,7 @@
+"0","    index_2[1, ""test""] <- net_savings_rate * (1 - ter_month)"
+"0","#    index_2[1, ""test""] <- 100 * 0.99"
+"0",""
+"0","  for (i in 2:nrow(index_2)){"
+"0","    index_2[i, ""test""] <- (index_2[i-1, ""test""] + net_savings_rate) * (1 - ter_month)"
+"0","#    index_2[i, ""test""] <- (index_2[i-1, ""test""] + 100) * 0.99"
+"0","  }"

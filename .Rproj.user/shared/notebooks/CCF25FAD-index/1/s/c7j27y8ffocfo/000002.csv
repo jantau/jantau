@@ -1,0 +1,3 @@
+"0","nasdaq <- nasdaq %>% "
+"0","  select(symbol, date, adjusted) %>%"
+"0","  filter(!is.na(adjusted))"

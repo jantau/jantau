@@ -1,0 +1,7 @@
+"0","# Transform data"
+"0","sp_500_perc <- sp_500 %>%"
+"0","  group_by(symbol) %>%"
+"0","  mutate(perc = (adjusted/first(adjusted)-1)*100) %>%"
+"0","  select(symbol, date, perc) %>%"
+"0","  mutate(symbol = replace(symbol, symbol == ""^GSPC"", ""S&P 500"")) %>%"
+"0","  mutate(symbol = replace(symbol, symbol == ""^SP500TR"", ""S&P 500 TR""))"

@@ -1,0 +1,2 @@
+"0","indexvgl_monthly <- indexvgl %>% group_by(symbol) %>%"
+"0","  mutate(cumsum = ((adjusted/first(adjusted))*100)-100)"

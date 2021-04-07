@@ -1,0 +1,6 @@
+"0","colnames(NASDAQ_100) <- c(""Symbol"", ""Company"", ""Weight"", ""ISIN"")"
+"0",""
+"0","NASDAQ_100 <- NASDAQ_100 %>%"
+"0","  mutate(Weight = Weight / 100) %>%"
+"0","  mutate(Weight_Perc_Nasdaq_100 = Weight * 0.2195) %>%"
+"0","  select(1, 4, 5)"

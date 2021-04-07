@@ -1,0 +1,8 @@
+"0","indexvgl_monthly <- indexvgl %>% group_by(symbol) %>% "
+"0","  tq_transmute(select     = adjusted, "
+"0","               mutate_fun = periodReturn,"
+"0","               period     = ""monthly"")%>% "
+"0","  ungroup()"
+"0",""
+"0","indexvgl_monthly <- indexvgl_monthly %>% group_by(symbol) %>%"
+"0","  mutate(cumsum = cumsum(monthly.returns)*100)"

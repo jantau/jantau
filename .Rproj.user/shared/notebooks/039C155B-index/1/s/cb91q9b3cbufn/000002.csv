@@ -1,0 +1,6 @@
+"0","# Daten anreichern"
+"0",""
+"0","Sparplan_Doku_Alva <- Sparplan_Doku_Alva %>%"
+"0","  mutate(Rendite = ETFs - Ansparen) %>%"
+"0","  mutate(Prozent = round(Rendite/Ansparen*100,1))"
+"0",""
