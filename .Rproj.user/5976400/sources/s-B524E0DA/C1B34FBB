@@ -3,7 +3,7 @@
     "path": "~/blog/jantau/content/post/2021-04-07-gewichtung/index.Rmd",
     "project_path": "content/post/2021-04-07-gewichtung/index.Rmd",
     "type": "r_markdown",
-    "hash": "301407461",
+    "hash": "4097494675",
     "contents": "",
     "dirty": false,
     "created": 1617794678656.0,
@@ -12,16 +12,16 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "78,115",
+        "cursorPosition": "78,98",
         "scrollLine": "69",
         "last_setup_crc32": "B524E0DA2d624498"
     },
     "folds": "",
-    "lastKnownWriteTime": 1617820905,
+    "lastKnownWriteTime": 1617821030,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1617820905390,
+    "last_content_update": 1617821030529,
     "read_only": false,
     "read_only_alternatives": []
 }
