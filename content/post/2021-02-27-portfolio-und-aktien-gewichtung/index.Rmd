@@ -232,7 +232,7 @@ Den für diesen Beitrag erstellten Code findest du hier: <https://github.com/jan
 weight_all_long <- pivot_longer(weight_all, cols = starts_with("Weight_Perc"))
 ```
 
-```{r}
+```{r eval=FALSE}
 library(plotly)
 
 pal <- got(4, option = "Daenerys", direction = 1)
@@ -270,6 +270,8 @@ ggplotly(p) %>%
 library(highcharter)
 library(widgetframe)
 
+pal <- got(4, option = "Daenerys", direction = 1)
+
 hc <- weight_all_long %>% 
   filter(sum >= 0.5) %>%
   mutate(value = value * 100) %>%
@@ -282,14 +284,14 @@ hc <- weight_all_long %>%
 #%>%
 #  frameWidget()
 
-frameWidget(hc)
+#frameWidget(hc)
 
 htmlwidgets::saveWidget(hc, file = "hc.html", selfcontained = TRUE)
 ```
 
-<iframe src="hc.html"> </iframe>
+<iframe height="500" width="100%" frameborder="no" src="hc.html"> </iframe>
 
-```{r}
+```{r eval=FALSE}
 unframed_widget <- hc
 save(unframed_widget, file = "unframed_widget.rdata")
 load("unframed_widget.rdata")
