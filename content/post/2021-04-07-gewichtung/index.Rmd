@@ -53,17 +53,14 @@ hc <- archive_weight_all_long %>%
     ) %>%
   hc_title(text = "Gewichtung einzelner Aktien im Gesamtportfolio") %>%
   hc_colors(pal) 
+
+frameWidget(hc)
 ```
 
 ```{r}
-highcharter::export_hc(hc, "filename.js")
+# htmlwidgets::saveWidget(frameableWidget(hc), file = "hc.html", selfcontained = TRUE)
 ```
 
-
-
-<!--html_preserve-->
-<iframe height="500" width="100%" frameborder="no" src="filename.js"> </iframe>
-<!--/html_preserve-->
 
 ```{r}
 # htmlwidgets::saveWidget(frameableWidget(hc), file = "hc.html", selfcontained = TRUE)
