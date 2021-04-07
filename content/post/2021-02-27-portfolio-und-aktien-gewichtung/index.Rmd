@@ -284,14 +284,18 @@ hc <- weight_all_long %>%
 #%>%
 #  frameWidget()
 
+# 1
 #frameWidget(hc)
 
-htmlwidgets::saveWidget(hc, file = "hc.html", selfcontained = TRUE)
+#2
+# htmlwidgets::saveWidget(hc, file = "hc.html", selfcontained = TRUE)
+# <iframe height="500" width="100%" frameborder="no" src="hc.html"> </iframe>
 ```
 
-<iframe height="500" width="100%" frameborder="no" src="hc.html"> </iframe>
 
-```{r eval=FALSE}
+
+```{r}
+#3
 unframed_widget <- hc
 save(unframed_widget, file = "unframed_widget.rdata")
 load("unframed_widget.rdata")
