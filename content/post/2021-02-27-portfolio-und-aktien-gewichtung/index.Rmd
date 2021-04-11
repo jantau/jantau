@@ -226,82 +226,10 @@ Ich finde es durchaus aufschlussreich, eine Gewichtung des gesamten Portfolios n
 Den für diesen Beitrag erstellten Code findest du hier: <https://github.com/jantau/jantau>
 
 
-## Test mit ggplotly und highchart
-
-```{r}
-weight_all_long <- pivot_longer(weight_all, cols = starts_with("Weight_Perc"))
-```
-
 ```{r eval=FALSE}
-library(plotly)
-
-pal <- got(4, option = "Daenerys", direction = 1)
-
-p <- weight_all_long %>%
-  filter(sum >= 0.5) %>%
-  ggplot(aes(x = reorder(Symbol, sum), y = value, fill = name)) +
-  geom_col() +
-  scale_fill_manual(values = pal) +
-#  geom_label(
-#    aes(label = paste0(round(sum, 1), " %")),
-#    show.legend = FALSE,
-#    size = 3,
-##    alpha = 0.9
-#  ) +
-  coord_flip() +
-  theme_jantau +
-  labs(title = "Gewichtung einzelner Aktien im Gesamtportfolio",
-       subtitle = "Datenanalyse: jantau.com") +
-  theme(
-    axis.line.x = element_blank(),
-    axis.text.x = element_blank(),
-    axis.ticks.x = element_blank(),
-    axis.title.x = element_blank(),
-    axis.title.y = element_blank(),
-    legend.title = element_blank()
-  )
-
-ggplotly(p) %>%
-  layout(legend = list(x = 0.6, y = 0.1))
-
-```
-
-```{r}
-library(highcharter)
-library(widgetframe)
-
-pal <- got(4, option = "Daenerys", direction = 1)
-
-hc <- weight_all_long %>% 
-  filter(sum >= 0.5) %>%
-  mutate(value = value * 100) %>%
-  hchart(
-    'bar', hcaes(x = 'Symbol', y = 'value', group = 'name'),
-    stacking = "normal"
-    ) %>%
-  hc_title(text = "Gewichtung einzelner Aktien im Gesamtportfolio") %>%
-  hc_colors(pal) 
+weight_all_long <- pivot_longer(weight_all, cols = starts_with("Weight_Perc"))
 
 write.csv(weight_all_long,"weight_all_long.csv", row.names = FALSE)
 
-
-#%>%
-#  frameWidget()
-
-# 1
-#frameWidget(hc)
-
-#2
- htmlwidgets::saveWidget(widget = hc, file = "hc.html", selfcontained = TRUE)
-# <iframe height="500" width="100%" frameborder="no" src="hc.html"> </iframe>
+archive_weight_all_long <- read_csv(file = "/Users/jan/blog/jantau/content/post/2021-02-27-portfolio-und-aktien-gewichtung/weight_all_long.csv")
 ```
-
-<!--html_preserve-->
-<iframe height="500" width="100%" frameborder="no" src="hc.html"> </iframe>
-<!--/html_preserve-->
-
-<!--html_preserve-->
-<iframe height="500" width="100%" frameborder="no" src="index_files/figure-html/widgets/widget_unnamed-chunk-13.html"> </iframe>
-<!--/html_preserve-->
-
-

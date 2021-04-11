@@ -1,25 +1,52 @@
 ---
-title: gewichtung
+title: Sektoren im ETF-Portfolio 
 author: Jan Tau
-date: '2021-01-07'
+date: '2021-01-11'
 slug: gewichtung
 categories: []
-tags: []
-subtitle: 'gewichtung_test'
-summary: 'gewichtung_test'
+tags: [Highcharts, Gewichtung, ETF]
+subtitle: 'Über die Gewichtung nach Sektoren im ETF-Einzelaktien-Portfolio'
+summary: 'Über die Gewichtung nach Sektoren im ETF-Einzelaktien-Portfolio'
 authors: []
-lastmod: '2021-01-07T13:24:38+02:00'
+lastmod: '2021-01-11T13:24:38+02:00'
 featured: no
 image:
   caption: ''
   focal_point: ''
   preview_only: no
 projects: []
+editor_options: 
+  chunk_output_type: console
 ---
 
 <script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
 
 
-<iframe height="500" width="100%" frameborder="no" src="https://jantau.github.io/highchart/hc">
+<p>In dem Blogpost <a href="/post/portfolio-und-aktien/" target="_blank">Aktien-Gewichtung in meinem Portfolio</a> habe ich die Gewichtung einzelner Aktien in meinem ETF-und-Einzelaktien-Portfolio untersucht. Ich wollte wissen, welchen Anteil einzelne Aktien über alle Anlageprodukte hinweg im Portfolio einnehmen. Das Ergebnis überraschte mich nicht sonderlich, da ich eine ähnliche Gewichtung der größten Einzelpositionen wie Apple und Co erwartet hatte.</p>
+<p>Hier noch einmal das Ergebnis: <img src="unnamed-chunk-10-1.png" /></p>
+<p>Nun habe ich mir die Analyse ein weiteres Mal vorgenommen, um einerseits die Visualisierung mit dem interaktiven JavaScrip-Package <code>Highcharter</code> zu wiederholen und um andererseits die Gewichtung der Sektoren zu analysieren. Das Ergebnis der Sektorenanalyse hat mich dann schon einigermaßen überrascht und ich muss mir überlegen, ob ich nicht stärker nach Sektoren diversifizieren sollte.</p>
+<div id="visualisierung-mit-highcharter" class="section level2">
+<h2>Visualisierung mit Highcharter</h2>
+<p>Die interaktive Visualisierung mit dem Package <code>Highcharter</code>ermöglicht es mir, eine weitere Variable sinnvoll in den Chart zu integrieren und somit tiefer in die Daten hineinzoomen zu können. In dem ursprünglichen statischen Chart hatte ich die größten Aktien und ihren prozentualer Anteil am Gesamtportfolio abgebildet. Die zusätzliche hierarchische Variable beinhaltet die ETFs, aus denen sich die einzelnen Aktienanteile speisen. So kann abgebildet werden, zu welchem Anteil sich beispielsweise die Apple-Anteile auf den Einzelaktienanteil, den NASDAQ-100-ETF oder den MSCI-World-ETF verteilen.</p>
+<iframe height="500" width="100%" frameborder="no" src="https://jantau.github.io/highchart/weight_stocks">
 </iframe>
+</div>
+<div id="gewichtung-nach-sektoren" class="section level2">
+<h2>Gewichtung nach Sektoren</h2>
+<p>Der MSCI-World umfasst etwa 1600 einzelne Positionen, von denen viele nur im Promille-Bereich enthalten sind. Die große Anzahl an Positionen lässt sich weder in Tabellenform noch in einem Chart sinnvoll darstellen. Es muss somit eine zusammenfassende Kategorie genutzt werden, die auch mit der Sektorenklassifikation zur Verfügung steht. Etablierte Klassifikationen sind der <a href="https://www.msci.com/gics" target="_blank">Global Industry Classification Standard (GICS)</a> und der <a href="https://www.ftserussell.com/data/industry-classification-benchmark-icb" target="_blank">Industry Classification Benchmark (ICB)</a>.</p>
+<p>Beide Klassifikationen verfügen über vier Hierarchieebenen. Auf der obersten Ebene befinden sich die elf Sektoren Energy, Materials, Industrials, Consumer Discretionary, Consumer Staples, Health Care, Financials, Information Technology, Communication Services, Utilities und Real Estate.</p>
+<p>Die <a href="https://www.ishares.com/de/privatanleger/de/produkte/253741/ishares-nasdaq-100-ucits-etf" target="_blank">iShares-Daten</a> beinhalten auch die Sektoreninformationen (übersetzt in Energie, Materialien, Industrie, Zyklische Konsumgüter, Nichtzyklische Konsumgüter, Gesundheitsversorgung, Financials, IT, Kommunikation, Versorger und Immobilien) und können somit zur Analyse der Gewichtung nach Sektoren genutzt werden.</p>
+<p><img src="Screenshot_iShares.png" /></p>
+<p>Da jede Aktie nur einem der elf Sektoren auf der obersten Ebene zugeordnet wird, kann die Analyse nach Sektoren gut genutzt werden, um die vielen Einzelpositionen präzise in elf Sektoren zu aggregieren. So kann die Diversifikation über Geschäftsfelder analysiert werden.
+(Der Nachteil einer solchen Zuordnung ist, dass Unternehmen mit sehr heterogenen Geschäftsaktivitäten eigentlich mehreren Sektoren zugeordnet werden müssten. Amazon ist beipspielsweise dem Sektor zyklische Konsumgüter zugeordnet, was den Ursprüngen von Amazon als Online-Buchhändler geschuldet ist. Mit den Amazon Web Services (AWS), den Whole-Foods-Supermärkten oder dem Einstieg im Gesundheitsmarkt ist Amazon jedoch auch in anderen Sektoren wie IT, Nichtzyklische Konsumgüter oder Gesundheitsversorgung aktiv. Insofern kann die Klassifikation jedes Unternehmens mit einem einzelnen Sektor nicht immer den umfangreichen Geschäftsaktivitäten gerecht werden.)</p>
+<iframe height="500" width="100%" frameborder="no" src="https://jantau.github.io/highchart/weight_sectors">
+</iframe>
+<p>Ich bin überrascht über die geringe Diversifikation über Sektoren. Dass IT und Kommunikation einen großen Anteil haben, war zu erwarten. Ich hatte jedoch nicht gedacht, dass die sieben Sektoren Gesundheitsversorgung, Nichtzyklische Konsumgüter, Industrie, Materialien, Versorger, Energie und Immobilien lediglich 10 % des Portfolios ausmachen. Im MSCI World machen diese Sektoren immerhin 43 % aus (was gut dargestellt wird, wenn im Chart nur Gewichtung_MSCI_World ausgewählt wird). Ich muss mir daher überlegen, meine Anlagestrategie anzupassen, um diese Sektoren zu stärken.</p>
+<div id="anmerkungen" class="section level3">
+<h3>Anmerkungen:</h3>
+<p><font size="3">
+Ich habe keinen Weg gefunden, die <code>Highcharter</code>-JavaScript-Charts direkt in meinen <code>Blogdown</code>-Blog zu integrieren. Beim Deployment über <a href="">Netlify</a> werden die Charts nicht gefunden. Nach einigem Hin und Her habe ich einen vertretbaren (wenn auch nicht besonders eleganten) Workaround gefunden. Ich speichere die <code>Highcharter</code>-Charts als HTML-Dokument und lade sie auf eine <a href="https://jantau.github.io/highchart/" target="_blank">eigens zu diesem Zweck erstellten Website</a>. Die URLs von dieser Website kann ich mittels <code>&lt;iframe&gt;</code>-Element auf meinem Blog veröffentlichen.
+</font></p>
 <p>Den für diesen Beitrag erstellten Code findest du hier: <a href="https://github.com/jantau/jantau/tree/main/content/post" target="_blank">https://github.com/jantau/jantau</a></p>
+</div>
+</div>

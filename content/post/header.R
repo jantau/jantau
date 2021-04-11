@@ -11,6 +11,8 @@ library(gameofthrones) # farbpaletten
 library(ggrepel) # avoid overlapping labels 
 # https://blog.revolutionanalytics.com/2016/01/avoid-overlapping-labels-in-ggplot2-charts.html
 library(gt)
+library(highcharter)
+library(htmlwidgets)
 library(lubridate)
 library(readxl)
 library(scales)
@@ -20,8 +22,8 @@ library(tidyverse)
 library(xts)
 
 #library(plotly)
-#library(highcharter)
 #library(data.table)
+#library(widgetframe)
 
 require(ggplot2)
 

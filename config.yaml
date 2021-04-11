@@ -24,6 +24,7 @@ permalinks:
   event: /talk/:slug/
   publication_types: /publication-type/:slug/
   tags: /tag/:slug/
+  post: /post/:slug/
 outputs:
   home:
     - HTML
