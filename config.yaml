@@ -1,7 +1,7 @@
 theme: starter-academic
 title: jantau
 baseurl: 'https://www.jantau.com' #https://jantau.netlify.app
-copyright: ''
+copyright: '&copy; Jan Taubitz, {year}'
 enableGitInfo: no
 defaultContentLanguage: en
 hasCJKLanguage: no
