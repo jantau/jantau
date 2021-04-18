@@ -199,6 +199,13 @@ video {
   display: block;
 }
 
+/* img,
+video {
+  height: auto;
+  max-width: 100%;
+  display: block;
+} */
+
 audio {
   width: 100%;
   margin-bottom: 20px;

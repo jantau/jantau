@@ -95,7 +95,6 @@ pal <- got(4, option = "Daenerys", direction = 1)
 
 weight_all_long_3 <- weight_all_long_2 %>%
   filter(sum >= 0.5) %>%
-  mutate(value = value * 100) %>%
   mutate(value = round(value, 2))
 
 hc <- hchart(
@@ -112,8 +111,9 @@ hc <- hchart(
     title = list(text = "Anteil in Prozent am Gesamtportfolio"),
     labels = list(format = "{value} %")
   ) %>%
-  hc_tooltip(valueSuffix = " %") %>%
-  hc_colors(pal)
+  hc_tooltip(valueSuffix = " %") 
+#%>%
+ # hc_colors(pal)
 
 saveWidget(hc, file = "weight_stocks.html", selfcontained = TRUE)
 ```
@@ -168,8 +168,9 @@ hc2 <- hchart(
     title = list(text = "Anteil in Prozent am Gesamtportfolio"),
     labels = list(format = "{value} %")
   ) %>%
-  hc_tooltip(valueSuffix = " %") %>%
-  hc_colors(pal)
+  hc_tooltip(valueSuffix = " %") 
+#%>%
+#  hc_colors(pal)
 
 saveWidget(hc2, file = "weight_sectors.html", selfcontained = TRUE)
 
@@ -223,9 +224,136 @@ highchart() %>%
   hchart(df2, type = "pie", innerSize = 300, hcaes(Sektor, sum)) 
 ```
 
+
+```{r eval=FALSE}
+paises_2007 <- datos::paises %>% 
+  filter(anio == max(anio)) %>% 
+  mutate(poblacion = round(poblacion/1e6))
+
+data_to_hierarchical_series <- function(data, group_vars, size_var) {
+  
+  # data <- paises_2007
+  # group_vars <- c("continente", "pais")
+  # size_var <- "poblacion"
+  
+  group_syms <- rlang::syms(group_vars)
+  size_sym <- rlang::sym(size_var)
+  
+  if (data %>%
+      select(!!!group_syms) %>%
+      mutate_all(as.character) %>%
+      purrr::map(unique) %>%
+      unlist() %>%
+      anyDuplicated()) stop("Sunburst data uses same label at multiple levels.")
+  
+  data <- data %>%
+    mutate_at(vars(all_of(group_vars)), as.character)
+  
+  name_cell <- function(..., depth) paste0(list(...), 1:depth, collapse = "")
+  
+  data_at_depth <- function(depth = 1) {
+    
+    data %>%
+      group_by(!!!group_syms[1:depth]) %>%
+      summarise(value = sum(!!size_sym)) %>%
+      ungroup() %>%
+      arrange(desc(value)) %>% 
+      mutate(name = !!group_syms[[depth]],
+             level = depth) %>%
+      # mutate_at(group_vars, as.character()) %>%
+      {
+        if (depth == 1)
+          mutate(., id = paste0(name, 1))
+        else {
+          mutate(
+            .,
+            parent = purrr::pmap_chr(list(!!!group_syms[1:depth - 1]),
+                                     name_cell,
+                                     depth = depth - 1),
+            id = paste0(parent, name, depth)
+          )
+        }
+      }
+  }
+  
+  sunburst_df <- 1:length(group_vars) %>%
+    purrr::map(data_at_depth) %>%
+    bind_rows() %>%
+    arrange(level)
+  
+  data_list <- sunburst_df %>%
+    highcharter::list_parse() # %>% purrr::map( ~ .[!is.na(.)])
+  
+  data_list
+  
+}
+
+
+dataserie <- data_to_hierarchical_series(
+  paises_2007,
+  group_vars = c("continente", "pais"),
+  size_var = "poblacion"
+  )
+
+dataserie <- data_to_hierarchical_series(
+  df,
+  group_vars = c("Sektor", "name"),
+  size_var = "value"
+  )
+
+highchart() %>%
+  hc_add_series(
+    data = dataserie,
+    type = "sunburst",
+    # type=  "treemap",
+    allowDrillToNode = TRUE,
+    levels = list(
+      list(
+        level = 1,
+        borderWidth = 0,
+        borderColor = "transparent",
+        colorByPoint = TRUE,
+        dataLabels = list(enabled = T)
+        ),
+      list(
+        level = 2,
+        borderWidth = 0,
+        borderColor = "transparent",
+        colorVariation = list(key = "brightness", to = 0.50),
+        dataLabels = list(enabled = T)
+        )
+      )
+    )
+```
+
+
+
+
 Im Blogpost [Aktien-Gewichtung in meinem Portfolio](/post/portfolio-und-aktien/){target="_blank"} habe ich die Gewichtung einzelner Aktien in meinem ETF-und-Einzelaktien-Portfolio untersucht. Ich wollte wissen, welchen Anteil einzelne Aktien über alle Anlageprodukte hinweg im Portfolio einnehmen. Das Ergebnis überraschte mich nicht sonderlich, da ich eine ähnliche Gewichtung der größten Einzelpositionen wie Apple und Co erwartet hatte. 
 
 Hier noch einmal das Ergebnis: ![](unnamed-chunk-10-1.png)
+<style >
+.resize {
+  height: auto;
+  max-width:150%;
+  max-height:150%;
+  margin-left: -20px;
+  margin-right: -20px;
+}
+</style >
+
+<img class="resize" src="unnamed-chunk-10-1.png">
+<style >
+.full-width {
+	left: 50%;
+	margin-left: -50vw;
+	margin-right: -50vw;
+	max-width: 100vw;
+	position: relative;
+	right: 50%;
+	width: 100vw;
+}
+</style >
 
 Nun habe ich mir die Analyse ein weiteres Mal vorgenommen, um einerseits die Visualisierung mit dem interaktiven JavaScript-Package `Highcharter` zu wiederholen und um andererseits die Gewichtung der Sektoren zu analysieren. Das Ergebnis der Sektorenanalyse hat mich dann schon einigermaßen überrascht und ich muss mir überlegen, ob ich nicht stärker nach Sektoren diversifizieren sollte.
 

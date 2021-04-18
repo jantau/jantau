@@ -8,6 +8,14 @@
   margin: 0 auto 0 auto;
 }
 
+/*
+.article-container {
+  max-width: 760px;
+  padding: 0 20px 0 20px;
+  margin: 0 auto 0 auto;
+}
+*/
+
 .page-subtitle {
   font-size: 1.15rem;
   color: rgba(0, 0, 0, 0.54);
@@ -82,7 +90,7 @@
 .article-style {
   // Any unresponsive embeds, e.g. Plotly, should be wrapped to handle on a case-by-case basis.
   // If any unresponsive embeds still remain in the article, prevent article overflow and DIV scrolling.
-  // Note that lazy-loaded images, e.g. Gallery, may cause scrollable Y-overflow if only X-overflow is hidden pre-load.
+  // Note that lazy-loaded images, e.g. Gallery, may cause scrollable Y-overflow if only X-overflow is hidden pre-load. Alternativ is visible (JT April 2021)
   overflow: hidden;
 
   // Word wrap text content.
@@ -92,16 +100,34 @@
   a {
     text-decoration: $sta-link-decoration;
   }
-
+ 
   img,
   video {
     margin-left: auto;
     margin-right: auto;
     margin-top: 2rem;
     margin-bottom: 2rem;
-    padding: 0;
   }
-
+ 
+/*
+  img,
+  video {
+    height: auto;
+    max-width: 1000px;
+    margin-left: -1;
+    margin-right: auto;
+    display: block;
+  }
+*/  
+/*
+  img,
+  video {
+    height: auto;
+    max-width: 150%;
+    margin-left: -25%;
+    margin-right: auto;
+  }
+*/
   td img,
   td video {
     margin-top: 0;
