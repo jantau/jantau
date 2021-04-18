@@ -170,4 +170,3 @@ saveWidget(ndx_1995_today_log, file = "content/post/2021-04-15-nasdaq-blase/ndx_
 
 # CAGR Nasdaq vor heute
 # (14042/4569)^(1/5)-1 = 0.2517614
-

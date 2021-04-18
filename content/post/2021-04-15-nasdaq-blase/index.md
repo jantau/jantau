@@ -55,4 +55,5 @@ Die Darstellung zeigt jedoch, dass die derzeitigen Kurse noch lange nicht im Dot
 
 Den für diesen Beitrag erstellten Code findest du hier: [https://github.com/jantau/jantau](https://github.com/jantau/jantau/tree/main/content/post)
 
+Hat dir der Post gefallen? [Melde dich für meinen Newsletter an](https://tinyletter.com/jantau), um über neue Beiträge informiert zu werden.
 
