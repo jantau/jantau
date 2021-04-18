@@ -25,7 +25,7 @@ Neue Höchststände sind regelmäßig der Anlass, um vor Börsenblasen oder dem 
 
 Und betrachtet man den Chartverlauf seit 1995, sieht es tatsächlich bedrohlich aus. Selbst die berüchtigte Dotcom-Blase erscheint im Vergleich der letzten Jahre harmlos. Bereits seit fünf Jahren entwickelt sich der Nasdaq ausgesprochen gut. In den letzten zwei Jahren hat er dann noch weiter Fahrt aufgenommen.
 
-<iframe height="500" width="150%" frameborder="no" src="https://jantau.github.io/highchart/ndx_1995_today"> </iframe>
+<iframe height="500" width="100%" frameborder="no" src="https://jantau.github.io/highchart/ndx_1995_today"> </iframe>
 
 Dass die Entwicklung so extrem erscheint, liegt an der linearen Skalierung der Y-Achse, die die imposanten Entwicklungen bei den niedrigeren absoluten Kursständen der Vergangenheit herunterspielt.
 
