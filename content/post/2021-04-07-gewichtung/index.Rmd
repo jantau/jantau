@@ -341,7 +341,6 @@ Hier noch einmal das Ergebnis: ![](unnamed-chunk-10-1.png)
 }
 </style >
 
-<img class="resize" src="unnamed-chunk-10-1.png">
 <style >
 .full-width {
 	left: 50%;
