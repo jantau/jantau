@@ -327,11 +327,10 @@ highchart() %>%
 ```
 
 
-
-
 Im Blogpost [Aktien-Gewichtung in meinem Portfolio](/post/portfolio-und-aktien/){target="_blank"} habe ich die Gewichtung einzelner Aktien in meinem ETF-und-Einzelaktien-Portfolio untersucht. Ich wollte wissen, welchen Anteil einzelne Aktien über alle Anlageprodukte hinweg im Portfolio einnehmen. Das Ergebnis überraschte mich nicht sonderlich, da ich eine ähnliche Gewichtung der größten Einzelpositionen wie Apple und Co erwartet hatte. 
 
 Hier noch einmal das Ergebnis: ![](unnamed-chunk-10-1.png)
+
 <style >
 .resize {
   height: auto;

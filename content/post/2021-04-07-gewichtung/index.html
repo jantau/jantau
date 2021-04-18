@@ -23,7 +23,7 @@ editor_options:
 
 
 <p>Im Blogpost <a href="/post/portfolio-und-aktien/" target="_blank">Aktien-Gewichtung in meinem Portfolio</a> habe ich die Gewichtung einzelner Aktien in meinem ETF-und-Einzelaktien-Portfolio untersucht. Ich wollte wissen, welchen Anteil einzelne Aktien über alle Anlageprodukte hinweg im Portfolio einnehmen. Das Ergebnis überraschte mich nicht sonderlich, da ich eine ähnliche Gewichtung der größten Einzelpositionen wie Apple und Co erwartet hatte.</p>
-Hier noch einmal das Ergebnis: <img src="unnamed-chunk-10-1.png" />
+<p>Hier noch einmal das Ergebnis: <img src="unnamed-chunk-10-1.png" /></p>
 <style >
 .resize {
   height: auto;
@@ -45,7 +45,6 @@ Hier noch einmal das Ergebnis: <img src="unnamed-chunk-10-1.png" />
     width: 100vw;
 }
 </style >
-<p><img class="full-width" src="unnamed-chunk-10-1.png"></p>
 <p>Nun habe ich mir die Analyse ein weiteres Mal vorgenommen, um einerseits die Visualisierung mit dem interaktiven JavaScript-Package <code>Highcharter</code> zu wiederholen und um andererseits die Gewichtung der Sektoren zu analysieren. Das Ergebnis der Sektorenanalyse hat mich dann schon einigermaßen überrascht und ich muss mir überlegen, ob ich nicht stärker nach Sektoren diversifizieren sollte.</p>
 <div id="visualisierung-mit-highcharter" class="section level2">
 <h2>Visualisierung mit Highcharter</h2>
@@ -61,7 +60,7 @@ Hier noch einmal das Ergebnis: <img src="unnamed-chunk-10-1.png" />
 <p><img src="Screenshot_iShares.png" /></p>
 <p>Da jede Aktie nur einem der elf Sektoren auf der obersten Ebene zugeordnet wird, kann die Analyse nach Sektoren gut genutzt werden, um die vielen Einzelpositionen präzise in elf Sektoren zu aggregieren. So lässt sich die Diversifikation über Geschäftsfelder analysieren.
 (Der Nachteil einer solchen Zuordnung ist, dass Unternehmen mit sehr heterogenen Geschäftsaktivitäten eigentlich mehreren Sektoren zugeordnet werden müssten. Amazon ist beispielsweise dem Sektor zyklische Konsumgüter zugeordnet, was den Ursprüngen von Amazon als Online-Buchhändler geschuldet ist. Mit den Amazon Web Services (AWS), den Whole-Foods-Supermärkten oder dem Einstieg im Gesundheitsmarkt ist Amazon jedoch auch in anderen Sektoren wie IT, Nichtzyklische Konsumgüter oder Gesundheitsversorgung aktiv. Insofern wird die Klassifikation jedes Unternehmens mit einem einzelnen Sektor nicht immer den umfangreichen Geschäftsaktivitäten gerecht.)</p>
-<iframe height="500" width="150%" style="margin-left:-25%" frameborder="no" src="https://jantau.github.io/highchart/weight_sectors">
+<iframe height="500" width="100%" frameborder="no" src="https://jantau.github.io/highchart/weight_sectors">
 </iframe>
 <p>Ich bin überrascht über die geringe Diversifikation über Sektoren. Dass IT und Kommunikation einen großen Anteil haben, war zu erwarten. Ich hatte jedoch nicht gedacht, dass die sieben Sektoren Gesundheitsversorgung, Nichtzyklische Konsumgüter, Industrie, Materialien, Versorger, Energie und Immobilien lediglich 10 % des Portfolios ausmachen. Im MSCI World umfassen diese Sektoren immerhin 43 % (was gut dargestellt wird, wenn man im Chart nur Gewichtung_MSCI_World auswählt). Ich muss mir daher überlegen, meine Anlagestrategie anzupassen, um diese Sektoren zu stärken.</p>
 <div id="anmerkungen" class="section level3">
