@@ -10,10 +10,12 @@ headless: true
 weight: 10
 
 # Section title
-#title: Datenanalyse. Persönliche Finanzen. Storytelling.
+title: Persönliche Finanzen. Datenanalyse. Storytelling.
+align: left
+
 
 # Section subtitle
-title: Persönliche Finanzen. Datenanalyse. Storytelling.
+#subtitle: Persönliche Finanzen. Datenanalyse. Storytelling.
 
 # Section design
 design:
@@ -24,9 +26,8 @@ design:
   columns: "1"
   # Use a dark navy background with light text.
   background:
-    color: 'navy'
+    color: '#23252f' # #1976d2 #004ba0 #263238
     text_color_light: true
 
 height: 10px
 ---
-
