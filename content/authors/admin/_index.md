@@ -44,7 +44,7 @@ title: Jan Taubitz
 
 Jan Taubitz ist Informationswissenschaftler und Historiker.
 
-Dieser Blog beinhaltet Datenanalysen und Visualisierungen zu persönlichen Finanzen, die mit der Programmiersprache `R` durchgeführt werden. 
+Dieser Blog beinhaltet Datenanalysen und Visualisierungen zu persönlichen Finanzen, die mit der Programmiersprache <i class="fab fa-r-project"></i> durchgeführt werden. 
 
 Als Historiker bin ich darin trainiert, Fragestellungen (zu vergangenen Ereignissen und Strukturen) zu entwickeln und zu deren Beantwortung Belege und Gegenbelege in Archiven und wissenschaftlicher Literatur zu finden, die anschließend zu einem gut begründeten und überzeugenden Narrativ verbunden werden. 
 
