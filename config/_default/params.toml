@@ -48,7 +48,8 @@ local_business_type = ""
 org_name = ""
 
 # Description for social sharing and search engines. If undefined, superuser role is used in place.
-description = "Ein Blog mit Datenanalysen und Datenvisualisierungen zu persönlichen Finanzen, die mit der Programmiersprache R durchgeführt werden"
+description = "Ein Blog mit datengetriebenen Analysen und Visualisierungen zu persönlichen Finanzen und Anlagestrategien."
+# Old description (used until April 2021): Ein Blog mit Datenanalysen und Datenvisualisierungen zu persönlichen Finanzen, die mit der Programmiersprache R durchgeführt werden
 
 ############################
 ## Site Features
