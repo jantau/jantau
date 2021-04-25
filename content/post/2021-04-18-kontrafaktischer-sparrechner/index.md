@@ -31,7 +31,7 @@ Die Grundlage der Kursberechnung bildet der bereinigte Schlusskurs ([adjusted cl
 
 Aber versucht es selbst. (Bitte beachtet, dass der Aufbau des Charts ein paar Sekunden dauern kann, da die Daten erst über die [finance.yahoo.com-Schnittstelle](https://finance.yahoo.com) geladen und anschließend analysiert werden müssen.)
 
-<iframe height="800" width="100%" frameborder="no" src="https://jantau.shinyapps.io/counterfactual-stock-savings-plan-calculator/"> </iframe>
+<iframe height="900" width="100%" frameborder="no" src="https://jantau.shinyapps.io/counterfactual-stock-savings-plan-calculator/"> </iframe>
 
 Das Ziel der Rechenoperation ist es nicht, die verpassten Chancen schmerzhaft bewusst zu machen, die etwa zur finanziellen Unabhängigkeit geführt hätten, wenn man nicht nur zur richtigen Zeit gekauft, sondern auch noch bei allen Hochs und Tiefs beharrlich weiter investiert hätte. Der Rechner soll vielmehr den Hype um Kryptowährungen, Memestocks und r/wallstreetbets relativieren. Er zeigt nämlich, dass es ein grundlegendes Element der Märkte ist, dass sich Chancen auftun, deren Ausmaß erst rückblickend offensichtlich wird. Vor Gamestop und Bitcoin gab es andere Möglichkeiten, mit denen man Wahnsinnsrenditen erzielen konnte. 
 
