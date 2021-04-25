@@ -1,0 +1,12 @@
+name: counterfactual-stock-savings-plan-calculator
+title: counterfactual-stock-savings-plan-calculator
+username:
+account: jantau
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 4015892
+bundleId: 4516569
+url: https://jantau.shinyapps.io/counterfactual-stock-savings-plan-calculator/
+when: 1619355272.43407
+asMultiple: FALSE
+asStatic: FALSE

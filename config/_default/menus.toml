@@ -37,11 +37,18 @@
   name = "Kontakt"
   url = "#contact"
   weight = 70
+
+#[[main]]
+ # name = "Apps/Rechner"
+  #url = "apps"
+  #weight = 80  
   
 [[main]]
   name = "Newsletter"
   url = "https://tinyletter.com/jantau"
-  weight = 80  
+  weight = 90  
+  
+  
 
 # Link to a PDF of your resume/CV from the menu.
 # To enable, copy your resume/CV to `static/media/resume.pdf` and uncomment the lines below.

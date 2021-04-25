@@ -1,14 +1,8 @@
-#library(directlabels)
+
 library(gameofthrones) # farbpaletten
-#library(ggrepel)
 library(ggtext)
-#library(lubridate)
-#library(scales)
 library(shiny)
-#library(stringr)
-#library(tidyquant)
 library(tidyverse)
-#library(xts)
 # NCmisc::list.functions.in.file("shiny_apps/cappuccino/app.R")
 
 theme_jantau <- theme(

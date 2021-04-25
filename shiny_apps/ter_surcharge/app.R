@@ -1,6 +1,3 @@
-# Find out more about building applications with Shiny here:
-#    http://shiny.rstudio.com/
-#
 
 library(shiny)
 library(tidyverse)
@@ -13,7 +10,10 @@ library(tidyquant)
 library(directlabels)
 library(ggrepel)
 
+#----------------------------------------------------------------------------
 # Preparation of stationary data
+#----------------------------------------------------------------------------
+
 # index_archive <- tq_get(c("^SP500TR", "^NDX", "^GDAXI"),
 #                get  = "stock.prices",
 #                from = "1990-01-01",
@@ -21,7 +21,10 @@ library(ggrepel)
 
 # write.csv(index_archive,"shiny_apps/ter_surcharge/data/index_archive.csv", row.names = FALSE)
 
-# Load data
+#----------------------------------------------------------------------------
+# Load data and themes
+#----------------------------------------------------------------------------
+
 index_archive <- read_csv(file = "data/index_archive.csv")
 
 index_new <- tq_get(
@@ -86,7 +89,10 @@ theme_jantau <- theme(
                                     size = 8)
 )
 
-# Define UI for application
+#----------------------------------------------------------------------------
+# Build shiny app
+#----------------------------------------------------------------------------
+
 ui <- fluidPage(
     # Application title
     titlePanel("Auswirkungen von Verwaltungs- und Ordergebühren auf die Rendite"),
