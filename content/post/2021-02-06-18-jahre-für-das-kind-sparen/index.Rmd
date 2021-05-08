@@ -6,7 +6,7 @@ slug: 18-jahre-sparen
 categories: []
 tags: []
 subtitle: ''
-summary: 'Über den besten Index für eine langfristige Investition in die Zukunft der Kinder'
+summary: 'Über den besten Index für eine langfristige Investition in die Zukunft der Kinder.'
 authors: []
 lastmod: '2021-02-06T16:49:51+01:00'
 featured: no

@@ -11,6 +11,7 @@ rm(list = ls()) # Clear your environment
 # Load in header file
 source("/Users/jan/blog/jantau/content/post/header.R")
 
+setwd("/Users/jan/blog/jantau/content/post/2021-05-02-zoom-in-nasdaq-100") 
 
 #----------------------------------------------------------------------------
 # Load data
@@ -29,7 +30,9 @@ NASDAQ_100$Sektor <- factor(NASDAQ_100$Sektor)
    #             to = "2021-04-26")
 
 
-write.csv(nasdaq_all, "content/post/nasdaq_all.csv", row.names = FALSE)
+# write.csv(nasdaq_all, "content/post/nasdaq_all.csv", row.names = FALSE)
+nasdaq_all <- read_csv("nasdaq_all.csv")
+
 nasdaq <- nasdaq_all
 
 nasdaq_3_yrs <- nasdaq %>%
@@ -93,7 +96,7 @@ hc <- nasdaq_full %>%
     maxSize = 30
   ) %>%
   hc_title(text = "Zoom In Nasdaq 100 - Bubble Chart") %>%
-  hc_subtitle(text = "Einzelwerte, Einzelwertgewichtung, Sektorenaufteilung, 1J u. 3J Performance") %>%
+  hc_subtitle(text = "5 Dimensionen: Einzelwerte, Einzelwertgewichtung, Sektorenaufteilung, 1J u. 3J Performance") %>%
   hc_caption(text = caption_text) %>%
   hc_xAxis(title = list(text = "Perf. 3J in %"),
            labels = list(format = "{value} %")) %>%
@@ -240,6 +243,7 @@ hc <- nasdaq_full_bar %>%
   hc_caption(text = caption_text) %>%
   hc_xAxis(title = list(text = NULL)) %>%
   hc_yAxis(title = list(text = "Anteil am Index"),
+           max = 50,
            labels = list(format = "{value} %")) %>%
   hc_tooltip(
     headerFormat = as.character(tags$h4("{point.key}", tags$br())),
@@ -340,8 +344,17 @@ hc <- nasdaq_full_bar %>%
   
   saveWidget(hc, file = "nasdaq_packedbubble_chart.html", selfcontained = TRUE)
   
-#packedbubble: {
-#  minSize: '20%',
-#  maxSize: '100%',
-#  zMin: 0,
-#  zMax: 1000,
+#----------------------------------------------------------------------------
+# Traditional Line Chart for Nasdaq 100
+#----------------------------------------------------------------------------
+  
+  
+  n <-
+    getSymbols("^NDX", from = Sys.Date() - years(3), auto.assign = FALSE)
+  
+  hc <- hchart(n, type = "line") %>%
+    hc_title(text = "Konventionelle Darstellung vom Nasdaq 100") %>%
+    hc_subtitle(text = "2 Dimensionen: Kursstand, 3 Jahre Zeitverlauf") %>%
+    hc_caption(text = caption_text)
+  
+  saveWidget(hc, file = "nasdaq_line_chart.html", selfcontained = TRUE)

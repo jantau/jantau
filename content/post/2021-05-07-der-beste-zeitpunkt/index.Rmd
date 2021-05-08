@@ -1,0 +1,132 @@
+---
+title: Der beste Zeitpunkt
+author: Jan Tau
+date: '2021-05-07'
+slug: der-beste-zeitpunkt
+categories: []
+tags: []
+subtitle: 'Über den besten Zeitpunkt, um in Aktien/ETFs zu investieren.'
+summary: 'Über den besten Zeitpunkt, um in Aktien/ETFs zu investieren.'
+authors: []
+lastmod: '2021-05-07T11:25:38+02:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#----------------------------------------------------------------------------
+# Load R libraries and themes
+#----------------------------------------------------------------------------
+cat("\014") # Clear your console
+rm(list = ls()) # Clear your environment
+
+# Load in header file
+source("/Users/jan/blog/jantau/content/post/header.R")
+```
+
+```{r}
+#----------------------------------------------------------------------------
+# Load data
+#----------------------------------------------------------------------------
+
+dax <- tq_get("^GDAXI", 
+                get  = "stock.prices",
+                from = "1990-01-01",
+                to = "2021-04-30")
+```
+
+```{r}
+#----------------------------------------------------------------------------
+# Transform data
+#----------------------------------------------------------------------------
+dax_transform <- dax %>%
+  drop_na() %>%
+  select(1, 2, 3) %>%
+  mutate(ym = substr(date, 1, 7)) %>%
+  mutate(day = substr(date, 9, 10)) %>%
+  mutate(weekday = weekdays.POSIXt(date, abbreviate = TRUE)) %>%
+  mutate(weekday = factor(weekday, levels = c("Mon", "Tue", "Wed", "Thu", "Fri"))) %>%
+  group_by(ym) %>%
+  mutate(trading_day = row_number()) %>%
+#  filter(trading_day <= 17) %>% # all months have at least 17 trading days
+  mutate(rank = rank(open, ties.method = "random")) %>%
+  ungroup()
+
+```
+
+```{r}
+dax_trading_day <- dax_transform %>%
+  distinct(ym, trading_day) %>%
+  group_by(ym) %>%
+  summarize(n_trading_days = n())
+
+min(dax_trading_day$n_trading_days)
+```
+
+
+
+```{r}
+dax_transform %>% 
+  filter(rank <= 1)  %>%
+  ggplot(aes(x = trading_day)) +
+  geom_bar()
+
+dax_transform %>% 
+  filter(date < "1999-12-31") %>%
+  filter(rank == 8)  %>%
+  filter(trading_day <= 18) %>%
+  ggplot(aes(x = trading_day)) +
+  geom_bar()
+
+dax_transform_first <- dax_transform %>% 
+    filter(rank <= 1)
+
+
+dax_transform %>% 
+  filter(rank <= 1)  %>%
+  group_by(rank) %>%
+  summarise(n())
+
+dax_transform %>% 
+  filter(date < "1999-12-31") %>%
+  filter(rank   == 5)  %>%
+  group_by(trading_day) %>%
+  summarise(count = n()) %>%
+  mutate(sum = sum(count))
+
+dax_mean <- dax_transform %>% 
+  group_by(trading_day) %>%
+  summarise(mean_rank = mean(rank))
+
+
+dax_mean_perc <- dax_transform %>% 
+  group_by(trading_day) %>%
+ # filter(trading_day == 4) %>%
+  summarise(first_rank = sum(rank == 1)/sum(rank >= 0)*100)
+```
+
+
+
+## Investieren über Sparpläne
+
+Viele haben Sparpläne, mit denen sie regelmäßig investieren. Sie nutzen dabei den Durchschnittskosteneffekt.
+
+Lässt sich das jedoch optimieren. Gibt es Tage im Monat, die statistisch einen günstigeren Einstieg bieten? Gibt es vielleicht auch Wochentage? Und dann kann die Frage auch noch einmal umgedreht werden und gefragt werden, ob es statistisch betrachtet gute Tage in einem Monat zu Verkaufen gibt.
+
+Ich habe mir zur Beantwortung dieser Fragen den Dax 30 angeschaut, der als Kursindex gut geeignet ist.
+
+## Welches ist der beste Tag im Monat, um zu investieren?
+
+Ergebnis Stonks go up! Der erste Handelstag ist der beste. Zu den letzten Handelstagen geht es wieder aufwärts.
+
+Wochentage ist egal.
+
+## Vergleich
+Was ist der Unterschied? Immer am ersten oder immer am 13. Handelstag kaufen?
+
