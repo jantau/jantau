@@ -8,7 +8,7 @@ tags: [Nasdaq 100, Highcharter]
 subtitle: 'Über die verschiedenen Dimensionen eines Aktienindex und wie sie visualisiert werden können.'
 summary: 'Über die verschiedenen Dimensionen eines Aktienindex und wie sie visualisiert werden können.'
 authors: []
-lastmod: '2021-05-09T10:30:36+02:00'
+lastmod: '2021-05-09T00:30:36+02:00'
 featured: no
 image:
   caption: ''

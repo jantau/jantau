@@ -54,7 +54,7 @@ dax_transform <- dax %>%
   mutate(weekday = factor(weekday, levels = c("Mon", "Tue", "Wed", "Thu", "Fri"))) %>%
   group_by(ym) %>%
   mutate(trading_day = row_number()) %>%
-#  filter(trading_day <= 17) %>% # all months have at least 17 trading days
+  #  filter(trading_day <= 17) %>% # all months have at least 17 trading days
   mutate(rank = rank(open, ties.method = "random")) %>%
   ungroup()
 

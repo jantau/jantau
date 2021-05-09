@@ -358,3 +358,42 @@ hc <- nasdaq_full_bar %>%
     hc_caption(text = caption_text)
   
   saveWidget(hc, file = "nasdaq_line_chart.html", selfcontained = TRUE)
+
+  
+#----------------------------------------------------------------------------
+# Test nested list
+#----------------------------------------------------------------------------
+  
+  
+  library(tidyverse)
+  library(gapminder)
+  data(gapminder, package = "gapminder")
+  
+  gp <- gapminder %>%
+    arrange(desc(year)) %>%
+    distinct(country, .keep_all = TRUE)
+  
+  gp2 <- gapminder %>%
+    select(country, year, pop) %>% 
+    nest(-country) %>%
+    mutate(
+      data = map(data, mutate_mapping, hcaes(x = year, y = pop), drop = TRUE),
+      data = map(data, list_parse)
+    ) %>%
+    rename(ttdata = data)
+  
+  gptot <- left_join(gp, gp2, by = "country")
+  
+  hchart(
+    gptot,
+    "point",
+    hcaes(lifeExp, gdpPercap, name = country, size = pop, group = continent, name = country)
+  ) %>%
+    hc_yAxis(type = "logarithmic") %>% 
+    # here is the magic (inside the function)
+    hc_tooltip(
+      useHTML = TRUE,
+      headerFormat = "<b>{point.key}</b>",
+      pointFormatter = tooltip_chart(accesor = "ttdata")
+    )  
+  
