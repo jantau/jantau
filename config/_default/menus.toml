@@ -7,6 +7,11 @@
   name = "Blog"
   url = "#posts"
   weight = 10
+  
+[[main]]
+  name = "Apps"
+  url = "apps"
+  weight = 15
 
 [[main]]
   name = "Über"

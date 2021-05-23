@@ -59,6 +59,15 @@ for(i in 2:nrow(dax_saving)) {
 # 5 years period grouping
 #----------------------------------------------------------------------------
 
+dax_saving <- dax_saving %>%
+  mutate(period = case_when(date <= "1995-12-31" ~ "1991-1995",
+                            date > "1995-12-31" & date <= "2000-12-31" ~ "1996-2000",
+                            date > "2000-12-31" & date <= "2005-12-31" ~ "2001-2005",
+                            date > "2005-12-31" & date <= "2010-12-31" ~ "2006-2010",
+                            date > "2010-12-31" & date <= "2015-12-31" ~ "2011-2015",
+                            date > "2015-12-31" & date <= "2020-12-31" ~ "2016-2020",
+  ))
+
 dax_saving_join <- dax_saving %>%
   group_by(period) %>%
   summarise(max_shares = max(shares)) %>%
@@ -200,4 +209,94 @@ ggsave("zeit-im-markt.png", scale = .75)
 # Tipps for area chart
 # https://www.r-graph-gallery.com/136-stacked-area-chart.html
 
+#----------------------------------------------------------------------------
+# Visualisation of last day
+#----------------------------------------------------------------------------
 
+
+dax_period_percentage %>%
+  filter(date == "2020-12-30") %>%
+  mutate(percentage = percentage * 100) %>%
+  ggplot(aes(x = period, y = percentage)) +
+  geom_col(fill = got(6, option = "Daenerys", direction = -1)) +
+  theme_jantau +
+  labs(title = "Endwerte",
+       subtitle = "nach 5-Jahres-Perioden",
+       caption = "Datenanalyse u. Visualisierung: jantau.com | Daten: finance.yahoo.com") +
+  theme(axis.title.x = element_blank(),
+        axis.title.y = element_blank()) +
+  
+  scale_y_continuous(
+    sec.axis = sec_axis(~ ., labels = dollar_format(suffix = " %",
+                                                    prefix = "")),
+    labels = dollar_format(suffix = " %",
+                           prefix = "")
+  ) +
+  
+  geom_hline(yintercept = 16.666667,
+             linetype = "dashed",
+             color = pal[2]) +
+  
+  scale_x_discrete(limits=rev) +
+  geom_label(aes(
+    x = period,
+    y = percentage,
+    label = paste0(round(percentage, 1), " %")
+  ),
+  color = "black",
+  size = 3) 
+
+ggsave("endwerte.png", scale = .75) 
+  
+
+
+#----------------------------------------------------------------------------
+# Calculate CAGRs # https://www.investopedia.com/terms/c/cagr.asp
+#----------------------------------------------------------------------------
+
+dax_period_cagr <- dax_saving %>%
+  group_by(period) %>%
+  summarise(cagr = (last(adjusted) / first(adjusted)) ^ (1 / 5) - 1)
+
+dax_period_cagr %>%
+  mutate(cagr = cagr * 100) %>%
+  ggplot(aes(x = period, y = cagr)) +
+  geom_col(fill = ifelse(dax_period_cagr$cagr >= 0, pal[2], pal[1])) +
+  
+  theme_jantau +
+  labs(title = "CAGR (Compound Annual Growth Rate)",
+       subtitle = "nach 5-Jahres-Perioden",
+       caption = "Datenanalyse u. Visualisierung: jantau.com | Daten: finance.yahoo.com") +
+  theme(axis.title.x = element_blank()) +
+  
+  
+  
+  scale_y_continuous(
+    sec.axis = sec_axis(~ ., labels = dollar_format(suffix = " %",
+                                                    prefix = "")),
+    labels = dollar_format(suffix = " %",
+                           prefix = "")
+  ) +
+  
+  geom_label(aes(
+    x = period,
+    y = cagr,
+    label = paste0(round(cagr, 1), " %")
+  ),
+  color = "black",
+  size = 3) 
+  
+ggsave("period_cagr.png", scale = .75)   
+
+
+# CAGR Dax 1991 bis 2020
+# (13718/1359)^(1/30)-1 = 0.08011263
+
+# CAGR Dax 1991 bis-1995
+# (2260.69/1359)^(1/5)-1 = 0.1071445
+
+
+
+
+df1 <- data.frame(no = 1:5, A = 1:5, B = 2:6, C = 3:7)
+rownames(df1) <- 

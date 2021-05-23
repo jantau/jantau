@@ -1,7 +1,6 @@
 ---
 commentable: false
 date: "2021-04-24T00:00:00+01:00"
-draft: true
 editable: false
 header:
   caption: ""
@@ -10,18 +9,28 @@ share: false
 title: Apps/Rechner
 ---
 
-## Applications mit Shiny
+Die Apps wurden mit [Shiny](https://shiny.rstudio.com) von RStudio erstellt.
 
-### Order- und Verwaltungsgebührenrechner
+## Der Order- und Verwaltungsgebührenrechner
 
-![](/media/shiny/shiny_ter.png)
+Ein Kostenrechner, der den langfristigen Renditeverlust durch Order- und Verwaltungsgebühren an historischen Kursverläufen berechnet.
 
-### Der Konsum-Asset-Rechner
+Vorgestellt im Blog-Post [Renditeverlust durch Gebühren](https://www.jantau.com/post/renditeverlust/)
 
-![](/media/shiny/shiny_konsum.png)
+[<img src="/media/shiny/shiny_ter.png">](http://jantau.shinyapps.io/ter_surcharge)
 
-### Der kontrafaktische Aktiensparplanrechner
+## Der Konsum-Asset-Rechner
 
-Diese Shiny-App integriert einen interaktiven JacaSript-Chart von Highcharter.
+Der Rechner zeigt, wie aus unterschiedlichen Konsumgütern (ein Cappuccino, ein neues iPhone, ein Auto) durch die alternative Investition des Kaufpreises in einen Indexfonds unter Berücksichtigung von Inflation und Verwaltungsgebühren ein Asset werden kann. 
+
+Vorgestellt im Blog-Post [Cappuccino mit Anna](https://www.jantau.com/post/konsumrechner/)
+
+[<img src="/media/shiny/shiny_konsum.png">](https://jantau.shinyapps.io/cappuccino/)
+
+## Der kontrafaktische Aktiensparplanrechner
+
+Der kontrafaktische Aktiensparplanrechner deomstriert retrospektiv, wie sich dein Portfolio entwickelt hätte, wenn du monatlich Summe A in Aktie X oder Indexfonds Y oder Crypto-Coin Z investiert hättest.
+
+Vorgestellt im Blog-Post [Der kontrafaktische Aktiensparplanrechner](https://www.jantau.com/post/kontrafaktischer-sparrechner/)
 
 [<img src="/media/shiny/shiny_kontrafaktisch.png">](https://jantau.shinyapps.io/counterfactual-stock-savings-plan-calculator/)
