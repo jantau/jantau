@@ -27,3 +27,34 @@ Den für diesen Beitrag erstellten Code findest du hier: [https://github.com/jan
 
 Hat dir der Post gefallen? [Melde dich für meinen Newsletter an](https://tinyletter.com/jantau), um über neue Beiträge informiert zu werden.
 
+
+```{r}
+#----------------------------------------------------------------------------
+# Ggplot Template for caption and axis
+#----------------------------------------------------------------------------
+
+set.seed(42)  ## for sake of reproducibility
+n <- 10
+dat <- data.frame(
+  years = 1:n,
+  group = rep(LETTERS[1:10]),
+  money = sample(30000:50000, n, replace = TRUE)
+)
+
+
+ggplot(dat, aes(x = group,
+                y = money,)) +
+  geom_point() +
+  theme_jantau +
+  labs(
+    title = "Titel",
+    subtitle = "Untertitel",
+    caption = "Datenanalyse u. Visualisierung: jantau.com | Daten: finance.yahoo.com") +
+  theme(panel.background = element_rect(fill = NA, color = "grey"),
+        axis.title.y = element_blank(),
+        axis.title.x = element_blank())
+
+
+```
+
+

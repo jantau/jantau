@@ -1,14 +1,14 @@
 ---
-title: Der beste Zeitpunkt
+title: Der beste Zeitpunkt zum Investieren
 author: Jan Tau
-date: '2021-05-07'
+date: '2021-05-22'
 slug: der-beste-zeitpunkt
 categories: []
 tags: []
-subtitle: 'Über den besten Zeitpunkt, um in Aktien/ETFs zu investieren.'
-summary: 'Über den besten Zeitpunkt, um in Aktien/ETFs zu investieren.'
+subtitle: 'Über das beste Quartal und den besten Monat, um in den S&P 500 TR zu investieren.'
+summary: 'Über das beste Quartal und den besten Monat, um in den S&P 500 TR zu investieren.'
 authors: []
-lastmod: '2021-05-07T11:25:38+02:00'
+lastmod: '2021-05-23T08:00:38+02:00'
 featured: no
 image:
   caption: ''
@@ -19,10 +19,19 @@ editor_options:
   chunk_output_type: console
 ---
 
-```{r}
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = FALSE,
+	message = FALSE,
+	warning = FALSE,
+	collapse = TRUE,
+	options(scipen = 999)
+)
+
 #----------------------------------------------------------------------------
 # Load R libraries and themes
 #----------------------------------------------------------------------------
+
 cat("\014") # Clear your console
 rm(list = ls()) # Clear your environment
 
@@ -35,98 +44,492 @@ source("/Users/jan/blog/jantau/content/post/header.R")
 # Load data
 #----------------------------------------------------------------------------
 
-dax <- tq_get("^GDAXI", 
-                get  = "stock.prices",
-                from = "1990-01-01",
-                to = "2021-04-30")
+#index <- tq_get(c("^SP500TR", "^NDX", "^GDAXI"), 
+#                get  = "stock.prices",
+#                from = "1990-01-01",
+#                to = "2020-12-31")
+
+#----------------------------------------------------------------------------
+# Save data to csv for faster computing
+#----------------------------------------------------------------------------
+
+# write.csv(index, "content/post/2021-05-07-der-beste-zeitpunkt/index.csv", row.names = FALSE)
+
+#index <- read_csv("content/post/2021-05-07-der-beste-zeitpunkt/index.csv")
+index <- read_csv("index.csv")
+
 ```
 
+
 ```{r}
+#----------------------------------------------------------------------------
+# Analyse bester Monat/bestes Quartal
+#----------------------------------------------------------------------------
+
+#----------------------------------------------------------------------------
+# Manipulate Data
+#----------------------------------------------------------------------------
+
+index_year <- index %>%
+  group_by(symbol) %>%
+  drop_na() %>%
+  select(1, 2, 3) %>%
+  mutate(year = year(date)) %>%
+  mutate(week = strftime(date, format = "%V")) %>%
+  mutate(month = month(date, label = TRUE)) %>%
+  mutate(qrt = quarters(date, abbreviate = TRUE)) %>%
+  group_by(symbol, year) %>%
+  mutate(trading_day = row_number()) %>%
+  mutate(rank = rank(open, ties.method = "random")) 
+```
+
+
+
+```{r}
+#----------------------------------------------------------------------------
+# Best month to Buy/Sell
+#----------------------------------------------------------------------------
+
 #----------------------------------------------------------------------------
 # Transform data
 #----------------------------------------------------------------------------
-dax_transform <- dax %>%
-  drop_na() %>%
-  select(1, 2, 3) %>%
-  mutate(ym = substr(date, 1, 7)) %>%
-  mutate(day = substr(date, 9, 10)) %>%
-  mutate(weekday = weekdays.POSIXt(date, abbreviate = TRUE)) %>%
-  mutate(weekday = factor(weekday, levels = c("Mon", "Tue", "Wed", "Thu", "Fri"))) %>%
-  group_by(ym) %>%
-  mutate(trading_day = row_number()) %>%
-  #  filter(trading_day <= 17) %>% # all months have at least 17 trading days
-  mutate(rank = rank(open, ties.method = "random")) %>%
-  ungroup()
 
+index_best_month <- index_year %>%
+  filter(symbol == "^SP500TR") %>%
+  filter(rank == 1) %>%
+  group_by(month) %>%
+  summarize(value_month = n()) %>%
+  mutate(perc_month = round(value_month/sum(value_month)*100, 0))
+
+index_worst_month <- index_year %>%
+  filter(symbol == "^SP500TR") %>%
+  filter(rank == max(rank)) %>%
+  group_by(month) %>%
+  summarize(value_month = n()) %>%
+  mutate(perc_month = round(value_month/sum(value_month)*100, 0))
+
+#----------------------------------------------------------------------------
+# Create plot function
+#----------------------------------------------------------------------------
+
+pal <- got(3, option = "Daenerys", direction = 1)
+
+plot_month <- function(plot_data, color_palette)
+{
+  plot_data %>%
+    ggplot(aes(x = month, y = value_month)) +
+    geom_bar(stat = "identity", fill = color_palette[1]) +
+    scale_x_discrete(drop = FALSE) +
+    theme_jantau +
+    geom_label(aes(
+      x = month,
+      y = value_month,
+      label = paste0(perc_month, " %")
+    ),
+    color = "black",
+    size = 3) 
+}
+
+#----------------------------------------------------------------------------
+# Create plots
+#----------------------------------------------------------------------------
+
+plot_best_month <- plot_month(index_best_month, pal) +
+  labs(
+    title = "Der beste Monat zum Investieren",
+    subtitle = "in den S&P 500 TR (1990 bis 2020)",
+    caption = "Datenanalyse u. Visualisierung: jantau.com | Daten: finance.yahoo.com",
+    y = "Anzahl Jahre"
+  ) +
+  theme(axis.title.x = element_blank()) +
+  
+  geom_hline(yintercept = 2.666667,
+             linetype = "dashed",
+             color = pal[2]) +
+  geom_label(aes(
+    x = 6,
+    y = 2.666667,
+    label = paste0("Ø 8,3 % (= 100/12)")
+  ),
+  color = pal[2],
+  size = 3) +
+  
+  annotate(
+    geom = "curve",
+    x = 3,
+    y = 9,
+    xend = 1,
+    yend = 6,
+    curvature = -.4,
+    arrow = arrow(length = unit(2, "mm")),
+    col = pal[2]
+  ) +
+  annotate(
+    geom = "text",
+    x = 3.2,
+    y = 9,
+    label = "In 35 % der Jahre fiel der\nbeste Kurs zum Investieren\nin den Januar.",
+    hjust = "left",
+    col = pal[2],
+    size = 3.5
+  )
+
+
+
+plot_worst_month <- plot_month(index_worst_month, pal) +
+  labs(
+    title = "Der beste Monat zum Verkaufen",
+    subtitle = "des S&P 500 TR (1990 bis 2020)",
+    caption = "Datenanalyse u. Visualisierung: jantau.com | Daten: finance.yahoo.com",
+    y = "Anzahl Jahre"
+  ) +
+  theme(axis.title.x = element_blank()) +
+  
+  geom_hline(yintercept = 2.666667,
+             linetype = "dashed",
+             color = pal[2]) +
+  geom_label(aes(
+    x = 3,
+    y = 2.666667,
+    label = paste0("Ø 8,3 % (= 100/12)")
+  ),
+  color = pal[2],
+  size = 3) +
+  
+  
+  annotate(
+    geom = "curve",
+    x = 10,
+    y = 12,
+    xend = 12,
+    yend = 16,
+    curvature = .4,
+    arrow = arrow(length = unit(2, "mm")),
+    col = pal[2]
+  ) +
+  annotate(
+    geom = "text",
+    x = 9.8,
+    y = 12,
+    label = "In 2 von 3 Jahren fiel der\n beste Kurs zum Verkaufen\n in den Dezember.",
+    hjust = "right",
+    col = pal[2],
+    size = 3.5
+  ) 
 ```
 
 ```{r}
-dax_trading_day <- dax_transform %>%
-  distinct(ym, trading_day) %>%
-  group_by(ym) %>%
-  summarize(n_trading_days = n())
+#----------------------------------------------------------------------------
+# Best Quarter to Buy/Sell
+#----------------------------------------------------------------------------
 
-min(dax_trading_day$n_trading_days)
+#----------------------------------------------------------------------------
+# Transform data
+#----------------------------------------------------------------------------
+
+index_best_qrt <- index_year %>%
+  filter(symbol == "^SP500TR") %>%
+  filter(rank == 1) %>%
+  group_by(qrt) %>%
+  summarize(value_qrt = n()) %>%
+  mutate(perc_qrt = round(value_qrt/sum(value_qrt)*100, 0))
+
+index_worst_qrt <- index_year %>%
+  filter(symbol == "^SP500TR") %>%
+  filter(rank == max(rank)) %>%
+  group_by(qrt) %>%
+  summarize(value_qrt = n()) %>%
+  mutate(perc_qrt = round(value_qrt/sum(value_qrt)*100, 0))
+
+#----------------------------------------------------------------------------
+# Create plot function
+#----------------------------------------------------------------------------
+
+pal <- got(3, option = "Daenerys", direction = 1)
+
+plot_qrt <- function(plot_data, color_palette)
+{
+  plot_data %>%
+    ggplot(aes(x = qrt, y = value_qrt)) +
+    geom_bar(stat = "identity", fill = color_palette[1]) +
+    scale_x_discrete(drop = FALSE) +
+    theme_jantau +
+  geom_hline(yintercept = 8, linetype = "dashed", color = color_palette[2]) +
+  geom_label(aes(
+      x = 2.5,
+      y = 8,
+      label = paste0("Ø 25 % (= 100/4)")),
+    color = color_palette[2],
+    size = 3) +
+    geom_label(aes(
+      x = qrt,
+      y = value_qrt,
+      label = paste0(perc_qrt, " %")
+    ),
+    color = "black",
+    size = 3)
+}
+
+#----------------------------------------------------------------------------
+# Create plots
+#----------------------------------------------------------------------------
+
+plot_best_qrt <- plot_qrt(index_best_qrt, pal) +
+  labs(
+    title = "Das beste Quartal zum Investieren",
+    subtitle = "in den S&P 500 TR (1990 bis 2020)",
+    caption = "Datenanalyse u. Visualisierung: jantau.com | Daten: finance.yahoo.com",
+    y = "Anzahl Jahre"
+  ) +
+  theme(axis.title.x = element_blank()) +
+  
+    annotate(
+    geom = "curve",
+    x = 1.8,
+    y = 12,
+    xend = 1,
+    yend = 10,
+    curvature = -.4,
+    arrow = arrow(length = unit(2, "mm")),
+    col = pal[2]
+  ) +
+  annotate(
+    geom = "text",
+    x = 1.9,
+    y = 12,
+    label = "In jedem zweiten Jahr fiel der\nbeste Kurs zum Investieren\nin das 1. Quartal.",
+    hjust = "left",
+    col = pal[2],
+    size = 3.5
+  )
+  
+  
+
+plot_worst_qrt <- plot_qrt(index_worst_qrt, pal) +
+  labs(
+    title = "Das beste Quartal zum Verkaufen",
+    subtitle = "vom S&P 500 TR (1990 bis 2020)",
+    caption = "Datenanalyse u. Visualisierung: jantau.com | Daten: finance.yahoo.com",
+    y = "Anzahl Jahre"
+  ) +
+theme(axis.title.x = element_blank()) +
+  
+  annotate(
+    geom = "curve",
+    x = 3.5,
+    y = 14,
+    xend = 4,
+    yend = 16,
+    curvature = .4,
+    arrow = arrow(length = unit(2, "mm")),
+    col = pal[2]
+  ) +
+  annotate(
+    geom = "text",
+    x = 3.4,
+    y = 14,
+    label = "In 2 von 3 Jahren fiel der\n beste Kurs zum Verkaufen\n in das 4. Quartal.",
+    hjust = "right",
+    col = pal[2],
+    size = 3.5
+  ) 
+```
+
+```{r eval = FALSE}
+#----------------------------------------------------------------------------
+# Compare sp500, ndx and gdaxi
+#----------------------------------------------------------------------------
+
+index_best_qrt_all <- index_year %>%
+  filter(rank == 1) %>%
+  group_by(symbol, qrt) %>%
+  summarize(value_qrt = n()) %>%
+  mutate(perc_qrt = round(value_qrt/sum(value_qrt)*100, 0))
+
+
+index_best_qrt_all %>%
+  mutate(symbol = factor(symbol, levels = c("^SP500TR", "^NDX", "^GDAXI"))) %>%
+  ggplot(aes(x = qrt, y = value_qrt, fill = symbol)) + #, y = value_qrt, group = symbol
+  geom_bar(stat = "identity", position = "dodge") + #stat = "identity", fill = pal[1]
+  scale_x_discrete(drop = FALSE) +
+  theme_jantau +
+  scale_fill_manual(values = pal) +
+  geom_label(aes(
+    label = paste0(perc_qrt, " %")
+  ),
+  position = position_dodge(0.9),
+  color = "black",
+#  alpha = 0,
+  size = 2.5) +
+  theme(legend.position = "none")
+  
 ```
 
 
 
 ```{r}
-dax_transform %>% 
-  filter(rank <= 1)  %>%
-  ggplot(aes(x = trading_day)) +
-  geom_bar()
+#----------------------------------------------------------------------------
+# Plots with years
+#----------------------------------------------------------------------------
 
-dax_transform %>% 
-  filter(date < "1999-12-31") %>%
-  filter(rank == 8)  %>%
-  filter(trading_day <= 18) %>%
-  ggplot(aes(x = trading_day)) +
-  geom_bar()
+plot_best_qrt_w_year <- index_year %>%
+  filter(symbol == "^SP500TR") %>%
+  filter(rank == 1) %>%
+  mutate(year = as.character(year)) %>%
+    ggplot(aes(x = qrt, fill = year)) +
+    geom_bar() + #position = "stack" #stat = "identity"
+    scale_x_discrete(drop = FALSE) +
+    theme_jantau +
+  geom_text(aes(label= year),stat="count",position=position_stack(0.5)) + 
+  theme(legend.position = "none") +
+  
+  labs(
+    title = "Das beste Quartal zum Investieren",
+    subtitle = "in den S&P 500 TR (1990 bis 2020)",
+    caption = "Datenanalyse u. Visualisierung: jantau.com | Daten: finance.yahoo.com",
+    y = "Anzahl Jahre"
+  ) +
+theme(axis.title.x = element_blank()) +
+  
+   annotate(
+    geom = "curve",
+    x = 1.8,
+    y = 12,
+    xend = 1.2,
+    yend = 13,
+    curvature = -.4,
+    arrow = arrow(length = unit(2, "mm")),
+    col = pal[2]
+  ) +
+  annotate(
+    geom = "curve",
+    x = 1.8,
+    y = 12,
+    xend = 1.2,
+    yend = 3,
+    curvature = -.4,
+    arrow = arrow(length = unit(2, "mm")),
+    col = pal[2]
+  ) +
+  annotate(
+    geom = "text",
+    x = 1.9,
+    y = 12,
+    label = "In den Bullenjahren der\n1990er und 2010er fiel der\nbeste Kurs zum Investieren\nhäufig in das 1. Quartal.",
+    hjust = "left",
+    col = pal[2],
+    size = 3.5
+  )
 
-dax_transform_first <- dax_transform %>% 
-    filter(rank <= 1)
 
 
-dax_transform %>% 
-  filter(rank <= 1)  %>%
-  group_by(rank) %>%
-  summarise(n())
+plot_worst_qrt_w_year <-index_year %>%
+  filter(symbol == "^SP500TR") %>%
+  filter(rank == max(rank)) %>%
+  mutate(year = as.character(year)) %>%
+    ggplot(aes(x = qrt, fill = year)) +
+    geom_bar() + #position = "stack" #stat = "identity"
+    scale_x_discrete(drop = FALSE) +
+    theme_jantau +
+  geom_text(aes(label= year),stat="count",position=position_stack(0.5)) + 
+  theme(legend.position = "none") +
+  
+  labs(
+    title = "Das beste Quartal zum Verkaufen",
+    subtitle = "vom S&P 500 TR (1990 bis 2020)",
+    caption = "Datenanalyse u. Visualisierung: jantau.com | Daten: finance.yahoo.com",
+    y = "Anzahl Jahre"
+  ) +
+theme(axis.title.x = element_blank()) +
+  
+  annotate(
+    geom = "curve",
+    x = 1.5,
+    y = 11.5,
+    xend = 1.2,
+    yend = 2,
+    curvature = -.4,
+    arrow = arrow(length = unit(2, "mm")),
+    col = pal[2]
+  ) +
+  annotate(
+    geom = "text",
+    x = 1.5,
+    y = 12,
+    label = "Lediglich in den Crash-Jahren\n2001, 2002 und 2008 fiel der\nbeste Kurs zum Verkaufen\nin das 1. Quartal.",
+    hjust = "middle",
+    vjust = "bottom",
+    col = pal[2],
+    size = 3.5
+  )
 
-dax_transform %>% 
-  filter(date < "1999-12-31") %>%
-  filter(rank   == 5)  %>%
-  group_by(trading_day) %>%
-  summarise(count = n()) %>%
-  mutate(sum = sum(count))
-
-dax_mean <- dax_transform %>% 
-  group_by(trading_day) %>%
-  summarise(mean_rank = mean(rank))
-
-
-dax_mean_perc <- dax_transform %>% 
-  group_by(trading_day) %>%
- # filter(trading_day == 4) %>%
-  summarise(first_rank = sum(rank == 1)/sum(rank >= 0)*100)
 ```
 
+```{r eval = FALSE}
+#----------------------------------------------------------------------------
+# All plots
+#----------------------------------------------------------------------------
 
+plot_best_qrt
+plot_worst_qrt
+plot_best_qrt_w_year
+plot_worst_qrt_w_year
+plot_best_month
+plot_worst_month
+```
 
-## Investieren über Sparpläne
+## Das beste Quartal zum Kaufen/Verkaufen
 
-Viele haben Sparpläne, mit denen sie regelmäßig investieren. Sie nutzen dabei den Durchschnittskosteneffekt.
+Ich habe jedes Jahr eine Summe XY zum Investieren. Welches Quartal beziehungsweise welcher Monat bietet statistisch gesehen den besten Zeitpunkt (sprich: den niedrigsten Kurs), um diese Summe anzulegen?
 
-Lässt sich das jedoch optimieren. Gibt es Tage im Monat, die statistisch einen günstigeren Einstieg bieten? Gibt es vielleicht auch Wochentage? Und dann kann die Frage auch noch einmal umgedreht werden und gefragt werden, ob es statistisch betrachtet gute Tage in einem Monat zu Verkaufen gibt.
+Um diese Frage zu beantworten, habe ich die Kursstände vom S&P 500 Total Return der letzten 31 vollständigen Jahre (1990 bis 2020) analysiert. Der S&P 500 Total Return ist ein Kursindex, der die 500 größten börsennotieren US-amerikanischen Unternehmen umfasst. Im Total-Return-Index werden im Gegensatz zum "normalen" S&P 500 auch Dividenden und andere Ausschüttungen erfasst. 
 
-Ich habe mir zur Beantwortung dieser Fragen den Dax 30 angeschaut, der als Kursindex gut geeignet ist.
+Nachdem ich die Tageskurse der letzten 31 Jahre heruntergeladen habe, habe ich in jedem Jahr den niedrigsten Eröffnungskurs ausgewählt und anschließend geschaut, in welches Quartal dieser Wert fiel. 
 
-## Welches ist der beste Tag im Monat, um zu investieren?
+Das Ergebnis ist eindeutig: [Stonks only go up](https://knowyourmeme.com/memes/stonks). In über 50 % der Fälle liegt im ersten Quartal der beste Zeitpunkt, um sein Geld zu investieren. 
 
-Ergebnis Stonks go up! Der erste Handelstag ist der beste. Zu den letzten Handelstagen geht es wieder aufwärts.
+Die anderen Quartale weisen deutlich unterdurchschnittlich häufig den günstigsten Kurs im Jahresverlauf auf. Auffällig ist, dass das zweite und dritte Quartal noch seltener vertreten sind als das vierte. 
 
-Wochentage ist egal.
+```{r}
+plot_best_qrt
+```
 
-## Vergleich
-Was ist der Unterschied? Immer am ersten oder immer am 13. Handelstag kaufen?
+Die Fragestellung einmal umgedreht (Wann ist der beste Zeitpunkt zum Verkaufen?) ergibt ein noch eindeutigeres Bild. In zwei von drei Jahren fiel der beste Kurs zum Verkaufen in das 4. Quartal.
+
+```{r}
+plot_worst_qrt
+```
+
+Die Anzeige der einzelnen Jahre in den Quartalsbalken gibt die Auflösung. In Bullenjahren mit kontinuierlich steigenden Kursen ist wenig überraschend das erste Quartal der beste Einstiegzeitpunkt. Die Bullenjahre der 1990er und 2010er verzeichneten somit in diesem Quartal regelmäßig den besten Einstiegszeitpunkt. 
+
+```{r}
+plot_best_qrt_w_year
+```
+In Bärenmärkten bietet wiederum das vierte Quartal den besten Einstiegskurs. Das betrifft beispielsweise die Crash-Jahre 2001, 2002 oder 2008. 
+
+```{r}
+plot_worst_qrt_w_year
+```
+
+## Der beste Monat zum Kaufen/Verkaufen
+
+Die Differenzierung nach Monaten bestätigt das Bild der Quartalsanalyse. Der Januar ist in 35 % der Jahre im Untersuchungszeitraum der beste Zeitpunkt zum Investieren. Gefolgt vom März. Auffällig ist vielleicht, dass der Oktober leicht überdurchschnittlich häufig der Monat mit den günstigsten Kursen ist, was womöglich dem [Oktober-Effekt](https://www.investopedia.com/terms/o/octobereffect.asp) geschuldet ist, der die Marktanomalie beschreibt, dass Aktien während des Monats Oktober dazu neigen, zu fallen.
+
+```{r}
+plot_best_month
+```
+
+Zum Kaufen gehört auch das Verkaufen. Wann ist demnach der beste Zeitpunkt zum Verkaufen? Hier sind die historischen Daten noch eindeutiger. **Der beste Zeitpunkt ist so spät wie möglich.** In 65 % der Fälle war der Dezember der beste Monat zum Verkaufen. Das spricht einerseits für die Stonks-only-go-up-These und für die Jahresend- oder auch Santa Claus Rally.
+
+```{r}
+plot_worst_month
+```
+
+## Resultat
+
+Die Ergebnisse der Analyse haben mich in ihrer Deutlichkeit überrascht. Die Analysen liefern ein weiteres Argument gegen das Markettiming. Zu Beginn des Jahres auf niedrigere Kurse zu hoffen, führt statistisch gesehen selten zum Erfolg. Verkauft werden sollte hingegen so spät wie möglich.
+
+Den für diesen Beitrag erstellten Code findest du hier: [https://github.com/jantau/jantau](https://github.com/jantau/jantau/tree/main/content/post){target="_blank"}
+
+Hat dir der Post gefallen? [Melde dich für meinen Newsletter an](https://tinyletter.com/jantau), um über neue Beiträge informiert zu werden.
 
