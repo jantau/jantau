@@ -52,6 +52,6 @@ Die Arbeit in der Bibliothek und das Studium der Informationswissenschaften habe
 
 Auf dem Blog [jantau.com](https://www.jantau.com) verbinde ich diese beiden Professionen. 
 
-Fragestellungen zu persönlichen Finanzen werden mit Werkzeugen der Datenanalyse bearbeitet und durch Visualisierungen und Verbalisierungen in Blog-Posts beantwortet.
+Fragestellungen zu persönlichen Finanzen werden mit Werkzeugen der Datenanalyse bearbeitet und durch Visualisierungen und Verbalisierungen in Blog-Posts beantwortet. Dabei genieße ich vor allem die solitäre Aufgabe, Dinge mit Computercode zu erschaffen.
 
 Den erstellten Code findest du hier: [https://github.com/jantau/jantau](https://github.com/jantau/jantau)

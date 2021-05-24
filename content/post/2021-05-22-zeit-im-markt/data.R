@@ -235,7 +235,7 @@ dax_period_percentage %>%
   
   geom_hline(yintercept = 16.666667,
              linetype = "dashed",
-             color = pal[2]) +
+             color = "dimgrey") +
   
   scale_x_discrete(limits=rev) +
   geom_label(aes(
@@ -244,7 +244,30 @@ dax_period_percentage %>%
     label = paste0(round(percentage, 1), " %")
   ),
   color = "black",
-  size = 3) 
+  size = 3) +
+  
+  annotate(
+    geom = "curve",
+    x = 5,
+    y = 25,
+    xend = 5.9,
+    yend = 16.666667,
+    curvature = -.2,
+    arrow = arrow(length = unit(2, "mm")),
+    col = "dimgrey"
+  ) +
+  annotate(
+    geom = "label",
+    x = 4.9,
+    y = 25,
+    label = "In jeder 5-Jahres-Periode wurde\ndieselbe Summe investiert, was jeweils\n16,7 % der Gesamtinvestition entspricht.",
+    hjust = "right",
+    vjust = "bottom",
+    col = "dimgrey",
+    fill = "dimgrey",
+    alpha = 0.1,
+    size = 3.5
+  )
 
 ggsave("endwerte.png", scale = .75) 
   
@@ -261,19 +284,17 @@ dax_period_cagr <- dax_saving %>%
 dax_period_cagr %>%
   mutate(cagr = cagr * 100) %>%
   ggplot(aes(x = period, y = cagr)) +
-  geom_col(fill = ifelse(dax_period_cagr$cagr >= 0, pal[2], pal[1])) +
-  
+  geom_col(fill = got(6, option = "Daenerys", direction = 1)) + # fill = ifelse(dax_period_cagr$cagr >= 0, pal[2], pal[1])
+
   theme_jantau +
   labs(title = "CAGR (Compound Annual Growth Rate)",
        subtitle = "nach 5-Jahres-Perioden",
        caption = "Datenanalyse u. Visualisierung: jantau.com | Daten: finance.yahoo.com") +
   theme(axis.title.x = element_blank()) +
   
-  
-  
   scale_y_continuous(
-    sec.axis = sec_axis(~ ., labels = dollar_format(suffix = " %",
-                                                    prefix = "")),
+    sec.axis = sec_axis( ~ ., labels = dollar_format(suffix = " %",
+                                                     prefix = "")),
     labels = dollar_format(suffix = " %",
                            prefix = "")
   ) +
@@ -284,7 +305,29 @@ dax_period_cagr %>%
     label = paste0(round(cagr, 1), " %")
   ),
   color = "black",
-  size = 3) 
+  size = 3) +
+  
+  annotate(
+    geom = "curve",
+    x = 2.5,
+    y = 17,
+    xend = 2.1,
+    yend = 15,
+    curvature = .2,
+    arrow = arrow(length = unit(2, "mm")),
+    col = "black"
+  ) +
+  annotate(
+    geom = "label",
+    x = 2.6,
+    y = 17,
+    label = "Im Zeitraum 1996 bis 2000 betrug\ndie jährliche Wachstumsrate 22,8 %.",
+    hjust = "left",
+    col = "black",
+    fill = pal[5],
+    alpha = 0.6,
+    size = 3.5
+  )
   
 ggsave("period_cagr.png", scale = .75)   
 
@@ -294,9 +337,3 @@ ggsave("period_cagr.png", scale = .75)
 
 # CAGR Dax 1991 bis-1995
 # (2260.69/1359)^(1/5)-1 = 0.1071445
-
-
-
-
-df1 <- data.frame(no = 1:5, A = 1:5, B = 2:6, C = 3:7)
-rownames(df1) <- 
