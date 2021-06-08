@@ -29,7 +29,7 @@ Vorgestellt im Blog-Post [Cappuccino mit Anna](https://www.jantau.com/post/konsu
 
 ## Der kontrafaktische Aktiensparplanrechner
 
-Der kontrafaktische Aktiensparplanrechner deomstriert retrospektiv, wie sich dein Portfolio entwickelt hätte, wenn du monatlich Summe A in Aktie X oder Indexfonds Y oder Crypto-Coin Z investiert hättest.
+Der kontrafaktische Aktiensparplanrechner demonstriert retrospektiv, wie sich dein Portfolio entwickelt hätte, wenn du monatlich Summe A in Aktie X oder Indexfonds Y oder Crypto-Coin Z investiert hättest.
 
 Vorgestellt im Blog-Post [Der kontrafaktische Aktiensparplanrechner](https://www.jantau.com/post/kontrafaktischer-sparrechner/)
 
