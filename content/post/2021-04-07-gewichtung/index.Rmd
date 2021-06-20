@@ -4,7 +4,7 @@ author: Jan Tau
 date: '2021-04-11'
 slug: gewichtung
 categories: []
-tags: [Highcharts, Gewichtung, ETF]
+tags: [Highcharter, Gewichtung, ETF]
 subtitle: 'Über die Gewichtung nach Sektoren im ETF-Einzelaktien-Portfolio'
 summary: 'Über die Gewichtung nach Sektoren im ETF-Einzelaktien-Portfolio'
 authors: []
