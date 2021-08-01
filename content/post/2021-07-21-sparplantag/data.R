@@ -104,8 +104,8 @@ for(i in 2:nrow(data_3)) {
 pal <- got(2, option = "Daenerys", direction = -1)
 
 ggplot() +
-  geom_line(data = data_3, aes(x = date, y = portfolio, color = "monatl. Ausführungstag = 20."), alpha = 0.8) + #color = pal[1],
-  geom_line(data = data_2, aes(x = date, y = portfolio, color = "monatl. Ausführungstag = 05."),  alpha = 0.8) + #color = pal[2],
+  geom_line(data = data_3, aes(x = date, y = portfolio, color = "monatl. Ausf.tag = 20."), alpha = 0.8) + #color = pal[1],
+  geom_line(data = data_2, aes(x = date, y = portfolio, color = "monatl. Ausf.tag = 05."),  alpha = 0.8) + #color = pal[2],
 #  geom_line(data = data_2, aes(x = date, y = saving_total)) +
   geom_ribbon(data = data_2,
               aes(
@@ -233,7 +233,7 @@ ggplot(data_6, aes(x = day, y = performance_loss)) +
   labs(title = "Performanceverlust unterschiedl. Ausführungstage",
        subtitle = "bei einem monatl. Aktiensparplan auf den MSCI World (2010-2021)",
        caption = "Datenanalyse u. Visualisierung: jantau.com | Daten: finance.yahoo.com",
-       x = "Ausführungstagtag",
+       x = "Ausführungstag",
        y = "Performanceverlust (in %)") +
   geom_label(aes(x = day, y = performance_loss, label = paste0(round(performance_loss, 2), " %")), 
              size = 3, alpha = 0.8)
