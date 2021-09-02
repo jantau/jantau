@@ -73,7 +73,7 @@ ggtrendsMap <- function(keywords, time, save) {
   )
   
   hc <- hc %>%
-    hc_title(text = "Google-Suchvolumen 'ETF' 2020 bis 2021") %>%
+    hc_title(text = "Google-Suchvolumen 'etf' 2020 bis 2021") %>%
     hc_subtitle(text = "nach Bundesländern, 100 = Max") %>%
     hc_caption(text = "Datenanalyse u. Visualisierung: jantau.com | Daten: trends.google.com")
   
@@ -130,6 +130,8 @@ ggtrends <- function(keywords, time, save) {
   time_trends_total <- time_trends_total %>%
     mutate(keyword = factor(keyword, levels = keywords))
   
+  save(time_trends_total, file = "time_trends_total.Rda")
+  
   pal <- got(3, option = "Daenerys", direction = 1)
   
   plot <-
@@ -162,6 +164,7 @@ ggtrends <- function(keywords, time, save) {
 assetklassen <- c("Aktien", "Anleihen", "Bitcoin", "Immobilien", "Rohstoffe", "Tagesgeld")
 
 assetklassen <- c("Anleihen", "Bitcoin", "Gold", "ETF", "Immobilienfonds", "Tagesgeld")
+assetklassen <- c("Anleihen", "Bitcoin", "Gold", "ETF", "Immobilien", "Tagesgeld")
 
 fangm <- c("AAPL", "AMZN", "FB", "GOOG", "MSFT", "NFLX")  
 fangm <- c("apple", "amazon", "facebook", "google", "microsoft", "netflix")  
@@ -196,6 +199,26 @@ ggplot(data = time_trends_total, aes(x = date, xend = date, y = hits, yend = 0))
 df$Label <- paste0(df$Label, ":00")
 statesMap <- ggplot2::map_data(map = "world")
 germany <- getData(country = "Germany", level = 1) 
+
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# CAGR ----
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+load("time_trends_total.Rda")
+as.numeric(difftime(as.Date("2021-08-01"), as.Date("2004-01-01"), unit="weeks"))/52.25
+
+
+( Ending value / Beginning value ) ^ ( 1 / Number of years ) - 1
+
+# Gold Google
+( ( 83 / 30 ) ^ ( 1 / 17.55844 ) - 1 ) * 100
+# CAGR = 5,96 %
+
+# Gold Price
+( ( 1535 / 330 ) ^ ( 1 / 17.55844 ) - 1 ) * 100
+# CAGR 9,14
+
+
+
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # End ----
