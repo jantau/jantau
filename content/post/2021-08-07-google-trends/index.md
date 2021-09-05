@@ -31,7 +31,6 @@ Ich habe sechs Anlageklassen ausgewählt und für den Zeitraum Januar 2004 (der 
 
 Hier ist das Ergebnis der Google-Trends-Analyse der sechs Anlageklassen Anleihen, Bitcoin, Gold, ETF, Immobilienfonds und Tagesgeld.
 
-### Anlageklassen
 ![](assetklassen.png)
 
 Wir sehen drei Anlageklassen mit einer steigenden Tendenz (Bitcoin, Gold und ETF) über den Untersuchungszeitraum und drei Anlageklassen mit sinkender Tendenz (Anleihen, Immobilienfonds, Tagesgeld).
@@ -52,7 +51,7 @@ Wie stark die Google-Trend-Daten mit der Wertentwicklung der entsprechenden Fina
 
 Dass eine solche Korrelation nicht immer der Fall ist, zeigt jedoch das Beispiel Immobilien, wo steigende Preise nicht mit einem gestiegenen Interesse einhergingen.
 
-### Interesse an FANG+M-Unternehmen
+### Interesse an FAANG+M
 
 In einem nächsten Schritt habe ich mir das Google-Interesse an den FAANG+M-Unternehmen angeschaut. FAANG+M ist ein Akronym, das für die beliebten und in den vergangenen Jahren extrem stark gestiegenen Aktien der Tech-Unternehmen Facebook, Amazon, Apple, Netflix, Google (Alphabet) und Microsoft steht.
 
@@ -64,7 +63,6 @@ Im Gegenzug weisen Google und Facebook kein deutliches saisonales Interesse auf,
 
 Der Chart zeigt, dass Google-Suchen nach Facebook, Google und Microsoft eine sinkende Tendenz aufweisen, wohingegen Amazon, Apple und Netflix ein steigendes Interesse verzeichnen. Das sinkende Suchvolumen nach Facebook, Google oder Microsoft bedeutet jedoch nicht, dass die Unternehmen für Investoren unattraktiv geworden sind. Ein Blick auf die Suchen nach den Aktien der Unternehmen (Suche mit "Facebook Aktie", "Amazon Aktie" usw.) zeigt nämlich ein anderes Bild. 
 
-### Interesse an FAANG+M-Aktien
 ![](FANG+M_stock.png)
 
 Die Suchen nach den FAANG+M-Aktien haben alle einen ähnlichen Verlauf. Bis auf Facebook, das das größte Interesse zum Börsengang verzeichnete, haben alle ihren Höhepunkt im Corona-Blitz-Crash 2020, was sich auch weitestgehend mit der Entwicklung ihrer Börsenkurse deckt.
