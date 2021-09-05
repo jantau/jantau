@@ -36,6 +36,7 @@ output:
 </ul></li>
 <li><a href="#shiny-app-test">Shiny App Test</a></li>
 <li><a href="#legende-in-plot-titel-integrieren">Legende in Plot-Titel integrieren</a></li>
+<li><a href="#farbwerte-mit-dem-digital-colour-meter-bestimmen">Farbwerte mit dem Digital Colour Meter bestimmen</a></li>
 </ul>
 </div>
 
@@ -179,7 +180,7 @@ indexvgl_monthly$symbol &lt;-
 <p><img src="nyt_chart.png" /></p>
 <p>Für Legenden mit wenigen Leveln halte ich das für einen eleganten Weg, um wichtige Informationen übersichtlich und ohne unnötige Redundanzen in der Grafik unterzubringen.</p>
 <p>Nach einigem Suchen habe ich auch einen Weg gefunden, der dies ziemlich gut ermöglicht. Mit dem <a href="https://wilkelab.org/ggtext/articles/introduction.html"><code>ggtext</code>-Package</a> können die Beschriftungen von Plots mit Markdown- und HTML-Auszeichnungen versehen werden.</p>
-<p>Über das Element <code>theme(plot.title = element_markdown())</code>wird definiert, dass der Plot-Titel mit <code>ggtext</code> erstellt wird. Im Plot-Titel kann dann mit HTML <code>&lt;span style='color:#2B818EFF;'&gt;Allzeithochs&lt;/span&gt;</code> die Farbe einzelner Wörter gezielt geändert werden. Leider muss ein Hex-Farbcode angegeben werden, da sich nicht eine zuvor definierte Variable einsetzen lässt.</p>
+<p>Über das Element <code>theme(plot.title = element_markdown())</code>wird definiert, dass der Plot-Titel mit <code>ggtext</code> erstellt wird. Im Plot-Titel kann dann mit HTML <code>&lt;span style='color:#2B818EFF;'&gt;Allzeithochs&lt;/span&gt;</code> die Farbe einzelner Wörter gezielt geändert werden. (Leider muss ein Hex-Farbcode angegeben werden, da sich nicht wie im Plot eine zuvor definierte Variable einsetzen lässt.)</p>
 <pre class="r"><code>library(ggtext)
 
 pal &lt;- got(3, option = &quot;Daenerys&quot;, direction = -1)
@@ -218,5 +219,10 @@ ggplot(dax, aes(x = date, y = adjusted)) +
 <p>Die Alternative hierzu ist, eine herkömmliche Legende zu erstellen.</p>
 <p><img src="ndx_ath_legend.png" /></p>
 <p>Mir gefällt die erste Variante besser, da die Begriffe “Allzeithoch” und “nicht wieder unterboten” aus dem Titel nicht noch einmal in der Legende wiederholt werden müssen.</p>
+</div>
+<div id="farbwerte-mit-dem-digital-colour-meter-bestimmen" class="section level2">
+<h2>Farbwerte mit dem Digital Colour Meter bestimmen</h2>
+<p>In macOS ist mit dem <a href="https://support.apple.com/guide/digital-color-meter/welcome/mac">Digital Colour Meter</a> ein Color-Picker integriert, mit dem sich komfortabel Farbwerte bestimmen lassen. Die Grundeinstellung liefert die Farbwerte in Dezimalwerten (z.B. 255 255 255). Für R benötige ich Farbwerte in Hexadezimalform (z.B. #FFFFFF). Das lässt sich in der Menüleiste über View &gt; Display Values auswählen. Über Shift + Command + C kann anschließend der Hexadezimalwert der ausgewählten Farbe kopiert werden und so nach R übertragen werden.</p>
+<p><img src="digital_colour_meter.png" /></p>
 <p>Den für diesen Beitrag erstellten Code findest du hier: <a href="https://github.com/jantau/jantau/tree/main/content/post" target="_blank">https://github.com/jantau/jantau</a></p>
 </div>

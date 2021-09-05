@@ -254,4 +254,10 @@ Die Alternative hierzu ist, eine herkömmliche Legende zu erstellen.
 
 Mir gefällt die erste Variante besser, da die Begriffe "Allzeithoch" und "nicht wieder unterboten" aus dem Titel nicht noch einmal in der Legende wiederholt werden müssen.
 
+## Farbwerte mit dem Digital Colour Meter bestimmen
+
+In macOS ist mit dem [Digital Colour Meter](https://support.apple.com/guide/digital-color-meter/welcome/mac) ein Color-Picker integriert, mit dem sich komfortabel Farbwerte bestimmen lassen. Die Grundeinstellung liefert die Farbwerte in Dezimalwerten (z.B. 255	255	255). Für R benötige ich Farbwerte in Hexadezimalform (z.B. #FFFFFF). Das lässt sich in der Menüleiste über View > Display Values auswählen. Über Shift + Command + C kann anschließend der Hexadezimalwert der ausgewählten Farbe kopiert werden und so nach R übertragen werden.
+
+![](digital_colour_meter.png)
+
 Den für diesen Beitrag erstellten Code findest du hier: [https://github.com/jantau/jantau](https://github.com/jantau/jantau/tree/main/content/post){target="_blank"}
