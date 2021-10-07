@@ -10,7 +10,6 @@ rm(list = ls()) # Clear your environment
 
 # Load in header file
 source("/Users/jan/blog/jantau/content/post/header.R")
-
 setwd("/Users/jan/blog/jantau/content/post/2021-05-22-zeit-im-markt") 
 
 #----------------------------------------------------------------------------
