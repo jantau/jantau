@@ -126,7 +126,7 @@ ggplot(apple_data_2) +
     size = 2.5,
     min.segment.length = unit(0, 'lines')
   ) +
-  labs(title = "Apple - Stock where you Shop",
+  labs(title = "Apple - Stock where you shop",
        subtitle = "Was wäre, wenn ich bei jedem Kauf eines Apple-Produkts \nin AAPL investiert hätte?",
        caption = "Datenanalyse u. Visualisierung: jantau.com | Daten: finance.yahoo.com",
        y = "AAPL-Portfolio") +
