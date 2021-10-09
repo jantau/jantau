@@ -1,15 +1,14 @@
 ---
-draft: true
-title: Konsumieren und gleichzeitig Investieren
+title: Konsumieren und gleichzeitig investieren
 author: Jan Tau
-date: '2021-09-25'
+date: '2021-10-09'
 slug: konsum-und-investieren
 categories: []
 tags: []
 subtitle: 'Über das Kaufen von AAPL bei jedem Kauf eines Apple-Produkts'
 summary: 'Über das Kaufen von AAPL bei jedem Kauf eines Apple-Produkts'
 authors: []
-lastmod: '2021-09-25T12:07:28+02:00'
+lastmod: '2021-10-09T12:07:28+02:00'
 featured: no
 image:
   caption: ''
@@ -17,38 +16,39 @@ image:
   preview_only: no
 projects: []
 ---
+Mir gefällt das Konzept von "stock where you shop", also Aktien von denjenigen Unternehmen zu kaufen, deren Produkte man selbst nutzt.
 
-Mir gefällt das Konzept von "stock where you shop". Also Aktien von Unternehmen zu kaufen, deren Produkte man selbst nutzt. Am einfachsten
+Analysen zeigen, dass auf Grundlage des eigenen Konsums Investitionsentscheidungen zu treffen durchaus erfolgsversprechend ist. 
 
-In dem Blog-Beitrag Cappuccino mit Anna habe ich mich mit dem Verhältnis von Konsumgütern und Assets beschäftigt. Es gibt den Ansatz, Konsum und Investieren miteinander zu verbinden. So wird beispielsweise ein Konsumgut erst dann gekauft, wenn die gleiche Summe investiert werden kann. Es gibt auch Apps wie grifin, die ein entsprechendes Verhalten automatisieren. Unter dem Motto “stock where you shop” wird beispielsweise bei bestimmten Konsumausgaben jedes Mal 1 USD in Aktien des entsprechenden Unternehmens investiert. Ich trinke also einen Cappuccino bei Starbucks und investiere anschließend 1 USD in das Unternehmen. So werde ich als Kunde gleichzeitig Shareholder und profitiere (sehr) mittelbar von meinem eigenen Konsum.
+Der [Becky-ETF](https://beckyetf.com/), der stereotyp das Konsumverhalten von Frauen berücksichtigt und Aktien von Apple, Lululemon, Netflix, Peloton, Starbucks, Spotify oder Etsy enthält, oder auch der Chad-Index, der ebenso stereotyp männlichen Konsum abbildet mit Aktien von Nike, Ralph Lauren, Under Armor oder Anheuser-Busch, zeigen eine deutlich überdurchschnittliche Performance. Überteuerte Lifestyle-Marken schneiden demnach dank ihrer großen Bekanntheit überdurchschnittlich gut ab.
 
-Dieses Verhalten wollte ich einmal rückblickend mit meinem Erwerb von Apple-Produkten testen. Seit 2006 nutze ich Apple-Produkte, wie iPhones, MacBooks oder iPads. Ich möchte simulieren 
+Es gibt auch Apps wie [grifin](https://www.grifin.com), die bei jedem Kauf eines der oben aufgelisteten Produkte einen bestimmten Wert (etwa 1 USD) in das entsprechende Unternehmen investieren.
 
-Hier wird auch der Zinseszinseffekt deutlich. Für den Preis eines gebrauchten iBooks (ca. 250 Euro) hätte ich 2006 130 Apple-Aktien bekommen (Preis berücksichtig die Aktiensplits seit 2006). Vier Jahre später musste ich bereits den Gegenwert meines MacBooks, oder 1000 Euro, investieren, um 130 Apple-Aktien zu erhalten. Etwas über zehn Jahre später im Jahr 2021 gab es für einen ähnlichen Preis, den Wert eines iPhones 12 (950 Euro), lediglich 7,1 Apple-Aktien.
+Die Performance eines solchen Verhaltens möchte ich einmal rückblickend mit meinem Erwerb von Apple-Produkten überprüfen. Seit 2006 nutze ich iPhones, MacBooks oder iPads. Ich möchte simulieren, wie sich ein hypothetisches Apple-Portfolio entwickelt hätte, wenn ich bei jedem Kauf eines Apple-Produkts den Kaufpreis noch einmal in Apple-Aktien (AAPL) investiert hätte. 
 
-Ein weitere Vorteil: Du kannst dein eigener Kanarienvogel im Bergwerk sein. Es ist schwer Unternehmen zu bewerten. Große Finanz-Firmen mit bestbezahlten Analysten versuchen sich in dieser Aufgabe und liegen oft genug daneben. Wenn du selbst nicht mehr von den Produkten überzeugt bist und die Produkte der Konkurrenz besser sind, kann dies ein Indikator sein, dass es mit dem Unternehmen bergab geht.
-
-Es ist selbstverständlich keine Garantie, dass es funktioniert, aber es ist ein Beispiel, dass es sich auszahlen kann, in die Unternehmen zu investieren, von deren Produkten man überzeugt ist und die man kontinuierlich über einen längeren Zeitraum kauft.
-
-Überteuerte Lifestyle-Marken entwickeln sich dank ihrer Bekannheit überdurchschnittlich gut, wie der Becky- oder der Chad-Index zeigen.
-
-Becky-Index (over priced lifestyle brands) (Apple, Lululemon, Netflix, Peloton, Starbucks, Spotify, Etsy) oder Chad-Index (Nike, Ralph Lauren, Under Armor, Anheuser-Busch). Brand Recognition und höhere Returns.
+Das Ergebnis ist wirklich bemerkenswert.
 
 ![](apple_logo.png)
 
+Im Jahr 2006 habe ich für 250 Euro (etwa 300 Dollar zum damaligen Kurs) ein gebrauchtes (und ziemlich unbrauchbares) iBook G3 gekauft. Für 300 Dollar hätte ich 156 Apple-Aktien zu 1,92 Dollar bekommen. (Der Preis ist adjusted, was bedeutet, dass die Dividenden mathematisch reinvestiert und die Aktiensplits seit 2006 berücksichtigt wurden.) Vier Jahre später musste ich bereits den Gegenwert meines MacBooks (oder 1250 Dollar) investieren, um 162 Apple-Aktien zu erhalten. Etwas über zehn weitere Jahre später, im Jahr 2021, gab es für einen ähnlichen Preis, den Wert eines iPhones 12 (1150 Dollar), lediglich 8,6 Apple-Aktien (siehe auch Tabelle).
+
+Insgesamt hätte ich im Zeitraum 2006 bis 2021 6990 Dollar investiert. Diese Investition wäre Anfang Oktober 2021 beachtliche 81300 Dollar wert gewesen.
+
+Selbstverständlich ist diese Simulation nur ein Beispiel. Aber es zeigt, dass es sich auszahlen kann, in die Unternehmen zu investieren, von deren Produkten man überzeugt ist und die man kontinuierlich über einen längeren Zeitraum kauft. Immerhin hat man als Retail-Investor über diese Unternehmen mehr Wissen als über viele andere, die keine Produkte oder Services für Endkunden anbieten. Ein weiterer Vorteil ist, dass du gewissermaßen dein eigener Kanarienvogel im Bergwerk sein kannst. Es ist schwer, Unternehmen zu bewerten. Große Finanzinstitute mit bestbezahlten Analysten versuchen sich in dieser Aufgabe und liegen oft genug daneben. Wenn du jedoch selbst nicht mehr von den Produkten überzeugt bist und die Konkurrenz besser ist, dann kann dies ein Indikator sein, dass es mit dem Unternehmen bergab geht und du deine Aktienposition verkaufen oder reduzieren solltest.
+
+
 ### Datentabelle
 
-| Datum      | Apple-Produkt | Preis in € | Preis AAPL-Aktie (adjusted price) | Anzahl AAPL-Aktien | insg. Anzahl AAPL-Aktien | Wert AAPL-Portfolio | insg. investiert |
-|------------|---------------|------------|-----------------------------------|--------------------|--------------------------|---------------------|------------------|
-| 2006-04-01 | iBook G3      | 250        | 1,9                               | 130,1              | 130,1                    | 250                 | 250              |
-| 2009-10-01 | iPod Touch    | 250        | 5,5                               | 45,1               | 175,2                    | 971,71              | 500              |
-| 2010-09-01 | MacBook Pro   | 1000       | 7,7                               | 130,3              | 305,5                    | 2344,95             | 1500             |
-| 2011-10-01 | iPhone 4s     | 650        | 11,5                              | 56,6               | 362,1                    | 4159,04             | 2150             |
-| 2012-11-01 | iPad Mini     | 350        | 18,4                              | 19,1               | 381,1                    | 7001,59             | 2500             |
-| 2015-11-01 | Apple TV      | 200        | 27,8                              | 7,2                | 388,3                    | 10801,51            | 2700             |
-| 2016-03-01 | iPhone SE     | 500        | 23,3                              | 21,5               | 409,8                    | 9548,04             | 3200             |
-| 2017-09-01 | MacBook Pro   | 1400       | 39,1                              | 35,8               | 445,5                    | 17438,77            | 4600             |
-| 2020-09-01 | Homepod Mini  | 100        | 133,3                             | 0,8                | 446,3                    | 59499,14            | 4700             |
-| 2021-02-01 | iPhone 12     | 950        | 133,5                             | 7,1                | 453,4                    | 60534,02            | 5650             |
-| 2021-03-01 | Beats Flex    | 40         | 127,4                             | 0,3                | 453,7                    | 57794,6             | 5690             |
-| 2021-05-01 | Beats Flex    | 40         | 132,1                             | 0,3                | 454                      | 59982,84            | 5730             |
+| Datum      | Apple-Produkt | Preis in € | Preis in $ | Preis AAPL-Akt. in $ (adjusted) | Anzahl AAPL-Akt. | insg. Anzahl AAPL-Akt. | Wert AAPL-Portf. in $ | insg. invest. in $ |
+|------------|---------------|------------|------------|---------------------------------|------------------|------------------------|-----------------------|--------------------|
+| 2006-04-01 | iBook G3      | 250        | 300        | 1,9                             | 156,2            | 156,2                  | 300                   | 300                |
+| 2009-10-01 | iPod Touch    | 250        | 360        | 5,5                             | 64,9             | 221,1                  | 1226,05               | 660                |
+| 2010-09-01 | MacBook Pro   | 1000       | 1250       | 7,7                             | 162,8            | 383,9                  | 2946,99               | 1910               |
+| 2011-10-01 | iPhone 4s     | 650        | 900        | 11,5                            | 78,3             | 462,3                  | 5309,94               | 2810               |
+| 2012-11-01 | iPad Mini     | 350        | 450        | 18,4                            | 24,5             | 486,7                  | 8942,24               | 3260               |
+| 2015-11-01 | Apple TV      | 200        | 220        | 27,8                            | 7,9              | 494,7                  | 13759,95              | 3480               |
+| 2016-03-01 | iPhone SE     | 500        | 540        | 23,3                            | 23,2             | 517,8                  | 12066,22              | 4020               |
+| 2017-09-01 | MacBook Pro   | 1400       | 1650       | 39,1                            | 42,2             | 560                    | 21918,81              | 5670               |
+| 2020-10-01 | Homepod Mini  | 100        | 120        | 116                             | 1                | 561                    | 65102,91              | 5790               |
+| 2021-02-01 | iPhone 12     | 950        | 1150       | 133,5                           | 8,6              | 569,6                  | 76053,42              | 6940               |
+| 2021-05-01 | Beats Flex    | 40         | 50         | 132,1                           | 0,4              | 570                    | 75308,55              | 6990               |

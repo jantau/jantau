@@ -48,19 +48,20 @@ apple_data_1 <- apple_data %>%
   ungroup() %>%
   left_join(my_apple, by = c("yearmon" = "date")) %>% # workaround for picking first value that is equal/greater 5
   mutate(price = replace_na(price, 0)) %>%
-  mutate(price_total = cumsum(price))
+  mutate(price_usd = replace_na(price_usd, 0)) %>%
+  mutate(price_total = cumsum(price_usd))
 
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Savings plan looping ----
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-apple_data_1[1, "shares"] <- apple_data_1[1, "price"] / apple_data_1[1, "adjusted"]
+apple_data_1[1, "shares"] <- apple_data_1[1, "price_usd"] / apple_data_1[1, "adjusted"]
 apple_data_1[1, "portfolio"] <- apple_data_1[1, "shares"] * apple_data_1[1, "adjusted"] 
 
 for(i in 2:nrow(apple_data_1)) {
   
-  apple_data_1[i, "shares"] <- apple_data_1[i - 1, "shares"] + (apple_data_1[i, "price"] / apple_data_1[i, "adjusted"])
+  apple_data_1[i, "shares"] <- apple_data_1[i - 1, "shares"] + (apple_data_1[i, "price_usd"] / apple_data_1[i, "adjusted"])
   
   apple_data_1[i, "portfolio"] <- apple_data_1[i, "shares"] * apple_data_1[i, "adjusted"]
   
@@ -117,9 +118,9 @@ ggplot(apple_data_2) +
                        guide = "legend") +
   
   #  geom_point(data = apple_data_1 %>% filter(price >= 1), aes(x = date, y = price_total)) +
-  geom_image(data = apple_data_2 %>% filter(price >= 1), aes(x = date, y = portfolio, image = image), size = 0.02, by = "width", asp = 1.3) +
+  geom_image(data = apple_data_2 %>% filter(price_usd >= 1), aes(x = date, y = portfolio, image = image), size = 0.02, by = "width", asp = 1.3) +
   geom_label_repel(
-    data = apple_data_2 %>% filter(price >= 1),
+    data = apple_data_2 %>% filter(price_usd >= 1),
     aes(x = date, y = portfolio, label = product),
     alpha = 0.7,
     size = 2.5,
@@ -137,7 +138,7 @@ ggplot(apple_data_2) +
   scale_y_continuous(labels = dollar_format(
     big.mark = " ",
     decimal.mark = ",",
-    suffix = " €",
+    suffix = " $",
     prefix = ""
   )) 
 
@@ -154,18 +155,23 @@ apple_data_table <- apple_data_1 %>%
     Datum = yearmon,
     `Apple-Produkt` = product,
     `Preis in €` = price,
-    `Preis AAPL-Aktie (adjusted price)` = adjusted,
-    `insg. Anzahl AAPL-Aktien` = shares,
-    `Wert AAPL-Portfolio` = portfolio,
-    `insg. investiert` = price_total
+    `Preis in $` = price_usd,
+    `Preis AAPL-Akt. in $ (adjusted)` = adjusted,
+    `insg. Anzahl AAPL-Akt.` = shares,
+    `Wert AAPL-Portf. in $` = portfolio,
+    `insg. invest. in $` = price_total
   ) %>%
-  mutate(`Anzahl AAPL-Aktien` = c(`insg. Anzahl AAPL-Aktien`[1], diff(`insg. Anzahl AAPL-Aktien`)), .after = `Preis AAPL-Aktie (adjusted price)`) %>%
-  mutate(`Preis AAPL-Aktie (adjusted price)` = round(`Preis AAPL-Aktie (adjusted price)`, 1)) %>%
-  mutate(`Anzahl AAPL-Aktien` = round(`Anzahl AAPL-Aktien`, 1)) %>%
-  mutate(`insg. Anzahl AAPL-Aktien` = round(`insg. Anzahl AAPL-Aktien`, 1)) %>%
-  mutate(`Wert AAPL-Portfolio` = round(`Wert AAPL-Portfolio`, 2))
+  mutate(`Anzahl AAPL-Akt.` = c(`insg. Anzahl AAPL-Akt.`[1], diff(`insg. Anzahl AAPL-Akt.`)), .after = `Preis AAPL-Akt. in $ (adjusted)`) %>%
+  mutate(`Preis AAPL-Akt. in $ (adjusted)` = round(`Preis AAPL-Akt. in $ (adjusted)`, 1)) %>%
+  mutate(`Anzahl AAPL-Akt.` = round(`Anzahl AAPL-Akt.`, 1)) %>%
+  mutate(`insg. Anzahl AAPL-Akt.` = round(`insg. Anzahl AAPL-Akt.`, 1)) %>%
+  mutate(`Wert AAPL-Portf. in $` = round(`Wert AAPL-Portf. in $`, 2))
 
 library("writexl")
 write_xlsx(apple_data_table,"apple_data_table.xlsx")
 
+# to add table to md-file https://www.tablesgenerator.com/markdown_tables
+
+# hisorical Euro-Dollar-Calculator
+# https://fxtop.com/en/historical-currency-converter.php?A=250&C1=EUR&C2=USD&DD=01&MM=04&YYYY=2006&B=1&P=&I=1&btnOK=Go%21
 
