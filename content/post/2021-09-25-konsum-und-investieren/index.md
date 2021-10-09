@@ -52,3 +52,7 @@ Selbstverständlich ist diese Simulation nur ein Beispiel. Aber es zeigt, dass e
 | 2020-10-01 | Homepod Mini  | 100        | 120        | 116                             | 1                | 561                    | 65102,91              | 5790               |
 | 2021-02-01 | iPhone 12     | 950        | 1150       | 133,5                           | 8,6              | 569,6                  | 76053,42              | 6940               |
 | 2021-05-01 | Beats Flex    | 40         | 50         | 132,1                           | 0,4              | 570                    | 75308,55              | 6990               |
+
+Den für diesen Beitrag erstellten Code findest du hier: [https://github.com/jantau/jantau](https://github.com/jantau/jantau/tree/main/content/post)
+
+Hat dir der Post gefallen? [Melde dich für meinen Newsletter an](https://tinyletter.com/jantau), um über neue Beiträge informiert zu werden.
