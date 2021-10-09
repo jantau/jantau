@@ -30,7 +30,7 @@ Das Ergebnis ist wirklich bemerkenswert.
 
 ![](apple_logo.png)
 
-Im Jahr 2006 habe ich für 250 Euro (etwa 300 Dollar zum damaligen Kurs) ein gebrauchtes (und ziemlich unbrauchbares) iBook G3 gekauft. Für 300 Dollar hätte ich 156 Apple-Aktien zu 1,92 Dollar bekommen. (Der Preis ist adjusted, was bedeutet, dass die Dividenden mathematisch reinvestiert und die Aktiensplits seit 2006 berücksichtigt wurden.) Vier Jahre später musste ich bereits den Gegenwert meines MacBooks (oder 1250 Dollar) investieren, um 162 Apple-Aktien zu erhalten. Etwas über zehn weitere Jahre später, im Jahr 2021, gab es für einen ähnlichen Preis, den Wert eines iPhones 12 (1150 Dollar), lediglich 8,6 Apple-Aktien (siehe auch Tabelle).
+Im Jahr 2006 habe ich für 250 Euro (etwa 300 Dollar zum damaligen Kurs) ein gebrauchtes (und ziemlich unbrauchbares) iBook G3 gekauft. Für 300 Dollar hätte ich 156 Apple-Aktien zu 1,92 Dollar bekommen. (Der Aktien-Preis ist adjusted, was bedeutet, dass die Dividenden mathematisch reinvestiert und die Aktiensplits seit 2006 berücksichtigt wurden. Den Dollarkurs habe ich genommen, da ich keine historischen Kursdaten in Euro gefunden habe.) Vier Jahre später musste ich bereits den Gegenwert meines MacBooks (oder 1250 Dollar) investieren, um 162 Apple-Aktien zu erhalten. Etwas über zehn weitere Jahre später, im Jahr 2021, gab es für einen ähnlichen Preis, den Wert eines iPhones 12 (1150 Dollar), lediglich 8,6 Apple-Aktien (siehe auch Tabelle).
 
 Insgesamt hätte ich im Zeitraum 2006 bis 2021 6990 Dollar investiert. Diese Investition wäre Anfang Oktober 2021 beachtliche 81300 Dollar wert gewesen.
 
