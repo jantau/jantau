@@ -5,8 +5,8 @@ date: '2021-10-09'
 slug: konsum-und-investieren
 categories: []
 tags: []
-subtitle: 'Über das Kaufen von AAPL bei jedem Kauf eines Apple-Produkts'
-summary: 'Über das Kaufen von AAPL bei jedem Kauf eines Apple-Produkts'
+subtitle: 'Über das Investieren in AAPL bei jedem Kauf eines Apple-Produkts'
+summary: 'Über das Investieren in AAPL bei jedem Kauf eines Apple-Produkts'
 authors: []
 lastmod: '2021-10-09T12:07:28+02:00'
 featured: no
