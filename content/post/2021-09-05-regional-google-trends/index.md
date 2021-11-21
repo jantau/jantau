@@ -41,7 +41,7 @@ Das Interesse am MSCI-World ist in Bayern und Hamburg gefolgt von Baden-Württem
 
 <iframe height="500" width="100%" frameborder="no" src="https://jantau.github.io/highchart/gamestop.html"> </iframe>
 
-Das größte Interesse an Gamestop besteht in den drei Stadtstaaten und in Nordrhein-Westfalen. In den Bundesländer Mecklenburg-Vorpommern, Thüringen und Brandenburg interessieren sich vergleichsweise wenige für den Memestock Gamestop. Ich kann mir vorstellen, dass das Interesse in Ballungsräumen größer ist, da deren Bevölkerung tendenziell jünger und risikobereiter ist. Möglicherweise spielt auch eine Rolle, dass jüngere Investoren in den Stadtstaaten aus dem Wohnungsmarkt ausgepreist sind und daher dazu tendieren, ihr Geld in einen besonders riskanten Memestock oder Memecoin anzulegen, [wie dieser Artikel in der New York Times über den Dogecoin Millionaire Glauber Contessoto schildert](https://www.nytimes.com/2021/05/14/technology/hes-a-dogecoin-millionaire-and-hes-not-selling.html?searchResultPosition=2).
+Das größte Interesse an Gamestop besteht in den drei Stadtstaaten und in Nordrhein-Westfalen. In den Bundesländer Mecklenburg-Vorpommern, Thüringen und Brandenburg interessieren sich vergleichsweise wenige für den Memestock Gamestop. Ich kann mir vorstellen, dass das Interesse in Ballungsräumen größer ist, da deren Bevölkerung tendenziell jünger und risikobereiter ist.
 
 Den für diesen Beitrag erstellten Code findest du hier: [https://github.com/jantau/jantau](https://github.com/jantau/jantau/tree/main/content/post)
 
