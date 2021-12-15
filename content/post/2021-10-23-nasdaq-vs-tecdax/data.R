@@ -131,3 +131,5 @@ mean(sp500_complete$KGV, na.rm = TRUE)
 
 url <- "https://www.ishares.com/de/privatanleger/de/produkte/253741/ishares-nasdaq-100-ucits-etf/1478358465952.ajax?fileType=csv&fileName=SXRV_holdings&dataType=fund"
 ishares_nasdaq <- read_csv(url, skip = 2)
+
+# bei ishares sind auf kgvs für indizes angegeben. Vergleichen mit eigener Berechnung?
