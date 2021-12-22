@@ -17,3 +17,6 @@ image:
   preview_only: no
 projects: []
 ---
+## Test
+Test plotly json into markdown https://iphysresearch.github.io/blog/post/writting-markdown/
+{{< chart data="12" >}} 

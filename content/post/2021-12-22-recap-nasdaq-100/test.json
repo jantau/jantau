@@ -1,0 +1,2641 @@
+{
+  "visdat": {
+    "315931bc3f55": ["function () ", "plotlyVisDat"]
+  },
+  "cur_data": "315931bc3f55",
+  "attrs": {
+    "315931bc3f55": {
+      "x": {},
+      "y": {},
+      "alpha_stroke": 1,
+      "sizes": [10, 100],
+      "spans": [1, 20],
+      "type": "bar",
+      "frame": {},
+      "showlegend": false,
+      "inherit": true
+    }
+  },
+  "layout": {
+    "margin": {
+      "b": 40,
+      "l": 60,
+      "t": 25,
+      "r": 10
+    },
+    "xaxis": {
+      "domain": [0, 1],
+      "automargin": true,
+      "range": [1609455600000, 1640905200000],
+      "type": "date",
+      "title": "date",
+      "categoryorder": "array",
+      "categoryarray": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26", "2021-04-01", "2021-04-09", "2021-04-16", "2021-04-23", "2021-04-30", "2021-05-07", "2021-05-14", "2021-05-21", "2021-05-28", "2021-06-04", "2021-06-11", "2021-06-18", "2021-06-25", "2021-07-02", "2021-07-09", "2021-07-16", "2021-07-23", "2021-07-30", "2021-08-06", "2021-08-13", "2021-08-20", "2021-08-27", "2021-09-03", "2021-09-10", "2021-09-17", "2021-09-24", "2021-10-01", "2021-10-08", "2021-10-15", "2021-10-22", "2021-10-29", "2021-11-05", "2021-11-12", "2021-11-19", "2021-11-26", "2021-12-03", "2021-12-10", "2021-12-17", "2021-12-21"]
+    },
+    "yaxis": {
+      "domain": [0, 1],
+      "automargin": true,
+      "title": "weekly.returns",
+      "range": [-0.0545297283505748, 0.0575964619751163]
+    },
+    "hovermode": "closest",
+    "showlegend": false,
+    "sliders": [
+      {
+        "currentvalue": {
+          "prefix": "frame: ",
+          "xanchor": "right",
+          "font": {
+            "size": 16,
+            "color": "rgba(204,204,204,1)"
+          }
+        },
+        "steps": [
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-01-08"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-01-08",
+            "value": "2021-01-08"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-01-15"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-01-15",
+            "value": "2021-01-15"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-01-22"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-01-22",
+            "value": "2021-01-22"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-01-29"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-01-29",
+            "value": "2021-01-29"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-02-05"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-02-05",
+            "value": "2021-02-05"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-02-12"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-02-12",
+            "value": "2021-02-12"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-02-19"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-02-19",
+            "value": "2021-02-19"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-02-26"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-02-26",
+            "value": "2021-02-26"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-03-05"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-03-05",
+            "value": "2021-03-05"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-03-12"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-03-12",
+            "value": "2021-03-12"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-03-19"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-03-19",
+            "value": "2021-03-19"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-03-26"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-03-26",
+            "value": "2021-03-26"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-04-01"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-04-01",
+            "value": "2021-04-01"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-04-09"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-04-09",
+            "value": "2021-04-09"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-04-16"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-04-16",
+            "value": "2021-04-16"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-04-23"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-04-23",
+            "value": "2021-04-23"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-04-30"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-04-30",
+            "value": "2021-04-30"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-05-07"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-05-07",
+            "value": "2021-05-07"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-05-14"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-05-14",
+            "value": "2021-05-14"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-05-21"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-05-21",
+            "value": "2021-05-21"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-05-28"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-05-28",
+            "value": "2021-05-28"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-06-04"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-06-04",
+            "value": "2021-06-04"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-06-11"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-06-11",
+            "value": "2021-06-11"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-06-18"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-06-18",
+            "value": "2021-06-18"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-06-25"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-06-25",
+            "value": "2021-06-25"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-07-02"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-07-02",
+            "value": "2021-07-02"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-07-09"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-07-09",
+            "value": "2021-07-09"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-07-16"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-07-16",
+            "value": "2021-07-16"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-07-23"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-07-23",
+            "value": "2021-07-23"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-07-30"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-07-30",
+            "value": "2021-07-30"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-08-06"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-08-06",
+            "value": "2021-08-06"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-08-13"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-08-13",
+            "value": "2021-08-13"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-08-20"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-08-20",
+            "value": "2021-08-20"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-08-27"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-08-27",
+            "value": "2021-08-27"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-09-03"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-09-03",
+            "value": "2021-09-03"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-09-10"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-09-10",
+            "value": "2021-09-10"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-09-17"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-09-17",
+            "value": "2021-09-17"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-09-24"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-09-24",
+            "value": "2021-09-24"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-10-01"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-10-01",
+            "value": "2021-10-01"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-10-08"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-10-08",
+            "value": "2021-10-08"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-10-15"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-10-15",
+            "value": "2021-10-15"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-10-22"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-10-22",
+            "value": "2021-10-22"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-10-29"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-10-29",
+            "value": "2021-10-29"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-11-05"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-11-05",
+            "value": "2021-11-05"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-11-12"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-11-12",
+            "value": "2021-11-12"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-11-19"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-11-19",
+            "value": "2021-11-19"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-11-26"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-11-26",
+            "value": "2021-11-26"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-12-03"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-12-03",
+            "value": "2021-12-03"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-12-10"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-12-10",
+            "value": "2021-12-10"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-12-17"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-12-17",
+            "value": "2021-12-17"
+          },
+          {
+            "method": "animate",
+            "args": [
+              [
+                "2021-12-21"
+              ],
+              {
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                },
+                "mode": "immediate"
+              }
+            ],
+            "label": "2021-12-21",
+            "value": "2021-12-21"
+          }
+        ],
+        "visible": true,
+        "pad": {
+          "t": 40
+        }
+      }
+    ],
+    "updatemenus": [
+      {
+        "type": "buttons",
+        "direction": "right",
+        "showactive": false,
+        "y": 0,
+        "x": 0,
+        "yanchor": "top",
+        "xanchor": "right",
+        "pad": {
+          "t": 60,
+          "r": 5
+        },
+        "buttons": [
+          {
+            "label": "Play",
+            "method": "animate",
+            "args": [
+              null,
+              {
+                "fromcurrent": true,
+                "mode": "immediate",
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                },
+                "frame": {
+                  "duration": 500,
+                  "redraw": true
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "source": "A",
+  "config": {
+    "modeBarButtonsToAdd": ["hoverclosest", "hovercompare"],
+    "showSendToCloud": false
+  },
+  "data": [
+    {
+      "x": ["2021-01-08"],
+      "y": [0.032339584829765],
+      "type": "bar",
+      "frame": "2021-01-08",
+      "showlegend": false,
+      "marker": {
+        "color": "rgba(31,119,180,1)",
+        "line": {
+          "color": "rgba(31,119,180,1)"
+        }
+      },
+      "error_y": {
+        "color": "rgba(31,119,180,1)"
+      },
+      "error_x": {
+        "color": "rgba(31,119,180,1)"
+      },
+      "xaxis": "x",
+      "yaxis": "y",
+      "visible": true
+    }
+  ],
+  "highlight": {
+    "on": "plotly_click",
+    "persistent": false,
+    "dynamic": false,
+    "selectize": false,
+    "opacityDim": 0.2,
+    "selected": {
+      "opacity": 1
+    },
+    "debounce": 0
+  },
+  "frames": [
+    {
+      "name": "2021-01-08",
+      "data": [
+        {
+          "x": ["2021-01-08"],
+          "y": [0.032339584829765],
+          "type": "bar",
+          "frame": "2021-01-08",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-01-15",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15"],
+          "y": [0.032339584829765, -0.0229886230288143],
+          "type": "bar",
+          "frame": "2021-01-15",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-01-22",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996],
+          "type": "bar",
+          "frame": "2021-01-22",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-01-29",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076],
+          "type": "bar",
+          "frame": "2021-01-29",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-02-05",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121],
+          "type": "bar",
+          "frame": "2021-02-05",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-02-12",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654],
+          "type": "bar",
+          "frame": "2021-02-12",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-02-19",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266],
+          "type": "bar",
+          "frame": "2021-02-19",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-02-26",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707],
+          "type": "bar",
+          "frame": "2021-02-26",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-03-05",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487],
+          "type": "bar",
+          "frame": "2021-03-05",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-03-12",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848],
+          "type": "bar",
+          "frame": "2021-03-12",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-03-19",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151],
+          "type": "bar",
+          "frame": "2021-03-19",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-03-26",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151, 0.00871453859533555],
+          "type": "bar",
+          "frame": "2021-03-26",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-04-01",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26", "2021-04-01"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151, 0.00871453859533555, 0.0269971624302212],
+          "type": "bar",
+          "frame": "2021-04-01",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-04-09",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26", "2021-04-01", "2021-04-09"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151, 0.00871453859533555, 0.0269971624302212, 0.0386765657832622],
+          "type": "bar",
+          "frame": "2021-04-09",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-04-16",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26", "2021-04-01", "2021-04-09", "2021-04-16"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151, 0.00871453859533555, 0.0269971624302212, 0.0386765657832622, 0.0142181104389427],
+          "type": "bar",
+          "frame": "2021-04-16",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-04-23",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26", "2021-04-01", "2021-04-09", "2021-04-16", "2021-04-23"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151, 0.00871453859533555, 0.0269971624302212, 0.0386765657832622, 0.0142181104389427, -0.00715498994679653],
+          "type": "bar",
+          "frame": "2021-04-23",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-04-30",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26", "2021-04-01", "2021-04-09", "2021-04-16", "2021-04-23", "2021-04-30"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151, 0.00871453859533555, 0.0269971624302212, 0.0386765657832622, 0.0142181104389427, -0.00715498994679653, -0.00578711105248408],
+          "type": "bar",
+          "frame": "2021-04-30",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-05-07",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26", "2021-04-01", "2021-04-09", "2021-04-16", "2021-04-23", "2021-04-30", "2021-05-07"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151, 0.00871453859533555, 0.0269971624302212, 0.0386765657832622, 0.0142181104389427, -0.00715498994679653, -0.00578711105248408, -0.0101819730940137],
+          "type": "bar",
+          "frame": "2021-05-07",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-05-14",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26", "2021-04-01", "2021-04-09", "2021-04-16", "2021-04-23", "2021-04-30", "2021-05-07", "2021-05-14"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151, 0.00871453859533555, 0.0269971624302212, 0.0386765657832622, 0.0142181104389427, -0.00715498994679653, -0.00578711105248408, -0.0101819730940137, -0.0237987299063058],
+          "type": "bar",
+          "frame": "2021-05-14",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-05-21",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26", "2021-04-01", "2021-04-09", "2021-04-16", "2021-04-23", "2021-04-30", "2021-05-07", "2021-05-14", "2021-05-21"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151, 0.00871453859533555, 0.0269971624302212, 0.0386765657832622, 0.0142181104389427, -0.00715498994679653, -0.00578711105248408, -0.0101819730940137, -0.0237987299063058, 0.00139027477072839],
+          "type": "bar",
+          "frame": "2021-05-21",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-05-28",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26", "2021-04-01", "2021-04-09", "2021-04-16", "2021-04-23", "2021-04-30", "2021-05-07", "2021-05-14", "2021-05-21", "2021-05-28"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151, 0.00871453859533555, 0.0269971624302212, 0.0386765657832622, 0.0142181104389427, -0.00715498994679653, -0.00578711105248408, -0.0101819730940137, -0.0237987299063058, 0.00139027477072839, 0.0204872393295712],
+          "type": "bar",
+          "frame": "2021-05-28",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-06-04",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26", "2021-04-01", "2021-04-09", "2021-04-16", "2021-04-23", "2021-04-30", "2021-05-07", "2021-05-14", "2021-05-21", "2021-05-28", "2021-06-04"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151, 0.00871453859533555, 0.0269971624302212, 0.0386765657832622, 0.0142181104389427, -0.00715498994679653, -0.00578711105248408, -0.0101819730940137, -0.0237987299063058, 0.00139027477072839, 0.0204872393295712, 0.00615640995700151],
+          "type": "bar",
+          "frame": "2021-06-04",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-06-11",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26", "2021-04-01", "2021-04-09", "2021-04-16", "2021-04-23", "2021-04-30", "2021-05-07", "2021-05-14", "2021-05-21", "2021-05-28", "2021-06-04", "2021-06-11"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151, 0.00871453859533555, 0.0269971624302212, 0.0386765657832622, 0.0142181104389427, -0.00715498994679653, -0.00578711105248408, -0.0101819730940137, -0.0237987299063058, 0.00139027477072839, 0.0204872393295712, 0.00615640995700151, 0.0165226985672657],
+          "type": "bar",
+          "frame": "2021-06-11",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-06-18",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26", "2021-04-01", "2021-04-09", "2021-04-16", "2021-04-23", "2021-04-30", "2021-05-07", "2021-05-14", "2021-05-21", "2021-05-28", "2021-06-04", "2021-06-11", "2021-06-18"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151, 0.00871453859533555, 0.0269971624302212, 0.0386765657832622, 0.0142181104389427, -0.00715498994679653, -0.00578711105248408, -0.0101819730940137, -0.0237987299063058, 0.00139027477072839, 0.0204872393295712, 0.00615640995700151, 0.0165226985672657, 0.00366332152578153],
+          "type": "bar",
+          "frame": "2021-06-18",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-06-25",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26", "2021-04-01", "2021-04-09", "2021-04-16", "2021-04-23", "2021-04-30", "2021-05-07", "2021-05-14", "2021-05-21", "2021-05-28", "2021-06-04", "2021-06-11", "2021-06-18", "2021-06-25"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151, 0.00871453859533555, 0.0269971624302212, 0.0386765657832622, 0.0142181104389427, -0.00715498994679653, -0.00578711105248408, -0.0101819730940137, -0.0237987299063058, 0.00139027477072839, 0.0204872393295712, 0.00615640995700151, 0.0165226985672657, 0.00366332152578153, 0.0210397469788348],
+          "type": "bar",
+          "frame": "2021-06-25",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-07-02",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26", "2021-04-01", "2021-04-09", "2021-04-16", "2021-04-23", "2021-04-30", "2021-05-07", "2021-05-14", "2021-05-21", "2021-05-28", "2021-06-04", "2021-06-11", "2021-06-18", "2021-06-25", "2021-07-02"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151, 0.00871453859533555, 0.0269971624302212, 0.0386765657832622, 0.0142181104389427, -0.00715498994679653, -0.00578711105248408, -0.0101819730940137, -0.0237987299063058, 0.00139027477072839, 0.0204872393295712, 0.00615640995700151, 0.0165226985672657, 0.00366332152578153, 0.0210397469788348, 0.0266605370806143],
+          "type": "bar",
+          "frame": "2021-07-02",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-07-09",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26", "2021-04-01", "2021-04-09", "2021-04-16", "2021-04-23", "2021-04-30", "2021-05-07", "2021-05-14", "2021-05-21", "2021-05-28", "2021-06-04", "2021-06-11", "2021-06-18", "2021-06-25", "2021-07-02", "2021-07-09"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151, 0.00871453859533555, 0.0269971624302212, 0.0386765657832622, 0.0142181104389427, -0.00715498994679653, -0.00578711105248408, -0.0101819730940137, -0.0237987299063058, 0.00139027477072839, 0.0204872393295712, 0.00615640995700151, 0.0165226985672657, 0.00366332152578153, 0.0210397469788348, 0.0266605370806143, 0.00668539077789099],
+          "type": "bar",
+          "frame": "2021-07-09",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-07-16",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26", "2021-04-01", "2021-04-09", "2021-04-16", "2021-04-23", "2021-04-30", "2021-05-07", "2021-05-14", "2021-05-21", "2021-05-28", "2021-06-04", "2021-06-11", "2021-06-18", "2021-06-25", "2021-07-02", "2021-07-09", "2021-07-16"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151, 0.00871453859533555, 0.0269971624302212, 0.0386765657832622, 0.0142181104389427, -0.00715498994679653, -0.00578711105248408, -0.0101819730940137, -0.0237987299063058, 0.00139027477072839, 0.0204872393295712, 0.00615640995700151, 0.0165226985672657, 0.00366332152578153, 0.0210397469788348, 0.0266605370806143, 0.00668539077789099, -0.00976049400230528],
+          "type": "bar",
+          "frame": "2021-07-16",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-07-23",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26", "2021-04-01", "2021-04-09", "2021-04-16", "2021-04-23", "2021-04-30", "2021-05-07", "2021-05-14", "2021-05-21", "2021-05-28", "2021-06-04", "2021-06-11", "2021-06-18", "2021-06-25", "2021-07-02", "2021-07-09", "2021-07-16", "2021-07-23"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151, 0.00871453859533555, 0.0269971624302212, 0.0386765657832622, 0.0142181104389427, -0.00715498994679653, -0.00578711105248408, -0.0101819730940137, -0.0237987299063058, 0.00139027477072839, 0.0204872393295712, 0.00615640995700151, 0.0165226985672657, 0.00366332152578153, 0.0210397469788348, 0.0266605370806143, 0.00668539077789099, -0.00976049400230528, 0.029316737216124],
+          "type": "bar",
+          "frame": "2021-07-23",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-07-30",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26", "2021-04-01", "2021-04-09", "2021-04-16", "2021-04-23", "2021-04-30", "2021-05-07", "2021-05-14", "2021-05-21", "2021-05-28", "2021-06-04", "2021-06-11", "2021-06-18", "2021-06-25", "2021-07-02", "2021-07-09", "2021-07-16", "2021-07-23", "2021-07-30"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151, 0.00871453859533555, 0.0269971624302212, 0.0386765657832622, 0.0142181104389427, -0.00715498994679653, -0.00578711105248408, -0.0101819730940137, -0.0237987299063058, 0.00139027477072839, 0.0204872393295712, 0.00615640995700151, 0.0165226985672657, 0.00366332152578153, 0.0210397469788348, 0.0266605370806143, 0.00668539077789099, -0.00976049400230528, 0.029316737216124, -0.0100510692385223],
+          "type": "bar",
+          "frame": "2021-07-30",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-08-06",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26", "2021-04-01", "2021-04-09", "2021-04-16", "2021-04-23", "2021-04-30", "2021-05-07", "2021-05-14", "2021-05-21", "2021-05-28", "2021-06-04", "2021-06-11", "2021-06-18", "2021-06-25", "2021-07-02", "2021-07-09", "2021-07-16", "2021-07-23", "2021-07-30", "2021-08-06"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151, 0.00871453859533555, 0.0269971624302212, 0.0386765657832622, 0.0142181104389427, -0.00715498994679653, -0.00578711105248408, -0.0101819730940137, -0.0237987299063058, 0.00139027477072839, 0.0204872393295712, 0.00615640995700151, 0.0165226985672657, 0.00366332152578153, 0.0210397469788348, 0.0266605370806143, 0.00668539077789099, -0.00976049400230528, 0.029316737216124, -0.0100510692385223, 0.00999070562594895],
+          "type": "bar",
+          "frame": "2021-08-06",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-08-13",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26", "2021-04-01", "2021-04-09", "2021-04-16", "2021-04-23", "2021-04-30", "2021-05-07", "2021-05-14", "2021-05-21", "2021-05-28", "2021-06-04", "2021-06-11", "2021-06-18", "2021-06-25", "2021-07-02", "2021-07-09", "2021-07-16", "2021-07-23", "2021-07-30", "2021-08-06", "2021-08-13"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151, 0.00871453859533555, 0.0269971624302212, 0.0386765657832622, 0.0142181104389427, -0.00715498994679653, -0.00578711105248408, -0.0101819730940137, -0.0237987299063058, 0.00139027477072839, 0.0204872393295712, 0.00615640995700151, 0.0165226985672657, 0.00366332152578153, 0.0210397469788348, 0.0266605370806143, 0.00668539077789099, -0.00976049400230528, 0.029316737216124, -0.0100510692385223, 0.00999070562594895, 0.00180810672083709],
+          "type": "bar",
+          "frame": "2021-08-13",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-08-20",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26", "2021-04-01", "2021-04-09", "2021-04-16", "2021-04-23", "2021-04-30", "2021-05-07", "2021-05-14", "2021-05-21", "2021-05-28", "2021-06-04", "2021-06-11", "2021-06-18", "2021-06-25", "2021-07-02", "2021-07-09", "2021-07-16", "2021-07-23", "2021-07-30", "2021-08-06", "2021-08-13", "2021-08-20"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151, 0.00871453859533555, 0.0269971624302212, 0.0386765657832622, 0.0142181104389427, -0.00715498994679653, -0.00578711105248408, -0.0101819730940137, -0.0237987299063058, 0.00139027477072839, 0.0204872393295712, 0.00615640995700151, 0.0165226985672657, 0.00366332152578153, 0.0210397469788348, 0.0266605370806143, 0.00668539077789099, -0.00976049400230528, 0.029316737216124, -0.0100510692385223, 0.00999070562594895, 0.00180810672083709, -0.00291407203621863],
+          "type": "bar",
+          "frame": "2021-08-20",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-08-27",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26", "2021-04-01", "2021-04-09", "2021-04-16", "2021-04-23", "2021-04-30", "2021-05-07", "2021-05-14", "2021-05-21", "2021-05-28", "2021-06-04", "2021-06-11", "2021-06-18", "2021-06-25", "2021-07-02", "2021-07-09", "2021-07-16", "2021-07-23", "2021-07-30", "2021-08-06", "2021-08-13", "2021-08-20", "2021-08-27"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151, 0.00871453859533555, 0.0269971624302212, 0.0386765657832622, 0.0142181104389427, -0.00715498994679653, -0.00578711105248408, -0.0101819730940137, -0.0237987299063058, 0.00139027477072839, 0.0204872393295712, 0.00615640995700151, 0.0165226985672657, 0.00366332152578153, 0.0210397469788348, 0.0266605370806143, 0.00668539077789099, -0.00976049400230528, 0.029316737216124, -0.0100510692385223, 0.00999070562594895, 0.00180810672083709, -0.00291407203621863, 0.0225528107499895],
+          "type": "bar",
+          "frame": "2021-08-27",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-09-03",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26", "2021-04-01", "2021-04-09", "2021-04-16", "2021-04-23", "2021-04-30", "2021-05-07", "2021-05-14", "2021-05-21", "2021-05-28", "2021-06-04", "2021-06-11", "2021-06-18", "2021-06-25", "2021-07-02", "2021-07-09", "2021-07-16", "2021-07-23", "2021-07-30", "2021-08-06", "2021-08-13", "2021-08-20", "2021-08-27", "2021-09-03"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151, 0.00871453859533555, 0.0269971624302212, 0.0386765657832622, 0.0142181104389427, -0.00715498994679653, -0.00578711105248408, -0.0101819730940137, -0.0237987299063058, 0.00139027477072839, 0.0204872393295712, 0.00615640995700151, 0.0165226985672657, 0.00366332152578153, 0.0210397469788348, 0.0266605370806143, 0.00668539077789099, -0.00976049400230528, 0.029316737216124, -0.0100510692385223, 0.00999070562594895, 0.00180810672083709, -0.00291407203621863, 0.0225528107499895, 0.0142493919970821],
+          "type": "bar",
+          "frame": "2021-09-03",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-09-10",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26", "2021-04-01", "2021-04-09", "2021-04-16", "2021-04-23", "2021-04-30", "2021-05-07", "2021-05-14", "2021-05-21", "2021-05-28", "2021-06-04", "2021-06-11", "2021-06-18", "2021-06-25", "2021-07-02", "2021-07-09", "2021-07-16", "2021-07-23", "2021-07-30", "2021-08-06", "2021-08-13", "2021-08-20", "2021-08-27", "2021-09-03", "2021-09-10"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151, 0.00871453859533555, 0.0269971624302212, 0.0386765657832622, 0.0142181104389427, -0.00715498994679653, -0.00578711105248408, -0.0101819730940137, -0.0237987299063058, 0.00139027477072839, 0.0204872393295712, 0.00615640995700151, 0.0165226985672657, 0.00366332152578153, 0.0210397469788348, 0.0266605370806143, 0.00668539077789099, -0.00976049400230528, 0.029316737216124, -0.0100510692385223, 0.00999070562594895, 0.00180810672083709, -0.00291407203621863, 0.0225528107499895, 0.0142493919970821, -0.0135509004252311],
+          "type": "bar",
+          "frame": "2021-09-10",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-09-17",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26", "2021-04-01", "2021-04-09", "2021-04-16", "2021-04-23", "2021-04-30", "2021-05-07", "2021-05-14", "2021-05-21", "2021-05-28", "2021-06-04", "2021-06-11", "2021-06-18", "2021-06-25", "2021-07-02", "2021-07-09", "2021-07-16", "2021-07-23", "2021-07-30", "2021-08-06", "2021-08-13", "2021-08-20", "2021-08-27", "2021-09-03", "2021-09-10", "2021-09-17"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151, 0.00871453859533555, 0.0269971624302212, 0.0386765657832622, 0.0142181104389427, -0.00715498994679653, -0.00578711105248408, -0.0101819730940137, -0.0237987299063058, 0.00139027477072839, 0.0204872393295712, 0.00615640995700151, 0.0165226985672657, 0.00366332152578153, 0.0210397469788348, 0.0266605370806143, 0.00668539077789099, -0.00976049400230528, 0.029316737216124, -0.0100510692385223, 0.00999070562594895, 0.00180810672083709, -0.00291407203621863, 0.0225528107499895, 0.0142493919970821, -0.0135509004252311, -0.00694786671631886],
+          "type": "bar",
+          "frame": "2021-09-17",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-09-24",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26", "2021-04-01", "2021-04-09", "2021-04-16", "2021-04-23", "2021-04-30", "2021-05-07", "2021-05-14", "2021-05-21", "2021-05-28", "2021-06-04", "2021-06-11", "2021-06-18", "2021-06-25", "2021-07-02", "2021-07-09", "2021-07-16", "2021-07-23", "2021-07-30", "2021-08-06", "2021-08-13", "2021-08-20", "2021-08-27", "2021-09-03", "2021-09-10", "2021-09-17", "2021-09-24"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151, 0.00871453859533555, 0.0269971624302212, 0.0386765657832622, 0.0142181104389427, -0.00715498994679653, -0.00578711105248408, -0.0101819730940137, -0.0237987299063058, 0.00139027477072839, 0.0204872393295712, 0.00615640995700151, 0.0165226985672657, 0.00366332152578153, 0.0210397469788348, 0.0266605370806143, 0.00668539077789099, -0.00976049400230528, 0.029316737216124, -0.0100510692385223, 0.00999070562594895, 0.00180810672083709, -0.00291407203621863, 0.0225528107499895, 0.0142493919970821, -0.0135509004252311, -0.00694786671631886, -0.000247174257847593],
+          "type": "bar",
+          "frame": "2021-09-24",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-10-01",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26", "2021-04-01", "2021-04-09", "2021-04-16", "2021-04-23", "2021-04-30", "2021-05-07", "2021-05-14", "2021-05-21", "2021-05-28", "2021-06-04", "2021-06-11", "2021-06-18", "2021-06-25", "2021-07-02", "2021-07-09", "2021-07-16", "2021-07-23", "2021-07-30", "2021-08-06", "2021-08-13", "2021-08-20", "2021-08-27", "2021-09-03", "2021-09-10", "2021-09-17", "2021-09-24", "2021-10-01"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151, 0.00871453859533555, 0.0269971624302212, 0.0386765657832622, 0.0142181104389427, -0.00715498994679653, -0.00578711105248408, -0.0101819730940137, -0.0237987299063058, 0.00139027477072839, 0.0204872393295712, 0.00615640995700151, 0.0165226985672657, 0.00366332152578153, 0.0210397469788348, 0.0266605370806143, 0.00668539077789099, -0.00976049400230528, 0.029316737216124, -0.0100510692385223, 0.00999070562594895, 0.00180810672083709, -0.00291407203621863, 0.0225528107499895, 0.0142493919970821, -0.0135509004252311, -0.00694786671631886, -0.000247174257847593, -0.0350828968344977],
+          "type": "bar",
+          "frame": "2021-10-01",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-10-08",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26", "2021-04-01", "2021-04-09", "2021-04-16", "2021-04-23", "2021-04-30", "2021-05-07", "2021-05-14", "2021-05-21", "2021-05-28", "2021-06-04", "2021-06-11", "2021-06-18", "2021-06-25", "2021-07-02", "2021-07-09", "2021-07-16", "2021-07-23", "2021-07-30", "2021-08-06", "2021-08-13", "2021-08-20", "2021-08-27", "2021-09-03", "2021-09-10", "2021-09-17", "2021-09-24", "2021-10-01", "2021-10-08"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151, 0.00871453859533555, 0.0269971624302212, 0.0386765657832622, 0.0142181104389427, -0.00715498994679653, -0.00578711105248408, -0.0101819730940137, -0.0237987299063058, 0.00139027477072839, 0.0204872393295712, 0.00615640995700151, 0.0165226985672657, 0.00366332152578153, 0.0210397469788348, 0.0266605370806143, 0.00668539077789099, -0.00976049400230528, 0.029316737216124, -0.0100510692385223, 0.00999070562594895, 0.00180810672083709, -0.00291407203621863, 0.0225528107499895, 0.0142493919970821, -0.0135509004252311, -0.00694786671631886, -0.000247174257847593, -0.0350828968344977, 0.00195241594007833],
+          "type": "bar",
+          "frame": "2021-10-08",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-10-15",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26", "2021-04-01", "2021-04-09", "2021-04-16", "2021-04-23", "2021-04-30", "2021-05-07", "2021-05-14", "2021-05-21", "2021-05-28", "2021-06-04", "2021-06-11", "2021-06-18", "2021-06-25", "2021-07-02", "2021-07-09", "2021-07-16", "2021-07-23", "2021-07-30", "2021-08-06", "2021-08-13", "2021-08-20", "2021-08-27", "2021-09-03", "2021-09-10", "2021-09-17", "2021-09-24", "2021-10-01", "2021-10-08", "2021-10-15"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151, 0.00871453859533555, 0.0269971624302212, 0.0386765657832622, 0.0142181104389427, -0.00715498994679653, -0.00578711105248408, -0.0101819730940137, -0.0237987299063058, 0.00139027477072839, 0.0204872393295712, 0.00615640995700151, 0.0165226985672657, 0.00366332152578153, 0.0210397469788348, 0.0266605370806143, 0.00668539077789099, -0.00976049400230528, 0.029316737216124, -0.0100510692385223, 0.00999070562594895, 0.00180810672083709, -0.00291407203621863, 0.0225528107499895, 0.0142493919970821, -0.0135509004252311, -0.00694786671631886, -0.000247174257847593, -0.0350828968344977, 0.00195241594007833, 0.0220076529190492],
+          "type": "bar",
+          "frame": "2021-10-15",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-10-22",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26", "2021-04-01", "2021-04-09", "2021-04-16", "2021-04-23", "2021-04-30", "2021-05-07", "2021-05-14", "2021-05-21", "2021-05-28", "2021-06-04", "2021-06-11", "2021-06-18", "2021-06-25", "2021-07-02", "2021-07-09", "2021-07-16", "2021-07-23", "2021-07-30", "2021-08-06", "2021-08-13", "2021-08-20", "2021-08-27", "2021-09-03", "2021-09-10", "2021-09-17", "2021-09-24", "2021-10-01", "2021-10-08", "2021-10-15", "2021-10-22"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151, 0.00871453859533555, 0.0269971624302212, 0.0386765657832622, 0.0142181104389427, -0.00715498994679653, -0.00578711105248408, -0.0101819730940137, -0.0237987299063058, 0.00139027477072839, 0.0204872393295712, 0.00615640995700151, 0.0165226985672657, 0.00366332152578153, 0.0210397469788348, 0.0266605370806143, 0.00668539077789099, -0.00976049400230528, 0.029316737216124, -0.0100510692385223, 0.00999070562594895, 0.00180810672083709, -0.00291407203621863, 0.0225528107499895, 0.0142493919970821, -0.0135509004252311, -0.00694786671631886, -0.000247174257847593, -0.0350828968344977, 0.00195241594007833, 0.0220076529190492, 0.013742093578885],
+          "type": "bar",
+          "frame": "2021-10-22",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-10-29",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26", "2021-04-01", "2021-04-09", "2021-04-16", "2021-04-23", "2021-04-30", "2021-05-07", "2021-05-14", "2021-05-21", "2021-05-28", "2021-06-04", "2021-06-11", "2021-06-18", "2021-06-25", "2021-07-02", "2021-07-09", "2021-07-16", "2021-07-23", "2021-07-30", "2021-08-06", "2021-08-13", "2021-08-20", "2021-08-27", "2021-09-03", "2021-09-10", "2021-09-17", "2021-09-24", "2021-10-01", "2021-10-08", "2021-10-15", "2021-10-22", "2021-10-29"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151, 0.00871453859533555, 0.0269971624302212, 0.0386765657832622, 0.0142181104389427, -0.00715498994679653, -0.00578711105248408, -0.0101819730940137, -0.0237987299063058, 0.00139027477072839, 0.0204872393295712, 0.00615640995700151, 0.0165226985672657, 0.00366332152578153, 0.0210397469788348, 0.0266605370806143, 0.00668539077789099, -0.00976049400230528, 0.029316737216124, -0.0100510692385223, 0.00999070562594895, 0.00180810672083709, -0.00291407203621863, 0.0225528107499895, 0.0142493919970821, -0.0135509004252311, -0.00694786671631886, -0.000247174257847593, -0.0350828968344977, 0.00195241594007833, 0.0220076529190492, 0.013742093578885, 0.0322629205794376],
+          "type": "bar",
+          "frame": "2021-10-29",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-11-05",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26", "2021-04-01", "2021-04-09", "2021-04-16", "2021-04-23", "2021-04-30", "2021-05-07", "2021-05-14", "2021-05-21", "2021-05-28", "2021-06-04", "2021-06-11", "2021-06-18", "2021-06-25", "2021-07-02", "2021-07-09", "2021-07-16", "2021-07-23", "2021-07-30", "2021-08-06", "2021-08-13", "2021-08-20", "2021-08-27", "2021-09-03", "2021-09-10", "2021-09-17", "2021-09-24", "2021-10-01", "2021-10-08", "2021-10-15", "2021-10-22", "2021-10-29", "2021-11-05"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151, 0.00871453859533555, 0.0269971624302212, 0.0386765657832622, 0.0142181104389427, -0.00715498994679653, -0.00578711105248408, -0.0101819730940137, -0.0237987299063058, 0.00139027477072839, 0.0204872393295712, 0.00615640995700151, 0.0165226985672657, 0.00366332152578153, 0.0210397469788348, 0.0266605370806143, 0.00668539077789099, -0.00976049400230528, 0.029316737216124, -0.0100510692385223, 0.00999070562594895, 0.00180810672083709, -0.00291407203621863, 0.0225528107499895, 0.0142493919970821, -0.0135509004252311, -0.00694786671631886, -0.000247174257847593, -0.0350828968344977, 0.00195241594007833, 0.0220076529190492, 0.013742093578885, 0.0322629205794376, 0.0321069447634799],
+          "type": "bar",
+          "frame": "2021-11-05",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-11-12",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26", "2021-04-01", "2021-04-09", "2021-04-16", "2021-04-23", "2021-04-30", "2021-05-07", "2021-05-14", "2021-05-21", "2021-05-28", "2021-06-04", "2021-06-11", "2021-06-18", "2021-06-25", "2021-07-02", "2021-07-09", "2021-07-16", "2021-07-23", "2021-07-30", "2021-08-06", "2021-08-13", "2021-08-20", "2021-08-27", "2021-09-03", "2021-09-10", "2021-09-17", "2021-09-24", "2021-10-01", "2021-10-08", "2021-10-15", "2021-10-22", "2021-10-29", "2021-11-05", "2021-11-12"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151, 0.00871453859533555, 0.0269971624302212, 0.0386765657832622, 0.0142181104389427, -0.00715498994679653, -0.00578711105248408, -0.0101819730940137, -0.0237987299063058, 0.00139027477072839, 0.0204872393295712, 0.00615640995700151, 0.0165226985672657, 0.00366332152578153, 0.0210397469788348, 0.0266605370806143, 0.00668539077789099, -0.00976049400230528, 0.029316737216124, -0.0100510692385223, 0.00999070562594895, 0.00180810672083709, -0.00291407203621863, 0.0225528107499895, 0.0142493919970821, -0.0135509004252311, -0.00694786671631886, -0.000247174257847593, -0.0350828968344977, 0.00195241594007833, 0.0220076529190492, 0.013742093578885, 0.0322629205794376, 0.0321069447634799, -0.00974916140713467],
+          "type": "bar",
+          "frame": "2021-11-12",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-11-19",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26", "2021-04-01", "2021-04-09", "2021-04-16", "2021-04-23", "2021-04-30", "2021-05-07", "2021-05-14", "2021-05-21", "2021-05-28", "2021-06-04", "2021-06-11", "2021-06-18", "2021-06-25", "2021-07-02", "2021-07-09", "2021-07-16", "2021-07-23", "2021-07-30", "2021-08-06", "2021-08-13", "2021-08-20", "2021-08-27", "2021-09-03", "2021-09-10", "2021-09-17", "2021-09-24", "2021-10-01", "2021-10-08", "2021-10-15", "2021-10-22", "2021-10-29", "2021-11-05", "2021-11-12", "2021-11-19"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151, 0.00871453859533555, 0.0269971624302212, 0.0386765657832622, 0.0142181104389427, -0.00715498994679653, -0.00578711105248408, -0.0101819730940137, -0.0237987299063058, 0.00139027477072839, 0.0204872393295712, 0.00615640995700151, 0.0165226985672657, 0.00366332152578153, 0.0210397469788348, 0.0266605370806143, 0.00668539077789099, -0.00976049400230528, 0.029316737216124, -0.0100510692385223, 0.00999070562594895, 0.00180810672083709, -0.00291407203621863, 0.0225528107499895, 0.0142493919970821, -0.0135509004252311, -0.00694786671631886, -0.000247174257847593, -0.0350828968344977, 0.00195241594007833, 0.0220076529190492, 0.013742093578885, 0.0322629205794376, 0.0321069447634799, -0.00974916140713467, 0.0230526382657243],
+          "type": "bar",
+          "frame": "2021-11-19",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-11-26",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26", "2021-04-01", "2021-04-09", "2021-04-16", "2021-04-23", "2021-04-30", "2021-05-07", "2021-05-14", "2021-05-21", "2021-05-28", "2021-06-04", "2021-06-11", "2021-06-18", "2021-06-25", "2021-07-02", "2021-07-09", "2021-07-16", "2021-07-23", "2021-07-30", "2021-08-06", "2021-08-13", "2021-08-20", "2021-08-27", "2021-09-03", "2021-09-10", "2021-09-17", "2021-09-24", "2021-10-01", "2021-10-08", "2021-10-15", "2021-10-22", "2021-10-29", "2021-11-05", "2021-11-12", "2021-11-19", "2021-11-26"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151, 0.00871453859533555, 0.0269971624302212, 0.0386765657832622, 0.0142181104389427, -0.00715498994679653, -0.00578711105248408, -0.0101819730940137, -0.0237987299063058, 0.00139027477072839, 0.0204872393295712, 0.00615640995700151, 0.0165226985672657, 0.00366332152578153, 0.0210397469788348, 0.0266605370806143, 0.00668539077789099, -0.00976049400230528, 0.029316737216124, -0.0100510692385223, 0.00999070562594895, 0.00180810672083709, -0.00291407203621863, 0.0225528107499895, 0.0142493919970821, -0.0135509004252311, -0.00694786671631886, -0.000247174257847593, -0.0350828968344977, 0.00195241594007833, 0.0220076529190492, 0.013742093578885, 0.0322629205794376, 0.0321069447634799, -0.00974916140713467, 0.0230526382657243, -0.0330506567267612],
+          "type": "bar",
+          "frame": "2021-11-26",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-12-03",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26", "2021-04-01", "2021-04-09", "2021-04-16", "2021-04-23", "2021-04-30", "2021-05-07", "2021-05-14", "2021-05-21", "2021-05-28", "2021-06-04", "2021-06-11", "2021-06-18", "2021-06-25", "2021-07-02", "2021-07-09", "2021-07-16", "2021-07-23", "2021-07-30", "2021-08-06", "2021-08-13", "2021-08-20", "2021-08-27", "2021-09-03", "2021-09-10", "2021-09-17", "2021-09-24", "2021-10-01", "2021-10-08", "2021-10-15", "2021-10-22", "2021-10-29", "2021-11-05", "2021-11-12", "2021-11-19", "2021-11-26", "2021-12-03"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151, 0.00871453859533555, 0.0269971624302212, 0.0386765657832622, 0.0142181104389427, -0.00715498994679653, -0.00578711105248408, -0.0101819730940137, -0.0237987299063058, 0.00139027477072839, 0.0204872393295712, 0.00615640995700151, 0.0165226985672657, 0.00366332152578153, 0.0210397469788348, 0.0266605370806143, 0.00668539077789099, -0.00976049400230528, 0.029316737216124, -0.0100510692385223, 0.00999070562594895, 0.00180810672083709, -0.00291407203621863, 0.0225528107499895, 0.0142493919970821, -0.0135509004252311, -0.00694786671631886, -0.000247174257847593, -0.0350828968344977, 0.00195241594007833, 0.0220076529190492, 0.013742093578885, 0.0322629205794376, 0.0321069447634799, -0.00974916140713467, 0.0230526382657243, -0.0330506567267612, -0.01956497284179],
+          "type": "bar",
+          "frame": "2021-12-03",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-12-10",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26", "2021-04-01", "2021-04-09", "2021-04-16", "2021-04-23", "2021-04-30", "2021-05-07", "2021-05-14", "2021-05-21", "2021-05-28", "2021-06-04", "2021-06-11", "2021-06-18", "2021-06-25", "2021-07-02", "2021-07-09", "2021-07-16", "2021-07-23", "2021-07-30", "2021-08-06", "2021-08-13", "2021-08-20", "2021-08-27", "2021-09-03", "2021-09-10", "2021-09-17", "2021-09-24", "2021-10-01", "2021-10-08", "2021-10-15", "2021-10-22", "2021-10-29", "2021-11-05", "2021-11-12", "2021-11-19", "2021-11-26", "2021-12-03", "2021-12-10"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151, 0.00871453859533555, 0.0269971624302212, 0.0386765657832622, 0.0142181104389427, -0.00715498994679653, -0.00578711105248408, -0.0101819730940137, -0.0237987299063058, 0.00139027477072839, 0.0204872393295712, 0.00615640995700151, 0.0165226985672657, 0.00366332152578153, 0.0210397469788348, 0.0266605370806143, 0.00668539077789099, -0.00976049400230528, 0.029316737216124, -0.0100510692385223, 0.00999070562594895, 0.00180810672083709, -0.00291407203621863, 0.0225528107499895, 0.0142493919970821, -0.0135509004252311, -0.00694786671631886, -0.000247174257847593, -0.0350828968344977, 0.00195241594007833, 0.0220076529190492, 0.013742093578885, 0.0322629205794376, 0.0321069447634799, -0.00974916140713467, 0.0230526382657243, -0.0330506567267612, -0.01956497284179, 0.039456393215725],
+          "type": "bar",
+          "frame": "2021-12-10",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-12-17",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26", "2021-04-01", "2021-04-09", "2021-04-16", "2021-04-23", "2021-04-30", "2021-05-07", "2021-05-14", "2021-05-21", "2021-05-28", "2021-06-04", "2021-06-11", "2021-06-18", "2021-06-25", "2021-07-02", "2021-07-09", "2021-07-16", "2021-07-23", "2021-07-30", "2021-08-06", "2021-08-13", "2021-08-20", "2021-08-27", "2021-09-03", "2021-09-10", "2021-09-17", "2021-09-24", "2021-10-01", "2021-10-08", "2021-10-15", "2021-10-22", "2021-10-29", "2021-11-05", "2021-11-12", "2021-11-19", "2021-11-26", "2021-12-03", "2021-12-10", "2021-12-17"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151, 0.00871453859533555, 0.0269971624302212, 0.0386765657832622, 0.0142181104389427, -0.00715498994679653, -0.00578711105248408, -0.0101819730940137, -0.0237987299063058, 0.00139027477072839, 0.0204872393295712, 0.00615640995700151, 0.0165226985672657, 0.00366332152578153, 0.0210397469788348, 0.0266605370806143, 0.00668539077789099, -0.00976049400230528, 0.029316737216124, -0.0100510692385223, 0.00999070562594895, 0.00180810672083709, -0.00291407203621863, 0.0225528107499895, 0.0142493919970821, -0.0135509004252311, -0.00694786671631886, -0.000247174257847593, -0.0350828968344977, 0.00195241594007833, 0.0220076529190492, 0.013742093578885, 0.0322629205794376, 0.0321069447634799, -0.00974916140713467, 0.0230526382657243, -0.0330506567267612, -0.01956497284179, 0.039456393215725, -0.0324835379889775],
+          "type": "bar",
+          "frame": "2021-12-17",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    },
+    {
+      "name": "2021-12-21",
+      "data": [
+        {
+          "x": ["2021-01-08", "2021-01-15", "2021-01-22", "2021-01-29", "2021-02-05", "2021-02-12", "2021-02-19", "2021-02-26", "2021-03-05", "2021-03-12", "2021-03-19", "2021-03-26", "2021-04-01", "2021-04-09", "2021-04-16", "2021-04-23", "2021-04-30", "2021-05-07", "2021-05-14", "2021-05-21", "2021-05-28", "2021-06-04", "2021-06-11", "2021-06-18", "2021-06-25", "2021-07-02", "2021-07-09", "2021-07-16", "2021-07-23", "2021-07-30", "2021-08-06", "2021-08-13", "2021-08-20", "2021-08-27", "2021-09-03", "2021-09-10", "2021-09-17", "2021-09-24", "2021-10-01", "2021-10-08", "2021-10-15", "2021-10-22", "2021-10-29", "2021-11-05", "2021-11-12", "2021-11-19", "2021-11-26", "2021-12-03", "2021-12-10", "2021-12-17", "2021-12-21"],
+          "y": [0.032339584829765, -0.0229886230288143, 0.0439295370019996, -0.0329947102510076, 0.0524998169603121, 0.0149765387860654, -0.0164343025120266, -0.0494330833357707, -0.0186631376709487, 0.0212164080830848, -0.00543388953854151, 0.00871453859533555, 0.0269971624302212, 0.0386765657832622, 0.0142181104389427, -0.00715498994679653, -0.00578711105248408, -0.0101819730940137, -0.0237987299063058, 0.00139027477072839, 0.0204872393295712, 0.00615640995700151, 0.0165226985672657, 0.00366332152578153, 0.0210397469788348, 0.0266605370806143, 0.00668539077789099, -0.00976049400230528, 0.029316737216124, -0.0100510692385223, 0.00999070562594895, 0.00180810672083709, -0.00291407203621863, 0.0225528107499895, 0.0142493919970821, -0.0135509004252311, -0.00694786671631886, -0.000247174257847593, -0.0350828968344977, 0.00195241594007833, 0.0220076529190492, 0.013742093578885, 0.0322629205794376, 0.0321069447634799, -0.00974916140713467, 0.0230526382657243, -0.0330506567267612, -0.01956497284179, 0.039456393215725, -0.0324835379889775, 0.0116964073228778],
+          "type": "bar",
+          "frame": "2021-12-21",
+          "showlegend": false,
+          "marker": {
+            "color": "rgba(31,119,180,1)",
+            "line": {
+              "color": "rgba(31,119,180,1)"
+            }
+          },
+          "error_y": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "error_x": {
+            "color": "rgba(31,119,180,1)"
+          },
+          "xaxis": "x",
+          "yaxis": "y",
+          "visible": true
+        }
+      ],
+      "traces": [0]
+    }
+  ],
+  "shinyEvents": ["plotly_hover", "plotly_click", "plotly_selected", "plotly_relayout", "plotly_brushed", "plotly_brushing", "plotly_clickannotation", "plotly_doubleclick", "plotly_deselect", "plotly_afterplot", "plotly_sunburstclick"],
+  "base_url": "https://plot.ly"
+}
