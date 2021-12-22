@@ -1,5 +1,5 @@
 ---
-
+draft: true
 title: "Nasdaq 100 Jahresrückblick 2021"
 author: "Jan Tau"
 date: '2021-12-22'

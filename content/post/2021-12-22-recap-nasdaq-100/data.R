@@ -130,6 +130,8 @@ library(htmlwidgets)
 # https://stackoverflow.com/questions/42043633/format-y-axis-as-percent-in-plot-ly
 # Plotly to Wowchemy via shortcode
 # https://wowchemy.com/docs/content/writing-markdown-latex/
+# Problem with files size when github push: git config --global http.postBuffer 157286400
+# https://stackoverflow.com/questions/15843937/git-push-hangs-after-total-line
 
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
