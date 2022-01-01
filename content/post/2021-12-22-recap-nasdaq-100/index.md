@@ -1,15 +1,15 @@
 ---
-draft: true
+draft: false
 title: "Nasdaq 100 Jahresrückblick 2021"
 author: "Jan Tau"
-date: '2021-12-22'
+date: '2022-01-01'
 slug: recap-nasdaq-100
 categories: []
 tags: []
 subtitle: Über den Nasdaq 100 im vergangenen Jahr
 summary: Über den Nasdaq 100 im vergangenen Jahr
 authors: []
-lastmod: '2021-12-22T14:25:05+01:00'
+lastmod: '2022-01-01T14:25:05+01:00'
 featured: no
 image:
   caption: ''
@@ -17,19 +17,18 @@ image:
   preview_only: no
 projects: []
 ---
+{{< toc >}}
+
 ## NDX
 
 ### REcap
+Der Nasdaq 100 hat sich ausgezeichnet entwickelt.
 
-{{< chart data="test" >}} 
+<iframe height="650" width="100%" frameborder="no" src="fig.html"> </iframe>
 
-{{< chart data="test2" >}} 
+Der Chart zeigt, welche Performance können die {{< hl >}}einzelnen Werte{{< /hl >}} aufweisen?
 
-{{< toc >}}
-
-This is a {{< hl >}}highlighted quote{{< /hl >}}.
-
-<iframe height="500" width="100%" frameborder="no" src="test.html"> </iframe>
+{{< chart data="test" >}}
 
 Den für diesen Beitrag erstellten Code findest du hier: [https://github.com/jantau/jantau](https://github.com/jantau/jantau/tree/main/content/post)
 
