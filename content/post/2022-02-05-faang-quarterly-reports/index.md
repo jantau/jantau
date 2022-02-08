@@ -33,7 +33,7 @@ Die historischen Daten zu den Tagen der Quartalsberichte zu bekommen, war etwas 
 
 Der Chart zeigt den Abstand des Eröffnungskurses zum Schlusskurs des Vortages nach der nachbörslichen Veröffentlichung von Quartalszahlen für die fünf FAANG-Werte von Q2 2012 bis Q4 2021.
 
-<iframe height="700" width="100%" frameborder="no" src="faang_openings.html"> </iframe>
+<iframe height="700" width="100%" frameborder="no" src="https://jantau.github.io/highchart/faang_openings.html"> </iframe>
 
 Die Auswirkungen der Quartalsberichte auf die direkte nachbörsliche Kursentwicklung sind erheblich! Zusammen haben die FAANG-Unternehmen in den 39 Quartalen von 2012 bis 2021 195 Quartalsberichte veröffentlicht. In 80 % der Fälle waren die Kursprünge stärker als 1,5 % nach oben oder nach unten, was bedeutet, dass in vier von fünf Fällen die Erwartungen der Aktionäre und Analysten entweder übertroffen oder unterboten wurden. In der Regel wurden die Erwartungen dabei übertroffen. Der durchschnittliche Kursgewinn nach Quartalszahlen liegt bei 1,36 %, wobei die Standardabweichung 8,35 % beträgt, was bedeutet, dass 65 % der Handelstage nach Quartalsberichten in der Spanne zwischen -6,99 % (1,36-8,35) und +9,71 % (1,36+8,35) eröffneten. Die maximalen Kursausschläge betrugen 39,4 % Prozent nach oben (Netflix im Q4 2012) und 25,8 % nach unten (Netflix im Q3 2013).
 
@@ -41,11 +41,12 @@ Um diese Zahlen besser beurteilen zu können, habe ich die durch Quartalszahlen 
 
 Die unterschiedliche Verteilung der nachbörslichen Kursentwicklung nach Quartalszahlen kann gut durch einen Density-Chart (oder Dichtediagramm, gewissermaßen ein geglättetes Histogramm) visualisiert werden. (Durch Doppelklick auf Elemente der Legende kann nach Werten gefiltert werden.)
 
-<iframe height="450" width="100%" frameborder="no" src="faang_density.html"> </iframe>
+<iframe height="450" width="100%" frameborder="no" src="https://jantau.github.io/highchart/faang_density.html"> </iframe>
 
 Facebooks Kurve zeigt eine Schulterformation. Es gibt eine Reihe recht extremer Reaktionen, die sowohl positiv als auch negativ waren (die Schultern). Die Mehrzahl der Daten liegt jedoch eng an der Nulllinie beziehungsweise am Durchschnitt, der für Facebook bei 1,6 % liegt (der Kopf). Netflix zeigt mit Abstand die breiteste und damit auch flachste Verteilung. Bei Netflix überraschen die Zahlen somit regelmäßig Aktionäre und Analysten erheblich. Bei Apple und Google liegt der Höhepunkt der Dichte deutlich rechts der Nulllinie, was auf viele positive Überraschungen hinweist, wobei die Verteilung nicht so breit ist wie bei Netflix oder Facebook oder auch Amazon, und die extremen Ausschläge über 20 % fehlen. 
 
 Die wichtigsten Kennzahlen in tabellarischer Form zeigen, dass Google der beste Wert ist, den man vor Veröffentlichung der Quartalsberichte in den letzten zehn Jahren haben konnte. Im Mittel ging es um 2,3 % nach oben, wobei Google die geringste Standardabweichung (SD) aufwies, die meisten Werte also relativ eng um den Mittelwert schwankten. Etwas anders sieht es bei Facebook und Netflix aus. Sie belegen mit 1,6 % und 1,5 % Platz 2 und 3, wobei Investoren jedoch eine wesentlich höhere Volatilität (SD 9,6 % und SD 13,1 %) verkraften mussten.
+
 
 | Aktie | ⌀ Öffnungskurs zum<br>Schlusskurs Vortag| SD|
 |--------|:--------------------:|--------------------:|
@@ -55,7 +56,9 @@ Die wichtigsten Kennzahlen in tabellarischer Form zeigen, dass Google der beste 
 | NFLX   | 1.5 %                | 13.1 %              |
 | GOOG   | 2.3 %                | 4.7 %               |
 
+
 Nicht nur die Einzelwerte unterscheiden sich voneinander, auch von Quartal zu Quartal sind die Reaktionen verschieden. Die Zahlen des 4. Quartals riefen bei hoher Volatilität im Mittel die stärkste Kursreaktion hervor, wohingegen die Ergebnisse des 2. Quartals als einzige im Durchschnitt eine leicht negative Kursreaktion nachsichzogen.
+
 
 | Quartal 	| ⌀ Öffnungskurs zum<br>Schlusskurs Vortag 	| SD   	|
 |---------	|:------:|------:|
@@ -63,6 +66,7 @@ Nicht nur die Einzelwerte unterscheiden sich voneinander, auch von Quartal zu Qu
 | 2       	| -0.1 % 	| 8.3 %  	|
 | 3       	| 0.6 %  	| 7.9 %  	|
 | 4       	| 2.7 %  	| 10.2 % 	|
+
 
 ## Hat FAANG eine Zukunft?
 
