@@ -31,7 +31,11 @@ ndx_data <- ishares_nasdaq %>%
   select(1:3, 6) %>%
   rename(Gewichtung = `Gewichtung (%)`) %>%
   mutate(Gewichtung = str_replace_all(Gewichtung, ",", ".")) %>%
-  mutate(Gewichtung = as.numeric(Gewichtung))
+  mutate(Gewichtung = as.numeric(Gewichtung)) %>%
+  mutate(Sektor = case_when(Sektor == "Gesundheitsversorgung" ~ "Gesundheitvers.",
+                            Sektor == "Nichtzyklische Konsumgüter" ~ "Nichtzykl. Konsum.",
+                            str_detect(Sektor, "Zyklische Konsumgüter") ~ "Zykl. Konsum.",
+                            TRUE ~ Sektor))
 
 ndx_query <- append("^NDX", ndx_data$Emittententicker)
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -50,6 +54,22 @@ ndx_wk <- tq_get(ndx_query,
 
 save(ndx_wk, file = "ndx_wk.Rdata")
 load("ndx_wk.Rdata")
+
+ndx_d_2022 <- tq_get("^NDX",
+                 get  = "stock.prices",
+                 from = "2021-12-31",
+                 to = Sys.Date()) %>%
+  mutate(adj_perc = round(adjusted/first(adjusted)-1, 3)) %>%
+  select(symbol, date, adjusted, adj_perc) %>%
+  drop_na()
+
+ndx_d_2021_22 <- tq_get("^NDX",
+                     get  = "stock.prices",
+                     from = "2020-12-31",
+                     to = Sys.Date()) %>%
+  mutate(adj_perc = round(adjusted/first(adjusted)-1, 3)) %>%
+  select(symbol, date, adjusted, adj_perc) %>%
+  drop_na()
 
 # Dump: Compare asset classes
 # assets <- tq_get(c("^NDX", "^GDAXI", "^SP500TR", "BTC-EUR", "^XAU", "^STOXX"),
@@ -76,11 +96,101 @@ load("ndx_wk.Rdata")
 # Join ishares index data with yahoo price data
 ndx_wk_join <- ndx_wk %>% left_join(ndx_data, by = c("symbol" = "Emittententicker"))
 
+# Rank stocks
+ndx_wk_rank <- ndx_wk_join %>%
+  ungroup() %>%
+  filter(date == last(date) & symbol != "^NDX") %>%
+  mutate(rank = min_rank(desc(adj_perc))) %>%
+ # mutate(rank_quantile = cut(adj_perc, quantile(adj_perc, probs = seq(0, 1, 0.1)), include.lowest=TRUE, labels=FALSE)) %>%
+  mutate(rank_quantile = cut(rank, breaks = 10, include.lowest=TRUE, labels=FALSE)) %>%
+  select(symbol, rank, rank_quantile)
+
+# Dump: Filter highest and lowest quantile
+# filter(adj_perc > quantile(adj_perc, .9) |
+#          adj_perc < quantile(adj_perc, .1))
+
+ndx_wk_join_rank <- ndx_wk_join %>%
+  left_join(ndx_wk_rank, by = "symbol")
+
+# Weight per Sektor and per Stock
+  
+test <- ndx_wk_join %>%
+  filter(symbol != "^NDX") %>%
+  mutate(weight_perc = Gewichtung/100) %>%
+  mutate(weight_adj_perc = adj_perc*weight_perc) %>%
+  group_by(date, Sektor) %>%
+  mutate(weight_sektor = sum(weight_perc, na.rm = TRUE)) %>%
+  ungroup() %>%
+  group_by(date, Sektor, weight_sektor) %>%
+  summarise(weight_adj_perc = sum(weight_adj_perc, na.rm = TRUE))
+
+
+%>%
+  group_by(date, Sektor, weight_sektor) %>%
+  summarise(weight_adj_perc = sum(weight_adj_perc, na.rm = TRUE))
+
+sum(test$weight_sektor, na.rm = TRUE)
+
 ndx_wk_join_all <- ndx_wk_join %>% filter(symbol != "^NDX") %>% SharedData$new(~symbol)
 ndx_wk_join_ndx <- ndx_wk_join %>% filter(symbol == "^NDX") #%>% SharedData$new(~symbol)
 
+fig_ndx <- plot_ly(data = ndx_wk_join_ndx, y = ~date, x = ~adj_perc, type = 'scatter', mode = 'line') %>%
+  layout(title = "Nasdaq 100 im Jahr 2021",
+         xaxis = list(side ="top", title = "", tickformat = ",.0%"),
+         yaxis = list(title = FALSE, tickformat="%b\n%Y", autorange = "reversed")) %>%
+  config(displayModeBar = FALSE)
+
+partial_bundle(fig_ndx) %>% saveWidget("fig_ndx.html", selfcontained = FALSE, libdir = "lib")
+
+fig_ndx_2022 <- plot_ly(data = ndx_d_2022, y = ~date, x = ~adj_perc, type = 'scatter', mode = 'line') %>%
+  layout(title = "Nasdaq 100 im Jahr 2022",
+         xaxis = list(side ="top", title = "", tickformat = ",.0%"),
+         yaxis = list(title = FALSE, tickformat="%d.%b\n%Y", autorange = "reversed")) %>%
+  config(displayModeBar = FALSE)
+
+partial_bundle(fig_ndx_2022) %>% saveWidget("fig_ndx_2022.html", selfcontained = FALSE, libdir = "lib")
+
+
+fig_ndx_2021_22 <- plot_ly(data = ndx_d_2021_22, y = ~date, x = ~adj_perc, fill = 'tozerox', type = 'scatter', mode = 'line') %>%
+  layout(title = "Nasdaq 100 im Jahr 2022",
+         xaxis = list(side ="top", title = "", tickformat = ",.0%"),
+         yaxis = list(title = FALSE, dtick = "M1", tickformat="%b\n%Y", autorange = "reversed")) %>%
+  config(displayModeBar = FALSE)
+
+fig_ndx_2021_22 <- fig_ndx_2021_22 %>%
+  layout(
+    shapes = list(
+      list(
+        type = "rect",
+        fillcolor = "gray",
+        line = list(color = "blue"),
+        opacity = 0.2,
+        x0 = min(ndx_d_2021_22$adj_perc),
+        x1 = max(ndx_d_2021_22$adj_perc),
+        xref = "x",
+        y0 = "2021-01-01",
+        y1 = "2022-01-01",
+        yref = "y"
+      )
+    ),
+    annotations = list(
+      x = 0.1,
+      y = "2021-04-01",
+      text = "2021",
+      xref = "x",
+      yref = "y",
+      showarrow = FALSE,
+      font = list(color = '#264E86',
+                  size = 50)
+    )
+  )
+
+
+partial_bundle(fig_ndx_2021_22) %>% saveWidget("fig_ndx_2021_22.html", selfcontained = FALSE, libdir = "lib")
+
+
+
 fig <- plot_ly() %>% 
-  
   
   add_lines(data = ndx_wk_join_all, x = ~date, y = ~adj_perc, ids = ~symbol, color = ~Sektor, opacity = 0.8,
             line = list(width = 0.5),
@@ -105,16 +215,16 @@ fig <- plot_ly() %>%
   layout(title = "NASDAQ 100 in 2021",
          xaxis = list(
            title = list(visible = FALSE),
-           range = 
+           range =
              c(as.numeric(as.POSIXct("2021-01-01", format="%Y-%m-%d"))*1000,
                as.numeric(as.POSIXct("2022-01-01", format="%Y-%m-%d"))*1000),
            type = "date"),
          yaxis = list(title = "Performance",
                       tickformat = ",.0%"),
          showlegend = TRUE, 
-         legend = list(x = 0.2, y = 0.9,
+         legend = list(orientation = "v", #x = 0.2, y = 0.9
                        title = list(text = "<b> Sektoren </b>"),
-                       bgcolor = "rgba(255, 255, 255, 0.4)",
+                       #bgcolor = "rgba(255, 255, 255, 0.4)",
                        bordercolor = "#FFFFFF",
                        borderwidth = 1)
   ) %>% 
