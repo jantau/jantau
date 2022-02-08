@@ -5,8 +5,8 @@ date: '2022-02-08'
 slug: faang-quarterly-reports
 categories: []
 tags: []
-subtitle: Über die Kursreaktionen der FAANG-Werte nach Quartalsberichten
-summary: Über die Kursreaktionen der FAANG-Werte nach Quartalsberichten
+subtitle: Über die FAANG-Werte nach Quartalsberichten
+summary: Über die FAANG-Werte nach Quartalsberichten
 authors: []
 lastmod: '2022-02-08T09:51:04+01:00'
 featured: no
