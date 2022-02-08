@@ -131,63 +131,9 @@ faang_data <- faang_earnings_clean %>%
   mutate(axis_labels = case_when(quarter == 4 ~ paste0(year, "—Q", quarter),
                                  TRUE ~ paste0("Q", quarter))) 
   
-
-faang_data_mean <- faang_data %>%
-  group_by(quarter_year) %>%
-  summarise(mean = mean(perc, na.rm = TRUE), sd = sd(perc))
-
-faang_quarter_mean <- faang_data %>%
-  group_by(quarter) %>%
-  summarise(mean = round(mean(perc, na.rm = TRUE), 3) * 100, sd = round(sd(perc, na.rm = TRUE), 3) * 100)
-
-faang_symbol_mean <- faang_data %>%
-  group_by(symbol) %>%
-  summarise(mean = round(mean(perc, na.rm = TRUE), 3) * 100, sd = round(sd(perc), 3) * 100)
-
-faang_earnings_mean <- faang_data %>%
-  summarise(mean = mean(perc, na.rm = TRUE) * 100, sd = sd(perc, na.rm = TRUE) * 100)
-
-faang_mean <- faang_stock_daily_perc %>%
-  filter(date >= "2012-06-30" & date <= "2022-03-30") %>%
-  ungroup() %>%
-  summarise(mean = mean(perc, na.rm = TRUE) * 100, sd = sd(perc) * 100)
-
-earnings_days <- faang_data %>% distinct(date) %>% drop_na() %>% pull(date)
-
-faang_mean_wo_earnings <- faang_stock_daily_perc %>%
-  filter(date >= "2012-06-30" & date <= "2022-03-30") %>%
-  filter(!date %in% earnings_days) %>%
-  ungroup() %>%
-  summarise(mean = mean(perc, na.rm = TRUE) * 100, sd = sd(perc) * 100)
-
-
-test <- faang_data %>%
-  group_by(quarter_year, symbol) %>%
-  summarise(mean = mean(perc, na.rm = TRUE))
-
-faang_data %>%
-  group_by(quarter_year, symbol) %>%
-  summarise(mean = mean(perc, na.rm = TRUE)) %>%
-  group_by(symbol) %>%
-  count(good = mean >= 0.05, bad = mean <= -0.05, middle = mean < 0.05 & mean > -0.5 )
-
-test <- faang_data %>%
-  group_by(quarter_year, symbol) %>%
-  summarise(mean = mean(perc, na.rm = TRUE)) %>%
-  group_by(symbol, group = cut(mean, breaks = seq(-0.35, 0.45, 0.1))) %>%
-  summarise(n = n())
-
-test_2 <- faang_data %>%
-  group_by(quarter_year, symbol) %>%
-  summarise(mean = mean(perc, na.rm = TRUE)) %>%
-  group_by(symbol, group = cut(mean, breaks = seq(-0.015, 0.015, 0.03))) %>%
-  summarise(n = n())
-
-test_2 <- faang_data %>%
-  group_by(quarter_year) %>%
-  summarise(mean = mean(perc, na.rm = TRUE)) %>%
-  group_by(group = cut(mean, breaks = seq(-0.015, 0.015, 0.03))) %>%
-  summarise(n = n())
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# Create charts ----
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 faang_colors <-
   c("#4267B2",
@@ -310,6 +256,68 @@ fig
 partial_bundle(fig) %>% saveWidget("faang_density.html", selfcontained = FALSE, libdir = "lib")
 
 
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# Create summary tables ----
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+faang_data_mean <- faang_data %>%
+  group_by(quarter_year) %>%
+  summarise(mean = mean(perc, na.rm = TRUE), sd = sd(perc))
+
+faang_quarter_mean <- faang_data %>%
+  group_by(quarter) %>%
+  summarise(mean = round(mean(perc, na.rm = TRUE), 3) * 100, sd = round(sd(perc, na.rm = TRUE), 3) * 100)
+
+faang_symbol_mean <- faang_data %>%
+  group_by(symbol) %>%
+  summarise(mean = round(mean(perc, na.rm = TRUE), 3) * 100, sd = round(sd(perc), 3) * 100)
+
+faang_earnings_mean <- faang_data %>%
+  summarise(mean = mean(perc, na.rm = TRUE) * 100, sd = sd(perc, na.rm = TRUE) * 100)
+
+faang_mean <- faang_stock_daily_perc %>%
+  filter(date >= "2012-06-30" & date <= "2022-03-30") %>%
+  ungroup() %>%
+  summarise(mean = mean(perc, na.rm = TRUE) * 100, sd = sd(perc) * 100)
+
+earnings_days <- faang_data %>% distinct(date) %>% drop_na() %>% pull(date)
+
+faang_mean_wo_earnings <- faang_stock_daily_perc %>%
+  filter(date >= "2012-06-30" & date <= "2022-03-30") %>%
+  filter(!date %in% earnings_days) %>%
+  ungroup() %>%
+  summarise(mean = mean(perc, na.rm = TRUE) * 100, sd = sd(perc) * 100)
+
+
+test <- faang_data %>%
+  group_by(quarter_year, symbol) %>%
+  summarise(mean = mean(perc, na.rm = TRUE))
+
+faang_data %>%
+  group_by(quarter_year, symbol) %>%
+  summarise(mean = mean(perc, na.rm = TRUE)) %>%
+  group_by(symbol) %>%
+  count(good = mean >= 0.05, bad = mean <= -0.05, middle = mean < 0.05 & mean > -0.5 )
+
+test <- faang_data %>%
+  group_by(quarter_year, symbol) %>%
+  summarise(mean = mean(perc, na.rm = TRUE)) %>%
+  group_by(symbol, group = cut(mean, breaks = seq(-0.35, 0.45, 0.1))) %>%
+  summarise(n = n())
+
+test_2 <- faang_data %>%
+  group_by(quarter_year, symbol) %>%
+  summarise(mean = mean(perc, na.rm = TRUE)) %>%
+  group_by(symbol, group = cut(mean, breaks = seq(-0.015, 0.015, 0.03))) %>%
+  summarise(n = n())
+
+test_2 <- faang_data %>%
+  group_by(quarter_year) %>%
+  summarise(mean = mean(perc, na.rm = TRUE)) %>%
+  group_by(group = cut(mean, breaks = seq(-0.015, 0.015, 0.03))) %>%
+  summarise(n = n())
+
+# Export df as csv to import it into https://www.tablesgenerator.com/markdown_tables
 write_csv(faang_quarter_mean, file = "test.csv")
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
