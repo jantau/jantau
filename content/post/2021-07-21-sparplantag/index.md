@@ -46,7 +46,7 @@ Hier ist das Ergebnis:
 
 Im Linechart, der den Sparplanwert abbildet, ist zunächst kein riesiger Unterschied zu erkennen. Am Ende hat der Sparplan, in den am 5. jedes Monats investiert wurde, einen Wert von 288185 € (ohne Kaufgebühren) und derjenige, in den am 20. jedes Monats investiert wurde, einen Wert von 286981 € (ohne Kaufgebühren). Die Differenz beträgt 1204 €. 
 
-Im nächsten Schritt habe ich die Simulation erweitert und für jeden Ausführungstag vom 1. bis zum 23. des Monats duchgeführt. Diese Ausführungstage habe ich gewählt, um noch einen Tag zu wählen, uf den sicher im entsprechenden Monat ein Bankarbeitstag folgt, so dass das Geld auch wirklich im laufenden Monat investiert wird.
+Im nächsten Schritt habe ich die Simulation erweitert und für jeden Ausführungstag vom 1. bis zum 23. des Monats duchgeführt. Diese Ausführungstage habe ich gewählt, um noch einen Tag zu wählen, auf den sicher im entsprechenden Monat ein Bankarbeitstag folgt, so dass das Geld auch wirklich im laufenden Monat investiert wird.
 
 Anschließend habe ich den Performanceverlust in % berechnet und visualisiert. Als Performance habe ich den Teil des Sparplans angenommen, dessen Wert über der Ansparsumme liegt.
 
