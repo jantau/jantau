@@ -33,7 +33,7 @@ xtracker_sector_etfs <- xetra_df %>%
 xtracker_q1_2022 <- tq_get(xtracker_sector_etfs$xetra_ticker,
                            get  = "stock.prices",
                            from = "2021-12-29",
-                           to = "2022-03-25") %>%
+                           to = "2022-03-28") %>%
   group_by(symbol) %>%
   tq_transmute(select     = adjusted,
                mutate_fun = to.daily) %>%
@@ -118,7 +118,7 @@ ishares_msci_world_top_10_price <-
   tq_get(ishares_msci_world_top_10$Emittententicker,
          get  = "stock.prices",
          from = "2021-12-29",
-         to = "2022-03-26") %>%
+         to = "2022-03-28") %>%
   group_by(symbol) %>%
   tq_transmute(select     = adjusted,
                mutate_fun = to.daily) %>%

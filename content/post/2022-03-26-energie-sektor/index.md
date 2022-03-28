@@ -31,7 +31,7 @@ Für die Analyse der Sektoren habe ich die in Europa gehandelten [Sektoren-ETFs 
 
 Der Unterschied zwischen dem Energie-Sektoren und den restlichen Sektoren ist extrem. Es gab Tage im März, da lag der Energie-Sektor über 30 % im Plus, während alle anderen Sektoren ein Minus zu verbuchen hatten. 
 
-Zum Ende des Quartals beträgt die Spanne zwischen dem Energiesektor und dem zweitplatzierten Sektor Materials annähernd 30 %. Die Spanne zum Schlusslicht zyklische Konsumgüter beträgt beinahe 45 %.
+Zum Ende des Quartals beträgt die Spanne zwischen dem Energiesektor und dem zweitplatzierten Sektor Materials annähernd 32 %. Die Spanne zum Schlusslicht zyklische Konsumgüter beträgt über 47 %.
 
 ## Ranking der Top-10-Werte pro Sektor
 
