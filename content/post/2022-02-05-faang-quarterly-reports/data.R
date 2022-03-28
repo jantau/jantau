@@ -16,9 +16,6 @@ setwd("/Users/jan/blog/jantau/content/post/2022-02-05-faang-quarterly-reports")
 # Web scraping ----
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-# Tutorial
-# https://towardsdatascience.com/tidy-web-scraping-in-r-tutorial-and-resources-ac9f72b4fe47?gi=bbadd5a4567f
-
 library(tidyverse)
 library(lubridate)
 
@@ -30,24 +27,13 @@ library(tidyquant)
 library(plotly)
 library(htmlwidgets)
 
+# Tutorial
+# https://towardsdatascience.com/tidy-web-scraping-in-r-tutorial-and-resources-ac9f72b4fe47?gi=bbadd5a4567f
+
 # 1. open website with google chrome
 # 2. inspect
 # 3. find <table class...>
 # 4. copy selector
-
-# Attention: incorrect earnings dates
-# faang_earnings = data.frame()
-# for (i in seq(faang)) {
-#   
-#   earnings_table <- paste0("https://www.marketbeat.com/stocks/NASDAQ/", faang[i], "/earnings/") %>% 
-#     read_html() %>% 
-#     html_element(css = "#earnings-history") %>%
-#     html_table() %>%
-#     mutate(symbol = faang[i])
-#   
-#   faang_earnings <- rbind(faang_earnings, earnings_table)
-#   
-# }
 
 faang <- c("FB", "AAPL", "AMZN", "NFLX", "GOOG")
 
