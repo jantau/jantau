@@ -1,7 +1,7 @@
 ---
 title: Kein guter Jahresauftakt für den Aktienmarkt
 author: Jan Tau
-date: '2022-03-26'
+date: '2022-03-28'
 slug: energie-sektor
 categories: []
 tags: [ETF, MSCI World, Gewichtung]
