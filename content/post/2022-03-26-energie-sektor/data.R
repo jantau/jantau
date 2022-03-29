@@ -61,7 +61,8 @@ xtracker_q1_2022 <- xtracker_q1_2022 %>%
 hovertext1 <-
   c(
     "<b>{etf_name}</b>
-    Performance: {round(adj_perc*100, 1)} %"
+    Performance: {round(adj_perc*100, 1)} %
+    {format(date, '%d. %b. %Y')}"
   )
 
 sector_etfs <- 
@@ -82,16 +83,16 @@ sector_etfs <-
     name = "Energy",
     line = list(color = "blue"),
     hoverinfo = "text",
-    hovertemplate = paste("<b>Energy</b><br>Performance: %{y}<extra></extra>")
+   # hovertemplate = paste("<b>Energy</b><br>Performance: %{y}<extra></extra>"),
+    hovertext = ~ str_glue(hovertext1)
   ) %>%
   layout(title = glue::glue("<span style='color: blue'>Energie-Sektor</span> vs. der Rest
-                            <span style='font-size:9pt'>Sektoren-ETFs von Xtrackers MSCI World 
+                            <span style='font-size:8pt'>Sektoren-ETFs von Xtrackers MSCI World 
                             im 1. Quartal 2022</span>"),
          xaxis = list(title = FALSE),
          yaxis = list(title = "Performance Q1 2022", tickformat = ".0%"),
-         legend = list(orientation = "h", traceorder = "reversed"),
-         hovermode = "x unified") %>%
-  config(displayModeBar = FALSE)
+         legend = list(orientation = "h", traceorder = "reversed")) %>%
+  config(displaylogo = FALSE, modeBarButtons = list(list("hoverClosestCartesian"), list("hoverCompareCartesian"), list("resetScale2d")))
 
 sector_etfs
 partial_bundle(sector_etfs) %>% saveWidget("sector_etfs.html", selfcontained = FALSE, libdir = "lib")
@@ -186,14 +187,13 @@ single_stocks <-
     hovertext = ~ str_glue(hovertext)
   ) %>%
   layout(title = glue::glue("<span style='color: blue'>Energie-Aktien</span> vs. der Rest
-                            <span style='font-size:9pt'>Top-10 Werte pro Sektor (nach Marktkap. im MSCI World) 
+                            <span style='font-size:7pt'>Top-10 Werte pro Sektor (nach Marktkap. MSCI World) 
                             im 1. Quartal 2022</span>"),
          xaxis = list(title = FALSE, zeroline = FALSE,
                       tickvals = c(1, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110)),
          yaxis = list(title = "Performance Q1 2022", tickformat = ".0%"),
          legend = list(orientation = "h", traceorder = "reversed")) %>%
-  config(displayModeBar = FALSE)
-
+  config(displaylogo = FALSE, modeBarButtons = list(list("resetScale2d")))
 single_stocks
 partial_bundle(single_stocks) %>% saveWidget("single_stocks.html", selfcontained = FALSE, libdir = "lib")
 
@@ -214,7 +214,6 @@ hovertext <-
 sector_weight <-
   top_10_data %>%
   group_by(Sektor) %>%
-  filter(date == max(date)) %>%
   summarise(sum = sum(`Gewichtung (%)`), perc = mean(adj_perc)) %>%
   mutate(Sektor = fct_relevel(Sektor, rev)) %>%
  # arrange(desc(Sektor)) %>%
@@ -224,10 +223,12 @@ sector_weight <-
           hoverinfo = "text",
           hovertext = ~ str_glue(hovertext)) %>%
   add_bars() %>%
-  layout(title = "Sektoren-Gewichtung im MSCI World<br><span style='font-size:9pt'>Top-10 Werte pro Sektor (nach Marktkap.)</span>",
+  layout(title = "Sektoren-Gewichtung im MSCI World<br><span style='font-size:8pt'>Top-10-Werte pro Sektor (nach Marktkap.)</span>",
          yaxis = list(title = "Gewichtung der Top-10-Aktien", ticksuffix = "%", zeroline = FALSE)) %>%
   config(displayModeBar = FALSE)
  
+#sum(sector_weight$sum)
+sector_weight
 partial_bundle(sector_weight) %>% saveWidget("sector_weight.html", selfcontained = FALSE, libdir = "lib")
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

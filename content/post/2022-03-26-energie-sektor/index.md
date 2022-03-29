@@ -29,7 +29,7 @@ Für die Analyse der Sektoren habe ich die in Europa gehandelten [Sektoren-ETFs 
 
 <iframe height="550" width="100%" frameborder="no" src="https://jantau.github.io/highchart/sector_etfs.html"> </iframe>
 
-Der Unterschied zwischen dem Energie-Sektoren und den restlichen Sektoren ist extrem. Es gab Tage im März, da lag der Energie-Sektor über 30 % im Plus, während alle anderen Sektoren ein Minus zu verbuchen hatten. 
+Der Unterschied zwischen den Energie-Sektoren und den restlichen Sektoren ist extrem. Es gab Tage im März, da lag der Energie-Sektor über 30 % im Plus, während alle anderen Sektoren ein Minus zu verbuchen hatten. 
 
 Zum Ende des Quartals beträgt die Spanne zwischen dem Energiesektor und dem zweitplatzierten Sektor Materials annähernd 32 %. Die Spanne zum Schlusslicht zyklische Konsumgüter beträgt über 47 %.
 
@@ -37,7 +37,7 @@ Zum Ende des Quartals beträgt die Spanne zwischen dem Energiesektor und dem zwe
 
 Aber was genau sind das für Werte, die von dem jetzigen Umfeld profitieren? Um diese Frage zu beantworten, habe ich mir die Top-10-Werte (nach Marktkapitalisierung) pro Sektor angeschaut (also 110 Aktien) und sie nach ihrer Performance seit Jahresbeginn von 1-110 gerankt. 
 
-So bin ich hierbei vorgegangen: Über iShares habe ich [sämtliche im MSCI World enthaltende Werte](https://www.ishares.com/de/privatanleger/de/produkte/251882/ishares-msci-world-ucits-etf-acc-fund/1478358465952) mit ihrer Gewichtung und Sektorenzugehörigkeit ermitteln können. Die Top-10-Aktien pro Sektor habe ich über die API von [finance.yahoo.com](https://finance.yahoo.com) abgefragt. Bei den europäischen und japanischen Werten war etwas zusätzliche Datenpflege notwendig, da yahoo.finance.com bei außerhalb der USA gehandelten Aktien einen Börsenplatzzusatz beim Ticker verlangt (etwa 7203.T anstelle von 7203 für Toyota).  
+So bin ich hierbei vorgegangen: Über iShares habe ich [sämtliche im MSCI World enthaltenen Werte](https://www.ishares.com/de/privatanleger/de/produkte/251882/ishares-msci-world-ucits-etf-acc-fund/1478358465952) mit ihrer Gewichtung und Sektorenzugehörigkeit ermitteln können. Die Top-10-Aktien pro Sektor habe ich über die API von [finance.yahoo.com](https://finance.yahoo.com) abgefragt. Bei den europäischen und japanischen Werten war etwas zusätzliche Datenpflege notwendig, da yahoo.finance.com bei außerhalb der USA gehandelten Aktien einen Börsenplatzzusatz beim Ticker verlangt (etwa 7203.T anstelle von 7203 für Toyota).  
 
 Das Ergebnis dieser Untersuchung zeigt, dass sechs Energie-Werte das Ranking der Top-10-Werte pro Sektor anführen.
 
