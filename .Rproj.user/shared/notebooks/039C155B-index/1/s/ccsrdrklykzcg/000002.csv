@@ -1,4 +1,0 @@
-"0",""
-"0","Sparplan_Doku_Alva <- read_excel(""~/Documents/Deutsche_Bank_u_VB/Sparplan_Doku.xlsx"", "
-"0","    sheet = ""Alva_R"", col_types = c(""date"", "
-"0","        ""numeric"", ""numeric"", ""numeric""))"

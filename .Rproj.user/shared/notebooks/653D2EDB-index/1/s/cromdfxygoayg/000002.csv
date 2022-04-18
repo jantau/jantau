@@ -1,7 +1,0 @@
-"0","weight_all <- weight_all %>%"
-"0","  replace(is.na(.), 0) %>%"
-"0","  mutate(sum = rowSums(.[3:6])) %>%"
-"0","  arrange(desc(sum)) %>%"
-"0","  mutate(sum = sum * 100)"
-"0",""
-"0","as_tibble(weight_all)"

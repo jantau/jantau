@@ -1,2 +1,0 @@
-"0","dax_1 <- dax %>%"
-"0","  filter(date >= start_date  & date <= end_date)"

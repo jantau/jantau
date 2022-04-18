@@ -1,7 +1,0 @@
-"0","## create gifs http://www.nagraj.net/notes/gifs-in-r/"
-"0","## create a directory to which the images will be written"
-"0","#dir_out <- file.path(""~/Documents/DataCamp und R/Finanz_Test/sparplan"", ""gif_dir"")"
-"0",""
-"0","dir_out <- file.path(""gif_dir"")"
-"0","#dir_out <- file.path(""~/content/post/gifs"", ""gif_dir"")"
-"0","dir.create(dir_out, recursive = TRUE)"

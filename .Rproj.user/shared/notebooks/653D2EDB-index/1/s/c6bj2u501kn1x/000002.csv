@@ -1,1 +1,0 @@
-"0","weight_all <- plyr::join_all(list(NASDAQ_100, MSCI_World, MSCI_Info, Single_Stocks), by = ""ISIN"", type = ""full"")"

@@ -1,8 +1,0 @@
-"0","# Nur der erste Wert pro Monat"
-"0","# https://github.com/tidyverse/lubridate/issues/630"
-"0","dax_1 <- dax_1 %>%"
-"0","  mutate(year = year(date)) %>%"
-"0","  mutate(month = as.factor(month(date))) %>%"
-"0","  mutate(year_mon = floor_date(date, ""month"")) %>%"
-"0","  distinct(symbol, year_mon, .keep_all=T)"
-"0",""

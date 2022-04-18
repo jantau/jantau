@@ -1,8 +1,0 @@
-"0","# Create gifs http://www.nagraj.net/notes/gifs-in-r/"
-"0",""
-"0","# Delete directory"
-"0","unlink(""ansparen2_gif_dir"", recursive = TRUE)"
-"0",""
-"0","# Create a directory to which the images will be written"
-"0","ansparen_dir_out <- file.path(""ansparen2_gif_dir"")"
-"0","dir.create(ansparen_dir_out, recursive = TRUE)"

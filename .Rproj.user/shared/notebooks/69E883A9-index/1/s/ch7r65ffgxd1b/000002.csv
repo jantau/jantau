@@ -1,4 +1,0 @@
-"0","dax_1 <- dax_1 %>% "
-"0","    mutate(symbol = replace(symbol, symbol == ""^GDAXI"", ""Dax"")) %>%"
-"0","    mutate(symbol = replace(symbol, symbol == ""^NDX"", ""NASDAQ 100"")) %>%"
-"0","    mutate(symbol = replace(symbol, symbol == ""^SP500TR"", ""S&P 500 TR""))"
