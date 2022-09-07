@@ -17,6 +17,9 @@ image:
 projects:
 ---
 
+{{% callout note %}}
+Es gibt einen [aktuelleren Beitrag](/post/sparplantag-reloaded), in der ich die zehn beliebtesten ETFs in Deutschland sowie alle 31 möglichen Sparplan-Ausführungstage analysiere.
+{{% /callout %}}
 
 ## Monatlich in einen Wertpapiersparplan investieren
 
