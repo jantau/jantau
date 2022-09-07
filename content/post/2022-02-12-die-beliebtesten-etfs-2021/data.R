@@ -9,8 +9,8 @@ cat("\014") # Clear your console
 rm(list = ls()) # Clear your environment
 
 # Load in header file
-source("/Users/jan/blog/jantau/content/post/header.R")
-setwd("/Users/jan/blog/jantau/content/post/2022-02-12-die-beliebtesten-etfs-2021") 
+source("./content/post/header.R")
+setwd("./content/post/2022-02-12-die-beliebtesten-etfs-2021") 
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Favorite ETFs in Germany in 2021  ----
@@ -167,6 +167,7 @@ xetra_df <- bind_rows(datalist_xetra) %>%
 xetra_df <- create_df()
 
 save(xetra_df, file = "xetra_df.Rdata")
+load("xetra_df.Rdata")
 
 
 # Analyse der daten von Xetra
@@ -219,6 +220,20 @@ test_3 <- xetra_df %>%
 
 ticker <- test_2 %>% slice_head(n = 10) %>% pull(xetra_ticker) %>% paste0(".DE") %>% c("6AQQ.DE")
 
+# For other blog post
+# fav_etfs_rate <- tq_get(ticker,
+#                         get  = "stock.prices",
+#                         from = "2010-01-01",
+#                         to = "2022-04-20") %>%
+#   group_by(symbol) %>%
+#   tq_transmute(select     = adjusted,
+#                mutate_fun = to.daily) %>%
+#   group_by(symbol) %>%
+#   mutate(adj_perc = round(adjusted/first(adjusted)-1, 3))
+# 
+# test <- fav_etfs_rate %>%
+#   group_by(symbol) %>%
+#   distinct(symbol, .keep_all = TRUE)
 
 fav_etfs_rate <- tq_get(ticker,
                         get  = "stock.prices",

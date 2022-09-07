@@ -1,0 +1,272 @@
+---
+title: Der beste Tag im Monat, um in einen ETF-Sparplan zu investieren
+author: Jan Tau
+date: '2022-09-07'
+slug: sparplantag-reloaded
+categories: []
+tags: [ETF, Sparplan]
+subtitle: 'Ich habe Sparpläne für die zehn beliebtesten ETFs in Deutschland simuliert — über alle Tage im Monat'
+summary: 'Ich habe Sparpläne für die zehn beliebtesten ETFs in Deutschland simuliert — über alle Tage im Monat'
+authors: []
+lastmod: '2022-09-07T09:25:42+02:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+<script src="{{< blogdown/postref >}}index_files/kePrint/kePrint.js"></script>
+<link href="{{< blogdown/postref >}}index_files/lightable/lightable.css" rel="stylesheet" />
+
+
+<p>Der mit Abstand meistgelesene Beitrag auf meinem Blog ist <a href="/post/sparplantag/">Wann soll ich in meinen ETF-Sparplan investieren?</a>. Hier bin ich der Frage nachgegangen, welcher Tag im Monat der beste ist, um kontinuierlich in einen ETF-Sparplan zu investieren. Der Post ist vor etwa einem Jahr erschienen. Es ist nun Zeit für ein Update, das zwei Aspekte präzisiert:</p>
+<ol style="list-style-type: decimal">
+<li><p>Ich untersuche wirklich alle Tage des Monats. Im ersten Post hatte ich aus technischen Gründen nur Tage untersucht, an denen sicher noch im entsprechenden Monat der Anlagebetrag investiert werden konnte. Nun habe ich eine Möglichkeit gefunden, wie ich einen Sparplan zum 31. jeden Monats simulieren kann, auch wenn die tatsächliche Anlage dann häufig erst zu Beginn des nächsten Monats erfolgt.</p></li>
+<li><p>Es wird nicht nur ein einzelner ETF untersucht, sondern die zehn größten an der Deutschen Börse gehandelten ETFs. Durch die Analyse der unterschiedlichen ETFs kann ein aussagekräftiger Mittelwert gebildet werden.</p></li>
+</ol>
+<p>Die <a href="https://www.deutsche-boerse-cash-market.com/dbcm-de/instrumente-statistiken/statistiken/etf-etp-statistiken/">Daten der ETFs habe ich von der Deutschen Börse</a> bezogen. Analysiert werden lediglich die thesaurierenden ETFs, damit unterschiedliche Ausschüttungen nicht den Vergleich erschweren. Zudem muss das Fondsalter mindestens 10 Jahre betragen, damit ein längerer Zeitraum untersucht werden kann.</p>
+<p>Folgende ETFs sind die größten, thesaurierenden ETFs, die an der Deutschen Börse gehandelt werden.</p>
+<div id="die-10-etfs-für-die-sparpläne-simuliert-wurden" class="section level2">
+<h2>Die 10 ETFs, für die Sparpläne simuliert wurden</h2>
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;border-bottom: 0;">
+<thead>
+<tr>
+<th style="text-align:left;">
+ETF
+</th>
+<th style="text-align:left;">
+Ticker
+</th>
+<th style="text-align:right;">
+Größe ETF.<br>(in Mio. EUR)
+</th>
+<th style="text-align:right;">
+Sparplandauer<br>(in Monaten)
+</th>
+<th style="text-align:right;">
+Rendite<br>(in %)<sup>1 </sup>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+iShares Core S&amp;P 500
+</td>
+<td style="text-align:left;">
+SXR8.DE
+</td>
+<td style="text-align:right;">
+55188.3
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:right;">
+116.7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+iShares Core MSCI World
+</td>
+<td style="text-align:left;">
+EUNL.DE
+</td>
+<td style="text-align:right;">
+42514.0
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:right;">
+80.3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+iShares Nasdaq-100
+</td>
+<td style="text-align:left;">
+SXRV.DE
+</td>
+<td style="text-align:right;">
+7400.4
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:right;">
+181.6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Xtrackers S&amp;P 500 Swap
+</td>
+<td style="text-align:left;">
+D5BM.DE
+</td>
+<td style="text-align:right;">
+6466.0
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:right;">
+119.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+iShares MSCI ACWI
+</td>
+<td style="text-align:left;">
+IUSQ.DE
+</td>
+<td style="text-align:right;">
+5408.4
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:right;">
+71.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+iShares Core MSCI Europe
+</td>
+<td style="text-align:left;">
+EUNK.DE
+</td>
+<td style="text-align:right;">
+5370.7
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:right;">
+32.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+iShares Core DAX
+</td>
+<td style="text-align:left;">
+EXS1.DE
+</td>
+<td style="text-align:right;">
+5231.7
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:right;">
+12.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+iShares S&amp;P 500 EUR Hedged
+</td>
+<td style="text-align:left;">
+IBCF.DE
+</td>
+<td style="text-align:right;">
+4707.8
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:right;">
+60.7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Xtrackers MSCI USA Swap
+</td>
+<td style="text-align:left;">
+DBXU.DE
+</td>
+<td style="text-align:right;">
+4143.4
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:right;">
+113.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+iShares USD Treasury Bond 3-7yr
+</td>
+<td style="text-align:left;">
+SXRL.DE
+</td>
+<td style="text-align:right;">
+4130.1
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:right;">
+10.0
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; " colspan="100%">
+<sup></sup> Die 10 größten, thesaurierenden, XETRA-gehandelten ETFs mit einem Fondsalter &gt; 10 Jahre (Stand: Juli 2022)
+</td>
+</tr>
+<tr>
+<td style="padding: 0; " colspan="100%">
+<sup>1</sup> Die Rendite bezieht sich auf den Endwert des Sparplans im Verhältnis zum gesamten über die Sparplandauer investierten Betrag.
+</td>
+</tr>
+</tfoot>
+</table>
+<p>Die Liste der ETFs ist erfreulicherweise ziemlich gut durchmischt. Lediglich der S&amp;P 500-Index ist durch mehrere ETFs vertreten. Und zwar durch einen iShares- und einen Xtrackers-ETF, die sich ziemlich ähnlich sind, und dann ein weiteres Mal durch einen währungsabgesicherten (hedged) ETF. Von MSCI ist je ein ETF auf den USA-, den World-, den Europe- und den All Countries World-Index vertreten. Des Weiteren sind ETFs auf die Indizes NASDAQ 100 und DAX unter den analysierten Fonds. Und zuletzt hat sich ein einzelner Anleihen-ETF in die Liste verirrt. Hierbei handelt es sich um einen in mittelfristige US-Staatsanleihen investierenden Fonds von iShares.</p>
+<p>Es fällt auf, dass mit iShares und Xtrackers nur zwei Fonds-Anbieter vertreten sind. Andere Anbieter, die heute große ETFs verwalten (wie etwa Vanguard, Amundi oder Invesco), spielten vor 10 Jahren noch keine (herausgehobene) Rolle auf dem europäischen ETF-Markt.</p>
+</div>
+<div id="aufbau-der-sparplansimulation" class="section level2">
+<h2>Aufbau der Sparplansimulation</h2>
+<p>Für jeden der 10 ETFs wurden im nächsten Schritt 31 Sparpläne simuliert — für jeden Tag im Monat einer. Über 10 Jahre (von September 2012 bis August 2022) wurde pro Sparplan und ETF immer am gleichen Tag im Monat die Summe X investiert. Fiel der entsprechende Tag einmal nicht auf einen Bankarbeitstag, wurde die Summe am darauffolgenden Bankarbeitstag investiert, was unter Umständen auch erst im nächsten Monat sein konnte (beispielsweise beim Sparplan für den 31. Tag im Monat). Insgesamt wurden für jeden Sparplan 120 (12 Monate * 10 Jahre) Einlagen berücksichtigt und 310 Sparpläne simuliert (10 ETFs * 31 Tage im Monat). Mögliche Order- oder Depotgebühren wurden bei der Berechnung der Rendite nicht berücksichtigt.</p>
+<p>{{% callout note %}}
+Wie alle Analysen kann die Simulation auf dem <a href="https://github.com/jantau/jantau/tree/main/content/post">GitHub-Repositorium dieses Blogs</a> transparent nachvollzogen und reproduziert werden.
+{{% /callout %}}</p>
+</div>
+<div id="ranking-der-31-möglichen-anlagetage-pro-monat" class="section level2">
+<h2>Ranking der 31 möglichen Anlagetage pro Monat</h2>
+<p>Die 31 Tage im Monat wurden nach der Rendite der Sparplansimulationen gerankt. Der erste Chart zeigt den Mittelwert dieses Ranking über alle untersuchten ETFs hinweg.</p>
+<p><img src="barchart_ranking_sparplantag.png" />
+Der zweite Tag im Monat ist der beste Tag, um in einen monatlichen ETF-Sparplan zu investieren. Auf den Plätzen folgen der dritte und der erste Tag im Monat.</p>
+<p>Die schlechteste Rendite erzielte im Mittel die regelmäßige Investition am 31. Tag des Monats, gefolgt vom 30. und vom 29. jeden Monats.</p>
+<p>Das Ergebnis bestätigt die Untersuchung aus dem letzten Jahr. <strong>Grundsätzlich ist es am besten, so früh wie möglich im Monat zu investieren.</strong> Historisch betrachtet stiegen ETFs langfristig und deswegen war es stets rentabel, so lange bzw. so früh wie möglich investiert zu sein: “Time in the market beats timing the market.”</p>
+</div>
+<div id="ranking-der-31-möglichen-anlagetage-pro-monat-für-alle-untersuchten-etfs" class="section level2">
+<h2>Ranking der 31 möglichen Anlagetage pro Monat für alle untersuchten ETFs</h2>
+<p>Nun wurden jedoch sehr unterschiedliche ETFs verglichen, die große Unterschiede in der Performance gezeigt haben. Der Spitzenreiter ist der NASDAQ 100-ETF, dessen Sparplan 182% Rendite erzielt hat. (Die Rendite bezieht sich auf den Endwert des Sparplans im Verhältnis zum gesamten über die Sparplandauer investierten Betrag.) Im Gegensatz hierzu hat in den letzten 10 Jahren ein DAX- oder ein MSCI Europe-ETF nicht besonders viel Freude gemacht und nur 12% bzw. 32% Rendite eingebracht.</p>
+<p>Die deutlichen Unterschiede in der Performance der verschiedenen ETF-Sparpläne könnten auch den besten monatlichen Anlagetag beeinflusst haben. Aus diesem Grund zeigt der nächste Chart die Ergebnisse für die einzelnen ETFs.</p>
+<p><img src="barchart_ranking_sparplantag_all.png" /></p>
+<p>Das Ergebnis dieser Analyse zeigt, je erfolgreicher ein ETF war, desto eindeutiger ist das Muster: Die ersten Monatstage bringen mehr Rendite als die letzten. Bei weniger erfolgreichen ETFs ist das Muster nicht so eindeutig. Bei dem US-Staatsanleihen-ETF ist beispielsweise der 10. jeden Monats der beste Tag. Und beim MSCI Europe-ETF schneidet der 12. jeden Monats am drittbesten ab. Alle ETFs vereint jedoch, dass die letzten Tage im Monat die schlechtesten sind, um in einen Sparplan zu investieren.</p>
+</div>
+<div id="renditeunterschiede-der-31-möglichen-anlagetage-pro-monat-für-alle-untersuchten-etfs" class="section level2">
+<h2>Renditeunterschiede der 31 möglichen Anlagetage pro Monat für alle untersuchten ETFs</h2>
+<p>Die Frage, die noch offen bleibt, lautet: Wie groß ist der Rendite-Unterschied der verschiedenen Anlagetage. Die Unterschiede (in Prozentpunkten) der Sparpläne zeigt der letzte Chart, in dem ich die Rendite-Unterschiede (und nicht das Ranking) der unterschiedlichen Anlagetage anzeige.</p>
+<p><img src="barchart_ranking_sparplantag_all_perc.png" /></p>
+<p>Zwei Ergebnisse werden aus dieser Analyse deutlich. Erstens: Je erfolgreicher ein ETF, desto größer sind auch die Unterschiede zwischen dem besten und dem schlechtesten Anlagetag. Da die erfolgreichen ETFs relativ kontinuierlich steigen, ist es umso effektiver, frühzeitig investiert zu sein, auch wenn es sich bei einer monatlichen Einlage nur um einige Wochen oder Tagen Unterschied handelt.</p>
+<p>Die zweite Erkenntnis halte ich aber für entscheidender: Die Unterschiede sind nicht besonders groß. Der maximale Renditeverlust durch den schlechtesten Tag im Monat liegt zwischen -4,4 Prozentpunkten (beim NASDAQ 100-ETF) und -0,15 Prozentpunkten (beim US-Staatsanleihen-ETF). Über einen Zeitraum von 10 Jahren ist das nicht besonders viel. Es gibt somit wichtigere Entscheidungen, die die Rendite erheblicher beeinflussen können. An erster Stelle steht sicherlich die Frage, in welchen ETF ich überhaupt investieren soll. Zudem können Gebühren und Replikationsart die Rendite in ähnlichem Umfang wie der Anlagetag beeinflussen. Die beiden untersuchten S&amp;P 500-ETFs weisen beispielsweise einen Renditeunterschied von 3 Prozentpunkten auf, der vermutlich durch die Replikationsart erklärt werden kann.</p>
+<p>Ich bleibe also bei meiner Einschätzung vom letzten Jahr: So früh wie möglich im Monat zu investieren ergibt absolut Sinn, insbesondere, wenn so vermieden wird, dass der Anlagebetrag mehrere Wochen uninvestiert auf dem Depotkonto liegt. Falls der Sparplan einen flexiblen bzw. frühen Anlagetag jedoch nicht hergibt, würde ich nach wie vor nicht alles umstellen, um über den perfekten Anlagetag die letzten Prozentpunkte herauszuholen.</p>
+<p>Den für diesen Beitrag erstellten Code findest du hier: <a href="https://github.com/jantau/jantau/tree/main/content/post">https://github.com/jantau/jantau</a></p>
+<p>Hat dir der Post gefallen? <a href="https://tinyletter.com/jantau">Melde dich für meinen Newsletter an</a>, um über neue Beiträge informiert zu werden.</p>
+</div>

@@ -8,11 +8,13 @@ options(stringsAsFactors = FALSE)
 library(directlabels)
 library(DT)
 library(gameofthrones) # farbpaletten
+library(ggtext)
 library(ggrepel) # avoid overlapping labels 
 # https://blog.revolutionanalytics.com/2016/01/avoid-overlapping-labels-in-ggplot2-charts.html
 library(gt)
 library(highcharter)
 library(htmlwidgets)
+library(kableExtra)
 library(lubridate)
 library(plotly)
 library(readxl)
