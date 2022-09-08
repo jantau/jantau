@@ -58,7 +58,7 @@ Wie alle Analysen kann die Simulation auf dem [GitHub-Repositorium dieses Blogs]
 {{% /callout %}}
 
 
-## Ranking der 31 möglichen Anlagetage pro Monat
+## Ranking der 31 möglichen Ausführungstage pro Monat
 
 Die 31 Tage im Monat wurden nach der Rendite der Sparplansimulationen gerankt. Der erste Chart zeigt den Mittelwert dieses Ranking über alle untersuchten ETFs hinweg.
 
@@ -69,29 +69,29 @@ Die schlechteste Rendite erzielte im Mittel die regelmäßige Investition am 31.
 
 Das Ergebnis bestätigt die Untersuchung aus dem letzten Jahr. **Grundsätzlich ist es am besten, so früh wie möglich im Monat zu investieren.** Historisch betrachtet stiegen ETFs langfristig und deswegen war es stets rentabel, so lange bzw. so früh wie möglich investiert zu sein: "Time in the market beats timing the market."
 
-## Ranking der 31 möglichen Anlagetage pro Monat für alle untersuchten ETFs
+## Ranking der 31 möglichen Ausführungstage pro Monat für alle untersuchten ETFs
 
 Nun wurden jedoch sehr unterschiedliche ETFs verglichen, die große Unterschiede in der Performance gezeigt haben. Der Spitzenreiter ist der NASDAQ 100-ETF, dessen Sparplan 182% Rendite erzielt hat. (Die Rendite bezieht sich auf den Endwert des Sparplans im Verhältnis zum gesamten über die Sparplandauer investierten Betrag.) Im Gegensatz hierzu hat in den letzten 10 Jahren ein DAX- oder ein MSCI Europe-ETF nicht besonders viel Freude gemacht und nur 12% bzw. 32% Rendite eingebracht.
 
-Die deutlichen Unterschiede in der Performance der verschiedenen ETF-Sparpläne könnten auch den besten monatlichen Anlagetag beeinflusst haben. Aus diesem Grund zeigt der nächste Chart die Ergebnisse für die einzelnen ETFs.
+Die deutlichen Unterschiede in der Performance der verschiedenen ETF-Sparpläne könnten auch den besten monatlichen Ausführungstag beeinflusst haben. Aus diesem Grund zeigt der nächste Chart die Ergebnisse für die einzelnen ETFs.
 
 ![](barchart_ranking_sparplantag_all.png)
 
 Das Ergebnis dieser Analyse zeigt, je erfolgreicher ein ETF war, desto eindeutiger ist das Muster: Die ersten Monatstage bringen mehr Rendite als die letzten. Bei weniger erfolgreichen ETFs ist das Muster nicht so eindeutig. Bei dem US-Staatsanleihen-ETF ist beispielsweise der 10. jeden Monats der beste Tag. Und beim MSCI Europe-ETF schneidet der 12. jeden Monats am drittbesten ab. Alle ETFs vereint jedoch, dass die letzten Tage im Monat die schlechtesten sind, um in einen Sparplan zu investieren. 
 
-## Renditeunterschiede der 31 möglichen Anlagetage pro Monat für alle untersuchten ETFs
+## Renditeunterschiede der 31 möglichen Ausführungstage pro Monat für alle untersuchten ETFs
 
-Die Frage, die noch offen bleibt, lautet: Wie groß ist der Rendite-Unterschied der verschiedenen Anlagetage. Die Unterschiede (in Prozentpunkten) der Sparpläne zeigt der letzte Chart, in dem ich die Rendite-Unterschiede (und nicht das Ranking) der unterschiedlichen Anlagetage anzeige.
+Die Frage, die noch offen bleibt, lautet: Wie groß ist der Rendite-Unterschied der verschiedenen Ausführungstage. Die Unterschiede (in Prozentpunkten) der Sparpläne zeigt der letzte Chart, in dem ich die Rendite-Unterschiede (und nicht das Ranking) der unterschiedlichen Ausführungstage anzeige.
 
 ![](barchart_ranking_sparplantag_all_perc.png)
 
-Je erfolgreicher ein ETF, desto größer sind auch die Unterschiede zwischen dem besten und dem schlechtesten Anlagetag. Da die erfolgreichen ETFs relativ kontinuierlich steigen, ist es umso effektiver, frühzeitig investiert zu sein, auch wenn es sich bei einer monatlichen Einlage nur um einige Wochen oder Tagen Unterschied handelt. 
+Je erfolgreicher ein ETF, desto größer sind auch die Unterschiede zwischen dem besten und dem schlechtesten Ausführungstag. Da die erfolgreichen ETFs relativ kontinuierlich steigen, ist es umso effektiver, frühzeitig investiert zu sein, auch wenn es sich bei einer monatlichen Einlage nur um einige Wochen oder Tagen Unterschied handelt. 
 
 Der maximale Renditeverlust durch den schlechtesten Tag im Monat liegt zwischen -4,4 Prozentpunkten (beim NASDAQ 100-ETF) und -0,15 Prozentpunkten (beim US-Staatsanleihen-ETF). Über einen Zeitraum von 10 Jahren ist das einerseits nicht besonders viel. Es gibt wichtigere Entscheidungen, die die Rendite erheblicher beeinflussen können. An erster Stelle steht sicherlich die Frage, in welchen ETF ich überhaupt investieren soll und ob ich in der Lage bin, durch die Höhen und Tiefen des Marktgeschehens kontinuierlich zu sparen. Zudem können Gebühren und Replikationsart die Rendite in ähnlichem Umfang wie der Anlagetag beeinflussen. Die beiden untersuchten S&P 500-ETFs weisen beispielsweise einen Renditeunterschied von 3 Prozentpunkten auf, der vermutlich durch die Replikationsart erklärt werden kann.
 
 In absoluten Zahlen können die Prozentpunkte Unterschied allerdings schon ins Gewicht fallen. Habe ich es beispielsweise geschafft, von 2012 bis 2022 monatlich 1000 Euro in den NASDAQ 100-ETF von iShares zu investieren, dann liegen beim besten Ausführungstag (der 3. jeden Monats) am Ende Anteile im Wert von 337873 Euro im Depot. Der schlechteste Ausführungstag (der 31. jeden Monats) ergibt einen Endbetrag von 332627 Euro und somit 5246 Euro weniger. Bei der Investition in den MSCI World-ETF würde der Unterschied zwischen dem besten und schlechtesten Ausführungstag 2359 Euro betragen.
 
-So früh wie möglich im Monat zu investieren ergibt also absolut Sinn, insbesondere, wenn so vermieden wird, dass der Anlagebetrag mehrere Wochen uninvestiert auf dem Depotkonto liegt. Falls der Sparplan einen flexiblen bzw. frühen Anlagetag jedoch nicht hergibt, würde ich vermutlich nach wie vor nicht alles umstellen, um über den perfekten Anlagetag die letzten Prozente herauszuholen — obwohl ich bei meinem suboptimalen Ausführungstag über [maxblue](https://www.maxblue.de/geldanlage/geld-anlegen/wertpapiersparplan.html) (der 20. jeden Monats) langsam ins Grübeln komme.
+So früh wie möglich im Monat zu investieren ergibt also absolut Sinn, insbesondere, wenn so vermieden wird, dass der Anlagebetrag mehrere Wochen uninvestiert auf dem Depotkonto liegt. Falls der Sparplan einen flexiblen bzw. frühen Ausführungstag jedoch nicht hergibt, würde ich vermutlich nach wie vor nicht alles umstellen, um über den perfekten Anlagetag die letzten Prozente herauszuholen — obwohl ich bei meinem suboptimalen Ausführungstag über [maxblue](https://www.maxblue.de/geldanlage/geld-anlegen/wertpapiersparplan.html) (der 20. jeden Monats) langsam ins Grübeln komme.
 
 Den für diesen Beitrag erstellten Code findest du hier: [https://github.com/jantau/jantau](https://github.com/jantau/jantau/tree/main/content/post)
 
