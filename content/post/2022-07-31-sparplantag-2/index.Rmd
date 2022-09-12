@@ -13,7 +13,7 @@ image:
   caption: ''
   focal_point: ''
   preview_only: true
-images: ["featured.png"]
+images: ["https://www.jantau.com/post/sparplantag-reloaded/featured.png"]
 projects: []
 ---
 
