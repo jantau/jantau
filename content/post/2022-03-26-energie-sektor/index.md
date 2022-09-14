@@ -13,6 +13,7 @@ image:
   caption: ''
   focal_point: 'center'
   preview_only: true
+images: ["https://www.jantau.com/post/energie-sektor/featured.jpg"]
 projects: []
 ---
 Wir nähern uns dem Ende des ersten Quartals des Jahres 2022 und der Aktienmarkt tut sich schwer. Die hohe Inflation, die Straffung der Geldpolitik und natürlich der furchtbare Krieg in der Ukraine wirken sich auf die Märkte aus.
