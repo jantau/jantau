@@ -8,7 +8,6 @@ tags: [ETF, Anlageklassen]
 subtitle: 'Über regionale Unterschiede in Google Trends'
 summary: 'Über regionale Unterschiede in Google Trends'
 authors: []
-lastmod: '2021-11-20T10:14:24+02:00'
 featured: no
 image:
   caption: ''

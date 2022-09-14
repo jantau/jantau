@@ -8,7 +8,6 @@ tags: [ETF]
 subtitle: 'Über die Entwicklung der Sektoren *Information Technology* und *Energy* in den letzten zwölf Monaten'
 summary: 'Über die Entwicklung der Sektoren *Information Technology* und *Energy* in den letzten zwölf Monaten'
 authors: []
-lastmod: '2021-07-04T08:20:54+02:00'
 featured: no
 image:
   caption: ''

@@ -129,6 +129,8 @@ faang_colors <-
     "#4285F4") %>% # "#F25022"
   setNames(c("FB", "AAPL", "AMZN", "NFLX", "GOOG"))
 
+# library(scales)
+# show_col(faang_colors, labels = FALSE, ncol = 5, borders = "white")
 
 vline <- function(x = 0, color = "grey") {
   list(

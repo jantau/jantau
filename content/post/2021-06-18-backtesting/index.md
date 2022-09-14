@@ -8,7 +8,6 @@ tags: [ETF, Gewichtung]
 subtitle: 'Über Werkzeuge zur Überprüfung der Anlagestrategie'
 summary: 'Über Werkzeuge zur Überprüfung der Anlagestrategie'
 authors: []
-lastmod: '2021-06-20T11:06:37+02:00'
 featured: no
 image:
   caption: ''

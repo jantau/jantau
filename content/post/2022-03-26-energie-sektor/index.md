@@ -8,12 +8,11 @@ tags: [ETF, MSCI World, Gewichtung]
 subtitle: 'aber ein Sektor läuft allen davon'
 summary: 'aber ein Sektor läuft allen davon'
 authors: []
-lastmod: '2022-03-28T20:00:00+01:00'
 featured: no
 image:
   caption: ''
-  focal_point: ''
-  preview_only: no
+  focal_point: 'center'
+  preview_only: true
 projects: []
 ---
 Wir nähern uns dem Ende des ersten Quartals des Jahres 2022 und der Aktienmarkt tut sich schwer. Die hohe Inflation, die Straffung der Geldpolitik und natürlich der furchtbare Krieg in der Ukraine wirken sich auf die Märkte aus.

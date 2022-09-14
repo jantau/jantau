@@ -8,12 +8,11 @@ tags: []
 subtitle: Über die FAANG-Werte nach Quartalsberichten
 summary: Über die FAANG-Werte nach Quartalsberichten
 authors: []
-lastmod: '2022-02-08T09:51:04+01:00'
 featured: no
 image:
   caption: ''
   focal_point: ''
-  preview_only: no
+  preview_only: true
 projects: []
 ---
 ## FAANG Is Dead!

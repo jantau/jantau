@@ -8,12 +8,11 @@ tags: [Durchschnittskosteneffekt, Zinseszinseffekt, Dax 30]
 subtitle: 'Über den Faktor Zeit beim Investieren'
 summary: 'Über den Faktor Zeit beim Investieren'
 authors: []
-lastmod: '2021-06-06T12:17:15+02:00'
 featured: no
 image:
   caption: ''
   focal_point: ''
-  preview_only: no
+  preview_only: true
 projects: 
 ---
 

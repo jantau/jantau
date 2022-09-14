@@ -8,7 +8,6 @@ tags: []
 subtitle: 'Über das Investieren in AAPL bei jedem Kauf eines Apple-Produkts'
 summary: 'Über das Investieren in AAPL bei jedem Kauf eines Apple-Produkts'
 authors: []
-lastmod: '2021-10-09T12:07:28+02:00'
 featured: no
 image:
   caption: ''

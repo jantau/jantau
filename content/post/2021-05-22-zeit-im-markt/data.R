@@ -9,14 +9,14 @@ cat("\014") # Clear your console
 rm(list = ls()) # Clear your environment
 
 # Load in header file
-source("/Users/jan/blog/jantau/content/post/header.R")
-setwd("/Users/jan/blog/jantau/content/post/2021-05-22-zeit-im-markt") 
+source("./content/post/header.R")
+setwd("./content/post/2021-05-22-zeit-im-markt") 
 
 #----------------------------------------------------------------------------
 # Load data
 #----------------------------------------------------------------------------
 
-index <- read_csv("/Users/jan/blog/jantau/content/post/2021-05-07-der-beste-zeitpunkt/index.csv")
+index <- read_csv("./content/post/2021-05-07-der-beste-zeitpunkt/index.csv")
 
 #----------------------------------------------------------------------------
 # Manipulate data and create savings plan

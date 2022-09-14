@@ -8,7 +8,6 @@ tags: [ETF, Anlageklassen]
 subtitle: 'Über Anlageklassen und FAANG in Google Trends'
 summary: 'Über Anlageklassen und FAANG in Google Trends'
 authors: []
-lastmod: '2021-09-05T09:46:43+02:00'
 featured: no
 image:
   caption: ''

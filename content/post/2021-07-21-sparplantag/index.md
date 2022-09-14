@@ -8,12 +8,11 @@ tags: [ETF, MSCI World, Sparplan]
 subtitle: 'Über den Performanceverlust, wenn ich immer am 20. des Monats investiere'
 summary: 'Über den Performanceverlust, wenn ich immer am 20. des Monats investiere'
 authors: []
-lastmod: '2021-08-01T09:34:38+02:00'
 featured: no
 image:
   caption: ''
   focal_point: ''
-  preview_only: no
+  preview_only: true
 projects:
 ---
 
