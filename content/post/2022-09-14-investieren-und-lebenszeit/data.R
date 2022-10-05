@@ -36,7 +36,7 @@ annuity_years <- function(contrib = 100, rate = 0.05, end_amount = 500000) {
   return(result)
 }
 
-annuity_years(contrib = 150, rate = 0.07, end_amount = 500000)
+annuity_years(contrib = 10, rate = 0.07, end_amount = 500000)
 
 
 

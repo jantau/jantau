@@ -48,10 +48,10 @@ Dieser Blog beinhaltet Datenanalysen und Visualisierungen zu persönlichen Finan
 
 Als Historiker bin ich darin trainiert, Fragestellungen (zu vergangenen Ereignissen und Strukturen) zu entwickeln und zu deren Beantwortung Belege und Gegenbelege in Archiven und wissenschaftlicher Literatur zu finden, die anschließend zu einem gut begründeten und überzeugenden Narrativ verbunden werden. 
 
-Die Arbeit als Data Scientist und das Studium der Informationswissenschaft haben meine Kenntnisse und Interessen ergänzt um die (skriptbasierte) Strukturierung von Informationen, die Verwaltung, Analyse und Visualisierung von Daten sowie den benutzerorientierten Einsatz von IT-Anwendungen. 
+Die Arbeit als Data Scientist und das Studium der Bibliotheks- und Informationswissenschaft haben meine Kenntnisse und Interessen ergänzt um die (skriptbasierte) Strukturierung von Informationen, die Verwaltung, Analyse und Visualisierung von Daten sowie den benutzerorientierten Einsatz von IT-Anwendungen. 
 
 Auf dem Blog [jantau.com](https://www.jantau.com) verbinde ich diese beiden Professionen. 
 
-Fragestellungen zu persönlichen Finanzen werden mit Werkzeugen der Datenanalyse bearbeitet und durch Visualisierungen und Verbalisierungen in Blog-Posts beantwortet. Dabei genieße ich vor allem die solitäre Aufgabe, Dinge mit Computercode zu erschaffen.
+Fragestellungen zu persönlichen Finanzen werden mit Werkzeugen der Datenanalyse bearbeitet und durch Visualisierungen und Verbalisierungen in Blog-Posts beantwortet. Dabei genieße ich vor allem die solitäre Tätigkeit, mit Computercode Fragen, Aufgaben und Probleme zu lösen.
 
 Den erstellten Code findest du hier: [https://github.com/jantau/jantau](https://github.com/jantau/jantau)
