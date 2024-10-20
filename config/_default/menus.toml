@@ -48,10 +48,10 @@
   #url = "apps"
   #weight = 80  
   
-[[main]]
-  name = "Newsletter"
-  url = "https://tinyletter.com/jantau"
-  weight = 90  
+#[[main]]
+#  name = "Newsletter"
+#  url = "https://tinyletter.com/jantau"
+#  weight = 90  
   
   
 # Link to a PDF of your resume/CV from the menu.
