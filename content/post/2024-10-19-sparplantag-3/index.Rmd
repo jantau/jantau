@@ -1,0 +1,24 @@
+---
+draft: true
+title: Der beste Tag im Monat, um in einen ETF-Sparplan zu investieren
+author: Jan Tau
+date: '2024-10-20'
+slug: sparplantag-reloaded-2
+categories: []
+tags: [ETF, Sparplan]
+subtitle: 'Ich habe Sparpläne für die zehn beliebtesten ETFs in Deutschland simuliert — über alle Tage im Monat'
+summary: 'Ich habe Sparpläne für die zehn beliebtesten ETFs in Deutschland simuliert — über alle Tage im Monat'
+authors: []
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: true
+images: ["https://www.jantau.com/post/sparplantag-reloaded/featured.png"]
+projects: []
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+

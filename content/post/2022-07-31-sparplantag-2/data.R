@@ -12,6 +12,11 @@ rm(list = ls()) # Clear your environment
 source("./content/post/header.R")
 setwd("./content/post/2022-07-31-sparplantag-2") 
 
+#Reset working directory
+# setwd("/Users/jan/Documents/jantau/content/post/2022-07-31-sparplantag-2")
+
+
+
 # Define variable savings rate
 savings_rate = 1000
 load("xetra_df.Rdata")
@@ -164,6 +169,7 @@ label_1 <- c("Die besten 5 Tage\nfür die langfristige Investition\nin einen mon
 label_2 <- c("Die schlechtesten 5 Tage\nfür die langfristige Investition\nin einen monatlichen ETF-Sparplan")
 
 pal <- got(3, option = "Daenerys", direction = 1)
+pal <- c("#2B818E", "#792427", "#D9D9D9")
 
 data_ranked %>%
   ggplot(aes(x = day, y = rank, label = rank, fill = color)) +
