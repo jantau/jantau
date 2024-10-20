@@ -1,12 +1,12 @@
 ---
-title: Der beste Tag im Monat, um in einen Index und in einen Index-Sparplan zu investieren
+title: ENTWURF Der beste Tag im Monat, um in einen Index oder in einen Index-Sparplan zu investieren
 author: Jan Tau
 date: '2024-10-20'
 slug: sparplantag-reloaded-2
 categories: []
 tags: [ETF, Sparplan]
-subtitle: 'Ich habe Sparpläne für die zehn beliebtesten ETFs in Deutschland simuliert — über alle Tage im Monat'
-summary: 'Ich habe Sparpläne für die zehn beliebtesten ETFs in Deutschland simuliert — über alle Tage im Monat'
+subtitle: 'Ich habe seit 1988 beim Dax und beim Nasdaq 100 untersucht, welche Tage im Monat am stärksten waren und an welchen ein monatlicher Sparplan am besten lief'
+summary: 'Ich habe seit 1988 beim Dax und beim Nasdaq 100 untersucht, welche Tage im Monat am stärksten waren und an welchen ein monatlicher Sparplan am besten lief'
 authors: []
 image:
   caption: ''
@@ -19,5 +19,20 @@ projects: []
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+## Bester Tag im Monat, um in den Dax-Index zu investieren
+ ![](barchart_tagesrendite_dax.png)
+ 
+## Bester Tag im Monat, um in den Nasdaq 100-Index zu investieren
+ ![](barchart_tagesrendite_nasdaq.png) 
+
+
+## Bester Tag im Monat, um in einen Dax-Sparplan zu investieren
+![](barchart_sparplan_dax.png)
+
+## Bester Tag im Monat, um in einen Nasdaq 100-Sparplan zu investieren
+![](barchart_sparplan_nasdaq.png)
+
+
 
 

@@ -29,10 +29,10 @@ df <- tq_get(c("^NDX"),
              to = "2024-09-30") %>%
   tq_transmute(select = open, mutate_fun = to.daily)
 
-df_1 <- df %>%
-  mutate(day = substr(date, start = 9, stop = 10),
-         day = as.numeric(day),
-         intra_day = lead(adjusted)/adjusted-1)
+# df_1 <- df %>%
+#   mutate(day = substr(date, start = 9, stop = 10),
+#          day = as.numeric(day),
+#          intra_day = lead(adjusted)/adjusted-1)
 
 
 df_1 <- df %>%
@@ -47,24 +47,26 @@ df_group <- df_1 %>%
   mutate(rank = rank(-intra_day)) %>%
   mutate(rank = case_when(rank <= 5 ~ "top5",
                           rank >= 27 ~ "bottom5",
-                          TRUE ~ "rest"))
+                          TRUE ~ "rest")) %>%
+  mutate(intra_day = intra_day*100)
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 pal <- c( "#792427", "#D9D9D9", "#2B818E")
 
 ggplot(df_group, aes(x = day, y = intra_day, fill = rank)) +
   geom_col() +
-  labs(title = "Durchschnittliche Tagesrendite",
+  labs(title = "Durchschnittliche Tagesrendite vom Nasdaq 100 seit 1988 in %",
        x = "Tag",
-       y = "Durchschnittliche Tagesrendite") +
+       y = "Durchschnittliche Tagesrendite in %") +
   theme_minimal() +
   theme(plot.title = element_text(hjust = 0.5),
         axis.text.x = element_text(angle = 0, hjust = 1)) +
+  scale_y_continuous(labels = scales::percent_format(scale = 1)) +
   # Show every label on x axis
   scale_x_continuous(breaks = seq(1, 31, 1)) +
   scale_fill_manual(values = pal)
   
-
+ggsave("barchart_tagesrendite_nasdaq.png", scale = 1)
 
 # Sparplan
 
@@ -85,19 +87,19 @@ df_group_2 <- df_2 %>%
   mutate(perc = (value/(nrow(df_2)/31)-1)*100)
 
 
-2/0.5
 
 
 
-df_group_2 <- df_group_2 %>%
-  mutate(percents = shares/max(shares))
 
-df_group_2 <- df_group_2 %>%
-  mutate(add_shares = shares-min(shares)) %>%
-  mutate(add_shares = add_shares*last(df$open))
-
-df_group_2 <- df_group_2 %>%
-  mutate(add_shares = shares*last(df$open))
+# df_group_2 <- df_group_2 %>%
+#   mutate(percents = shares/max(shares))
+# 
+# df_group_2 <- df_group_2 %>%
+#   mutate(add_shares = shares-min(shares)) %>%
+#   mutate(add_shares = add_shares*last(df$open))
+# 
+# df_group_2 <- df_group_2 %>%
+#   mutate(add_shares = shares*last(df$open))
 
 df_group_2 <- df_group_2 %>%
   mutate(rank = rank(-shares)) %>%
@@ -107,22 +109,22 @@ df_group_2 <- df_group_2 %>%
   
 ggplot(df_group_2, aes(x = day, y = perc, fill = rank)) +
   geom_col() +
-  labs(title = "Anzahl der Aktien im Sparplan",
+  labs(title = "Rendite eines Nasdaq-Sparplans seit 1988 in % nach Ausführungstag",
        x = "Tag",
-       y = "Anzahl der Aktien") +
+       y = "Rendite des Sparplans in %") +
   theme_minimal() +
   theme(plot.title = element_text(hjust = 0.5),
         axis.text.x = element_text(angle = 0, hjust = 1)) +
   # y axis in percent
   scale_y_continuous(labels = scales::percent_format(scale = 1)) +
   # Y lim 200000 bis 250000
-  coord_cartesian(ylim = c(2240, NA)) +
+  coord_cartesian(ylim = c(2230, NA)) +
  # scale_y_continuous(limits = c(2000000, NA)) +
   # Show every label on x axis
   scale_x_continuous(breaks = seq(1, 31, 1)) +
   scale_fill_manual(values = pal)
 
-  
+ggsave("barchart_sparplan_nasdaq.png", scale = 1)  
   
   
   #complete(yearmon, day, open, fill = list(NA))
