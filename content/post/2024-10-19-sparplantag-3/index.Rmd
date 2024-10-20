@@ -1,8 +1,7 @@
 ---
-draft: false
 title: Der beste Tag im Monat, um in einen Index und in einen Index-Sparplan zu investieren
 author: Jan Tau
-date: '2020-10-20'
+date: '2024-10-20'
 slug: sparplantag-reloaded-2
 categories: []
 tags: [ETF, Sparplan]
